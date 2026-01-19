@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Stack, PLATFORM_INFO, THEME_INFO, Theme } from '@/types/types';
 import stacksData from '@/MVP/stacks.json';
+import Footer from './components/Footer';
 
 // 从 JSON 导入数据
 const stacks = stacksData.stacks.filter((s) => s.isEditorPick);
@@ -153,9 +154,12 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">{platform.name}</h3>
                 <p className="text-sm text-gray-500 mb-4 flex-grow">{platform.description}</p>
-                <button className="w-full py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700 transition-colors">
+                <Link
+                  href={`/platform/${platform.id}`}
+                  className="w-full py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700 transition-colors text-center"
+                >
                   Explore
-                </button>
+                </Link>
               </div>
             ))}
           </div>
@@ -168,7 +172,7 @@ export default function HomePage() {
               Still in a book slump?
             </h2>
             <p className="text-gray-500 mb-6">
-              Get one curated list every week. No spam.
+              Get curated lists delivered to your inbox. No spam.
             </p>
 
             <div className="max-w-sm mx-auto space-y-3">
@@ -191,17 +195,7 @@ export default function HomePage() {
         </section>
 
         {/* Footer */}
-        <footer className="py-12 border-t border-gray-100">
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
-              <a href="#" className="hover:text-gray-900 transition-colors">About</a>
-              <span className="text-gray-300">·</span>
-              <a href="#" className="hover:text-gray-900 transition-colors">Contact</a>
-              <span className="text-gray-300">·</span>
-              <a href="#" className="hover:text-gray-900 transition-colors">Privacy</a>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </div>
   );

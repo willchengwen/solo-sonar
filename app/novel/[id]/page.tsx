@@ -3,6 +3,7 @@
 import { useState, use } from 'react';
 import { ArrowRight } from 'lucide-react';
 import novelsData from '@/MVP/novels.json';
+import Footer from '../../components/Footer';
 
 // 平台类型
 type Platform = 'RR' | 'SB' | 'SV' | 'Site';
@@ -461,17 +462,7 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
         </section>
 
         {/* Footer */}
-        <footer className="py-12 border-t border-gray-100">
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
-              <a href="#" className="hover:text-gray-900 transition-colors">About</a>
-              <span className="text-gray-300">·</span>
-              <a href="#" className="hover:text-gray-900 transition-colors">Contact</a>
-              <span className="text-gray-300">·</span>
-              <a href="#" className="hover:text-gray-900 transition-colors">Privacy</a>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </div>
   );
