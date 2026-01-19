@@ -1,0 +1,262 @@
+{
+  "stacks": [
+    {
+      "id": "mol-similar",
+      "title": "If You Loved Mother of Learning, Read These Next",
+      "description": "Time loops, magic academies, and protagonists who actually use their brains.",
+      "curatorId": "looplord",
+      "curatorNote": "Mother of Learning set the gold standard for time loop fiction. These stories share its DNA: intelligent protagonists who learn from their mistakes, intricate magic systems worth exploring, and that satisfying sense of earned progress. Each one gave me the same feeling of 'just one more chapter' that MoL did.",
+      "entries": [
+        {
+          "novelId": "the-perfect-run",
+          "curatorNote": "Deadpool meets Groundhog Day. Fast-paced, hilarious, and emotionally resonant.",
+          "addedAt": "2024-01-15",
+          "order": 1
+        },
+        {
+          "novelId": "re-monarch",
+          "curatorNote": "MoL on 'Dark Souls' difficulty. Gritty, painful, and deeply rewarding progression.",
+          "addedAt": "2024-01-15",
+          "order": 2
+        },
+        {
+          "novelId": "sufficiently-advanced-magic",
+          "curatorNote": "For those who loved Zorian's magical engineering and crafting.",
+          "addedAt": "2024-01-15",
+          "order": 3
+        },
+        {
+          "novelId": "the-menocht-loop",
+          "curatorNote": "What happens after you've already mastered the loop? A unique take on the genre.",
+          "addedAt": "2024-01-15",
+          "order": 4
+        },
+        {
+          "novelId": "dear-spellbook",
+          "curatorNote": "A D&D sorcerer stuck in a loop, relying on his journal to keep memories.",
+          "addedAt": "2024-01-15",
+          "order": 5
+        }
+      ],
+      "themes": ["time-loop", "progression", "rational"],
+      "platforms": ["royal-road", "spacebattles", "sufficient-velocity"],
+      "coverGradient": "from-gray-200 to-gray-100",
+      "createdAt": "2024-01-15",
+      "updatedAt": "2024-01-20",
+      "savedCount": 342,
+      "viewCount": 5621,
+      "isEditorPick": true,
+      "isFeatured": false
+    },
+    {
+      "id": "spacebattles-hidden-gems",
+      "title": "Hidden Gems on SpaceBattles",
+      "description": "Forum legends and hard sci-fi epics.",
+      "curatorId": "forumdelver",
+      "curatorNote": "SpaceBattles' forum format makes discovery hard, but the quality ceiling is incredibly high. These are the stories that made me lose sleep, buried in forum threads at 3 AM. Most never made it to Royal Road, so you'll need to brave the forum format—but trust me, it's worth it.",
+      "entries": [
+        {
+          "novelId": "worm",
+          "curatorNote": "The story that launched a thousand fanfics. Taylor's journey from bullied teenager to... well, no spoilers. This changed what web fiction could be.",
+          "addedAt": "2024-02-01",
+          "order": 1
+        },
+        {
+          "novelId": "purple-days",
+          "curatorNote": "Yes, it's on this list too. The SpaceBattles version has the best discussion threads for theorycrafting.",
+          "addedAt": "2024-02-01",
+          "order": 2
+        }
+      ],
+      "themes": ["rational", "sci-fi", "progression"],
+      "platforms": ["spacebattles", "personal-site"],
+      "coverGradient": "from-gray-200 to-gray-100",
+      "createdAt": "2024-02-01",
+      "updatedAt": "2024-02-15",
+      "savedCount": 187,
+      "viewCount": 3204,
+      "isEditorPick": false,
+      "isFeatured": false
+    },
+    {
+      "id": "completed-bingeable",
+      "title": "Completed & Bingeable",
+      "description": "Finished stories ready to marathon.",
+      "curatorId": "bingewatcher",
+      "curatorNote": "Nothing worse than getting invested in a story only to find it's been on hiatus for two years. Every story on this list is COMPLETE. Pick one, clear your weekend, and enjoy the ride from start to finish.",
+      "entries": [
+        {
+          "novelId": "mother-of-learning",
+          "curatorNote": "108 chapters of perfection. Plan for a week of lost sleep.",
+          "addedAt": "2024-03-01",
+          "order": 1
+        },
+        {
+          "novelId": "worm",
+          "curatorNote": "1.7 million words. Yes, really. But once you start, you won't want to stop.",
+          "addedAt": "2024-03-01",
+          "order": 2
+        },
+        {
+          "novelId": "worth-the-candle",
+          "curatorNote": "A satisfying ending that stuck the landing. Rare in web fiction.",
+          "addedAt": "2024-03-01",
+          "order": 3
+        },
+        {
+          "novelId": "the-perfect-run",
+          "curatorNote": "Shorter than most on this list, but every chapter counts. Great for a long weekend.",
+          "addedAt": "2024-03-01",
+          "order": 4
+        },
+        {
+          "novelId": "azarinth-healer",
+          "curatorNote": "3 million words of comfort food progression fantasy. Perfect for when you want something long and satisfying.",
+          "addedAt": "2024-03-01",
+          "order": 5
+        },
+        {
+          "novelId": "purple-days",
+          "curatorNote": "Recently completed! The ending was worth the wait.",
+          "addedAt": "2024-03-01",
+          "order": 6
+        }
+      ],
+      "themes": ["completed", "progression"],
+      "platforms": ["royal-road", "spacebattles", "personal-site"],
+      "coverGradient": "from-gray-200 to-gray-100",
+      "createdAt": "2024-03-01",
+      "updatedAt": "2024-03-10",
+      "savedCount": 523,
+      "viewCount": 8932,
+      "isEditorPick": false,
+      "isFeatured": false
+    },
+    {
+      "id": "kingdom-builders",
+      "title": "Kingdom Builders & Base Builders",
+      "description": "Stories where you build something that lasts.",
+      "curatorId": "architectfan",
+      "curatorNote": "There's something deeply satisfying about watching a protagonist build from nothing. Whether it's a kingdom, a dungeon, or literally just a tree that grows into an empire—these stories deliver that slow-burn satisfaction of seeing something grow.",
+      "entries": [
+        {
+          "novelId": "the-wandering-inn",
+          "curatorNote": "It starts as a girl running an inn. It becomes so much more. The worldbuilding is unmatched.",
+          "addedAt": "2024-03-15",
+          "order": 1
+        },
+        {
+          "novelId": "tree-of-aeons",
+          "curatorNote": "Reincarnated as a tree. Sounds weird. Becomes epic. The long-term planning across centuries is *chef's kiss*.",
+          "addedAt": "2024-03-15",
+          "order": 2
+        }
+      ],
+      "themes": ["base-building", "kingdom-building", "slice-of-life"],
+      "platforms": ["royal-road", "personal-site"],
+      "coverGradient": "from-gray-200 to-gray-100",
+      "createdAt": "2024-03-15",
+      "updatedAt": "2024-03-20",
+      "savedCount": 156,
+      "viewCount": 2103,
+      "isEditorPick": false,
+      "isFeatured": false
+    },
+    {
+      "id": "like-hwfwm",
+      "title": "Like He Who Fights With Monsters",
+      "description": "Progression fantasy with LitRPG, cultivation, and System integration.",
+      "curatorId": "progressionfan",
+      "curatorNote": "He Who Fights With Monsters popularized the blend of LitRPG and cultivation. These stories deliver the same addictive progression itch: satisfying number-crunching, clear power advancement, and protagonists who grow from weak to world-shaking. If you love watching stats go up and skills evolve, this is your stack.",
+      "entries": [
+        {
+          "novelId": "defiance-of-the-fall",
+          "curatorNote": "Pure number-crunching satisfaction. Cultivation meets System in an epic mashup.",
+          "addedAt": "2024-04-01",
+          "order": 1
+        },
+        {
+          "novelId": "the-primal-hunter",
+          "curatorNote": "System apocalypse with a lone wolf archer. Faster paced, focused on kill-or-evolve.",
+          "addedAt": "2024-04-01",
+          "order": 2
+        },
+        {
+          "novelId": "azarinth-healer",
+          "curatorNote": "A battle-junkie healer's isekai journey. If you love combat creativity, this is it.",
+          "addedAt": "2024-04-01",
+          "order": 3
+        },
+        {
+          "novelId": "dungeon-crawler-carl",
+          "curatorNote": "The #1 fan favorite. Funnier, crazier, more heartbreaking. A man and his cat survive a dungeon livestream.",
+          "addedAt": "2024-04-01",
+          "order": 4
+        },
+        {
+          "novelId": "beware-of-chicken",
+          "curatorNote": "Isekai'd into a cultivation world... decides to farm and raise chickens. Cozy masterpiece.",
+          "addedAt": "2024-04-01",
+          "order": 5
+        }
+      ],
+      "themes": ["progression", "litrpg", "cultivation", "isekai"],
+      "platforms": ["royal-road"],
+      "coverGradient": "from-gray-200 to-gray-100",
+      "createdAt": "2024-04-01",
+      "updatedAt": "2024-04-10",
+      "savedCount": 287,
+      "viewCount": 4532,
+      "isEditorPick": true,
+      "isFeatured": true
+    },
+    {
+      "id": "hidden-gems-on-forums",
+      "title": "Hidden Gems on Forums",
+      "description": "Forum legends and hard-to-find masterpieces.",
+      "curatorId": "forumdelver",
+      "curatorNote": "Forums like SpaceBattles hide some of the best web fiction ever written, buried in thousand-page threads. These stories never got the Royal Road treatment, but they're phenomenal. Sci-fi epics, creative crossovers, and original ideas that took root in forum culture. You have to dig, but it's worth it.",
+      "entries": [
+        {
+          "novelId": "the-last-angel",
+          "curatorNote": "Peak web sci-fi. A sentient warship of vengeance tears through a galactic empire.",
+          "addedAt": "2024-04-15",
+          "order": 1
+        },
+        {
+          "novelId": "purple-days",
+          "curatorNote": "The best Game of Thrones fanfic. Joffrey caught in a time loop, forced to become a true king.",
+          "addedAt": "2024-04-15",
+          "order": 2
+        },
+        {
+          "novelId": "dungeon-keeper-ami",
+          "curatorNote": "Sailor Mercury isekai'd as a Dungeon Keeper. One of the longest-running tactical gems.",
+          "addedAt": "2024-04-15",
+          "order": 3
+        },
+        {
+          "novelId": "pale-lights",
+          "curatorNote": "If you loved Arcane's vibe, you'll love this. Lovecraft + gangs + noble academy.",
+          "addedAt": "2024-04-15",
+          "order": 4
+        },
+        {
+          "novelId": "dire-born",
+          "curatorNote": "A female villain channeling Doctor Doom. Born on forums, conquered Amazon.",
+          "addedAt": "2024-04-15",
+          "order": 5
+        }
+      ],
+      "themes": ["sci-fi", "progression", "comedy"],
+      "platforms": ["spacebattles", "royal-road"],
+      "coverGradient": "from-gray-200 to-gray-100",
+      "createdAt": "2024-04-15",
+      "updatedAt": "2024-04-20",
+      "savedCount": 198,
+      "viewCount": 2678,
+      "isEditorPick": true,
+      "isFeatured": true
+    }
+  ]
+}

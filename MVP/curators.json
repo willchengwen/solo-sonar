@@ -1,0 +1,36 @@
+{
+  "curators": [
+    {
+      "id": "looplord",
+      "name": "LoopLord",
+      "bio": "Time loop enthusiast. If a story has a protagonist reliving the same day, I've probably read it.",
+      "specialties": ["time-loop", "rational", "progression"],
+      "stackCount": 3,
+      "joinedAt": "2024-01-01"
+    },
+    {
+      "id": "forumdelver",
+      "name": "ForumDelver",
+      "bio": "Excavating the best stories from SpaceBattles and SV since 2015. Forum format doesn't scare me.",
+      "specialties": ["rational", "sci-fi"],
+      "stackCount": 5,
+      "joinedAt": "2024-01-15"
+    },
+    {
+      "id": "bingewatcher",
+      "name": "BingeWatcher",
+      "bio": "Only completed stories. Life's too short for indefinite hiatuses.",
+      "specialties": ["completed", "progression", "litrpg"],
+      "stackCount": 4,
+      "joinedAt": "2024-02-01"
+    },
+    {
+      "id": "architectfan",
+      "name": "ArchitectFan",
+      "bio": "I love watching things grow. Kingdoms, dungeons, inns, trees—if it's being built, I'm reading it.",
+      "specialties": ["base-building", "kingdom-building", "slice-of-life"],
+      "stackCount": 2,
+      "joinedAt": "2024-03-01"
+    }
+  ]
+}
