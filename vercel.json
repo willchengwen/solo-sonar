@@ -1,8 +1,3 @@
 {
-  "buildCommand": "cd MVP && npm run build",
-  "devCommand": "cd MVP && npm run dev",
-  "installCommand": "cd MVP && npm install",
-  "outputDirectory": "MVP/.next",
-  "framework": "nextjs",
-  "ignoreCommand": "cd MVP && git ls-files --error-unmatch app/*.tsx app/*.ts"
+  "framework": "nextjs"
 }
