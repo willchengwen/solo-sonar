@@ -34,6 +34,12 @@
   --color-deep-700: #334155;
   --color-deep-800: #1e293b;
   --color-deep-900: #0f172a;
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-gentle: float-gentle 6s ease-in-out infinite;
+  --animate-float-delayed: float-delayed 7s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -109,10 +115,6 @@ body {
   }
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
 /* Float Gentle Animation */
 @keyframes float-gentle {
   0%, 100% {
@@ -126,10 +128,6 @@ body {
   }
 }
 
-.animate-float-gentle {
-  animation: float-gentle 6s ease-in-out infinite;
-}
-
 /* Float Delayed Animation */
 @keyframes float-delayed {
   0%, 100% {
@@ -138,10 +136,6 @@ body {
   50% {
     transform: translateY(-12px) translateX(4px);
   }
-}
-
-.animate-float-delayed {
-  animation: float-delayed 7s ease-in-out infinite;
 }
 
 /* Pulse Soft Animation */
@@ -154,10 +148,6 @@ body {
     opacity: 0.8;
     transform: scale(1.05);
   }
-}
-
-.animate-pulse-soft {
-  animation: pulse-soft 4s ease-in-out infinite;
 }
 
 /* Article Hover Effects */
