@@ -99,6 +99,20 @@ body {
   animation: sonar-ring 4s cubic-bezier(0.4, 0, 0.2, 1) infinite 2.6s;
 }
 
+/* Float Animation - Simple up and down (no rotation) */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
 /* Float Gentle Animation */
 @keyframes float-gentle {
   0%, 100% {

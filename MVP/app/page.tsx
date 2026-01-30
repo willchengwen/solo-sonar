@@ -168,12 +168,12 @@ export default function HomePage() {
               </div>
 
               {/* Floating Dots */}
-              <div className="absolute top-16 right-20 w-2 h-2 rounded-full bg-cyan-300 animate-float-gentle"></div>
-              <div className="absolute top-24 right-12 w-1.5 h-1.5 rounded-full bg-neutral-300 animate-float-gentle" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute bottom-32 left-16 w-2 h-2 rounded-full bg-rose-300 animate-float-gentle" style={{ animationDelay: '2s' }}></div>
+              <div className="absolute top-16 right-20 w-2 h-2 rounded-full bg-cyan-300 animate-float"></div>
+              <div className="absolute top-24 right-12 w-1.5 h-1.5 rounded-full bg-neutral-300 animate-float" style={{ animationDelay: '1s', animationDuration: '5s' }}></div>
+              <div className="absolute bottom-32 left-16 w-2 h-2 rounded-full bg-rose-300 animate-float" style={{ animationDelay: '2s', animationDuration: '6s' }}></div>
 
               {/* Main Card */}
-              <div className="relative bg-white rounded-3xl shadow-2xl shadow-slate-200/50 border border-white/80 py-5 pl-6 pr-5 w-72 z-20 animate-float-gentle">
+              <div className="relative bg-white rounded-3xl shadow-2xl shadow-slate-200/50 border border-white/80 py-5 pl-6 pr-5 w-72 z-20 animate-float" style={{ animationDelay: '0.5s' }}>
                 <div className="flex items-start justify-between mb-3">
                   <span className="px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full">Trending</span>
                   <button className="text-neutral-300 hover:text-neutral-500 transition-colors">
@@ -197,7 +197,7 @@ export default function HomePage() {
               </div>
 
               {/* Curator Badge */}
-              <div className="absolute -top-4 right-0 z-30 animate-float-gentle">
+              <div className="absolute -top-4 right-0 z-30 animate-float">
                 <div className="bg-white rounded-2xl px-4 py-3 shadow-xl shadow-slate-200/30 border border-slate-100 flex items-center gap-3 hover:scale-105 transition-transform cursor-pointer">
                   <div className="relative">
                     <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
@@ -214,7 +214,7 @@ export default function HomePage() {
               </div>
 
               {/* Followers Badge */}
-              <div className="absolute bottom-24 right-12 z-20 animate-float-gentle" style={{ animationDelay: '2.5s' }}>
+              <div className="absolute bottom-24 right-12 z-20 animate-float" style={{ animationDelay: '2.5s', animationDuration: '8s' }}>
                 <div className="bg-white/90 backdrop-blur rounded-full px-3 py-1.5 shadow-lg border border-white/80 flex items-center gap-2">
                   <div className="flex -space-x-1.5">
                     <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 border-2 border-white"></div>
