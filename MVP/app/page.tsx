@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
-import { Stack, PLATFORM_INFO, Theme } from '@/types/types';
+import { Stack, PLATFORM_INFO, THEME_INFO, Theme } from '@/types/types';
 import stacksData from '@/src/data/stacks.json';
 import Footer from './components/Footer';
 
@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 const stacks = stacksData.stacks.filter((s) => s.isEditorPick);
 
 // 主题标签列表
-const themes = (Object.entries(PLATFORM_INFO.THEME_INFO || {}) as [Theme, { name: string; icon: string }][]).map(
+const themes = (Object.entries(THEME_INFO || {}) as [Theme, { name: string; icon: string }][]).map(
   ([id, info]) => ({
     id,
     name: info.name,
