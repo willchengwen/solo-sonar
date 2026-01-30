@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Sonar - Find the signal in the noise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        sonar: {
+                            50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd',
+                            300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9',
+                            600: '#0284c7', 700: '#0369a1', 800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        deep: {
+                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0',
+                            300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b',
+                            600: '#475569', 700: '#334155', 800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                    },
+                    animation: {
+                        'sonar-ping': 'sonar-ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'sonar-ping': {
+                            '75%, 100%': { transform: 'scale(1.5)', opacity: '0' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes sonar-ring {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { opacity: 0.3; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+        .animate-sonar-ring {
+            animation: sonar-ring 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        .animate-sonar-ring-delay-1 {
+            animation: sonar-ring 4s cubic-bezier(0.4, 0, 0.2, 1) infinite 1.3s;
+        }
+        .animate-sonar-ring-delay-2 {
+            animation: sonar-ring 4s cubic-bezier(0.4, 0, 0.2, 1) infinite 2.6s;
+        }
+        ::selection { background-color: rgba(14, 165, 233, 0.2); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        @keyframes sonar-expand {
+            0% { transform: scale(0.8); opacity: 0.6; border-color: rgba(14, 165, 233, 0.3); }
+            100% { transform: scale(1.5); opacity: 0; border-color: rgba(14, 165, 233, 0); }
+        }
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(1deg); }
+            75% { transform: translateY(-4px) rotate(-1deg); }
+        }
+        @keyframes float-delayed {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-12px) translateX(4px); }
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        .animate-float-gentle {
+            animation: float-gentle 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float-delayed 7s ease-in-out infinite;
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 4s ease-in-out infinite;
+        }
+        article > div {
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.06);
+        }
+        article > div:hover {
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1), 0 6px 12px rgba(15, 23, 42, 0.08);
+        }
+    </style>
+<base target="_blank">
+</head>
+<body class="bg-deep-50 text-deep-900 font-sans antialiased">
+
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
+        <div class="glass rounded-2xl px-4 sm:px-6 py-3 shadow-lg shadow-deep-200/50 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center shadow-sm">
+                    <svg class="w-4 h-4" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="12" stroke="white" stroke-width="2" opacity="0.5"/>
+                        <circle cx="16" cy="16" r="7" stroke="white" stroke-width="2.5" opacity="0.9"/>
+                        <circle cx="16" cy="16" r="3" fill="white"/>
+                    </svg>
+                </div>
+                <span class="font-semibold text-lg text-deep-900">Solo Sonar</span>
+            </div>
+
+            <div class="hidden md:flex flex-1 max-w-md mx-8">
+                <button onclick="openSearchModal()" class="relative w-full">
+                    <div class="relative flex items-center bg-white/90 rounded-xl border border-deep-200 hover:border-sonar-300 transition-all shadow-sm cursor-pointer px-3 py-2">
+                        <svg class="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        <span class="ml-3 text-sm text-neutral-400">Search by title, author, theme...</span>
+                        <span class="ml-auto text-xs text-neutral-400 bg-deep-50 px-2 py-0.5 rounded">⌘K</span>
+                    </div>
+                </button>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button onclick="showComingSoon()" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-deep-900 text-white rounded-xl text-sm font-medium hover:bg-deep-800 transition-all">
+                    Sign in
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-32">
+
+        <section class="relative px-6 max-w-6xl mx-auto mb-32 sm:mb-40 overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 -z-10">
+                <div class="absolute w-[600px] h-[600px] rounded-full border border-cyan-200 animate-sonar-ping"></div>
+                <div class="absolute w-[450px] h-[450px] rounded-full border border-sonar-300/50 animate-sonar-ping" style="animation-delay: 1s"></div>
+                <div class="absolute w-[300px] h-[300px] rounded-full border border-cyan-200"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[600px] lg:min-h-[720px] pt-4 sm:pt-6 pb-16">
+
+                <div class="flex flex-col items-start text-left z-10 relative">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sonar-50 border border-cyan-200 text-sonar-700 text-sm font-medium mb-6">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: #FBBF24;"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2" style="background-color: #FBBF24;"></span>
+                        </span>
+                        1,247 books discovered and counting
+                    </div>
+
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-deep-950 leading-[1.1] mb-6">
+                        Find the signal<br>
+                        <span class="text-cyan-600">in the noise</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-neutral-500 max-w-xl leading-relaxed mb-12">
+                        Human-curated reading lists replace algorithmic feeds, helping you find quality stories across Royal Road, SpaceBattles, and more.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <button class="px-8 py-3.5 bg-deep-900 text-white rounded-xl font-medium hover:bg-deep-800 transition-all shadow-lg shadow-deep-900/10">
+                            Browse Stacks
+                        </button>
+                        <button class="px-8 py-3.5 bg-white/80 backdrop-blur text-deep-700 border border-deep-200 rounded-xl font-medium hover:border-sonar-300 hover:bg-white transition-all">
+                            Explore Themes
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-3 text-sm text-neutral-500">
+                        <div class="flex items-center flex-shrink-0">
+                            <span class="w-8 h-8 bg-slate-200 text-slate-600 rounded-full font-semibold text-xs flex items-center justify-center z-[8]">RR</span>
+                            <span class="w-8 h-8 bg-slate-300 text-slate-700 rounded-full font-semibold text-xs flex items-center justify-center -ml-2 z-[9]">SB</span>
+                            <span class="w-8 h-8 bg-slate-100 text-slate-400 rounded-full font-medium text-xs flex items-center justify-center -ml-2 z-[10]">+</span>
+                        </div>
+                        <span class="whitespace-nowrap">Find stories — across Royal Road, SpaceBattles, + more platforms</span>
+                    </div>
+                </div>
+
+                <div class="relative h-[580px] hidden lg:flex items-center justify-center z-10">
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+                        <div class="absolute w-[220px] h-[220px] rounded-full border-2 border-cyan-400/60 animate-sonar-ring"></div>
+                        <div class="absolute w-[220px] h-[220px] rounded-full border-2 border-cyan-300/50 animate-sonar-ring-delay-1"></div>
+                        <div class="absolute w-[220px] h-[220px] rounded-full border-2 border-cyan-200/40 animate-sonar-ring-delay-2"></div>
+                        <div class="absolute w-[280px] h-[280px] rounded-full border border-deep-200/30"></div>
+                    </div>
+
+                    <div class="absolute top-16 right-20 w-2 h-2 rounded-full bg-sonar-300 animate-float" style="animation-delay: 0s; animation-duration: 4s;"></div>
+                    <div class="absolute top-24 right-12 w-1.5 h-1.5 rounded-full bg-neutral-300 animate-float" style="animation-delay: 1s; animation-duration: 5s;"></div>
+                    <div class="absolute bottom-32 left-16 w-2 h-2 rounded-full bg-rose-300 animate-float" style="animation-delay: 2s; animation-duration: 6s;"></div>
+
+                    <div class="relative bg-white rounded-3xl shadow-2xl shadow-deep-200/50 border border-white/80 py-5 pl-6 pr-5 w-72 z-20 animate-float" style="animation-delay: 0.5s; animation-duration: 6s;">
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full">Trending</span>
+                            <button class="text-neutral-300 hover:text-neutral-500 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                            </button>
+                        </div>
+                        <h3 class="font-bold text-xl text-deep-900 mb-2">The Last Angel</h3>
+                        <p class="text-sm text-neutral-500 leading-relaxed mb-4 line-clamp-2">A sentient AI warship seeks vengeance against humanity's enemies in this epic military sci-fi saga.</p>
+                        <div class="flex items-center gap-3 text-xs text-neutral-400">
+                            <span class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 bg-slate-700 rounded-full"></span>
+                                SpaceBattles
+                            </span>
+                            <span>•</span>
+                            <span>Hard Sci-Fi</span>
+                        </div>
+                    </div>
+
+                    <div class="absolute -top-4 right-0 z-30 animate-float" style="animation-delay: 0s; animation-duration: 5s;">
+                        <div class="bg-white rounded-2xl px-4 py-3 shadow-xl shadow-deep-200/30 border border-deep-100 flex items-center gap-3 hover:scale-105 transition-transform cursor-pointer">
+                            <div class="relative">
+                                <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase tracking-wider text-neutral-400 font-medium">Curated by</p>
+                                <p class="text-sm font-bold text-deep-900">Editor's Pick</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-24 right-12 z-20 animate-float" style="animation-delay: 2.5s; animation-duration: 8s;">
+                        <div class="bg-white/90 backdrop-blur rounded-full px-3 py-1.5 shadow-lg border border-white/80 flex items-center gap-2">
+                            <div class="flex -space-x-1.5">
+                                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 border-2 border-white"></div>
+                                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-purple-400 to-purple-500 border-2 border-white"></div>
+                            </div>
+                            <span class="text-[11px] font-semibold text-deep-600">+12</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-48 sm:mb-56">
+            <div class="px-6 max-w-6xl mx-auto flex items-end justify-between mb-8 sm:mb-10">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-deep-900 mb-2">Editor's Picks</h2>
+                    <p class="text-neutral-500 text-base">Hand-picked thematic collections updated weekly</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="p-2 rounded-lg border border-deep-200 hover:border-sonar-400 hover:bg-sonar-50 transition-all">
+                        <svg class="w-5 h-5 text-deep-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button class="p-2 rounded-lg border border-deep-200 hover:border-sonar-400 hover:bg-sonar-50 transition-all">
+                        <svg class="w-5 h-5 text-deep-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8 pt-2 -mb-4">
+                    <article class="group flex-none w-[310px] snap-start h-[400px]">
+                        <div class="relative bg-white rounded-2xl overflow-hidden border border-deep-200 shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                            <div class="h-44 sm:h-52 bg-gradient-to-br from-blue-50/80 via-blue-50/40 to-slate-50 relative overflow-hidden">
+                                <div class="absolute top-4 left-4">
+                                    <span class="px-3 py-1 bg-white/90 text-blue-700 text-xs font-semibold rounded-full shadow-sm">12 books</span>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="text-4xl font-bold text-blue-200/60 select-none leading-tight text-center px-4">Mother<br>of Learning</span>
+                                </div>
+                            </div>
+                            <div class="p-4 sm:p-5 flex flex-col flex-grow">
+                                <h3 class="font-bold text-lg text-deep-900 mb-1">If You Loved Mother of Learning, Read These Next</h3>
+                                <p class="text-sm text-neutral-500 line-clamp-2 mb-auto">Time loops, magic academies, and protagonists who actually use their brains.</p>
+                                <div class="flex items-center justify-between mt-2.5">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-6 h-6 rounded-full bg-orange-200"></div>
+                                        <span class="text-sm text-deep-600">Sarah Chen</span>
+                                    </div>
+                                    <span class="text-xs text-neutral-400">2 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="group flex-none w-[310px] snap-start h-[400px]">
+                        <div class="relative bg-white rounded-2xl overflow-hidden border border-deep-200 shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                            <div class="h-44 sm:h-52 bg-gradient-to-br from-purple-50/80 via-purple-50/40 to-slate-50 relative overflow-hidden">
+                                <div class="absolute top-4 left-4">
+                                    <span class="px-3 py-1 bg-white/90 text-purple-700 text-xs font-semibold rounded-full shadow-sm">8 books</span>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="text-4xl font-bold text-purple-200/60 select-none leading-tight text-center px-4">He Who<br>Fights</span>
+                                </div>
+                            </div>
+                            <div class="p-4 sm:p-5 flex flex-col flex-grow">
+                                <h3 class="font-bold text-lg text-deep-900 mb-1">Like He Who Fights With Monsters</h3>
+                                <p class="text-sm text-neutral-500 line-clamp-2 mb-auto">Progression fantasy with LitRPG, cultivation, and System integration.</p>
+                                <div class="flex items-center justify-between mt-2.5">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-6 h-6 rounded-full bg-blue-500"></div>
+                                        <span class="text-sm text-deep-600">Mike Ross</span>
+                                    </div>
+                                    <span class="text-xs text-neutral-400">5 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="group flex-none w-[310px] snap-start h-[400px]">
+                        <div class="relative bg-white rounded-2xl overflow-hidden border border-deep-200 shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                            <div class="h-44 sm:h-52 bg-gradient-to-br from-emerald-50/80 via-emerald-50/40 to-slate-50 relative overflow-hidden">
+                                <div class="absolute top-4 left-4">
+                                    <span class="px-3 py-1 bg-white/90 text-emerald-700 text-xs font-semibold rounded-full shadow-sm">15 books</span>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="text-4xl font-bold text-emerald-200/60 select-none leading-tight text-center px-4">Forum<br>Gems</span>
+                                </div>
+                            </div>
+                            <div class="p-4 sm:p-5 flex flex-col flex-grow">
+                                <h3 class="font-bold text-lg text-deep-900 mb-1">Hidden Gems on Forums</h3>
+                                <p class="text-sm text-neutral-500 line-clamp-2 mb-auto">Forum legends and hard-to-find masterpieces.</p>
+                                <div class="flex items-center justify-between mt-2.5">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-6 h-6 rounded-full bg-rose-400"></div>
+                                        <span class="text-sm text-deep-600">Emma Wilson</span>
+                                    </div>
+                                    <span class="text-xs text-neutral-400">1 week ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="group flex-none w-[310px] snap-start h-[400px]">
+                        <div class="relative bg-white rounded-2xl overflow-hidden border border-deep-200 shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                            <div class="h-44 sm:h-52 bg-gradient-to-br from-amber-50/80 via-amber-50/40 to-slate-50 relative overflow-hidden">
+                                <div class="absolute top-4 left-4">
+                                    <span class="px-3 py-1 bg-white/90 text-amber-700 text-xs font-semibold rounded-full shadow-sm">6 books</span>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="text-5xl font-bold text-amber-200/60 select-none">Hard<br>Sci-Fi</span>
+                                </div>
+                            </div>
+                            <div class="p-4 sm:p-5 flex flex-col flex-grow">
+                                <h3 class="font-bold text-lg text-deep-900 mb-1">Hard Sci-Fi on SB</h3>
+                                <p class="text-sm text-neutral-500 line-clamp-2 mb-auto">Scientifically rigorous speculative fiction found on SpaceBattles forums.</p>
+                                <div class="flex items-center justify-between mt-2.5">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-6 h-6 rounded-full bg-deep-800"></div>
+                                        <span class="text-sm text-deep-600">David Kim</span>
+                                    </div>
+                                    <span class="text-xs text-neutral-400">3 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-6 max-w-6xl mx-auto mb-48 sm:mb-56">
+            <div class="flex items-end justify-between mb-8 sm:mb-10">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-deep-900 mb-2">Browse by Theme</h2>
+                    <p class="text-neutral-500 text-base">Discover stories through curated tags</p>
+                </div>
+                <a href="#" class="text-sm font-medium text-cyan-600 hover:text-sonar-700 flex items-center gap-1">
+                    View all tags <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="#" class="group p-5 rounded-2xl bg-white border border-deep-200 hover:border-sonar-300 hover:shadow-md transition-all duration-300">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-sm">PF</div>
+                        <svg class="w-5 h-5 text-neutral-300 group-hover:text-sonar-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <h3 class="font-semibold text-deep-900 text-base">Progression Fantasy</h3>
+                    <p class="text-xs text-neutral-500 mt-1">186 books</p>
+                </a>
+
+                <a href="#" class="group p-5 rounded-2xl bg-white border border-deep-200 hover:border-indigo-300 hover:shadow-md transition-all duration-300">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold text-sm">LR</div>
+                        <svg class="w-5 h-5 text-neutral-300 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <h3 class="font-semibold text-deep-900 text-base">LitRPG</h3>
+                    <p class="text-xs text-neutral-500 mt-1">143 books</p>
+                </a>
+
+                <a href="#" class="group p-5 rounded-2xl bg-white border border-deep-200 hover:border-slate-400 hover:shadow-md transition-all duration-300">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 font-bold text-sm">TL</div>
+                        <svg class="w-5 h-5 text-neutral-300 group-hover:text-slate-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <h3 class="font-semibold text-deep-900 text-base">Time Loop</h3>
+                    <p class="text-xs text-neutral-500 mt-1">78 books</p>
+                </a>
+
+                <a href="#" class="group p-5 rounded-2xl bg-white border border-deep-200 hover:border-purple-300 hover:shadow-md transition-all duration-300">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 font-bold text-sm">IS</div>
+                        <svg class="w-5 h-5 text-neutral-300 group-hover:text-purple-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <h3 class="font-semibold text-deep-900 text-base">Isekai & Portal</h3>
+                    <p class="text-xs text-neutral-500 mt-1">112 books</p>
+                </a>
+
+                <a href="#" class="group p-5 rounded-2xl bg-white border border-deep-200 hover:border-amber-300 hover:shadow-md transition-all duration-300">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 font-bold text-sm">SF</div>
+                        <svg class="w-5 h-5 text-neutral-300 group-hover:text-amber-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <h3 class="font-semibold text-deep-900 text-base">Hard Sci-Fi</h3>
+                    <p class="text-xs text-neutral-500 mt-1">89 books</p>
+                </a>
+
+                <a href="#" class="group p-5 rounded-2xl bg-white border border-deep-200 hover:border-cyan-300 hover:shadow-md transition-all duration-300">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-600 font-bold text-sm">DC</div>
+                        <svg class="w-5 h-5 text-neutral-300 group-hover:text-cyan-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <h3 class="font-semibold text-deep-900 text-base">Dungeon Crawler</h3>
+                    <p class="text-xs text-neutral-500 mt-1">67 books</p>
+                </a>
+
+                <a href="#" class="group p-5 rounded-2xl bg-white border border-deep-200 hover:border-emerald-300 hover:shadow-md transition-all duration-300">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 font-bold text-sm">CZ</div>
+                        <svg class="w-5 h-5 text-neutral-300 group-hover:text-emerald-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                    <h3 class="font-semibold text-deep-900 text-base">Cozy Fantasy</h3>
+                    <p class="text-xs text-neutral-500 mt-1">45 books</p>
+                </a>
+
+                <a href="#" class="group p-5 rounded-2xl bg-deep-50 border border-deep-200 hover:bg-deep-100 hover:border-deep-300 transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[120px]">
+                    <svg class="w-6 h-6 text-neutral-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    <span class="text-sm font-medium text-deep-600">All Tags</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="px-6 max-w-6xl mx-auto mb-48 sm:mb-56">
+            <div class="mb-8 sm:mb-10">
+                <div class="flex items-center gap-2 mb-3">
+                    <div class="w-1.5 h-1.5 rounded-full bg-cyan-600 animate-pulse"></div>
+                    <span class="text-xs font-semibold text-cyan-600 uppercase tracking-wider">Platform Spotlight</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-deep-900 mb-2">Content from Multiple Sources</h2>
+                <p class="text-neutral-500 text-base">Aggregated from Royal Road, SpaceBattles, and beyond</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group p-6 bg-white rounded-2xl border border-deep-200 hover:border-deep-300 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center text-white font-bold shadow-sm group-hover:shadow-md transition-all group-hover:scale-105">RR</div>
+                        <svg class="w-5 h-5 text-neutral-300 group-hover:text-neutral-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </div>
+                    <h3 class="font-bold text-lg text-deep-900 mb-2 group-hover:text-orange-600 transition-colors">Royal Road</h3>
+                    <p class="text-sm text-neutral-500 mb-4 leading-relaxed">The home of Progression Fantasy and LitRPG. The primary hub for web originals.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-deep-100">
+                        <span class="text-xs font-medium text-neutral-400">140 books indexed</span>
+                        <span class="text-xs font-medium text-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity">Explore →</span>
+                    </div>
+                </div>
+
+                <div class="group p-6 bg-white rounded-2xl border border-deep-200 hover:border-deep-300 hover:shadow-lg transition-all duration-300 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-white font-bold shadow-sm group-hover:shadow-md transition-all group-hover:scale-105">SB</div>
+                        <svg class="w-5 h-5 text-neutral-300 group-hover:text-neutral-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </div>
+                    <h3 class="font-bold text-lg text-deep-900 mb-2 group-hover:text-blue-600 transition-colors">SpaceBattles</h3>
+                    <p class="text-sm text-neutral-500 mb-4 leading-relaxed">Hard sci-fi and Worm fanfiction community. Forum format fosters deep discussion.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-deep-100">
+                        <span class="text-xs font-medium text-neutral-400">52 books indexed</span>
+                        <span class="text-xs font-medium text-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity">Explore →</span>
+                    </div>
+                </div>
+
+                <div class="group p-6 bg-white rounded-2xl border border-deep-200 hover:border-deep-300 hover:shadow-lg transition-all duration-300 cursor-pointer sm:col-span-2 lg:col-span-1">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-700 flex items-center justify-center text-white font-bold shadow-sm group-hover:shadow-md transition-all group-hover:scale-105">SV</div>
+                        <svg class="w-5 h-5 text-neutral-300 group-hover:text-neutral-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </div>
+                    <h3 class="font-bold text-lg text-deep-900 mb-2 group-hover:text-emerald-600 transition-colors">Sufficient Velocity</h3>
+                    <p class="text-sm text-neutral-500 mb-4 leading-relaxed">Quest fiction and creative writing where readers influence the story direction.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-deep-100">
+                        <span class="text-xs font-medium text-neutral-400">30 books indexed</span>
+                        <span class="text-xs font-medium text-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity">Explore →</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-6 max-w-xl mx-auto text-center mb-16 sm:mb-20">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-100 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-deep-900 mb-2">Sonar Signals</h2>
+            <p class="text-neutral-500 mb-6 text-base">Get hand-picked reading lists when we find something exceptional. No spam, unsubscribe anytime.</p>
+            <form class="flex flex-col sm:flex-row justify-center gap-3 mb-4">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-5 py-3 bg-white border border-deep-200 rounded-full text-deep-900 placeholder:text-neutral-400 focus:outline-none focus:border-sonar-300"/>
+                <button type="submit" class="px-6 py-3 bg-deep-900 text-white rounded-full font-medium hover:bg-deep-800 transition-colors">Subscribe</button>
+            </form>
+            <p class="text-xs text-neutral-400">Be an early signal detector</p>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-deep-200 bg-white mt-20 sm:mt-24">
+        <div class="max-w-6xl mx-auto px-6 py-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 bg-cyan-600 rounded-full flex items-center justify-center shadow-sm">
+                        <svg class="w-3 h-3" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="white" stroke-width="2" opacity="0.5"/><circle cx="16" cy="16" r="7" stroke="white" stroke-width="2.5" opacity="0.9"/><circle cx="16" cy="16" r="3" fill="white"/></svg>
+                    </div>
+                    <span class="font-semibold text-deep-900">Solo Sonar</span>
+                </div>
+                <div class="flex gap-6 text-sm text-neutral-500">
+                    <a href="#" class="hover:text-cyan-600">About</a>
+                    <a href="#" class="hover:text-cyan-600">Curators</a>
+                    <a href="#" class="hover:text-cyan-600">Privacy</a>
+                </div>
+                <p class="text-xs text-neutral-400">© 2026 Solo Sonar</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showComingSoon() {
+            const email = prompt("Sign in coming soon.\n\nJoin early access? Enter your email:");
+            if (email && email.includes('@')) {
+                alert("Thanks! We'll notify you when sign-in is ready.");
+                console.log("Early access email:", email);
+            }
+        }
+        function scrollEditorPicks(direction) {
+            const container = document.querySelector('.overflow-x-auto.hide-scrollbar');
+            if (!container) return;
+            const cardWidth = container.querySelector('article').offsetWidth;
+            const gap = 20;
+            const scrollAmount = cardWidth + gap;
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            for (let section of sections) {
+                const heading = section.querySelector('h2');
+                if (heading && heading.textContent.includes("Editor's Picks")) {
+                    const buttons = section.querySelectorAll('button');
+                    if (buttons.length >= 2) {
+                        buttons[0].onclick = () => scrollEditorPicks('left');
+                        buttons[1].onclick = () => scrollEditorPicks('right');
+                    }
+                    break;
+                }
+            }
+            document.addEventListener('keydown', function(e) {
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    openSearchModal();
+                }
+            });
+        });
+        function openSearchModal() {
+            document.getElementById('searchModal').classList.remove('hidden');
+            document.getElementById('searchInput').focus();
+        }
+        function closeSearchModal() {
+            document.getElementById('searchModal').classList.add('hidden');
+            document.getElementById('searchInput').value = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeSearchModal();
+            }
+        });
+    </script>
+
+    <div id="searchModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-start justify-center pt-20" onclick="if(event.target === this) closeSearchModal()">
+        <div class="w-full max-w-2xl mx-4">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div class="flex items-center gap-3 px-4 py-3 border-b border-deep-100">
+                    <svg class="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    <input id="searchInput" type="text" placeholder="Search by title, author, or theme..." class="flex-1 bg-transparent border-0 text-base focus:outline-none text-deep-900 placeholder-neutral-400">
+                    <button onclick="closeSearchModal()" class="text-xs text-neutral-400 bg-deep-50 px-2 py-1 rounded hover:bg-deep-100">ESC</button>
+                </div>
+
+                <div class="flex items-center gap-4 px-4 py-3 border-b border-deep-100 bg-deep-25">
+                    <button class="flex items-center gap-1.5 text-sm font-medium text-deep-900 pb-1 border-b-2 border-sonar-500">All</button>
+                    <button class="flex items-center gap-1.5 text-sm text-neutral-500 hover:text-deep-900">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        Books
+                    </button>
+                    <button class="flex items-center gap-1.5 text-sm text-neutral-500 hover:text-deep-900">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        Stacks
+                    </button>
+                </div>
+
+                <div class="p-6 max-h-96 overflow-y-auto">
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Recent Searches</h3>
+                            <button class="text-xs text-cyan-600 hover:text-cyan-700">Clear</button>
+                        </div>
+                        <div class="space-y-2">
+                            <button class="flex items-center gap-3 w-full p-2 hover:bg-deep-50 rounded-lg transition-colors">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"><span class="text-sm">⏰</span></div>
+                                <div class="flex-1 text-left">
+                                    <div class="text-sm font-medium text-deep-900">Time loop progression fantasy</div>
+                                    <div class="text-xs text-neutral-500">Theme • 45 results</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">Quick Navigation</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="#" class="flex items-center gap-3 p-3 bg-white border border-deep-200 hover:border-sonar-300 rounded-xl transition-all">
+                                <div class="w-10 h-10 bg-gradient-to-br from-sonar-100 to-cyan-100 rounded-lg flex items-center justify-center"><span class="text-lg">🎯</span></div>
+                                <div>
+                                    <div class="text-sm font-semibold text-deep-900">Editor's Picks</div>
+                                    <div class="text-xs text-neutral-500">Curated selections</div>
+                                </div>
+                            </a>
+                            <a href="#" class="flex items-center gap-3 p-3 bg-white border border-deep-200 hover:border-amber-300 rounded-xl transition-all">
+                                <div class="w-10 h-10 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg flex items-center justify-center"><span class="text-lg">🔥</span></div>
+                                <div>
+                                    <div class="text-sm font-semibold text-deep-900">Time Loop</div>
+                                    <div class="text-xs text-neutral-500">Popular theme</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between px-4 py-2 border-t border-deep-100 bg-deep-25 text-xs text-neutral-400">
+                    <div class="flex items-center gap-3">
+                        <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-deep-200 rounded">↑↓</kbd> to navigate</span>
+                        <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-white border border-deep-200 rounded">↵</kbd> to select</span>
+                    </div>
+                    <span>Search across 500+ books</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
