@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor's Picks - Solo Sonar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], },
+                    colors: {
+                        sonar: { 50: '#f0f9ff', 100: '#e0f2fe', 500: '#0ea5e9', 600: '#0284c7', },
+                        deep: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 500: '#64748b', 600: '#475569', 700: '#334155', 900: '#0f172a', },
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 隐藏滚动条 */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* 书堆样式 */
+        .book-stack { 
+            display: flex; 
+            align-items: flex-end; 
+            justify-content: center; 
+            height: 100px; 
+            cursor: pointer; 
+            position: relative; 
+            padding: 0 20px; 
+        }
+        .book { 
+            width: 52px; 
+            height: 70px; 
+            border-radius: 6px; 
+            box-shadow: 0 3px 6px rgba(0,0,0,0.12); 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 22px; 
+            position: relative; 
+        }
+        .book:nth-child(1) { transform: rotate(-12deg) translateX(12px) translateY(3px); z-index: 1; }
+        .book:nth-child(2) { transform: rotate(-2deg) translateX(0px) translateY(-2px); z-index: 3; height: 76px; width: 54px; }
+        .book:nth-child(3) { transform: rotate(12deg) translateX(-12px) translateY(3px); z-index: 1; }
+
+        /* 悬停效果 */
+        .card:hover .book:nth-child(1) { transform: rotate(-20deg) translateX(4px) translateY(-6px) scale(1.05); }
+        .card:hover .book:nth-child(2) { transform: rotate(0deg) translateY(-10px) scale(1.08); box-shadow: 0 8px 12px rgba(0,0,0,0.15); }
+        .card:hover .book:nth-child(3) { transform: rotate(20deg) translateX(-4px) translateY(-6px) scale(1.05); }
+
+        /* 展开状态 */
+        .book-stack.expanded .book:nth-child(1) { transform: rotate(-20deg) translateX(4px) translateY(-6px) scale(1.05); }
+        .book-stack.expanded .book:nth-child(2) { transform: rotate(0deg) translateY(-10px) scale(1.08); box-shadow: 0 8px 12px rgba(0,0,0,0.15); }
+        .book-stack.expanded .book:nth-child(3) { transform: rotate(20deg) translateX(-4px) translateY(-6px) scale(1.05); }
+
+        /* 大屏适配 */
+        @media (min-width: 640px) {
+            .book-stack { height: 110px; cursor: default; padding: 0 24px; }
+            .book { width: 60px; height: 78px; font-size: 26px; }
+            .book:nth-child(2) { height: 84px; width: 62px; }
+            .book:nth-child(1) { transform: rotate(-10deg) translateX(16px) translateY(4px); }
+            .book:nth-child(3) { transform: rotate(10deg) translateX(-16px) translateY(4px); }
+            .card:hover .book:nth-child(1) { transform: rotate(-18deg) translateX(6px) translateY(-8px) scale(1.05); }
+            .card:hover .book:nth-child(2) { transform: rotate(0deg) translateY(-12px) scale(1.1); }
+            .card:hover .book:nth-child(3) { transform: rotate(18deg) translateX(-6px) translateY(-8px) scale(1.05); }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body class="bg-deep-50 text-deep-900 font-sans antialiased py-20">
+
+    <!-- Editor's Picks Section -->
+    <section class="mb-48 sm:mb-56">
+        <!-- 标题区域 -->
+        <div class="px-6 max-w-6xl mx-auto flex items-end justify-between mb-8 sm:mb-10">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-deep-900 mb-2">Editor's Picks</h2>
+                <p class="text-neutral-500 text-base">Hand-picked thematic collections updated weekly</p>
+            </div>
+            <!-- 左右滚动按钮 -->
+            <div class="flex gap-2">
+                <button onclick="document.getElementById('editorPicksContainer').scrollBy({left: -330, behavior: 'smooth'})" 
+                        class="p-2 rounded-lg border border-deep-200 hover:border-sonar-400 hover:bg-sonar-50 transition-all">
+                    <svg class="w-5 h-5 text-deep-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <button onclick="document.getElementById('editorPicksContainer').scrollBy({left: 330, behavior: 'smooth'})" 
+                        class="p-2 rounded-lg border border-deep-200 hover:border-sonar-400 hover:bg-sonar-50 transition-all">
+                    <svg class="w-5 h-5 text-deep-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 卡片容器 -->
+        <div class="max-w-6xl mx-auto px-6">
+            <div id="editorPicksContainer" class="flex gap-5 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8 -mb-4">
+
+                <!-- Card 1: Mother of Learning -->
+                <article class="group card flex-none w-[290px] sm:w-[310px] snap-start">
+                    <div class="bg-white rounded-2xl border border-deep-200 shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-300 overflow-hidden h-full">
+                        <div class="px-5 pt-4 pb-2">
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-[11px] font-semibold rounded-full border border-amber-100">🔥 Trending</span>
+                                <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold rounded-full border border-blue-100">Time Loop</span>
+                                <span class="px-2.5 py-1 bg-purple-50 text-purple-700 text-[11px] font-semibold rounded-full border border-purple-100">Smart MC</span>
+                            </div>
+                        </div>
+                        <div class="px-5 py-8 bg-gradient-to-br from-blue-50/80 to-slate-50">
+                            <div class="book-stack mb-4" onclick="this.classList.toggle('expanded')">
+                                <div class="book bg-gradient-to-br from-blue-500 to-blue-700">📘</div>
+                                <div class="book bg-gradient-to-br from-indigo-500 to-indigo-700">📕</div>
+                                <div class="book bg-gradient-to-br from-violet-500 to-violet-700">📗</div>
+                            </div>
+                            <p class="text-center text-slate-600 text-sm italic font-medium">"Protagonists who actually use their brains"</p>
+                        </div>
+                        <div class="px-5 py-5 border-t border-slate-100">
+                            <h3 class="font-bold text-slate-900 text-base mb-1 truncate">Like Mother of Learning</h3>
+                            <p class="text-sm text-slate-500 mb-3 truncate">Time loops & magic academies</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-pink-500"></div>
+                                    <span class="text-sm font-medium text-slate-700">Sarah Chen</span>
+                                </div>
+                                <span class="text-sm text-slate-400">12 books</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2: He Who Fights -->
+                <article class="group card flex-none w-[290px] sm:w-[310px] snap-start">
+                    <div class="bg-white rounded-2xl border border-deep-200 shadow-sm hover:shadow-xl hover:border-purple-200 transition-all duration-300 overflow-hidden h-full">
+                        <div class="px-5 pt-4 pb-2">
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 bg-purple-50 text-purple-700 text-[11px] font-semibold rounded-full border border-purple-100">LitRPG</span>
+                                <span class="px-2.5 py-1 bg-rose-50 text-rose-700 text-[11px] font-semibold rounded-full border border-rose-100">Progression</span>
+                            </div>
+                        </div>
+                        <div class="px-5 py-8 bg-gradient-to-br from-purple-50/80 to-slate-50">
+                            <div class="book-stack mb-4" onclick="this.classList.toggle('expanded')">
+                                <div class="book bg-gradient-to-br from-purple-500 to-purple-700">⚔️</div>
+                                <div class="book bg-gradient-to-br from-pink-500 to-pink-700">🎮</div>
+                                <div class="book bg-gradient-to-br from-fuchsia-500 to-fuchsia-700">📊</div>
+                            </div>
+                            <p class="text-center text-slate-600 text-sm italic font-medium">"Numbers go up, but the plot goes deeper"</p>
+                        </div>
+                        <div class="px-5 py-5 border-t border-slate-100">
+                            <h3 class="font-bold text-slate-900 text-base mb-1 truncate">Like He Who Fights With Monsters</h3>
+                            <p class="text-sm text-slate-500 mb-3 truncate">System-driven adventures</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500"></div>
+                                    <span class="text-sm font-medium text-slate-700">Mike Ross</span>
+                                </div>
+                                <span class="text-sm text-slate-400">8 books</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3: Hidden Gems -->
+                <article class="group card flex-none w-[290px] sm:w-[310px] snap-start">
+                    <div class="bg-white rounded-2xl border border-deep-200 shadow-sm hover:shadow-xl hover:border-emerald-200 transition-all duration-300 overflow-hidden h-full">
+                        <div class="px-5 pt-4 pb-2">
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 bg-rose-50 text-rose-700 text-[11px] font-semibold rounded-full border border-rose-100">💎 Hidden Gem</span>
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-full border border-slate-200">Forum Fic</span>
+                            </div>
+                        </div>
+                        <div class="px-5 py-8 bg-gradient-to-br from-emerald-50/80 to-slate-50">
+                            <div class="book-stack mb-4" onclick="this.classList.toggle('expanded')">
+                                <div class="book bg-gradient-to-br from-emerald-500 to-emerald-700">🏆</div>
+                                <div class="book bg-gradient-to-br from-teal-500 to-teal-700">💎</div>
+                                <div class="book bg-gradient-to-br from-cyan-500 to-cyan-700">🌟</div>
+                            </div>
+                            <p class="text-center text-slate-600 text-sm italic font-medium">"Buried masterpieces you'll tell everyone about"</p>
+                        </div>
+                        <div class="px-5 py-5 border-t border-slate-100">
+                            <h3 class="font-bold text-slate-900 text-base mb-1 truncate">Hidden Forum Gems</h3>
+                            <p class="text-sm text-slate-500 mb-3 truncate">SpaceBattles & SV legends</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-orange-500"></div>
+                                    <span class="text-sm font-medium text-slate-700">Emma Wilson</span>
+                                </div>
+                                <span class="text-sm text-slate-400">15 books</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4: Hard Sci-Fi -->
+                <article class="group card flex-none w-[290px] sm:w-[310px] snap-start">
+                    <div class="bg-white rounded-2xl border border-deep-200 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 overflow-hidden h-full">
+                        <div class="px-5 pt-4 pb-2">
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-full border border-slate-200">🚀 Hard Sci-Fi</span>
+                                <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold rounded-full border border-blue-100">Space</span>
+                            </div>
+                        </div>
+                        <div class="px-5 py-8 bg-gradient-to-br from-slate-100/80 to-slate-50">
+                            <div class="book-stack mb-4" onclick="this.classList.toggle('expanded')">
+                                <div class="book bg-gradient-to-br from-slate-600 to-slate-800">🛸</div>
+                                <div class="book bg-gradient-to-br from-slate-700 to-slate-900">🤖</div>
+                                <div class="book bg-gradient-to-br from-zinc-600 to-zinc-800">🌌</div>
+                            </div>
+                            <p class="text-center text-slate-600 text-sm italic font-medium">"Real physics, real stakes, no magical tech"</p>
+                        </div>
+                        <div class="px-5 py-5 border-t border-slate-100">
+                            <h3 class="font-bold text-slate-900 text-base mb-1 truncate">Hard Sci-Fi Essentials</h3>
+                            <p class="text-sm text-slate-500 mb-3 truncate">Science-respecting adventures</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gradient-to-br from-slate-400 to-slate-600"></div>
+                                    <span class="text-sm font-medium text-slate-700">David Kim</span>
+                                </div>
+                                <span class="text-sm text-slate-400">6 books</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5: Cultivation Done Right -->
+                <article class="group card flex-none w-[290px] sm:w-[310px] snap-start">
+                    <div class="bg-white rounded-2xl border border-deep-200 shadow-sm hover:shadow-xl hover:border-red-200 transition-all duration-300 overflow-hidden h-full">
+                        <div class="px-5 pt-4 pb-2">
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 bg-red-50 text-red-700 text-[11px] font-semibold rounded-full border border-red-100">🐉 Cultivation</span>
+                                <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-[11px] font-semibold rounded-full border border-amber-100">Xianxia</span>
+                                <span class="px-2.5 py-1 bg-orange-50 text-orange-700 text-[11px] font-semibold rounded-full border border-orange-100">Eastern</span>
+                            </div>
+                        </div>
+                        <div class="px-5 py-8 bg-gradient-to-br from-red-50/80 to-amber-50/50">
+                            <div class="book-stack mb-4" onclick="this.classList.toggle('expanded')">
+                                <div class="book bg-gradient-to-br from-red-500 to-red-700">🐉</div>
+                                <div class="book bg-gradient-to-br from-amber-500 to-amber-700">⛩️</div>
+                                <div class="book bg-gradient-to-br from-orange-500 to-orange-700">🗡️</div>
+                            </div>
+                            <p class="text-center text-slate-600 text-sm italic font-medium">"Ascend without the cringe"</p>
+                        </div>
+                        <div class="px-5 py-5 border-t border-slate-100">
+                            <h3 class="font-bold text-slate-900 text-base mb-1 truncate">Cultivation Done Right</h3>
+                            <p class="text-sm text-slate-500 mb-3 truncate">No young master clichés</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gradient-to-br from-red-400 to-amber-500"></div>
+                                    <span class="text-sm font-medium text-slate-700">Kevin Liu</span>
+                                </div>
+                                <span class="text-sm text-slate-400">10 books</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6: Portal Fantasy -->
+                <article class="group card flex-none w-[290px] sm:w-[310px] snap-start">
+                    <div class="bg-white rounded-2xl border border-deep-200 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all duration-300 overflow-hidden h-full">
+                        <div class="px-5 pt-4 pb-2">
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-[11px] font-semibold rounded-full border border-indigo-100">🚪 Isekai</span>
+                                <span class="px-2.5 py-1 bg-violet-50 text-violet-700 text-[11px] font-semibold rounded-full border border-violet-100">Portal</span>
+                            </div>
+                        </div>
+                        <div class="px-5 py-8 bg-gradient-to-br from-indigo-50/80 to-slate-50">
+                            <div class="book-stack mb-4" onclick="this.classList.toggle('expanded')">
+                                <div class="book bg-gradient-to-br from-indigo-500 to-indigo-700">🗝️</div>
+                                <div class="book bg-gradient-to-br from-violet-500 to-violet-700">🌌</div>
+                                <div class="book bg-gradient-to-br from-purple-500 to-purple-700">🏰</div>
+                            </div>
+                            <p class="text-center text-slate-600 text-sm italic font-medium">"Ordinary people in extraordinary worlds"</p>
+                        </div>
+                        <div class="px-5 py-5 border-t border-slate-100">
+                            <h3 class="font-bold text-slate-900 text-base mb-1 truncate">Best Portal Fantasy</h3>
+                            <p class="text-sm text-slate-500 mb-3 truncate">Cross-dimensional adventures</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500"></div>
+                                    <span class="text-sm font-medium text-slate-700">Alex Turner</span>
+                                </div>
+                                <span class="text-sm text-slate-400">9 books</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

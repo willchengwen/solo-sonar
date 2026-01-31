@@ -7,6 +7,46 @@ import SearchModal from './SearchModal';
 
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    let lastScrollY = 0;
+    const threshold = 50; // 滚动阈值，避免微小滚动触发
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (Math.abs(currentScrollY - lastScrollY) < threshold) {
+        // 滚动变化太小，不处理
+        return;
+      }
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // 向下滚动，且不在顶部 → 隐藏导航栏
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // 向上滚动 → 显示导航栏
+        setIsVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    // 节流处理，避免频繁触发
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', throttledScroll, { passive: true });
+    return () => window.removeEventListener('scroll', throttledScroll);
+  }, []);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -26,7 +66,11 @@ export default function Header() {
   return (
     <>
       {/* Glass Navigation */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
+      <nav
+        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-transform duration-300 ease-in-out ${
+          isVisible ? 'translate-y-0' : '-translate-y-[150%]'
+        }`}
+      >
         <div className="glass rounded-2xl px-4 sm:px-6 py-3 shadow-lg shadow-slate-200/50 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">

@@ -1,0 +1,8 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Inner wave -->
+  <circle cx="40" cy="40" r="18" stroke="#0891B2" stroke-width="4" fill="none" opacity="0.8"/>
+  <!-- Outer wave -->
+  <circle cx="40" cy="40" r="33" stroke="#0891B2" stroke-width="4" fill="none" opacity="0.8"/>
+  <!-- Center dot -->
+  <circle cx="40" cy="40" r="7" fill="#0891B2"/>
+</svg>

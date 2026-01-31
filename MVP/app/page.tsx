@@ -84,7 +84,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased scroll-smooth">
       <main className="pt-20 pb-32">
         {/* Hero Section */}
-        <section className="relative px-5 sm:px-6 max-w-6xl mx-auto overflow-hidden">
+        <section className="relative px-5 sm:px-6 max-w-6xl mx-auto mb-24 sm:mb-30 overflow-hidden">
           {/* Background Sonar Animation */}
           <div className="absolute inset-0 items-center justify-center pointer-events-none opacity-20 -z-10 hidden lg:flex" style={{ left: '55%' }}>
             <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-cyan-400/60 animate-sonar-ring"></div>
@@ -229,7 +229,7 @@ export default function HomePage() {
         </section>
 
         {/* Module 1: Editor's Picks */}
-        <section className="mb-48 sm:mb-56" id="editors-picks">
+        <section className="mb-36 sm:mb-44" id="editors-picks">
           {/* Title Area */}
           <div className="px-6 max-w-6xl mx-auto flex items-end justify-between mb-8 sm:mb-10">
             <div>
@@ -256,11 +256,16 @@ export default function HomePage() {
           {/* Cards Container */}
           <div className="max-w-6xl mx-auto px-6">
             <div className="editors-picks-container flex gap-5 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8 -mb-4">
-              {stacks.slice(0, 6).map((list, index) => {
+              {Array.from({ length: 6 }).map((_, index) => {
+                // Use modulo to cycle through available stacks if less than 6
+                const list = stacks[index % stacks.length];
                 // Card configurations
                 const cardConfigs = [
                   {
-                    tags: [<span key="t1" className="px-2.5 py-1 bg-amber-50 text-amber-700 text-[11px] font-semibold rounded-full border border-amber-100">🔥 Trending</span>],
+                    tags: [
+                      <span key="t1" className="px-2.5 py-1 bg-amber-50 text-amber-700 text-[11px] font-semibold rounded-full border border-amber-100">🔥 Trending</span>,
+                      <span key="t1b" className="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-full border border-slate-200">Time Loop</span>,
+                    ],
                     bgGradient: 'from-blue-50/80 to-slate-50',
                     hoverBorder: 'hover:border-blue-200',
                     bookEmoji: ['📘', '📕', '📗'],
@@ -375,7 +380,7 @@ export default function HomePage() {
         </section>
 
         {/* Module 2: Browse by Theme */}
-        <section className="px-6 max-w-6xl mx-auto mb-48 sm:mb-56" id="browse-themes">
+        <section className="px-6 max-w-6xl mx-auto mb-36 sm:mb-44" id="browse-themes">
           <div className="flex items-end justify-between mb-8 sm:mb-10">
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Browse by Theme</h2>
@@ -394,7 +399,7 @@ export default function HomePage() {
               <Link
                 key={theme.id}
                 href={`/theme/${theme.id}`}
-                className={`group p-5 rounded-2xl bg-white border border-slate-200 ${theme.hoverBorder} hover:shadow-md transition-all duration-300`}
+                className={`group p-5 rounded-2xl bg-white border border-slate-200 shadow-sm ${theme.hoverBorder} hover:shadow-md transition-all duration-300`}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className={`w-10 h-10 rounded-xl ${theme.color} flex items-center justify-center font-bold text-sm`}>
@@ -423,7 +428,7 @@ export default function HomePage() {
         </section>
 
         {/* Module 3: Platform Spotlight */}
-        <section className="px-6 max-w-6xl mx-auto mb-48 sm:mb-56">
+        <section className="px-6 max-w-6xl mx-auto mb-36 sm:mb-44">
           <div className="mb-8 sm:mb-10">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-1.5 h-1.5 rounded-full bg-cyan-600 animate-pulse"></div>
@@ -438,13 +443,12 @@ export default function HomePage() {
               <Link
                 key={platform.id}
                 href={`/platform/${platform.id}`}
-                className="group p-6 bg-white rounded-2xl border border-slate-200 hover:border-slate-300 hover:shadow-lg transition-all duration-300 cursor-pointer"
+                className="group p-6 bg-white rounded-2xl border border-slate-200 shadow-md hover:border-slate-300 hover:shadow-lg transition-all duration-300 cursor-pointer"
               >
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start mb-4">
                   <div className={`w-12 h-12 rounded-xl ${platform.color} flex items-center justify-center text-white font-bold shadow-sm group-hover:shadow-md transition-all group-hover:scale-105`}>
                     {platform.shortName}
                   </div>
-                  <ArrowRight className="w-5 h-5 text-neutral-300 group-hover:text-neutral-400 transition-colors" />
                 </div>
                 <h3 className={`font-bold text-lg text-slate-900 mb-2 group-hover:${platform.id === 'royal-road' ? 'text-orange-600' : platform.id === 'spacebattles' ? 'text-blue-600' : 'text-emerald-600'} transition-colors`}>
                   {platform.name}
@@ -462,7 +466,7 @@ export default function HomePage() {
         </section>
 
         {/* Module 4: Newsletter */}
-        <section className="px-6 max-w-xl mx-auto text-center mb-16 sm:mb-20">
+        <section className="px-6 max-w-xl mx-auto text-center mb-2 sm:mb-4">
           <div className="w-12 h-12 rounded-2xl bg-cyan-100 flex items-center justify-center mx-auto mb-4">
             <Mail className="w-6 h-6 text-cyan-600" />
           </div>
