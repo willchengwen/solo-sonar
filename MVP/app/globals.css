@@ -167,3 +167,168 @@ article > div:hover {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Desktop Book Stack (Hero Section) */
+.stack-book {
+  position: absolute;
+  width: 140px;
+  height: 180px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  overflow: hidden;
+}
+.stack-book > * {
+  position: relative;
+  z-index: 1;
+}
+.book-1 {
+  transform: rotate(-6deg) translateX(-60px) translateY(20px);
+  z-index: 1;
+}
+.book-2 {
+  transform: rotate(0deg) translateX(0px) translateY(0px);
+  z-index: 2;
+}
+.book-3 {
+  transform: rotate(6deg) translateX(60px) translateY(20px);
+  z-index: 1;
+}
+.stack-container:hover .book-1 {
+  transform: rotate(-10deg) translateX(-80px) translateY(10px);
+}
+.stack-container:hover .book-2 {
+  transform: rotate(0deg) translateY(-10px) scale(1.02);
+}
+.stack-container:hover .book-3 {
+  transform: rotate(10deg) translateX(80px) translateY(10px);
+}
+
+/* Mobile Book Fan (Hero Section) */
+.m-book {
+  position: absolute;
+  width: 80px;
+  height: 105px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.m-book-left {
+  transform: rotate(-12deg) translateX(-15px) translateY(4px);
+  z-index: 1;
+}
+.m-book-center {
+  width: 85px;
+  height: 110px;
+  transform: rotate(0deg) translateY(0px);
+  z-index: 2;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+.m-book-right {
+  transform: rotate(12deg) translateX(15px) translateY(4px);
+  z-index: 1;
+}
+.mobile-fan-container.expanded .m-book-left {
+  transform: rotate(-20deg) translateX(-40px) translateY(8px);
+}
+.mobile-fan-container.expanded .m-book-center {
+  transform: rotate(0deg) translateY(-8px);
+}
+.mobile-fan-container.expanded .m-book-right {
+  transform: rotate(20deg) translateX(40px) translateY(8px);
+}
+
+/* Editor's Picks Card Book Stack */
+.book-stack {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100px;
+  cursor: pointer;
+  position: relative;
+  padding: 0 20px;
+}
+.book {
+  width: 52px;
+  height: 70px;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  position: relative;
+}
+.book:nth-child(1) {
+  transform: rotate(-12deg) translateX(12px) translateY(3px);
+  z-index: 1;
+}
+.book:nth-child(2) {
+  transform: rotate(-2deg) translateX(0px) translateY(-2px);
+  z-index: 3;
+  height: 76px;
+  width: 54px;
+}
+.book:nth-child(3) {
+  transform: rotate(12deg) translateX(-12px) translateY(3px);
+  z-index: 1;
+}
+.card:hover .book:nth-child(1) {
+  transform: rotate(-20deg) translateX(4px) translateY(-6px) scale(1.05);
+}
+.card:hover .book:nth-child(2) {
+  transform: rotate(0deg) translateY(-10px) scale(1.08);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+.card:hover .book:nth-child(3) {
+  transform: rotate(20deg) translateX(-4px) translateY(-6px) scale(1.05);
+}
+.book-stack.expanded .book:nth-child(1) {
+  transform: rotate(-20deg) translateX(4px) translateY(-6px) scale(1.05);
+}
+.book-stack.expanded .book:nth-child(2) {
+  transform: rotate(0deg) translateY(-10px) scale(1.08);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+.book-stack.expanded .book:nth-child(3) {
+  transform: rotate(20deg) translateX(-4px) translateY(-6px) scale(1.05);
+}
+@media (min-width: 640px) {
+  .book-stack {
+    height: 110px;
+    cursor: default;
+    padding: 0 24px;
+  }
+  .book {
+    width: 60px;
+    height: 78px;
+    font-size: 26px;
+  }
+  .book:nth-child(2) {
+    height: 84px;
+    width: 62px;
+  }
+  .book:nth-child(1) {
+    transform: rotate(-10deg) translateX(16px) translateY(4px);
+  }
+  .book:nth-child(3) {
+    transform: rotate(10deg) translateX(-16px) translateY(4px);
+  }
+  .card:hover .book:nth-child(1) {
+    transform: rotate(-18deg) translateX(6px) translateY(-8px) scale(1.05);
+  }
+  .card:hover .book:nth-child(2) {
+    transform: rotate(0deg) translateY(-12px) scale(1.1);
+  }
+  .card:hover .book:nth-child(3) {
+    transform: rotate(18deg) translateX(-6px) translateY(-8px) scale(1.05);
+  }
+}

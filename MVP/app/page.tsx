@@ -82,48 +82,48 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased scroll-smooth">
-      <main className="pt-24 pb-32">
+      <main className="pt-20 pb-32">
         {/* Hero Section */}
-        <section className="relative px-6 max-w-6xl mx-auto mb-32 sm:mb-40 overflow-hidden">
+        <section className="relative px-5 sm:px-6 max-w-6xl mx-auto overflow-hidden">
           {/* Background Sonar Animation */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 -z-10">
-            <div className="absolute w-[600px] h-[600px] rounded-full border border-cyan-200 animate-sonar-ping"></div>
-            <div className="absolute w-[450px] h-[450px] rounded-full border border-cyan-300/50 animate-sonar-ping" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute w-[300px] h-[300px] rounded-full border border-cyan-200"></div>
+          <div className="absolute inset-0 items-center justify-center pointer-events-none opacity-20 -z-10 hidden lg:flex" style={{ left: '55%' }}>
+            <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-cyan-400/60 animate-sonar-ring"></div>
+            <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-cyan-300/50 animate-sonar-ring-delay-1"></div>
+            <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-cyan-200/40 animate-sonar-ring-delay-2"></div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[600px] lg:min-h-[720px] pt-4 sm:pt-6 pb-16">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[550px] lg:min-h-[620px]">
             {/* Left Column - Text Content */}
-            <div className="flex flex-col items-start text-left z-10 relative">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left z-10">
               {/* Stats Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-700 text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-700 text-sm font-medium mb-5 sm:mb-6">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-amber-400"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
                 </span>
-                1,247 books discovered and counting
+                Hundreds of books and counting
               </div>
 
               {/* Main Heading */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-950 leading-[1.1] mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-slate-900 leading-[1.1] mb-5 sm:mb-6">
                 Find the signal
                 <br />
                 <span className="text-cyan-600">in the noise</span>
               </h1>
 
               {/* Subheading */}
-              <p className="text-lg sm:text-xl text-neutral-500 max-w-xl leading-relaxed mb-12">
-                Human-curated reading lists replace algorithmic feeds, helping you find quality stories across Royal Road, SpaceBattles, and more.
+              <p className="text-base sm:text-lg lg:text-xl text-neutral-500 max-w-md lg:max-w-xl leading-relaxed mb-8 sm:mb-10">
+                Find quality stories across Royal Road, SpaceBattles, and more+
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-4">
+              <div className="flex flex-row gap-3 sm:gap-4">
                 <button
                   onClick={() => {
                     const element = document.getElementById('editors-picks');
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="px-8 py-3.5 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/10"
+                  className="px-6 sm:px-8 py-3 sm:py-3.5 bg-slate-900 text-white rounded-xl font-medium shadow-lg text-sm sm:text-base"
                 >
                   Browse Stacks
                 </button>
@@ -132,33 +132,15 @@ export default function HomePage() {
                     const element = document.getElementById('browse-themes');
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="px-8 py-3.5 bg-white/80 backdrop-blur text-slate-700 border border-slate-200 rounded-xl font-medium hover:border-cyan-300 hover:bg-white transition-all"
+                  className="px-5 sm:px-6 py-3 sm:py-3.5 bg-white/80 backdrop-blur text-slate-700 border border-slate-200 rounded-xl font-medium text-sm sm:text-base"
                 >
-                  Explore Themes
+                  Explore
                 </button>
-              </div>
-
-              {/* Platform Indicators */}
-              <div className="flex items-center gap-3 text-sm text-neutral-500">
-                <div className="flex items-center flex-shrink-0">
-                  <span className="w-8 h-8 bg-slate-200 text-slate-600 rounded-full font-semibold text-xs flex items-center justify-center z-[8]">
-                    RR
-                  </span>
-                  <span className="w-8 h-8 bg-slate-300 text-slate-700 rounded-full font-semibold text-xs flex items-center justify-center -ml-2 z-[9]">
-                    SB
-                  </span>
-                  <span className="w-8 h-8 bg-slate-100 text-slate-400 rounded-full font-medium text-xs flex items-center justify-center -ml-2 z-[10]">
-                    +
-                  </span>
-                </div>
-                <span className="whitespace-nowrap">
-                  Find stories — across Royal Road, SpaceBattles, + more platforms
-                </span>
               </div>
             </div>
 
-            {/* Right Column - Floating Cards (Desktop Only) */}
-            <div className="relative h-[580px] hidden lg:flex items-center justify-center z-10">
+            {/* Right Column - Desktop Book Stack */}
+            <div className="relative h-[400px] lg:h-[500px] hidden lg:flex items-center justify-center z-10">
               {/* Sonar Ring Animation */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
                 <div className="absolute w-[220px] h-[220px] rounded-full border-2 border-cyan-400/60 animate-sonar-ring"></div>
@@ -169,59 +151,78 @@ export default function HomePage() {
 
               {/* Floating Dots */}
               <div className="absolute top-16 right-20 w-2 h-2 rounded-full bg-cyan-300 animate-float"></div>
-              <div className="absolute top-24 right-12 w-1.5 h-1.5 rounded-full bg-neutral-300 animate-float" style={{ animationDelay: '1s', animationDuration: '5s' }}></div>
-              <div className="absolute bottom-32 left-16 w-2 h-2 rounded-full bg-rose-300 animate-float" style={{ animationDelay: '2s', animationDuration: '6s' }}></div>
+              <div className="absolute top-24 right-12 w-1.5 h-1.5 rounded-full bg-neutral-300 animate-float" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute bottom-32 left-16 w-2 h-2 rounded-full bg-rose-300 animate-float" style={{ animationDelay: '2s' }}></div>
 
-              {/* Main Card */}
-              <div className="relative bg-white rounded-3xl shadow-2xl shadow-slate-200/50 border border-white/80 py-5 pl-6 pr-5 w-72 z-20 animate-float" style={{ animationDelay: '0.5s' }}>
-                <div className="flex items-start justify-between mb-3">
-                  <span className="px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full">Trending</span>
-                  <button className="text-neutral-300 hover:text-neutral-500 transition-colors">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                    </svg>
-                  </button>
+              {/* Book Stack */}
+              <div className="stack-container relative w-[300px] h-[240px] flex items-center justify-center cursor-pointer animate-float z-10" style={{ animationDelay: '0.5s', animationDuration: '6s' }}>
+                {/* Book 1 */}
+                <div className="stack-book book-1 bg-gradient-to-br from-blue-500 to-indigo-600">
+                  <div className="mt-auto">
+                    <div className="flex gap-1 mb-1.5">
+                      <span className="px-2 py-0.5 bg-white/20 text-white text-[10px] font-medium rounded-full">Time Loop</span>
+                    </div>
+                    <p className="text-white text-xs font-semibold leading-tight">Like Mother of Learning</p>
+                    <p className="text-white/70 text-[10px] mt-1">12 books</p>
+                  </div>
                 </div>
-                <h3 className="font-bold text-xl text-slate-900 mb-2">The Last Angel</h3>
-                <p className="text-sm text-neutral-500 leading-relaxed mb-4 line-clamp-2">
-                  A sentient AI warship seeks vengeance against humanity's enemies in this epic military sci-fi saga.
-                </p>
-                <div className="flex items-center gap-3 text-xs text-neutral-400">
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 bg-slate-700 rounded-full"></span>
-                    SpaceBattles
-                  </span>
-                  <span>•</span>
-                  <span>Hard Sci-Fi</span>
+
+                {/* Book 2 */}
+                <div className="stack-book book-2 bg-gradient-to-br from-purple-500 to-pink-600" style={{ width: '160px', height: '200px' }}>
+                  <div className="mt-auto">
+                    <div className="flex gap-1 mb-1.5">
+                      <span className="px-2 py-0.5 bg-white/20 text-white text-[10px] font-medium rounded-full">🔥 Trending</span>
+                    </div>
+                    <p className="text-white text-sm font-bold leading-tight">Like He Who Fights With Monsters</p>
+                    <p className="text-white/70 text-[11px] mt-1">8 books · LitRPG</p>
+                  </div>
+                </div>
+
+                {/* Book 3 */}
+                <div className="stack-book book-3 bg-gradient-to-br from-emerald-500 to-teal-600">
+                  <div className="mt-auto">
+                    <div className="flex gap-1 mb-1.5">
+                      <span className="px-2 py-0.5 bg-white/20 text-white text-[10px] font-medium rounded-full">💎 Gems</span>
+                    </div>
+                    <p className="text-white text-xs font-semibold leading-tight">Hidden Forum Gems</p>
+                    <p className="text-white/70 text-[10px] mt-1">15 books</p>
+                  </div>
                 </div>
               </div>
 
-              {/* Curator Badge */}
-              <div className="absolute -top-4 right-0 z-30 animate-float">
-                <div className="bg-white rounded-2xl px-4 py-3 shadow-xl shadow-slate-200/30 border border-slate-100 flex items-center gap-3 hover:scale-105 transition-transform cursor-pointer">
-                  <div className="relative">
-                    <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
+              {/* Human Curated Badge */}
+              <div className="absolute -top-2 right-0 z-30 animate-float-delayed">
+                <div className="bg-white rounded-xl px-3 py-2 shadow-sm border border-slate-100/80 flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-full bg-cyan-50 flex items-center justify-center">
+                    <svg className="w-3.5 h-3.5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-wider text-neutral-400 font-medium">Curated by</p>
-                    <p className="text-sm font-bold text-slate-900">Editor's Pick</p>
+                    <p className="text-[9px] uppercase tracking-wider text-neutral-400 font-medium">Quality</p>
+                    <p className="text-xs font-bold text-slate-900">Human Curated</p>
                   </div>
                 </div>
               </div>
 
-              {/* Followers Badge */}
-              <div className="absolute bottom-24 right-12 z-20 animate-float" style={{ animationDelay: '2.5s', animationDuration: '8s' }}>
-                <div className="bg-white/90 backdrop-blur rounded-full px-3 py-1.5 shadow-lg border border-white/80 flex items-center gap-2">
-                  <div className="flex -space-x-1.5">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 border-2 border-white"></div>
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-br from-purple-400 to-purple-500 border-2 border-white"></div>
-                  </div>
-                  <span className="text-[11px] font-semibold text-slate-600">+12</span>
+              {/* Ping Badge */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
+                <div className="bg-white/90 backdrop-blur rounded-full px-4 py-2 shadow-sm border border-white/60 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                  <span className="text-[11px] text-cyan-600 font-medium">Ping received...</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Mobile Book Fan */}
+            <div className="flex lg:hidden justify-center -mt-4 mb-6">
+              <div className="mobile-fan-container relative w-[220px] h-[140px] flex items-center justify-center cursor-pointer" onClick={(e) => {
+                const target = e.currentTarget;
+                target.classList.toggle('expanded');
+              }}>
+                <div className="m-book m-book-left bg-gradient-to-br from-blue-500 to-indigo-600">📘</div>
+                <div className="m-book m-book-center bg-gradient-to-br from-purple-500 to-pink-600">⚔️</div>
+                <div className="m-book m-book-right bg-gradient-to-br from-emerald-500 to-teal-600">💎</div>
               </div>
             </div>
           </div>
@@ -229,11 +230,13 @@ export default function HomePage() {
 
         {/* Module 1: Editor's Picks */}
         <section className="mb-48 sm:mb-56" id="editors-picks">
+          {/* Title Area */}
           <div className="px-6 max-w-6xl mx-auto flex items-end justify-between mb-8 sm:mb-10">
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Editor's Picks</h2>
               <p className="text-neutral-500 text-base">Hand-picked thematic collections updated weekly</p>
             </div>
+            {/* Scroll Buttons */}
             <div className="flex gap-2">
               <button
                 onClick={() => scrollEditorPicks('left')}
@@ -250,44 +253,123 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* Cards Container */}
           <div className="max-w-6xl mx-auto px-6">
-            <div className="editors-picks-container flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8 pt-2 -mb-4">
-              {stacks.map((list) => (
-                <article key={list.id} className="group flex-none w-[310px] snap-start h-[400px]">
-                  <Link href={`/stack/${list.id}`} className="block h-full">
-                    <div className="relative bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-                      {/* Gradient Cover */}
-                      <div className={`h-44 sm:h-52 bg-gradient-to-br ${list.coverGradient} relative overflow-hidden`}>
-                        <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1 bg-white/90 text-slate-700 text-xs font-semibold rounded-full shadow-sm">
-                            {list.entries.length} books
-                          </span>
-                        </div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-4xl font-bold text-slate-200/60 select-none text-center px-4 leading-tight max-w-[200px]">
-                            {list.coverTitle ? list.coverTitle.split('\n').map((line, i) => (
-                              <div key={i}>{line}</div>
-                            )) : list.title}
-                          </div>
-                        </div>
-                      </div>
+            <div className="editors-picks-container flex gap-5 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8 -mb-4">
+              {stacks.slice(0, 6).map((list, index) => {
+                // Card configurations
+                const cardConfigs = [
+                  {
+                    tags: [<span key="t1" className="px-2.5 py-1 bg-amber-50 text-amber-700 text-[11px] font-semibold rounded-full border border-amber-100">🔥 Trending</span>],
+                    bgGradient: 'from-blue-50/80 to-slate-50',
+                    hoverBorder: 'hover:border-blue-200',
+                    bookEmoji: ['📘', '📕', '📗'],
+                    bookColors: ['from-blue-500 to-blue-700', 'from-indigo-500 to-indigo-700', 'from-violet-500 to-violet-700'],
+                    quote: '"Protagonists who actually use their brains"',
+                  },
+                  {
+                    tags: [
+                      <span key="t2" className="px-2.5 py-1 bg-purple-50 text-purple-700 text-[11px] font-semibold rounded-full border border-purple-100">LitRPG</span>,
+                      <span key="t3" className="px-2.5 py-1 bg-rose-50 text-rose-700 text-[11px] font-semibold rounded-full border border-rose-100">Progression</span>
+                    ],
+                    bgGradient: 'from-purple-50/80 to-slate-50',
+                    hoverBorder: 'hover:border-purple-200',
+                    bookEmoji: ['⚔️', '🎮', '📊'],
+                    bookColors: ['from-purple-500 to-purple-700', 'from-pink-500 to-pink-700', 'from-fuchsia-500 to-fuchsia-700'],
+                    quote: '"Numbers go up, but the plot goes deeper"',
+                  },
+                  {
+                    tags: [
+                      <span key="t4" className="px-2.5 py-1 bg-rose-50 text-rose-700 text-[11px] font-semibold rounded-full border border-rose-100">💎 Hidden Gem</span>,
+                      <span key="t5" className="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-full border border-slate-200">Forum Fic</span>
+                    ],
+                    bgGradient: 'from-emerald-50/80 to-slate-50',
+                    hoverBorder: 'hover:border-emerald-200',
+                    bookEmoji: ['🏆', '💎', '🌟'],
+                    bookColors: ['from-emerald-500 to-emerald-700', 'from-teal-500 to-teal-700', 'from-cyan-500 to-cyan-700'],
+                    quote: '"Buried masterpieces you\'ll tell everyone about"',
+                  },
+                  {
+                    tags: [
+                      <span key="t6" className="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-full border border-slate-200">🚀 Hard Sci-Fi</span>,
+                      <span key="t7" className="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold rounded-full border border-blue-100">Space</span>
+                    ],
+                    bgGradient: 'from-slate-100/80 to-slate-50',
+                    hoverBorder: 'hover:border-slate-300',
+                    bookEmoji: ['🛸', '🤖', '🌌'],
+                    bookColors: ['from-slate-600 to-slate-800', 'from-slate-700 to-slate-900', 'from-zinc-600 to-zinc-800'],
+                    quote: '"Real physics, real stakes, no magical tech"',
+                  },
+                  {
+                    tags: [
+                      <span key="t8" className="px-2.5 py-1 bg-red-50 text-red-700 text-[11px] font-semibold rounded-full border border-red-100">🐉 Cultivation</span>,
+                      <span key="t9" className="px-2.5 py-1 bg-amber-50 text-amber-700 text-[11px] font-semibold rounded-full border border-amber-100">Xianxia</span>,
+                    ],
+                    bgGradient: 'from-red-50/80 to-amber-50/50',
+                    hoverBorder: 'hover:border-red-200',
+                    bookEmoji: ['🐉', '⛩️', '🗡️'],
+                    bookColors: ['from-red-500 to-red-700', 'from-amber-500 to-amber-700', 'from-orange-500 to-orange-700'],
+                    quote: '"Ascend without the cringe"',
+                  },
+                  {
+                    tags: [
+                      <span key="t10" className="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-[11px] font-semibold rounded-full border border-indigo-100">🚪 Isekai</span>,
+                      <span key="t11" className="px-2.5 py-1 bg-violet-50 text-violet-700 text-[11px] font-semibold rounded-full border border-violet-100">Portal</span>,
+                    ],
+                    bgGradient: 'from-indigo-50/80 to-slate-50',
+                    hoverBorder: 'hover:border-indigo-200',
+                    bookEmoji: ['🗝️', '🌌', '🏰'],
+                    bookColors: ['from-indigo-500 to-indigo-700', 'from-violet-500 to-violet-700', 'from-purple-500 to-purple-700'],
+                    quote: '"Ordinary people in extraordinary worlds"',
+                  },
+                ];
 
-                      {/* Content */}
-                      <div className="p-4 sm:p-5 flex flex-col flex-grow">
-                        <h3 className="font-bold text-lg text-slate-900 mb-1">{list.title}</h3>
-                        <p className="text-sm text-neutral-500 line-clamp-2 mb-auto">{list.description}</p>
-                        <div className="flex items-center justify-between mt-2.5">
-                          <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 rounded-full bg-orange-200"></div>
-                            <span className="text-sm text-slate-600">Sarah Chen</span>
+                const config = cardConfigs[index] || cardConfigs[0];
+
+                return (
+                  <article key={list.id} className="group card flex-none w-[290px] sm:w-[310px] snap-start">
+                    <Link href={`/stack/${list.id}`} className="block h-full">
+                      <div className={`bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl ${config.hoverBorder} transition-all duration-300 overflow-hidden h-full`}>
+                        {/* Tags */}
+                        <div className="px-5 pt-4 pb-2">
+                          <div className="flex flex-wrap gap-1.5">
+                            {config.tags}
                           </div>
-                          <span className="text-xs text-neutral-400">2 days ago</span>
+                        </div>
+
+                        {/* Book Stack */}
+                        <div className={`px-5 py-8 bg-gradient-to-br ${config.bgGradient}`}>
+                          <div
+                            className="book-stack mb-4"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.currentTarget.classList.toggle('expanded');
+                            }}
+                          >
+                            <div className={`book bg-gradient-to-br ${config.bookColors[0]}`}>{config.bookEmoji[0]}</div>
+                            <div className={`book bg-gradient-to-br ${config.bookColors[1]}`}>{config.bookEmoji[1]}</div>
+                            <div className={`book bg-gradient-to-br ${config.bookColors[2]}`}>{config.bookEmoji[2]}</div>
+                          </div>
+                          <p className="text-center text-slate-600 text-sm italic font-medium">{config.quote}</p>
+                        </div>
+
+                        {/* Card Footer */}
+                        <div className="px-5 py-5 border-t border-slate-100">
+                          <h3 className="font-bold text-slate-900 text-base mb-1 truncate">{list.title}</h3>
+                          <p className="text-sm text-slate-500 mb-3 truncate">{list.description}</p>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-pink-500"></div>
+                              <span className="text-sm font-medium text-slate-700">Sarah Chen</span>
+                            </div>
+                            <span className="text-sm text-slate-400">{list.entries.length} books</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                </article>
-              ))}
+                    </Link>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
