@@ -4,7 +4,7 @@ import { useState, use, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import novelsData from '@/data/books.json';
 import Footer from '../../components/Footer';
-import { getTagStyle } from '../../lib/tagStyles';
+import { getTagStyle, formatTagLabel } from '../../lib/tagStyles';
 
 // 平台类型
 type Platform = 'RR' | 'SB' | 'SV' | 'Site';
@@ -348,7 +348,7 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                     const style = getTagStyle(theme);
                     return (
                       <span key={index} className={`tag ${style.bg} ${style.text} ${style.border}`}>
-                        {theme}
+                        {formatTagLabel(theme)}
                       </span>
                     );
                   })}

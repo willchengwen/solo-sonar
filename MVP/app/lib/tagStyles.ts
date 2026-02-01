@@ -154,3 +154,12 @@ export function getTagClassName(theme: string): string {
   const style = getTagStyle(theme);
   return `${style.bg} ${style.text} ${style.border}`;
 }
+
+// 格式化标签文本为 Title Case
+// 例如: time-loop → Time Loop, worm-fanfic → Worm Fanfic
+export function formatTagLabel(tag: string): string {
+  return tag
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
