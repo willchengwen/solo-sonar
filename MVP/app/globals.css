@@ -129,13 +129,20 @@ body {
 }
 
 /* Hide Scrollbar */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
+.hide-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
 }
 
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.hide-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* 强制隐藏所有 flex 容器的滚动条 */
+.flex.hide-scrollbar::-webkit-scrollbar {
+  display: none !important;
 }
 
 /* Glass Effect */
@@ -336,7 +343,7 @@ article > div:hover {
   position: relative;
 }
 .book:nth-child(1) {
-  transform: rotate(-18deg) translateX(18px) translateY(3px);
+  transform: rotate(-12deg) translateX(12px) translateY(3px);
   z-index: 1;
 }
 .book:nth-child(2) {
@@ -346,18 +353,18 @@ article > div:hover {
   width: 54px;
 }
 .book:nth-child(3) {
-  transform: rotate(18deg) translateX(-18px) translateY(3px);
+  transform: rotate(12deg) translateX(-12px) translateY(3px);
   z-index: 1;
 }
 .card:hover .book:nth-child(1) {
-  transform: rotate(-22deg) translateX(6px) translateY(-6px) scale(1.05);
+  transform: rotate(-16deg) translateX(6px) translateY(-6px) scale(1.05);
 }
 .card:hover .book:nth-child(2) {
   transform: rotate(0deg) translateY(-10px) scale(1.08);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 .card:hover .book:nth-child(3) {
-  transform: rotate(22deg) translateX(-6px) translateY(-6px) scale(1.05);
+  transform: rotate(16deg) translateX(-6px) translateY(-6px) scale(1.05);
 }
 .book-stack.expanded .book:nth-child(1) {
   transform: rotate(-22deg) translateX(6px) translateY(-6px) scale(1.05);
@@ -385,19 +392,19 @@ article > div:hover {
     width: 62px;
   }
   .book:nth-child(1) {
-    transform: rotate(-10deg) translateX(16px) translateY(4px);
+    transform: rotate(-8deg) translateX(14px) translateY(4px);
   }
   .book:nth-child(3) {
-    transform: rotate(10deg) translateX(-16px) translateY(4px);
+    transform: rotate(8deg) translateX(-14px) translateY(4px);
   }
   .card:hover .book:nth-child(1) {
-    transform: rotate(-18deg) translateX(6px) translateY(-8px) scale(1.05);
+    transform: rotate(-12deg) translateX(6px) translateY(-8px) scale(1.05);
   }
   .card:hover .book:nth-child(2) {
     transform: rotate(0deg) translateY(-12px) scale(1.1);
   }
   .card:hover .book:nth-child(3) {
-    transform: rotate(18deg) translateX(-6px) translateY(-8px) scale(1.05);
+    transform: rotate(12deg) translateX(-6px) translateY(-8px) scale(1.05);
   }
 }
 
@@ -499,8 +506,20 @@ article > div:hover {
   background: white;
   border-radius: 16px;
   border: 1px solid rgba(226, 232, 240, 0.8);
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
   display: block;
+  overflow: visible;
+}
+
+/* 移动端卡片按压效果 */
+.card:active {
+  transform: scale(0.98);
+}
+
+@media (min-width: 640px) {
+  .card:active {
+    transform: none;
+  }
 }
 
 .card-static {
@@ -509,17 +528,37 @@ article > div:hover {
   border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.card-hover:hover {
-  background: #fafafa;
+.card-hover {
+  transition: all 0.2s ease;
+}
+
+/* 移动端：按压反馈 */
+.card-hover:active {
+  transform: scale(0.98);
+}
+
+/* 桌面端：hover 效果 */
+@media (min-width: 640px) {
+  .card-hover:hover {
+    background: #fafafa;
+  }
 }
 
 .card-lift {
   transition: all 0.2s ease;
 }
 
-.card-lift:hover {
-  background: #f1f5f9;
-  transform: translateY(-4px);
+/* 移动端：按压反馈 */
+.card-lift:active {
+  transform: scale(0.98);
+}
+
+/* 桌面端：保留上浮效果 */
+@media (min-width: 640px) {
+  .card-lift:hover {
+    background: #f1f5f9;
+    transform: translateY(-4px);
+  }
 }
 
 /* Tag Styles */
@@ -666,18 +705,25 @@ article > div:hover {
 /* ==================== HORIZONTAL SCROLL CONTAINERS ==================== */
 .scroll-wrapper {
   position: relative;
+  width: 100%;
+  overflow: visible;
 }
 
 .scroll-container {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  padding-bottom: 8px;
+  overflow-y: visible;
+  padding: 4px 20px 8px 20px;
+  margin: 0 -20px;
   scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .scroll-container::-webkit-scrollbar {
-  display: none;
+  display: none;  /* Chrome, Safari, Opera */
 }
 
 .scroll-container > * {

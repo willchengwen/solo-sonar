@@ -66,11 +66,22 @@ export default function HomePage() {
 
   // Editor's Picks 横向滚动
   const scrollEditorPicks = (direction: 'left' | 'right') => {
-    const container = document.querySelector('.editors-picks-container');
+    // 找到所有容器并选择可见的那个
+    const containers = Array.from(document.querySelectorAll('.editors-picks-container')) as HTMLElement[];
+    let container: HTMLElement | null = null;
+
+    for (const c of containers) {
+      // 检查容器是否可见（offsetParent 不为 null 表示元素可见）
+      if (c.offsetParent !== null) {
+        container = c;
+        break;
+      }
+    }
+
     if (!container) return;
 
     const cardWidth = 310; // 卡片宽度
-    const gap = 24; // gap-6
+    const gap = 20; // gap-5
     const scrollAmount = cardWidth + gap;
 
     if (direction === 'left') {
@@ -216,10 +227,7 @@ export default function HomePage() {
 
             {/* Mobile Book Fan */}
             <div className="flex lg:hidden justify-center -mt-4 mb-6">
-              <div className="mobile-fan-container relative w-[280px] h-[180px] flex items-center justify-center cursor-pointer" onClick={(e) => {
-                const target = e.currentTarget;
-                target.classList.toggle('expanded');
-              }}>
+              <div className="mobile-fan-container relative w-[280px] h-[180px] flex items-center justify-center">
                 <div className="m-book m-book-left bg-gradient-to-br from-blue-500 to-indigo-600">📘</div>
                 <div className="m-book m-book-center bg-gradient-to-br from-purple-500 to-pink-600">⚔️</div>
                 <div className="m-book m-book-right bg-gradient-to-br from-emerald-500 to-teal-600">💎</div>
@@ -254,9 +262,9 @@ export default function HomePage() {
           </div>
 
           {/* Cards Container */}
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="editors-picks-container flex gap-5 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-4 pb-8 -mb-4">
-              {Array.from({ length: 6 }).map((_, index) => {
+          <div className="max-w-6xl mx-auto px-6 overflow-visible">
+            <div className="editors-picks-container flex gap-5 -mx-6 sm:mx-0 pl-6 sm:pl-0 pr-6 sm:pr-0 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8" style={{ scrollPaddingLeft: '24px' }}>
+                {Array.from({ length: 6 }).map((_, index) => {
                 // Use modulo to cycle through available stacks if less than 6
                 const list = stacks[index % stacks.length];
                 // Card configurations
@@ -332,7 +340,7 @@ export default function HomePage() {
                 const config = cardConfigs[index] || cardConfigs[0];
 
                 return (
-                  <article key={list.id} className="group card card-hover card-lift flex-none w-[320px] sm:w-[310px] snap-start">
+                  <article key={list.id} className="group card card-hover card-lift flex-none w-[290px] sm:w-[310px] snap-start overflow-visible">
                     <Link href={`/stack/${list.id}`} className="block h-full">
                       <div className="h-full rounded-2xl overflow-hidden">
                         {/* Tags */}
@@ -349,7 +357,7 @@ export default function HomePage() {
                             <div className={`book bg-gradient-to-br ${config.bookColors[1]}`}>{config.bookEmoji[1]}</div>
                             <div className={`book bg-gradient-to-br ${config.bookColors[2]}`}>{config.bookEmoji[2]}</div>
                           </div>
-                          <p className="text-center text-deep-600 text-sm italic font-medium">{config.quote}</p>
+                          <p className="text-center text-deep-600 text-sm italic font-medium min-h-[40px] flex items-center justify-center">{config.quote}</p>
                         </div>
 
                         {/* Card Footer */}

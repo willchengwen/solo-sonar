@@ -358,7 +358,41 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
               {/* Related Books */}
               <section className="mb-10">
                 <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">Related Books</h2>
-                <div className="scroll-wrapper">
+                {/* Mobile */}
+                <div className="sm:hidden -mx-5 overflow-visible">
+                  <div
+                    className="flex gap-4 px-5 pb-4 pt-2 overflow-x-auto hide-scrollbar [&::-webkit-scrollbar]:hidden"
+                    style={{
+                      WebkitOverflowScrolling: 'touch',
+                      msOverflowStyle: 'none',
+                      scrollbarWidth: 'none'
+                    }}
+                  >
+                    {similarNovels.slice(0, 3).map((novel, index) => {
+                      const coverStyles = [
+                        { gradient: 'from-indigo-500 to-purple-600', icon: '📕' },
+                        { gradient: 'from-emerald-500 to-teal-600', icon: '📗' },
+                        { gradient: 'from-orange-500 to-red-600', icon: '📙' }
+                      ];
+                      const style = coverStyles[index % coverStyles.length];
+                      return (
+                        <Link key={novel.id} href={`/novel/${novel.id}`} className="block flex-shrink-0">
+                          {novel.coverImage ? (
+                            <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2" />
+                          ) : (
+                            <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2`}>
+                              {style.icon}
+                            </div>
+                          )}
+                          <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px]">{novel.title}</p>
+                          <p className="text-xs text-neutral-400">{novel.author}</p>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+                {/* Desktop */}
+                <div className="hidden sm:block scroll-wrapper">
                   <div className="scroll-container">
                     {similarNovels.slice(0, 3).map((novel, index) => {
                       const coverStyles = [
@@ -388,7 +422,44 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
               {/* Similar Books */}
               <section className="mb-10">
                 <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">Similar Books</h2>
-                <div className="scroll-wrapper">
+                {/* Mobile */}
+                <div className="sm:hidden -mx-5 overflow-visible">
+                  <div
+                    className="flex gap-4 px-5 pb-4 pt-2 overflow-x-auto hide-scrollbar [&::-webkit-scrollbar]:hidden"
+                    style={{
+                      WebkitOverflowScrolling: 'touch',
+                      msOverflowStyle: 'none',
+                      scrollbarWidth: 'none'
+                    }}
+                  >
+                    {similarNovels.map((novel, index) => {
+                      const coverStyles = [
+                        { gradient: 'from-red-500 to-orange-500', icon: '⚡' },
+                        { gradient: 'from-emerald-500 to-teal-600', icon: '🔮' },
+                        { gradient: 'from-violet-500 to-purple-600', icon: '🌀' },
+                        { gradient: 'from-slate-600 to-slate-800', icon: '⏰' },
+                        { gradient: 'from-pink-500 to-rose-600', icon: '🧙' },
+                        { gradient: 'from-cyan-500 to-blue-600', icon: '🐉' }
+                      ];
+                      const style = coverStyles[index % coverStyles.length];
+                      return (
+                        <Link key={novel.id} href={`/novel/${novel.id}`} className="block flex-shrink-0">
+                          {novel.coverImage ? (
+                            <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2" />
+                          ) : (
+                            <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2`}>
+                              {style.icon}
+                            </div>
+                          )}
+                          <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px]">{novel.title}</p>
+                          <p className="text-xs text-neutral-400">{novel.author}</p>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+                {/* Desktop */}
+                <div className="hidden sm:block scroll-wrapper">
                   <div className="scroll-container">
                     {similarNovels.map((novel, index) => {
                       const coverStyles = [
@@ -421,7 +492,38 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
               {/* Featured in Stacks */}
               <section className="mb-10">
                 <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">Featured in Stacks</h2>
-                <div className="scroll-wrapper">
+                {/* Mobile */}
+                <div className="sm:hidden -mx-5 overflow-visible">
+                  <div
+                    className="flex gap-4 px-5 pb-4 pt-2 overflow-x-auto hide-scrollbar [&::-webkit-scrollbar]:hidden"
+                    style={{
+                      WebkitOverflowScrolling: 'touch',
+                      msOverflowStyle: 'none',
+                      scrollbarWidth: 'none'
+                    }}
+                  >
+                    {stacks.map((stack) => (
+                      <Link key={stack.id} href={`/stack/${stack.id}`} className="card card-hover p-4 w-[260px] flex-shrink-0">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-lg">📚</div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-semibold text-deep-900 line-clamp-1">{stack.title}</p>
+                          </div>
+                        </div>
+                        <p className="text-sm text-neutral-500 italic mb-2 line-clamp-1">{stack.description}</p>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500"></div>
+                            <span className="text-xs text-neutral-500">Editor</span>
+                          </div>
+                          <span className="text-xs text-neutral-400">{stack.picks} books</span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                {/* Desktop */}
+                <div className="hidden sm:block scroll-wrapper">
                   <div className="scroll-container">
                     {stacks.map((stack) => (
                       <Link key={stack.id} href={`/stack/${stack.id}`} className="card card-hover p-4 w-[260px]">

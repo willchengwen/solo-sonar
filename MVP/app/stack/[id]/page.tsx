@@ -418,8 +418,16 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
           </div>
 
           {/* 移动端横向滚动 */}
-          <div className="sm:hidden flex gap-4 overflow-x-auto pb-4" style={{ WebkitOverflowScrolling: 'touch' }}>
-            {relatedStacks.map((stack) => (
+          <div className="sm:hidden -mx-5 overflow-visible">
+            <div
+              className="flex gap-4 px-5 pb-4 pt-2 overflow-x-auto hide-scrollbar [&::-webkit-scrollbar]:hidden"
+              style={{
+                WebkitOverflowScrolling: 'touch',
+                msOverflowStyle: 'none',
+                scrollbarWidth: 'none'
+              }}
+            >
+              {relatedStacks.map((stack) => (
               <Link
                 key={stack.id}
                 href={`/stack/${stack.id}`}
@@ -460,6 +468,7 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                 </div>
               </Link>
             ))}
+            </div>
           </div>
         </section>
       </main>
