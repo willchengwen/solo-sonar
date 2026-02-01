@@ -12,7 +12,6 @@ export const TAG_COLORS: Record<string, TagStyle> = {
   // 流行度标签
   'trending': { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border border-amber-100' },
   '🔥': { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border border-amber-100' },
-  'trending': { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border border-amber-100' },
   'hidden-gem': { bg: 'bg-rose-50', text: 'text-rose-700', border: 'border border-rose-100' },
   '💎': { bg: 'bg-rose-50', text: 'text-rose-700', border: 'border border-rose-100' },
 
