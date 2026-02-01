@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, use } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { useState, use, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import novelsData from '@/data/books.json';
 import Footer from '../../components/Footer';
+import { getTagStyle } from '../../lib/tagStyles';
 
 // 平台类型
 type Platform = 'RR' | 'SB' | 'SV' | 'Site';
@@ -21,17 +22,9 @@ interface Novel {
   gradient: string;
   synopsis: string;
   editorNote?: string;
-  bestFor: string[];
   themes: string[];
   coverImage?: string | null;
-}
-
-// 书单接口
-interface Stack {
-  id: string;
-  title: string;
-  picks: number;
-  gradient: string;
+  links: Array<{ platform: string; url: string; isCanonical: boolean }>;
 }
 
 // MVP Novel 接口（匹配 data/books.json）
@@ -48,6 +41,7 @@ interface MVPNovel {
   }>;
   status: 'ongoing' | 'completed' | 'hiatus' | 'dropped';
   wordCount?: number;
+  words?: string;  // 新增：直接存储的字数文本
   chapterCount?: number;
   startedAt?: string;
   completedAt?: string;
@@ -56,6 +50,15 @@ interface MVPNovel {
   curatorNote?: string;
   stackCount: number;
   savedCount: number;
+}
+
+// 书单接口
+interface Stack {
+  id: string;
+  title: string;
+  description: string;
+  picks: number;
+  gradient: string;
 }
 
 // 平台映射函数
@@ -86,135 +89,85 @@ function formatDate(dateString?: string): string {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
 }
 
-// 主题映射
-const THEME_DISPLAY: Record<string, string> = {
-  'time-loop': 'Time Loop',
-  'progression': 'Progression',
-  'litrpg': 'LitRPG',
-  'rational': 'Rational',
-  'kingdom-building': 'Kingdom Building',
-  'dungeon-core': 'Dungeon Core',
-  'slice-of-life': 'Slice of Life',
-  'sci-fi': 'Sci-Fi',
-  'cultivation': 'Cultivation',
-  'isekai': 'Isekai',
-  'portal-fantasy': 'Portal Fantasy',
-  'base-building': 'Base Building',
-  'completed': 'Completed',
-  'comedy': 'Comedy',
-  'superhero': 'Superhero'
-};
-
 // 将 MVP 数据转换为页面格式
 function convertMVPToNovel(mvpNovel: MVPNovel): Novel {
-  const canonicalLink = mvpNovel.links.find(link => link.isCanonical) || mvpNovel.links[0];
+  // 优先使用 words 字段，如果没有则使用 wordCount 格式化
+  const wordCount = mvpNovel.words || formatWordCount(mvpNovel.wordCount);
 
   return {
     id: mvpNovel.id,
     title: mvpNovel.title,
     author: mvpNovel.author,
-    platform: mapPlatform(canonicalLink.platform),
+    platform: mapPlatform(mvpNovel.links.find(l => l.isCanonical)?.platform || 'royal-road'),
     status: mvpNovel.status === 'completed' ? 'Completed' : 'Ongoing',
     chapters: mvpNovel.chapterCount || 0,
-    words: formatWordCount(mvpNovel.wordCount),
+    words: wordCount,
     updated: formatDate(mvpNovel.completedAt || mvpNovel.startedAt),
     gradient: mvpNovel.coverGradient || 'from-gray-200 to-gray-100',
     synopsis: mvpNovel.synopsis,
     editorNote: mvpNovel.curatorNote,
-    bestFor: mvpNovel.themes.slice(0, 4).map(t => THEME_DISPLAY[t] || t),
-    themes: [...mvpNovel.themes, mvpNovel.status === 'completed' ? 'Completed' : 'Ongoing', 'Fantasy'],
-    coverImage: mvpNovel.coverImage || null
+    themes: mvpNovel.themes,
+    coverImage: mvpNovel.coverImage || null,
+    links: mvpNovel.links
   };
 }
 
-// 硬编码的相关书单（暂时保留，未来可以从 stacks.json 动态获取）
+// 获取相关书单
 const getStacksForNovel = (novelId: string): Stack[] => {
-  const allStacks: Record<string, Stack[]> = {
-    'mother-of-learning': [
-      {
-        id: 'time-loop-masters',
-        title: 'Time Loop Masters',
-        picks: 8,
-        gradient: 'from-gray-200 to-gray-100'
-      },
-      {
-        id: 'magic-school-stories',
-        title: 'Magic School Done Right',
-        picks: 12,
-        gradient: 'from-gray-200 to-gray-100'
-      },
-      {
-        id: 'rational-fiction-essentials',
-        title: 'Rational Fiction Essentials',
-        picks: 15,
-        gradient: 'from-gray-200 to-gray-100'
-      },
-      {
-        id: 'completed-bingeable',
-        title: 'Completed & Bingeable',
-        picks: 20,
-        gradient: 'from-gray-200 to-gray-100'
-      }
-    ]
-  };
-
-  return allStacks[novelId] || [
+  return [
     {
       id: 'rational-fiction-essentials',
       title: 'Rational Fiction Essentials',
+      description: 'Stories where protagonists think strategically.',
       picks: 15,
       gradient: 'from-gray-200 to-gray-100'
     },
     {
       id: 'completed-bingeable',
       title: 'Completed & Bingeable',
+      description: 'Finished stories ready to marathon.',
       picks: 20,
+      gradient: 'from-gray-200 to-gray-100'
+    },
+    {
+      id: 'time-loop-masters',
+      title: 'Time Loop Masters',
+      description: 'The best of groundhog day fiction.',
+      picks: 8,
       gradient: 'from-gray-200 to-gray-100'
     }
   ];
 };
 
 // 获取相似推荐
-const getSimilarNovels = (currentNovelId: string, currentThemes: string[]) => {
+const getSimilarNovels = (currentNovelId: string) => {
   const allNovels = novelsData as MVPNovel[];
-
-  // 简单的相似度算法：匹配主题数量
-  const similar = allNovels
+  return allNovels
     .filter(novel => novel.id !== currentNovelId)
+    .slice(0, 8)
     .map(novel => ({
       id: novel.id,
       title: novel.title,
-      platform: mapPlatform(novel.links.find(l => l.isCanonical)?.platform || 'royal-road'),
+      author: novel.author,
       gradient: novel.coverGradient || 'from-gray-200 to-gray-100',
-      matchCount: novel.themes.filter(theme => currentThemes.includes(theme)).length
-    }))
-    .sort((a, b) => b.matchCount - a.matchCount)
-    .slice(0, 4);
-
-  return similar;
+      coverImage: novel.coverImage
+    }));
 };
 
-// 相似推荐接口
-interface SimilarNovel {
-  id: string;
-  title: string;
-  platform: Platform;
-  gradient: string;
-}
-
 // 平台配置
-const PLATFORM_CONFIG: Record<Platform, { name: string; bgColor: string }> = {
-  'RR': { name: 'Royal Road', bgColor: 'bg-amber-50' },
-  'SB': { name: 'SpaceBattles', bgColor: 'bg-orange-50' },
-  'SV': { name: 'Sufficient Velocity', bgColor: 'bg-gray-50' },
-  'Site': { name: 'Author Site', bgColor: 'bg-emerald-50' },
+const PLATFORM_CONFIG: Record<Platform, { name: string; bgColor: string; iconBg: string }> = {
+  'RR': { name: 'Royal Road', bgColor: 'bg-amber-50', iconBg: 'bg-amber-400' },
+  'SB': { name: 'SpaceBattles', bgColor: 'bg-orange-50', iconBg: 'bg-slate-800' },
+  'SV': { name: 'Sufficient Velocity', bgColor: 'bg-deep-100', iconBg: 'bg-cyan-700' },
+  'Site': { name: 'Author Site', bgColor: 'bg-emerald-50', iconBg: 'bg-emerald-500' },
 };
 
 export default function NovelDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const [email, setEmail] = useState('');
   const [showFullSynopsis, setShowFullSynopsis] = useState(false);
-  const [showAllThemes, setShowAllThemes] = useState(false);
+  const [showSynopsisButton, setShowSynopsisButton] = useState(false);
+  const [platformDropdownOpen, setPlatformDropdownOpen] = useState(false);
+  const synopsisRef = useRef<HTMLParagraphElement>(null);
 
   // 根据 ID 从数据中查找小说
   const mvpNovel = (novelsData as MVPNovel[]).find(novel => novel.id === id);
@@ -222,11 +175,11 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
   // 如果找不到小说，显示 404
   if (!mvpNovel) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-deep-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Novel Not Found</h1>
-          <p className="text-gray-600 mb-8">The novel you're looking for doesn't exist.</p>
-          <a href="/" className="text-[#3B82F6] hover:underline">Return to Home</a>
+          <h1 className="text-4xl font-bold text-deep-900 mb-4">Novel Not Found</h1>
+          <p className="text-deep-600 mb-8">The novel you're looking for doesn't exist.</p>
+          <Link href="/" className="text-sonar-600 hover:underline">Return to Home</Link>
         </div>
       </div>
     );
@@ -235,248 +188,268 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
   // 转换数据格式
   const novelData = convertMVPToNovel(mvpNovel);
   const stacks = getStacksForNovel(id);
-  const similarNovels = getSimilarNovels(id, mvpNovel.themes) as SimilarNovel[];
+  const similarNovels = getSimilarNovels(id);
 
-  // 获取主链接
-  const canonicalLink = mvpNovel.links.find(link => link.isCanonical) || mvpNovel.links[0];
+  // 检测 synopsis 是否被截断
+  useEffect(() => {
+    const checkTruncation = () => {
+      if (synopsisRef.current) {
+        const isTruncated = synopsisRef.current.scrollHeight > synopsisRef.current.clientHeight;
+        setShowSynopsisButton(isTruncated);
+      }
+    };
 
-  const synopsis = novelData.synopsis;
-  // 始终显示展开/收起按钮
-  const displaySynopsis = synopsis;
+    checkTruncation();
+    window.addEventListener('resize', checkTruncation);
+    return () => window.removeEventListener('resize', checkTruncation);
+  }, [novelData.synopsis]);
 
-  const displayedThemes = showAllThemes ? novelData.themes : novelData.themes.slice(0, 5);
-  const remainingThemesCount = novelData.themes.length - 5;
+  // 点击外部关闭下拉菜单
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('#platformDropdown') && !target.closest('#readingBtn')) {
+        setPlatformDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-white">
-      <main className="max-w-6xl mx-auto px-6">
-        {/* Main Content Layout */}
-        <div className="flex flex-col md:flex-row gap-12 pt-12 pb-16">
-          {/* 左侧封面区域 - Sticky 固定 */}
-          <div className="w-full md:w-[256px] shrink-0">
-            <div className="md:sticky md:top-24">
-              {/* 封面图 */}
-              {novelData.coverImage ? (
-                <img
-                  src={novelData.coverImage}
-                  alt={novelData.title}
-                  className="w-full aspect-[2/3] rounded-md object-cover"
-                />
-              ) : (
-                <div className={`w-full aspect-[2/3] bg-gradient-to-br ${novelData.gradient} rounded-md`}/>
-              )}
+    <div className="min-h-screen bg-deep-50 text-deep-900 antialiased">
+      <main className="pt-20 pb-20">
+        <div className="px-5 sm:px-6 max-w-5xl mx-auto">
+          {/* 桌面端：左右布局 | 移动端：上下布局 */}
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
 
-              {/* 操作区域 - 居中对齐 */}
-              <div className="mt-6 flex flex-col items-center">
-                {/* 外链按钮 */}
-                <a
-                  href={canonicalLink.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-blue-50 text-gray-700 text-sm font-medium rounded-lg py-3 hover:bg-blue-100 transition text-center whitespace-nowrap"
-                >
-                  Open on {PLATFORM_CONFIG[novelData.platform].name} ↗
-                </a>
+            {/* 左侧：封面 + 按钮（桌面端固定） */}
+            <div className="lg:w-[200px] sticky-sidebar">
+              {/* 移动端：横向布局，桌面端：纵向布局 */}
+              <div className="flex sm:flex-col gap-5 sm:gap-6">
+                {/* 封面 */}
+                {novelData.coverImage ? (
+                  <img 
+                    src={novelData.coverImage} 
+                    alt={novelData.title}
+                    className="book-cover-large flex-shrink-0"
+                    style={{ width: '160px', height: 'auto' }}
+                  />
+                ) : (
+                  <div className="book-cover-large bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-6xl flex-shrink-0">
+                    📘
+                  </div>
+                )}
 
-                {/* 来源提示 */}
-                <p className="text-xs text-gray-400 mt-2 text-center">
-                  Available on {PLATFORM_CONFIG[novelData.platform].name}
-                </p>
+                {/* 移动端：基本信息放封面旁边 */}
+                <div className="flex-1 sm:hidden">
+                  <h1 className="text-xl font-bold text-deep-900 mb-1">{novelData.title}</h1>
+                  <p className="text-sm text-neutral-500 mb-2">by {novelData.author} · {novelData.platform}</p>
+                  <p className="text-sm text-neutral-500 mb-2">{novelData.words} words · <span className="status-completed px-2 py-0.5 rounded-full text-xs font-medium">{novelData.status}</span></p>
+                  <p className="text-sm text-neutral-400 mb-3">Featured in {mvpNovel.stackCount} stacks</p>
+                  <button className="heart-btn">
+                    <svg className="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
 
-                {/* 复制链接按钮 */}
+              {/* Start Reading 按钮 */}
+              <div className="relative mt-8">
                 <button
-                  onClick={() => navigator.clipboard.writeText(window.location.href)}
-                  className="text-xs text-gray-500 hover:text-gray-800 mt-3 transition text-center"
+                  id="readingBtn"
+                  className="btn-primary whitespace-nowrap"
+                  onClick={() => setPlatformDropdownOpen(!platformDropdownOpen)}
                 >
-                  Copy link
+                  Start Reading
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/>
+                  </svg>
                 </button>
+
+                {/* 平台下拉菜单 */}
+                <div id="platformDropdown" className={`platform-dropdown ${platformDropdownOpen ? 'show' : ''}`}>
+                  {novelData.links.map((link) => {
+                    const platform = mapPlatform(link.platform);
+                    const config = PLATFORM_CONFIG[platform];
+                    return (
+                      <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer" className="platform-item">
+                        <div className={`w-8 h-8 rounded-lg ${config.iconBg} flex items-center justify-center text-white font-bold text-xs`}>
+                          {platform}
+                        </div>
+                        <span className="font-medium">{config.name}</span>
+                      </a>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* 右侧内容区域 - 所有信息 */}
-          <div className="flex-1 min-w-0">
-            <div className="flex flex-col">
-              {/* 标题 */}
-              <h1 className="text-4xl font-bold text-gray-900 mb-0">
-                {novelData.title}
-              </h1>
-
-              {/* Meta Row 1: 作者 · 平台 · 状态 */}
-              <div className="text-sm text-gray-700 mt-2">
-                by <span className="text-gray-700 font-medium">{novelData.author}</span>
-                {" · "}
-                {PLATFORM_CONFIG[novelData.platform].name}
-                {" · "}
-                <span className={novelData.status === 'Completed' ? 'text-gray-500 font-medium' : 'text-amber-600 font-medium'}>
-                  {novelData.status === 'Completed' ? 'Completed' : 'Ongoing'}
-                </span>
-              </div>
-
-              {/* Meta Row 2: 统计信息 */}
-              <div className="text-sm text-gray-500">
-                <span>{novelData.chapters} chapters</span>
-                {" · "}
-                <span>{novelData.words} words</span>
-                {" · "}
-                <span>Updated {novelData.updated}</span>
-              </div>
-
-              {/* Appears in stacks */}
-              <a
-                href="#appears-in"
-                className="mt-10 text-sm text-gray-400 hover:text-gray-900 transition flex items-center gap-1 w-fit"
-              >
-                Appears in {mvpNovel.stackCount} stacks <ArrowRight className="w-4 h-4" />
-              </a>
-
-              {/* Editor Note 卡片 - 只在有 curatorNote 时显示 */}
-              {novelData.editorNote && (
-                <div className="mt-12 bg-gray-50 border border-gray-100 rounded-xl p-5">
-                  <h3 className="text-sm text-gray-400 mb-3">✦ Editor's Take</h3>
-                  <p className="text-gray-700 italic mb-4 text-base leading-relaxed">
-                    "{novelData.editorNote}"
-                  </p>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-xs text-gray-500 font-medium">Best for:</span>
-                    {novelData.bestFor.map((tag, index) => (
-                      <span key={index} className="text-xs py-1 px-2 rounded-full bg-white border border-gray-200 text-gray-600">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+            {/* 右侧：内容区（滚动） */}
+            <div className="flex-1 min-w-0">
+              {/* 桌面端：基本信息 */}
+              <div className="hidden sm:block mb-8">
+                <h1 className="text-3xl sm:text-4xl font-bold text-deep-900 mb-3">{novelData.title}</h1>
+                <p className="text-lg text-neutral-500 mb-2">by {novelData.author} · {novelData.platform}</p>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-neutral-500">{novelData.words} words</span>
+                  <span className="status-completed px-2.5 py-1 rounded-full text-xs font-medium">{novelData.status}</span>
                 </div>
+                <div className="flex items-center gap-4">
+                  <p className="text-neutral-400">Featured in {mvpNovel.stackCount} stacks</p>
+                  <button className="heart-btn">
+                    <svg className="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* Editor's Take */}
+              {novelData.editorNote && (
+                <section className="mb-10">
+                  <div className="card-static p-6">
+                    <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-3">Editor's Take</h2>
+                    <p className="text-neutral-600 leading-relaxed text-base sm:text-lg italic">
+                      "{novelData.editorNote}"
+                    </p>
+                  </div>
+                </section>
               )}
 
               {/* Synopsis */}
-              <section className="mt-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Synopsis</h2>
-                <div className="text-gray-700 leading-relaxed">
-                  <p className={showFullSynopsis ? '' : 'line-clamp-3'}>
-                    {displaySynopsis}
-                  </p>
-                  <button
-                    onClick={() => setShowFullSynopsis(!showFullSynopsis)}
-                    className="mt-2 text-sm text-gray-600 hover:text-gray-900 hover:underline transition"
+              <section className="mb-10">
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-3">Synopsis</h2>
+                <div>
+                  <p
+                    ref={synopsisRef}
+                    className={`text-neutral-600 leading-relaxed ${!showFullSynopsis ? 'line-clamp-3' : ''}`}
                   >
-                    {showFullSynopsis ? 'Show less' : 'Read full synopsis →'}
-                  </button>
-                </div>
-              </section>
-
-              {/* Themes */}
-              <section className="mt-12">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Themes</h2>
-                <div className="flex flex-wrap gap-3">
-                  {displayedThemes.map((theme, index) => (
-                    <span
-                      key={index}
-                      className="text-xs px-3 py-1 rounded-full border border-gray-200 text-gray-600 bg-white"
-                    >
-                      {THEME_DISPLAY[theme] || theme}
-                    </span>
-                  ))}
-                  {!showAllThemes && remainingThemesCount > 0 && (
+                    {novelData.synopsis}
+                  </p>
+                  {showSynopsisButton && (
                     <button
-                      onClick={() => setShowAllThemes(true)}
-                      className="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-600 transition"
+                      onClick={() => setShowFullSynopsis(!showFullSynopsis)}
+                      className="text-sonar-600 font-medium text-sm mt-2 hover:text-sonar-700"
                     >
-                      +{remainingThemesCount} more
-                    </button>
-                  )}
-                  {showAllThemes && remainingThemesCount > 0 && (
-                    <button
-                      onClick={() => setShowAllThemes(false)}
-                      className="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-600 transition"
-                    >
-                      Show less
+                      {showFullSynopsis ? 'Show less' : 'Read more'}
                     </button>
                   )}
                 </div>
               </section>
 
-              {/* Featured In */}
-              <section className="mt-12" id="appears-in">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured In</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  {stacks.map((stack) => (
-                    <a
-                      key={stack.id}
-                      href={`/stack/${stack.id}`}
-                      className="group flex gap-5 p-4 bg-white border border-gray-200 rounded-xl hover:border-gray-300 hover:shadow-sm hover:-translate-y-0.5 transition-all"
-                    >
-                      {/* 封面缩略图 */}
-                      <div className={`w-20 h-20 flex-shrink-0 bg-gradient-to-br ${stack.gradient} rounded-lg`}/>
+              {/* Tags */}
+              <section className="mb-10">
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-3">Tags</h2>
+                <div className="flex flex-wrap gap-2">
+                  {novelData.themes.map((theme, index) => {
+                    const style = getTagStyle(theme);
+                    return (
+                      <span key={index} className={`tag ${style.bg} ${style.text} ${style.border}`}>
+                        {theme}
+                      </span>
+                    );
+                  })}
+                </div>
+              </section>
 
-                      {/* 右侧内容 */}
-                      <div className="flex-1 flex flex-col justify-between">
-                        <div>
-                          <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-gray-600 transition-colors">
-                            {stack.title}
-                          </h3>
-                          <p className="text-xs text-gray-500">
-                            {stack.picks} picks
-                          </p>
-                          <p className="text-xs text-gray-500 mt-1">
-                            Curated list
-                          </p>
+              {/* Related Books */}
+              <section className="mb-10">
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">Related Books</h2>
+                <div className="scroll-wrapper">
+                  <div className="scroll-container">
+                    {similarNovels.slice(0, 3).map((novel, index) => {
+                      const coverStyles = [
+                        { gradient: 'from-indigo-500 to-purple-600', icon: '📕' },
+                        { gradient: 'from-emerald-500 to-teal-600', icon: '📗' },
+                        { gradient: 'from-orange-500 to-red-600', icon: '📙' }
+                      ];
+                      const style = coverStyles[index % coverStyles.length];
+                      return (
+                        <Link key={novel.id} href={`/novel/${novel.id}`} className="block">
+                          {novel.coverImage ? (
+                            <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2" />
+                          ) : (
+                            <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2`}>
+                              {style.icon}
+                            </div>
+                          )}
+                          <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px]">{novel.title}</p>
+                          <p className="text-xs text-neutral-400">{novel.author}</p>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </section>
+
+              {/* Similar Books */}
+              <section className="mb-10">
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">Similar Books</h2>
+                <div className="scroll-wrapper">
+                  <div className="scroll-container">
+                    {similarNovels.map((novel, index) => {
+                      const coverStyles = [
+                        { gradient: 'from-red-500 to-orange-500', icon: '⚡' },
+                        { gradient: 'from-emerald-500 to-teal-600', icon: '🔮' },
+                        { gradient: 'from-violet-500 to-purple-600', icon: '🌀' },
+                        { gradient: 'from-slate-600 to-slate-800', icon: '⏰' },
+                        { gradient: 'from-pink-500 to-rose-600', icon: '🧙' },
+                        { gradient: 'from-cyan-500 to-blue-600', icon: '🐉' }
+                      ];
+                      const style = coverStyles[index % coverStyles.length];
+                      return (
+                        <Link key={novel.id} href={`/novel/${novel.id}`} className="block">
+                          {novel.coverImage ? (
+                            <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2" />
+                          ) : (
+                            <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2`}>
+                              {style.icon}
+                            </div>
+                          )}
+                          <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px]">{novel.title}</p>
+                          <p className="text-xs text-neutral-400">{novel.author}</p>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </section>
+
+              {/* Featured in Stacks */}
+              <section className="mb-10">
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">Featured in Stacks</h2>
+                <div className="scroll-wrapper">
+                  <div className="scroll-container">
+                    {stacks.map((stack) => (
+                      <Link key={stack.id} href={`/stack/${stack.id}`} className="card card-hover p-4 w-[260px]">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-lg">📚</div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-semibold text-deep-900 line-clamp-1">{stack.title}</p>
+                          </div>
                         </div>
-                        <span className="text-sm text-gray-600 hover:text-gray-900 transition flex items-center gap-1">
-                          Open <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                        </span>
-                      </div>
-                    </a>
-                  ))}
+                        <p className="text-sm text-neutral-500 italic mb-2 line-clamp-1">{stack.description}</p>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500"></div>
+                            <span className="text-xs text-neutral-500">Editor</span>
+                          </div>
+                          <span className="text-xs text-neutral-400">{stack.picks} books</span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </section>
             </div>
           </div>
         </div>
-
-        {/* Similar picks - Temporarily hidden */}
-        {/* <section className="pb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Similar picks</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {similarNovels.map((novel) => (
-              <a
-                key={novel.id}
-                href={`/novel/${novel.id}`}
-                className="group block"
-              >
-                <div className={`h-40 bg-gradient-to-br ${novel.gradient} rounded-2xl mb-3`}/>
-                <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-gray-600 transition-colors">
-                  {novel.title}
-                </h3>
-                <span className={`inline-flex items-center px-2.5 py-1 ${PLATFORM_CONFIG[novel.platform].bgColor} text-gray-600 text-xs font-medium rounded-lg`}>
-                  {novel.platform}
-                </span>
-              </a>
-            ))}
-          </div>
-        </section> */}
-
-        {/* 简化版邮件订阅 */}
-        <section className="pb-16">
-          <div className="p-6 bg-gray-50 rounded-2xl">
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              <span className="text-gray-700 font-medium">Get curated stacks like this</span>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className="flex-1 px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all min-w-0"
-              />
-              <button className="px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white font-medium rounded-xl transition-colors whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <Footer />
       </main>
+
+      <Footer />
     </div>
   );
 }
