@@ -65,23 +65,23 @@ export default function Header() {
 
   return (
     <>
-      {/* Glass Navigation */}
+      {/* Fixed Top Navigation Bar (Full Width) */}
       <nav
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out bg-white/95 backdrop-blur-sm border-b border-deep-200/50 ${
           isVisible ? 'translate-y-0' : '-translate-y-[150%]'
         }`}
       >
-        <div className="glass rounded-2xl px-4 sm:px-6 py-3 shadow-lg shadow-slate-200/50 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center shadow-sm">
+            <div className="w-8 h-8 bg-sonar-600 rounded-full flex items-center justify-center shadow-sm">
               <svg className="w-4 h-4" viewBox="0 0 32 32" fill="none">
                 <circle cx="16" cy="16" r="12" stroke="white" strokeWidth="2" opacity="0.5"/>
                 <circle cx="16" cy="16" r="7" stroke="white" strokeWidth="2.5" opacity="0.9"/>
                 <circle cx="16" cy="16" r="3" fill="white"/>
               </svg>
             </div>
-            <Link href="/" className="font-semibold text-lg text-slate-900">
+            <Link href="/" className="font-semibold text-lg text-deep-900">
               Solo Sonar
             </Link>
           </div>
@@ -92,10 +92,10 @@ export default function Header() {
               onClick={() => setIsSearchOpen(true)}
               className="relative w-full"
             >
-              <div className="relative flex items-center bg-white/90 rounded-xl border border-slate-200 hover:border-cyan-300 transition-all shadow-sm cursor-pointer px-3 py-2">
+              <div className="relative flex items-center bg-deep-50 rounded-xl border border-deep-200 hover:border-sonar-300 transition-all cursor-pointer px-3 py-2">
                 <Search className="w-5 h-5 text-neutral-400" />
                 <span className="ml-3 text-sm text-neutral-400">Search by title, author, theme...</span>
-                <span className="ml-auto text-xs text-neutral-400 bg-slate-50 px-2 py-0.5 rounded">⌘K</span>
+                <span className="ml-auto text-xs text-neutral-400 bg-white px-2 py-0.5 rounded">⌘K</span>
               </div>
             </button>
           </div>
@@ -110,7 +110,7 @@ export default function Header() {
                   console.log("Early access email:", email);
                 }
               }}
-              className="hidden sm:flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-xl text-sm font-medium hover:bg-slate-800 transition-all"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 bg-white border border-deep-200 text-deep-700 rounded-xl text-sm font-medium hover:border-deep-300 hover:bg-deep-50 transition-all"
             >
               Sign in
             </button>

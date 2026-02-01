@@ -1,10 +1,12 @@
 'use client';
 
-import { useState, use } from 'react';
-import { ArrowRight, Bookmark, Bell } from 'lucide-react';
+import { use } from 'react';
+import { Bookmark } from 'lucide-react';
+import Link from 'next/link';
 import stacksData from '@/src/data/stacks.json';
 import novelsData from '@/data/books.json';
 import Footer from '../../components/Footer';
+import { getTagStyle } from '../../lib/tagStyles';
 
 // 平台类型
 type Platform = 'RR' | 'SB' | 'SV' | 'Site';
@@ -68,6 +70,7 @@ interface Book {
   stackCount: number;
   gradient: string;
   coverImage?: string | null;
+  themes: string[];
 }
 
 // 平台映射函数
@@ -83,14 +86,6 @@ function mapPlatform(platform: string): Platform {
   return platformMap[platform] || 'Site';
 }
 
-// 平台配置
-const PLATFORM_CONFIG: Record<Platform, { name: string; color: string; bgColor: string }> = {
-  'RR': { name: 'Royal Road', color: 'text-amber-600', bgColor: 'bg-amber-50' },
-  'SB': { name: 'SpaceBattles', color: 'text-orange-600', bgColor: 'bg-orange-50' },
-  'SV': { name: 'Sufficient Velocity', color: 'text-gray-600', bgColor: 'bg-gray-50' },
-  'Site': { name: 'Author Site', color: 'text-emerald-600', bgColor: 'bg-emerald-50' },
-};
-
 // 将 MVP 数据转换为页面格式
 function convertMVPToBook(mvpNovel: MVPNovel, curatorNote: string): Book {
   const canonicalLink = mvpNovel.links.find(link => link.isCanonical) || mvpNovel.links[0];
@@ -104,72 +99,15 @@ function convertMVPToBook(mvpNovel: MVPNovel, curatorNote: string): Book {
     status: mvpNovel.status === 'completed' ? 'Completed' : 'Ongoing',
     stackCount: mvpNovel.stackCount,
     gradient: mvpNovel.coverGradient || 'from-gray-200 to-gray-100',
-    coverImage: mvpNovel.coverImage || null
+    coverImage: mvpNovel.coverImage || null,
+    themes: mvpNovel.themes
   };
 }
 
-// BookCard 组件
-function BookCard({ book }: { book: Book }) {
-  const platform = PLATFORM_CONFIG[book.platform];
-
-  return (
-    <a
-      href={`/novel/${book.id}`}
-      className="group flex flex-row gap-4 md:gap-6 p-6 bg-white border border-gray-200 rounded-2xl hover:border-gray-300 hover:shadow-md transition-all duration-300"
-    >
-      {/* 封面图 */}
-      <div className="w-20 aspect-[2/3] md:w-32 flex-shrink-0 rounded-lg overflow-hidden bg-gradient-to-br relative">
-        {book.coverImage ? (
-          <img
-            src={book.coverImage}
-            alt={book.title}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div className={`w-full h-full bg-gradient-to-br ${book.gradient}`} />
-        )}
-      </div>
-
-      {/* 右侧内容 */}
-      <div className="flex-1 flex flex-col min-w-0">
-        {/* 第一行：标题 + 平台标签（左右对齐） */}
-        <div className="flex justify-between items-start mb-1">
-          <h3 className="text-base sm:text-lg font-semibold text-gray-900 leading-snug group-hover:text-gray-600 transition-colors flex-1 pr-2">
-            {book.title}
-          </h3>
-          {/* 平台标签 */}
-          <span className={`px-2 sm:px-3 py-1 ${platform.bgColor} ${platform.color} text-xs font-medium rounded-full flex-shrink-0`}>
-            {book.platform}
-          </span>
-        </div>
-
-        {/* 第二行：by 作者 */}
-        <p className="text-xs sm:text-sm text-gray-500 mb-1">
-          by <span className="text-gray-700">{book.author}</span>
-        </p>
-
-        {/* 第三行：状态 */}
-        <p className={`text-xs font-medium mb-2 ${book.status === 'Completed' ? 'text-green-600' : 'text-amber-600'}`}>
-          {book.status}
-        </p>
-
-        {/* 第四行：描述（斜体，限制2行） */}
-        <p className="text-sm text-gray-600 italic mb-4 line-clamp-2">
-          "{book.curatorNote}"
-        </p>
-
-        {/* 底部信息 - 桌面端用 mt-auto 推到封面底部对齐 */}
-        <div className="hidden md:flex items-center justify-between text-sm mt-auto">
-          <span className="text-gray-500">
-            In {book.stackCount} stacks
-          </span>
-          <span className="text-gray-600 hover:text-gray-900 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-            View <ArrowRight className="w-4 h-4" />
-          </span>
-        </div>
-      </div>
-    </a>
-  );
+// 格式化日期
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
 }
 
 // 相关书单卡片
@@ -179,26 +117,139 @@ interface RelatedStack {
   description: string;
   picks: number;
   gradient: string;
+  themes: string[];
+  tagline: string;
+  covers: {
+    gradient1: string;
+    gradient2: string;
+    gradient3: string;
+    icon1: string;
+    icon2: string;
+    icon3: string;
+  };
 }
+
+// Related Stacks 封面配置
+const COVER_CONFIGS = [
+  {
+    gradient1: 'from-indigo-500 to-purple-600',
+    gradient2: 'from-pink-500 to-rose-600',
+    gradient3: 'from-cyan-500 to-blue-600',
+    icon1: '🎮',
+    icon2: '⚔️',
+    icon3: '🏰'
+  },
+  {
+    gradient1: 'from-emerald-500 to-teal-600',
+    gradient2: 'from-amber-500 to-orange-600',
+    gradient3: 'from-sky-500 to-blue-600',
+    icon1: '💎',
+    icon2: '🏆',
+    icon3: '⭐'
+  },
+  {
+    gradient1: 'from-slate-600 to-slate-800',
+    gradient2: 'from-blue-600 to-indigo-800',
+    gradient3: 'from-purple-600 to-violet-800',
+    icon1: '🚀',
+    icon2: '🌌',
+    icon3: '🔬'
+  }
+];
 
 const getRelatedStacks = (currentStackId: string): RelatedStack[] => {
   const allStacks = stacksData.stacks as MVPStack[];
   return allStacks
     .filter(stack => stack.id !== currentStackId)
-    .slice(0, 2)
-    .map(stack => ({
-      id: stack.id,
-      title: stack.title,
-      description: stack.description,
-      picks: stack.entries.length,
-      gradient: stack.coverGradient
-    }));
+    .slice(0, 3)
+    .map((stack, index) => {
+      const config = COVER_CONFIGS[index % COVER_CONFIGS.length];
+      return {
+        id: stack.id,
+        title: stack.title,
+        description: stack.description,
+        picks: stack.entries.length,
+        gradient: stack.coverGradient,
+        themes: stack.themes,
+        tagline: stack.description,
+        covers: config
+      };
+    });
 };
+
+// 书籍封面图标配置（按书籍ID）
+const BOOK_COVER_CONFIGS: Record<string, { gradient: string; icon: string }> = {
+  'mother-of-learning': { gradient: 'from-blue-500 to-indigo-600', icon: '📘' },
+  'purple-days': { gradient: 'from-purple-500 to-indigo-600', icon: '👑' },
+  'the-perfect-run': { gradient: 'from-red-500 to-orange-500', icon: '⚡' },
+  'worth-the-candle': { gradient: 'from-emerald-500 to-teal-600', icon: '🔮' },
+  're-monarch': { gradient: 'from-violet-500 to-purple-600', icon: '🌀' },
+};
+
+// 获取书籍封面配置
+function getBookCoverConfig(bookId: string, gradient: string) {
+  return BOOK_COVER_CONFIGS[bookId] || { gradient, icon: '📖' };
+}
+
+// 书籍卡片组件
+function BookCard({ book }: { book: Book }) {
+  const coverConfig = getBookCoverConfig(book.id, book.gradient);
+
+  return (
+    <div
+      className="card card-hover p-5 sm:p-6 cursor-pointer"
+      onClick={() => window.location.href = `/novel/${book.id}`}
+    >
+      <div className="flex flex-row gap-4 sm:gap-5">
+        {/* 封面 */}
+        <div className="flex-shrink-0 w-[80px] sm:w-[96px]">
+          {book.coverImage ? (
+            <img 
+              src={book.coverImage} 
+              alt={book.title}
+              className="book-cover w-full h-auto"
+            />
+          ) : (
+            <div className={`book-cover w-full h-[107px] sm:h-[128px] bg-gradient-to-br ${coverConfig.gradient} flex items-center justify-center text-3xl sm:text-4xl`}>
+              {coverConfig.icon}
+            </div>
+          )}
+        </div>
+
+        {/* 信息 */}
+        <div className="flex-1 min-w-0" onClick={(e) => e.stopPropagation()} style={{ cursor: 'text' }}>
+          <div className="flex items-start justify-between gap-3 mb-1">
+            <h3 className="text-lg sm:text-xl font-bold text-deep-900">{book.title}</h3>
+            <button className="heart-btn flex-shrink-0 cursor-pointer" onClick={(e) => e.stopPropagation()}>
+              <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </button>
+          </div>
+          <p className="text-sm text-neutral-400 mb-3">by {book.author} · {book.platform}</p>
+
+          <p className="text-neutral-600 italic mb-4 line-clamp-2 text-sm sm:text-base">
+            "{book.curatorNote}"
+          </p>
+
+          <div className="flex flex-wrap gap-2">
+            {book.themes.slice(0, 3).map((theme, index) => {
+              const style = getTagStyle(theme);
+              return (
+                <span key={index} className={`tag ${style.bg} ${style.text} ${style.border}`}>
+                  {theme}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function StackDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const [selectedPlatform, setSelectedPlatform] = useState<'All' | Platform>('All');
-  const [email, setEmail] = useState('');
 
   // 根据 ID 从 MVP 数据中查找书单
   const mvpStack = (stacksData.stacks as MVPStack[]).find(stack => stack.id === id);
@@ -206,11 +257,11 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
   // 如果找不到书单，显示 404
   if (!mvpStack) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-deep-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Stack Not Found</h1>
-          <p className="text-gray-600 mb-8">The stack you're looking for doesn't exist.</p>
-          <a href="/" className="text-[#3B82F6] hover:underline">Return to Home</a>
+          <h1 className="text-4xl font-bold text-deep-900 mb-4">Stack Not Found</h1>
+          <p className="text-deep-600 mb-8">The stack you're looking for doesn't exist.</p>
+          <Link href="/" className="text-sonar-600 hover:underline">Return to Home</Link>
         </div>
       </div>
     );
@@ -229,152 +280,191 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
     })
     .filter((book): book is Book => book !== null);
 
-  // 根据平台筛选书籍
-  const filteredBooks = selectedPlatform === 'All'
-    ? books
-    : books.filter(book => book.platform === selectedPlatform);
-
   const relatedStacks = getRelatedStacks(id);
 
-  // 格式化更新日期
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
-  };
-
   return (
-    <div className="min-h-screen bg-white">
-      <main className="max-w-4xl mx-auto px-6">
-        {/* 顶部信息区 */}
-        <section className="pt-12 pb-8">
-          {/* EDITOR'S STACK 标签 */}
-          <div className="mb-3">
-            <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
-              EDITOR'S STACK · Updated {formatDate(mvpStack.updatedAt)}
-            </span>
-          </div>
+    <div className="min-h-screen bg-deep-50 text-deep-900 antialiased">
+      <main className="pt-20 pb-20">
+        {/* Header 区 */}
+        <section className="px-5 sm:px-6 max-w-4xl mx-auto mb-12">
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            {/* 封面堆叠 */}
+            <div className="cover-stack flex-shrink-0 mx-auto md:mx-0">
+              <div className="cover bg-gradient-to-br from-blue-500 to-indigo-600">
+                📘
+              </div>
+              <div className="cover bg-gradient-to-br from-purple-500 to-pink-600">
+                📕
+              </div>
+              <div className="cover bg-gradient-to-br from-emerald-500 to-teal-600">
+                📗
+              </div>
+            </div>
 
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-3">
-              {mvpStack.title}
-            </h1>
-            <p className="text-xl text-gray-500 mb-4">
-              {mvpStack.description}
-            </p>
-            <p className="text-sm text-gray-500 mb-4">
-              👤 Curated by <span className="font-medium text-gray-700">{mvpStack.curatorId}</span> · {mvpStack.entries.length} picks
-            </p>
+            {/* 书单信息 */}
+            <div className="flex-1 text-center md:text-left">
+              {/* 标签 */}
+              <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
+                {mvpStack.themes.slice(0, 3).map((theme, index) => {
+                  const style = getTagStyle(theme);
+                  return (
+                    <span key={index} className={`tag ${style.bg} ${style.text} ${style.border}`}>
+                      {theme}
+                    </span>
+                  );
+                })}
+              </div>
 
-            <div className="flex gap-3">
-              <button className="inline-flex items-center gap-2 px-6 py-2.5 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-medium rounded-xl transition-all">
-                <Bookmark className="w-4 h-4" />
-                Save Stack
-              </button>
-              <button className="inline-flex items-center gap-2 px-6 py-2.5 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-medium rounded-xl transition-all">
-                <Bell className="w-4 h-4" />
-                Subscribe
+              {/* 标题 */}
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-deep-900 mb-3">
+                {mvpStack.title}
+              </h1>
+
+              {/* Tagline */}
+              <p className="text-lg text-neutral-500 italic mb-5">
+                {mvpStack.description}
+              </p>
+
+              {/* 策展人 */}
+              <div className="flex items-center gap-3 justify-center md:justify-start mb-6">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white font-semibold">
+                  {mvpStack.curatorId.charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <p className="font-medium text-deep-900">{mvpStack.curatorId}</p>
+                  <p className="text-sm text-neutral-500">Curated {formatDate(mvpStack.createdAt)}</p>
+                </div>
+              </div>
+
+              {/* 收藏按钮 */}
+              <button className="btn-secondary">
+                <Bookmark className="w-5 h-5" />
+                Save to Collection
               </button>
             </div>
           </div>
         </section>
 
-        {/* Editor's Notes */}
-        <section className="mb-12">
-          <div className="p-6 bg-gray-50 rounded-xl">
-            <h2 className="text-lg font-semibold text-gray-900 mb-3">Editor's Notes</h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
+        {/* Editor's Note */}
+        <section className="px-5 sm:px-6 max-w-4xl mx-auto mb-16">
+          <div className="card-static p-6 sm:p-8">
+            <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-3">Editor's Note</h2>
+            <p className="text-neutral-600 leading-relaxed text-base sm:text-lg">
               {mvpStack.curatorNote}
             </p>
-            <div className="flex flex-wrap gap-2 text-sm text-gray-600">
-              {mvpStack.themes.slice(0, 3).map((theme, index) => (
-                <span key={index} className="flex items-center gap-1">
-                  ✓ {theme.charAt(0).toUpperCase() + theme.slice(1).replace(/-/g, ' ')}
-                </span>
-              ))}
-            </div>
           </div>
         </section>
 
-        {/* Picks 列表 */}
-        <section className="mb-16">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-gray-900">
-              Picks ({filteredBooks.length})
-            </h2>
+        {/* 书籍列表 */}
+        <section className="px-5 sm:px-6 max-w-4xl mx-auto mb-16">
+          <h2 className="text-2xl font-bold text-deep-900 mb-8">
+            Books in this Stack <span className="text-neutral-400 font-normal">({books.length})</span>
+          </h2>
 
-            {/* 平台筛选 Tab */}
-            <div className="flex gap-2">
-              {(['All', 'RR', 'SB', 'SV'] as const).map((platform) => (
-                <button
-                  key={platform}
-                  onClick={() => setSelectedPlatform(platform)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    selectedPlatform === platform
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  }`}
-                >
-                  {platform}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            {filteredBooks.map((book) => (
+          <div className="space-y-5">
+            {books.map((book) => (
               <BookCard key={book.id} book={book} />
             ))}
           </div>
         </section>
 
-        {/* More Like This */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">More Like This</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Related Stacks */}
+        <section className="px-5 sm:px-6 max-w-4xl mx-auto mb-16">
+          <h2 className="text-2xl font-bold text-deep-900 mb-8">You Might Also Like</h2>
+
+          {/* 桌面端网格，移动端横向滚动 */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {relatedStacks.map((stack) => (
-              <a
+              <Link
                 key={stack.id}
                 href={`/stack/${stack.id}`}
-                className="group block"
+                className="card card-lift p-5 cursor-pointer group"
               >
-                <div className={`h-32 bg-gradient-to-br ${stack.gradient} rounded-2xl mb-4`}/>
-                <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-gray-600 transition-colors">
-                  {stack.title}
-                </h3>
-                <p className="text-sm text-gray-500 mb-2">
-                  {stack.description}
-                </p>
-                <p className="text-xs text-gray-400">
-                  {stack.picks} picks
-                </p>
-              </a>
+                <div className="flex flex-nowrap gap-2 overflow-hidden mb-4">
+                  {stack.themes.slice(0, 2).map((theme, index) => {
+                    const style = getTagStyle(theme);
+                    return (
+                      <span key={index} className={`tag ${style.bg} ${style.text} ${style.border} flex-shrink-0`}>
+                        {theme}
+                      </span>
+                    );
+                  })}
+                </div>
+                <div className="flex justify-center mb-4">
+                  <div className="relative w-28 h-20">
+                    <div className={`absolute left-0 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient1} shadow-md transform -rotate-6 flex items-center justify-center text-xl group-hover:scale-105 transition-transform`}>
+                      {stack.covers.icon1}
+                    </div>
+                    <div className={`absolute left-8 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient2} shadow-md flex items-center justify-center text-xl group-hover:scale-105 transition-transform`}>
+                      {stack.covers.icon2}
+                    </div>
+                    <div className={`absolute left-16 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient3} shadow-md transform rotate-6 flex items-center justify-center text-xl group-hover:scale-105 transition-transform`}>
+                      {stack.covers.icon3}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-sm text-neutral-500 italic text-center mb-3">"{stack.tagline}"</p>
+                <h3 className="font-bold text-deep-900 mb-1 line-clamp-1">{stack.title}</h3>
+                <p className="text-sm text-neutral-500 mb-3 line-clamp-1">{stack.description}</p>
+                <div className="flex items-center justify-between pt-3 border-t border-deep-100">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-pink-500"></div>
+                    <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
+                  </div>
+                  <span className="text-sm text-neutral-400">{stack.picks} books</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* 移动端横向滚动 */}
+          <div className="sm:hidden flex gap-4 overflow-x-auto pb-4" style={{ WebkitOverflowScrolling: 'touch' }}>
+            {relatedStacks.map((stack) => (
+              <Link
+                key={stack.id}
+                href={`/stack/${stack.id}`}
+                className="card card-lift p-5 cursor-pointer group flex-shrink-0 w-[280px]"
+              >
+                <div className="flex flex-nowrap gap-2 overflow-hidden mb-4">
+                  {stack.themes.slice(0, 2).map((theme, index) => {
+                    const style = getTagStyle(theme);
+                    return (
+                      <span key={index} className={`tag ${style.bg} ${style.text} ${style.border} flex-shrink-0`}>
+                        {theme}
+                      </span>
+                    );
+                  })}
+                </div>
+                <div className="flex justify-center mb-4">
+                  <div className="relative w-28 h-20">
+                    <div className={`absolute left-0 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient1} shadow-md transform -rotate-6 flex items-center justify-center text-xl`}>
+                      {stack.covers.icon1}
+                    </div>
+                    <div className={`absolute left-8 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient2} shadow-md flex items-center justify-center text-xl`}>
+                      {stack.covers.icon2}
+                    </div>
+                    <div className={`absolute left-16 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient3} shadow-md transform rotate-6 flex items-center justify-center text-xl`}>
+                      {stack.covers.icon3}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-sm text-neutral-500 italic text-center mb-3">"{stack.tagline}"</p>
+                <h3 className="font-bold text-deep-900 mb-1 line-clamp-1">{stack.title}</h3>
+                <p className="text-sm text-neutral-500 mb-3 line-clamp-1">{stack.description}</p>
+                <div className="flex items-center justify-between pt-3 border-t border-deep-100">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-pink-500"></div>
+                    <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
+                  </div>
+                  <span className="text-sm text-neutral-400">{stack.picks} books</span>
+                </div>
+              </Link>
             ))}
           </div>
         </section>
-
-        {/* 简化版邮件订阅 */}
-        <section className="mb-16">
-          <div className="p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl">
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              <span className="text-2xl">📬</span>
-              <span className="text-gray-700 font-medium">Get curated lists</span>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className="flex-1 px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all min-w-0"
-              />
-              <button className="px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white font-medium rounded-xl transition-colors whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <Footer />
       </main>
+
+      <Footer />
     </div>
   );
 }

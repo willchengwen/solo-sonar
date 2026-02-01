@@ -22,10 +22,10 @@ const themes = (Object.entries(THEME_INFO || {}) as [Theme, { name: string; icon
 const FEATURED_THEMES = [
   { id: 'progression-fantasy' as Theme, name: 'Progression Fantasy', icon: 'PF', color: 'bg-blue-50 text-blue-600', hoverBorder: 'hover:border-blue-300' },
   { id: 'litrpg' as Theme, name: 'LitRPG', icon: 'LR', color: 'bg-indigo-50 text-indigo-600', hoverBorder: 'hover:border-indigo-300' },
-  { id: 'time-loop' as Theme, name: 'Time Loop', icon: 'TL', color: 'bg-slate-100 text-slate-700', hoverBorder: 'hover:border-slate-400' },
+  { id: 'time-loop' as Theme, name: 'Time Loop', icon: 'TL', color: 'bg-deep-100 text-deep-700', hoverBorder: 'hover:border-slate-400' },
   { id: 'isekai' as Theme, name: 'Isekai & Portal', icon: 'IS', color: 'bg-purple-50 text-purple-600', hoverBorder: 'hover:border-purple-300' },
   { id: 'hard-sci-fi' as Theme, name: 'Hard Sci-Fi', icon: 'SF', color: 'bg-amber-50 text-amber-600', hoverBorder: 'hover:border-amber-300' },
-  { id: 'dungeon' as Theme, name: 'Dungeon Crawler', icon: 'DC', color: 'bg-cyan-50 text-cyan-600', hoverBorder: 'hover:border-cyan-300' },
+  { id: 'dungeon' as Theme, name: 'Dungeon Crawler', icon: 'DC', color: 'bg-sonar-50 text-sonar-600', hoverBorder: 'hover:border-sonar-300' },
   { id: 'cozy' as Theme, name: 'Cozy Fantasy', icon: 'CZ', color: 'bg-emerald-50 text-emerald-600', hoverBorder: 'hover:border-emerald-300' },
 ];
 
@@ -46,7 +46,7 @@ const platforms = FEATURED_PLATFORMS.map((id) => {
   const info = PLATFORM_INFO[id];
   const platformColors: Record<string, string> = {
     'royal-road': 'bg-amber-400 text-white',
-    'spacebattles': 'bg-slate-800 text-white',
+    'spacebattles': 'bg-deep-800 text-white',
     'sufficient-velocity': 'bg-cyan-700 text-white',
   };
 
@@ -81,14 +81,14 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased scroll-smooth">
+    <div className="min-h-screen bg-deep-50 text-deep-900 font-sans antialiased scroll-smooth">
       <main className="pt-20 pb-32">
         {/* Hero Section */}
         <section className="relative px-5 sm:px-6 max-w-6xl mx-auto mb-24 sm:mb-30 overflow-hidden">
           {/* Background Sonar Animation */}
           <div className="absolute inset-0 items-center justify-center pointer-events-none opacity-20 -z-10 hidden lg:flex" style={{ left: '55%' }}>
-            <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-cyan-400/60 animate-sonar-ring"></div>
-            <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-cyan-300/50 animate-sonar-ring-delay-1"></div>
+            <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-sonar-400/60 animate-sonar-ring"></div>
+            <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-sonar-300/50 animate-sonar-ring-delay-1"></div>
             <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-cyan-200/40 animate-sonar-ring-delay-2"></div>
           </div>
 
@@ -96,7 +96,7 @@ export default function HomePage() {
             {/* Left Column - Text Content */}
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left z-10">
               {/* Stats Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-700 text-sm font-medium mb-5 sm:mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sonar-50 border border-cyan-200 text-cyan-700 text-sm font-medium mb-5 sm:mb-6">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-amber-400"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
@@ -105,10 +105,10 @@ export default function HomePage() {
               </div>
 
               {/* Main Heading */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-slate-900 leading-[1.1] mb-5 sm:mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-deep-900 leading-[1.1] mb-5 sm:mb-6">
                 Find the signal
                 <br />
-                <span className="text-cyan-600">in the noise</span>
+                <span className="text-sonar-600">in the noise</span>
               </h1>
 
               {/* Subheading */}
@@ -123,7 +123,7 @@ export default function HomePage() {
                     const element = document.getElementById('editors-picks');
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="px-6 sm:px-8 py-3 sm:py-3.5 bg-slate-900 text-white rounded-xl font-medium shadow-lg text-sm sm:text-base"
+                  className="px-6 sm:px-8 py-3 sm:py-3.5 bg-deep-900 text-white rounded-xl font-medium shadow-lg text-sm sm:text-base"
                 >
                   Browse Stacks
                 </button>
@@ -132,7 +132,7 @@ export default function HomePage() {
                     const element = document.getElementById('browse-themes');
                     element?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="px-5 sm:px-6 py-3 sm:py-3.5 bg-white/80 backdrop-blur text-slate-700 border border-slate-200 rounded-xl font-medium text-sm sm:text-base"
+                  className="px-5 sm:px-6 py-3 sm:py-3.5 bg-white/80 backdrop-blur text-deep-700 border border-deep-200 rounded-xl font-medium text-sm sm:text-base"
                 >
                   Explore
                 </button>
@@ -143,10 +143,10 @@ export default function HomePage() {
             <div className="relative h-[400px] lg:h-[500px] hidden lg:flex items-center justify-center z-10">
               {/* Sonar Ring Animation */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-                <div className="absolute w-[220px] h-[220px] rounded-full border-2 border-cyan-400/60 animate-sonar-ring"></div>
-                <div className="absolute w-[220px] h-[220px] rounded-full border-2 border-cyan-300/50 animate-sonar-ring-delay-1"></div>
+                <div className="absolute w-[220px] h-[220px] rounded-full border-2 border-sonar-400/60 animate-sonar-ring"></div>
+                <div className="absolute w-[220px] h-[220px] rounded-full border-2 border-sonar-300/50 animate-sonar-ring-delay-1"></div>
                 <div className="absolute w-[220px] h-[220px] rounded-full border-2 border-cyan-200/40 animate-sonar-ring-delay-2"></div>
-                <div className="absolute w-[280px] h-[280px] rounded-full border border-slate-200/30"></div>
+                <div className="absolute w-[280px] h-[280px] rounded-full border border-deep-200/30"></div>
               </div>
 
               {/* Floating Dots */}
@@ -192,15 +192,15 @@ export default function HomePage() {
 
               {/* Human Curated Badge */}
               <div className="absolute -top-2 right-0 z-30 animate-float-delayed">
-                <div className="bg-white rounded-xl px-3 py-2 shadow-sm border border-slate-100/80 flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-cyan-50 flex items-center justify-center">
-                    <svg className="w-3.5 h-3.5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-white rounded-xl px-3 py-2 shadow-sm border border-deep-100/80 flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-full bg-sonar-50 flex items-center justify-center">
+                    <svg className="w-3.5 h-3.5 text-sonar-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div>
                     <p className="text-[9px] uppercase tracking-wider text-neutral-400 font-medium">Quality</p>
-                    <p className="text-xs font-bold text-slate-900">Human Curated</p>
+                    <p className="text-xs font-bold text-deep-900">Human Curated</p>
                   </div>
                 </div>
               </div>
@@ -209,14 +209,14 @@ export default function HomePage() {
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
                 <div className="bg-white/90 backdrop-blur rounded-full px-4 py-2 shadow-sm border border-white/60 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                  <span className="text-[11px] text-cyan-600 font-medium">Ping received...</span>
+                  <span className="text-[11px] text-sonar-600 font-medium">Ping received...</span>
                 </div>
               </div>
             </div>
 
             {/* Mobile Book Fan */}
             <div className="flex lg:hidden justify-center -mt-4 mb-6">
-              <div className="mobile-fan-container relative w-[220px] h-[140px] flex items-center justify-center cursor-pointer" onClick={(e) => {
+              <div className="mobile-fan-container relative w-[280px] h-[180px] flex items-center justify-center cursor-pointer" onClick={(e) => {
                 const target = e.currentTarget;
                 target.classList.toggle('expanded');
               }}>
@@ -233,29 +233,29 @@ export default function HomePage() {
           {/* Title Area */}
           <div className="px-6 max-w-6xl mx-auto flex items-end justify-between mb-8 sm:mb-10">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Editor's Picks</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-deep-900 mb-2">Editor's Picks</h2>
               <p className="text-neutral-500 text-base">Hand-picked thematic collections updated weekly</p>
             </div>
             {/* Scroll Buttons */}
             <div className="flex gap-2">
               <button
                 onClick={() => scrollEditorPicks('left')}
-                className="p-2 rounded-lg border border-slate-200 hover:border-cyan-400 hover:bg-cyan-50 transition-all"
+                className="p-2 rounded-lg border border-deep-200 hover:border-sonar-400 hover:bg-sonar-50 transition-all"
               >
-                <ChevronLeft className="w-5 h-5 text-slate-600" />
+                <ChevronLeft className="w-5 h-5 text-deep-600" />
               </button>
               <button
                 onClick={() => scrollEditorPicks('right')}
-                className="p-2 rounded-lg border border-slate-200 hover:border-cyan-400 hover:bg-cyan-50 transition-all"
+                className="p-2 rounded-lg border border-deep-200 hover:border-sonar-400 hover:bg-sonar-50 transition-all"
               >
-                <ChevronRight className="w-5 h-5 text-slate-600" />
+                <ChevronRight className="w-5 h-5 text-deep-600" />
               </button>
             </div>
           </div>
 
           {/* Cards Container */}
           <div className="max-w-6xl mx-auto px-6">
-            <div className="editors-picks-container flex gap-5 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8 -mb-4">
+            <div className="editors-picks-container flex gap-5 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-4 pb-8 -mb-4">
               {Array.from({ length: 6 }).map((_, index) => {
                 // Use modulo to cycle through available stacks if less than 6
                 const list = stacks[index % stacks.length];
@@ -332,9 +332,9 @@ export default function HomePage() {
                 const config = cardConfigs[index] || cardConfigs[0];
 
                 return (
-                  <article key={list.id} className="group card flex-none w-[290px] sm:w-[310px] snap-start">
+                  <article key={list.id} className="group card card-hover card-lift flex-none w-[320px] sm:w-[310px] snap-start">
                     <Link href={`/stack/${list.id}`} className="block h-full">
-                      <div className={`bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl ${config.hoverBorder} transition-all duration-300 overflow-hidden h-full`}>
+                      <div className="h-full rounded-2xl overflow-hidden">
                         {/* Tags */}
                         <div className="px-5 pt-4 pb-2">
                           <div className="flex flex-wrap gap-1.5">
@@ -344,30 +344,24 @@ export default function HomePage() {
 
                         {/* Book Stack */}
                         <div className={`px-5 py-8 bg-gradient-to-br ${config.bgGradient}`}>
-                          <div
-                            className="book-stack mb-4"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.currentTarget.classList.toggle('expanded');
-                            }}
-                          >
+                          <div className="book-stack mb-4">
                             <div className={`book bg-gradient-to-br ${config.bookColors[0]}`}>{config.bookEmoji[0]}</div>
                             <div className={`book bg-gradient-to-br ${config.bookColors[1]}`}>{config.bookEmoji[1]}</div>
                             <div className={`book bg-gradient-to-br ${config.bookColors[2]}`}>{config.bookEmoji[2]}</div>
                           </div>
-                          <p className="text-center text-slate-600 text-sm italic font-medium">{config.quote}</p>
+                          <p className="text-center text-deep-600 text-sm italic font-medium">{config.quote}</p>
                         </div>
 
                         {/* Card Footer */}
-                        <div className="px-5 py-5 border-t border-slate-100">
-                          <h3 className="font-bold text-slate-900 text-base mb-1 truncate">{list.title}</h3>
-                          <p className="text-sm text-slate-500 mb-3 truncate">{list.description}</p>
+                        <div className="px-5 py-5 border-t border-deep-100">
+                          <h3 className="font-bold text-deep-900 text-base mb-1 truncate">{list.title}</h3>
+                          <p className="text-sm text-deep-500 mb-3 truncate">{list.description}</p>
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
                               <div className="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-pink-500"></div>
-                              <span className="text-sm font-medium text-slate-700">Sarah Chen</span>
+                              <span className="text-sm font-medium text-deep-700">Sarah Chen</span>
                             </div>
-                            <span className="text-sm text-slate-400">{list.entries.length} books</span>
+                            <span className="text-sm text-deep-400">{list.entries.length} books</span>
                           </div>
                         </div>
                       </div>
@@ -383,12 +377,12 @@ export default function HomePage() {
         <section className="px-6 max-w-6xl mx-auto mb-36 sm:mb-44" id="browse-themes">
           <div className="flex items-end justify-between mb-8 sm:mb-10">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Browse by Theme</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-deep-900 mb-2">Browse by Theme</h2>
               <p className="text-neutral-500 text-base">Discover stories through curated tags</p>
             </div>
             <Link
               href="#"
-              className="text-sm font-medium text-cyan-600 hover:text-cyan-700 flex items-center gap-1"
+              className="text-sm font-medium text-sonar-600 hover:text-cyan-700 flex items-center gap-1"
             >
               View all tags <ArrowRight className="w-4 h-4" />
             </Link>
@@ -399,7 +393,7 @@ export default function HomePage() {
               <Link
                 key={theme.id}
                 href={`/theme/${theme.id}`}
-                className={`group p-5 rounded-2xl bg-white border border-slate-200 shadow-sm ${theme.hoverBorder} hover:shadow-md transition-all duration-300`}
+                className={`group p-5 rounded-2xl bg-white border border-deep-200 hover:bg-slate-50 hover:border-deep-300 transition-all duration-300`}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className={`w-10 h-10 rounded-xl ${theme.color} flex items-center justify-center font-bold text-sm`}>
@@ -407,7 +401,7 @@ export default function HomePage() {
                   </div>
                   <ArrowRight className="w-5 h-5 text-neutral-300 group-hover:text-cyan-500 transition-colors" />
                 </div>
-                <h3 className="font-semibold text-slate-900 text-base">{theme.name}</h3>
+                <h3 className="font-semibold text-deep-900 text-base">{theme.name}</h3>
                 <p className="text-xs text-neutral-500 mt-1">
                   {Math.floor(Math.random() * 100 + 40)} books
                 </p>
@@ -417,12 +411,12 @@ export default function HomePage() {
             {/* All Tags Link */}
             <Link
               href="#"
-              className="p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[120px]"
+              className="p-5 rounded-2xl bg-deep-50 border border-deep-200 hover:bg-deep-100 hover:border-deep-300 transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[120px]"
             >
               <svg className="w-6 h-6 text-neutral-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
               </svg>
-              <span className="text-sm font-medium text-slate-600">All Tags</span>
+              <span className="text-sm font-medium text-deep-600">All Tags</span>
             </Link>
           </div>
         </section>
@@ -431,10 +425,10 @@ export default function HomePage() {
         <section className="px-6 max-w-6xl mx-auto mb-36 sm:mb-44">
           <div className="mb-8 sm:mb-10">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-cyan-600 animate-pulse"></div>
-              <span className="text-xs font-semibold text-cyan-600 uppercase tracking-wider">Platform Spotlight</span>
+              <div className="w-1.5 h-1.5 rounded-full bg-sonar-600 animate-pulse"></div>
+              <span className="text-xs font-semibold text-sonar-600 uppercase tracking-wider">Platform Spotlight</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Content from Multiple Sources</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-deep-900 mb-2">Content from Multiple Sources</h2>
             <p className="text-neutral-500 text-base">Aggregated from Royal Road, SpaceBattles, and beyond</p>
           </div>
 
@@ -443,20 +437,20 @@ export default function HomePage() {
               <Link
                 key={platform.id}
                 href={`/platform/${platform.id}`}
-                className="group p-6 bg-white rounded-2xl border border-slate-200 shadow-md hover:border-slate-300 hover:shadow-lg transition-all duration-300 cursor-pointer"
+                className="group p-6 bg-white rounded-2xl border border-deep-200 hover:bg-slate-50 hover:border-deep-300 transition-all duration-300 cursor-pointer"
               >
                 <div className="flex items-start mb-4">
                   <div className={`w-12 h-12 rounded-xl ${platform.color} flex items-center justify-center text-white font-bold shadow-sm group-hover:shadow-md transition-all group-hover:scale-105`}>
                     {platform.shortName}
                   </div>
                 </div>
-                <h3 className={`font-bold text-lg text-slate-900 mb-2 group-hover:${platform.id === 'royal-road' ? 'text-orange-600' : platform.id === 'spacebattles' ? 'text-blue-600' : 'text-emerald-600'} transition-colors`}>
+                <h3 className={`font-bold text-lg text-deep-900 mb-2 group-hover:${platform.id === 'royal-road' ? 'text-orange-600' : platform.id === 'spacebattles' ? 'text-blue-600' : 'text-emerald-600'} transition-colors`}>
                   {platform.name}
                 </h3>
                 <p className="text-sm text-neutral-500 mb-4 leading-relaxed">{platform.description}</p>
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                <div className="flex items-center justify-between pt-4 border-t border-deep-100">
                   <span className="text-xs font-medium text-neutral-400">{platform.count} books indexed</span>
-                  <span className="text-xs font-medium text-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-xs font-medium text-sonar-600 opacity-0 group-hover:opacity-100 transition-opacity">
                     Explore →
                   </span>
                 </div>
@@ -467,10 +461,10 @@ export default function HomePage() {
 
         {/* Module 4: Newsletter */}
         <section className="px-6 max-w-xl mx-auto text-center mb-2 sm:mb-4">
-          <div className="w-12 h-12 rounded-2xl bg-cyan-100 flex items-center justify-center mx-auto mb-4">
-            <Mail className="w-6 h-6 text-cyan-600" />
+          <div className="w-12 h-12 rounded-2xl bg-sonar-100 flex items-center justify-center mx-auto mb-4">
+            <Mail className="w-6 h-6 text-sonar-600" />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Sonar Signals</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-deep-900 mb-2">Sonar Signals</h2>
           <p className="text-neutral-500 mb-6 text-base">
             Get hand-picked reading lists when we find something exceptional. No spam, unsubscribe anytime.
           </p>
@@ -480,11 +474,11 @@ export default function HomePage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="flex-1 px-5 py-3 bg-white border border-slate-200 rounded-full text-slate-900 placeholder:text-neutral-400 focus:outline-none focus:border-cyan-300"
+              className="flex-1 px-5 py-3 bg-white border border-deep-200 rounded-full text-deep-900 placeholder:text-neutral-400 focus:outline-none focus:border-sonar-300"
             />
             <button
               type="submit"
-              className="px-6 py-3 bg-slate-900 text-white rounded-full font-medium hover:bg-slate-800 transition-colors"
+              className="px-6 py-3 bg-deep-900 text-white rounded-full font-medium hover:bg-deep-800 transition-colors"
             >
               Subscribe
             </button>
