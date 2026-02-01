@@ -108,7 +108,7 @@ export default function HomePage() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-deep-900 leading-[1.1] mb-5 sm:mb-6">
                 Find the signal
                 <br />
-                <span className="text-sonar-600">in the noise</span>
+                <span className="text-cyan-600">in the noise</span>
               </h1>
 
               {/* Subheading */}
