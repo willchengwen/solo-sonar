@@ -7,14 +7,14 @@ import Footer from '../../components/Footer';
 import { formatTagLabel } from '../../lib/tagStyles';
 
 // 平台类型
-type Platform = 'RR' | 'SB' | 'SV' | 'Site';
+type Platform = 'RR' | 'SB' | 'SV' | 'AMZ' | 'Site';
 
 // 书籍接口
 interface Novel {
   id: string;
   title: string;
   author: string;
-  platform: Platform;
+  platform: string; // 改为字符串类型，可以包含多个平台
   status: 'Completed' | 'Ongoing';
   chapters: number;
   words: string;
@@ -69,7 +69,8 @@ function mapPlatform(platform: string): Platform {
     'sufficient-velocity': 'SV',
     'personal-site': 'Site',
     'scribble-hub': 'RR',
-    'ao3': 'Site'
+    'ao3': 'Site',
+    'amazon': 'AMZ'
   };
   return platformMap[platform] || 'Site';
 }
@@ -93,11 +94,14 @@ function formatDate(dateString?: string): string {
 function convertMVPToNovel(mvpNovel: MVPNovel): Novel {
   const wordCount = mvpNovel.words || formatWordCount(mvpNovel.wordCount);
 
+  // 获取所有平台并连接成字符串
+  const allPlatforms = mvpNovel.links.map(link => mapPlatform(link.platform)).join(' · ');
+
   return {
     id: mvpNovel.id,
     title: mvpNovel.title,
     author: mvpNovel.author,
-    platform: mapPlatform(mvpNovel.links.find(l => l.isCanonical)?.platform || 'royal-road'),
+    platform: allPlatforms,
     status: mvpNovel.status === 'completed' ? 'Completed' : 'Ongoing',
     chapters: mvpNovel.chapterCount || 0,
     words: wordCount,
@@ -190,6 +194,7 @@ const PLATFORM_CONFIG: Record<Platform, { name: string; bgColor: string; iconBg:
   'RR': { name: 'Royal Road', bgColor: 'bg-amber-50', iconBg: 'bg-amber-400' },
   'SB': { name: 'SpaceBattles', bgColor: 'bg-orange-50', iconBg: 'bg-slate-800' },
   'SV': { name: 'Sufficient Velocity', bgColor: 'bg-deep-100', iconBg: 'bg-cyan-700' },
+  'AMZ': { name: 'Amazon', bgColor: 'bg-orange-50', iconBg: 'bg-orange-500' },
   'Site': { name: 'Author Site', bgColor: 'bg-emerald-50', iconBg: 'bg-emerald-500' },
 };
 
@@ -389,7 +394,7 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
               {/* Desktop: Basic Info */}
               <div className="hidden sm:block mb-8">
                 <h1 className="text-3xl sm:text-4xl font-bold text-deep-900 mb-3">{novelData.title}</h1>
-                <p className="text-lg text-neutral-500 mb-2">by {novelData.author} · {novelData.platform}</p>
+                <p className="text-lg text-neutral-500 mb-2">by {novelData.author} / {novelData.platform}</p>
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-neutral-500">{novelData.words} words</span>
                   <span className={`${novelData.status === 'Completed' ? 'status-completed' : 'status-ongoing'} px-2.5 py-1 rounded-full text-xs font-medium`}>{novelData.status}</span>

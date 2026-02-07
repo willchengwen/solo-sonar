@@ -1581,59 +1581,5 @@
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/stubborn-skill-grinder.jpg",
     "curatorNote": "Brain off, skill grind on. Orodan is gloriously simple: see wall, headbutt wall, gain skill levels. The comedy comes from applying this philosophy to increasingly cosmic problems. 750K+ words of pure power fantasy comfort food.",
     "words": ""
-  },
-  {
-    "id": "mother-of-learning",
-    "title": "Mother of Learning",
-    "author": "nobody103",
-    "synopsis": "Zorian is a teenage mage of humble birth and modest skill, attending his third year of education at Cyoria's magical academy. A month before the end of year exams, he finds himself trapped in a time loop, repeating the same month over and over again.",
-    "themes": [
-      "time-loop",
-      "progression",
-      "rational"
-    ],
-    "links": [
-      {
-        "platform": "royal-road",
-        "url": "https://www.royalroad.com/fiction/21220/mother-of-learning",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 15,
-    "savedCount": 2341,
-    "coverImage": "",
-    "curatorNote": "",
-    "words": ""
-  },
-  {
-    "id": "worth-the-candle",
-    "title": "Worth the Candle",
-    "author": "Alexander Wales",
-    "synopsis": "Juniper Smith is a teenage dungeon master who finds himself transported into a world that is an amalgamation of every fictional world he ever created. Now he must survive and find meaning in a place built from his own imagination.",
-    "themes": [
-      "rational",
-      "litrpg",
-      "isekai",
-      "progression"
-    ],
-    "links": [
-      {
-        "platform": "royal-road",
-        "url": "https://www.royalroad.com/fiction/25137/worth-the-candle",
-        "isCanonical": true
-      },
-      {
-        "platform": "ao3",
-        "url": "https://archiveofourown.org/works/11478249",
-        "isCanonical": false
-      }
-    ],
-    "status": "completed",
-    "stackCount": 12,
-    "savedCount": 1023,
-    "coverImage": "",
-    "curatorNote": "",
-    "words": ""
   }
 ]

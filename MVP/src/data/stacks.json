@@ -9,64 +9,52 @@
       "curatorNote": "Mother of Learning set the gold standard for time loop fiction. These stories share its DNA: intelligent protagonists who learn from their mistakes, intricate magic systems worth exploring, and that satisfying sense of earned progress. Each one gave me the same feeling of 'just one more chapter' that MoL did.",
       "entries": [
         {
-          "novelId": "mother-of-learning",
-          "curatorNote": "The gold standard. If you somehow haven't read this yet, start here.",
-          "addedAt": "2024-01-15",
-          "order": 1
-        },
-        {
           "novelId": "purple-days",
           "curatorNote": "What if Joffrey Baratheon got a redemption arc through a time loop? Sounds crazy, but it works brilliantly. The character development is phenomenal.",
           "addedAt": "2024-01-15",
-          "order": 2
+          "order": 1
         },
         {
           "novelId": "the-perfect-run",
           "curatorNote": "A more lighthearted take on time loops. Ryan's humor masks genuine depth, and the superhero setting is fresh.",
           "addedAt": "2024-01-15",
-          "order": 3
-        },
-        {
-          "novelId": "worth-the-candle",
-          "curatorNote": "Not a time loop, but scratches the same itch: a rational protagonist dissecting a fantasy world's rules. More meta and introspective.",
-          "addedAt": "2024-01-16",
-          "order": 4
+          "order": 2
         },
         {
           "novelId": "the-years-of-apocalypse",
           "curatorNote": "The true spiritual successor to Mother of Learning. Magic academy, time loops, gradual mastery—but with a fresh voice and a female protagonist who earns every ounce of power. Currently the best ongoing time loop story.",
           "addedAt": "2024-03-25",
-          "order": 5
+          "order": 3
         },
         {
           "novelId": "the-menocht-loop",
           "curatorNote": "What happens AFTER the loop? Most time loop stories end when the protagonist escapes. This one asks: what does a god-tier looper do with all that power in the real world? Six books, ongoing on Royal Road.",
           "addedAt": "2024-03-25",
-          "order": 6
+          "order": 4
         },
         {
           "novelId": "dear-spellbook",
           "curatorNote": "The journal format works brilliantly here—you ARE the spellbook. Cozy mystery meets time loop, with a magic system that rewards curiosity. Travis Baldree narrates the audiobook.",
           "addedAt": "2024-03-25",
-          "order": 7
+          "order": 5
         },
         {
           "novelId": "re-monarch",
           "curatorNote": "Time loop meets political intrigue. The twist? Your killer loops with you. Cairn's growth from drunken wastrel to competent ruler feels earned. Luke Daniels narrates the audiobook.",
           "addedAt": "2024-03-25",
-          "order": 8
+          "order": 6
         },
         {
           "novelId": "blessed-time",
           "curatorNote": "CoCop delivers again. The cost of each loop—losing everything you've built—creates real stakes. Micah's reluctance to use his power makes him more human than most time loop protagonists. Complete series.",
           "addedAt": "2024-03-25",
-          "order": 9
+          "order": 7
         },
         {
           "novelId": "stubborn-skill-grinder",
           "curatorNote": "Brain off, skill grind on. Orodan is gloriously simple: see wall, headbutt wall, gain skill levels. The comedy comes from applying this philosophy to increasingly cosmic problems. 750K+ words of pure power fantasy comfort food.",
           "addedAt": "2024-03-25",
-          "order": 10
+          "order": 8
         }
       ],
       "themes": [

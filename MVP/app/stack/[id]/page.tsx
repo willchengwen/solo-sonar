@@ -9,7 +9,7 @@ import Footer from '../../components/Footer';
 import { formatTagLabel } from '../../lib/tagStyles';
 
 // 平台类型
-type Platform = 'RR' | 'SB' | 'SV' | 'Site';
+type Platform = 'RR' | 'SB' | 'SV' | 'AMZ' | 'Site';
 
 // MVP Stack 接口
 interface MVPStack {
@@ -64,7 +64,7 @@ interface Book {
   id: string;
   title: string;
   author: string;
-  platform: Platform;
+  platform: string; // 改为字符串类型，可以包含多个平台
   curatorNote: string;
   status: 'Completed' | 'Ongoing';
   stackCount: number;
@@ -81,20 +81,22 @@ function mapPlatform(platform: string): Platform {
     'sufficient-velocity': 'SV',
     'personal-site': 'Site',
     'scribble-hub': 'RR',
-    'ao3': 'Site'
+    'ao3': 'Site',
+    'amazon': 'AMZ'
   };
   return platformMap[platform] || 'Site';
 }
 
 // 将 MVP 数据转换为页面格式
 function convertMVPToBook(mvpNovel: MVPNovel, curatorNote: string): Book {
-  const canonicalLink = mvpNovel.links.find(link => link.isCanonical) || mvpNovel.links[0];
+  // 获取所有平台并连接成字符串
+  const allPlatforms = mvpNovel.links.map(link => mapPlatform(link.platform)).join(' · ');
 
   return {
     id: mvpNovel.id,
     title: mvpNovel.title,
     author: mvpNovel.author,
-    platform: mapPlatform(canonicalLink.platform),
+    platform: allPlatforms,
     curatorNote: curatorNote,
     status: mvpNovel.status === 'completed' ? 'Completed' : 'Ongoing',
     stackCount: mvpNovel.stackCount,
@@ -226,7 +228,7 @@ function BookCard({ book }: { book: Book }) {
               </svg>
             </button>
           </div>
-          <p className="text-sm text-neutral-400 mb-3">by {book.author} · {book.platform}</p>
+          <p className="text-sm text-neutral-400 mb-3">by {book.author} / {book.platform}</p>
 
           <p className="text-neutral-600 italic mb-4 line-clamp-2 text-sm sm:text-base">
             "{book.curatorNote}"

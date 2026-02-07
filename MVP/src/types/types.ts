@@ -6,12 +6,13 @@
 // ============================================
 
 /** 支持的平台 */
-export type Platform = 
+export type Platform =
   | 'royal-road'      // Royal Road - Progression Fantasy 大本营
   | 'spacebattles'    // SpaceBattles - 论坛格式，硬科幻
   | 'sufficient-velocity' // Sufficient Velocity - Quest互动小说
   | 'scribble-hub'    // Scribble Hub - 女性向/日系
   | 'ao3'             // Archive of Our Own - 同人文
+  | 'amazon'          // Amazon - 电子书购买
   | 'personal-site';  // 作者独立站
 
 /** 平台显示信息 */
@@ -21,6 +22,7 @@ export const PLATFORM_INFO: Record<Platform, { name: string; shortName: string; 
   'sufficient-velocity': { name: 'Sufficient Velocity', shortName: 'SV', color: 'bg-gray-600' },
   'scribble-hub': { name: 'Scribble Hub', shortName: 'SH', color: 'bg-pink-500' },
   'ao3': { name: 'Archive of Our Own', shortName: 'AO3', color: 'bg-red-600' },
+  'amazon': { name: 'Amazon', shortName: 'Amazon', color: 'bg-orange-600' },
   'personal-site': { name: 'Author Site', shortName: 'Site', color: 'bg-emerald-600' },
 };
 
