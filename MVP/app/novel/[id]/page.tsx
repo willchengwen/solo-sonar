@@ -313,7 +313,7 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                     <h1 className="text-xl font-bold text-deep-900 mb-1">{novelData.title}</h1>
                     <p className="text-sm text-neutral-500 mb-1">by {novelData.author} / {novelData.platform}</p>
                     <p className="text-sm text-neutral-500 mb-2">
-                      {novelData.words} words / <span className={`${novelData.status === 'Completed' ? 'status-completed' : 'status-ongoing'} px-2 py-0.5 rounded-full text-xs font-medium`}>{novelData.status}</span>
+                      {novelData.words} words <span className={`${novelData.status === 'Completed' ? 'status-completed' : 'status-ongoing'} px-2 py-0.5 rounded-full text-xs font-medium ml-2`}>{novelData.status}</span>
                     </p>
                   </div>
                   <button className="heart-btn self-start">
@@ -739,7 +739,7 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
       {/* Editor's Take Modal */}
       {editorTakeModalOpen && novelData.editorNote && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-5"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 sm:bg-black/60 p-5"
           onClick={() => setEditorTakeModalOpen(false)}
         >
           <div
