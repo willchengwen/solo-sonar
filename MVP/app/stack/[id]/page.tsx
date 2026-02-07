@@ -6,7 +6,7 @@ import Link from 'next/link';
 import stacksData from '@/src/data/stacks.json';
 import novelsData from '@/data/books.json';
 import Footer from '../../components/Footer';
-import { getTagStyle, formatTagLabel } from '../../lib/tagStyles';
+import { formatTagLabel } from '../../lib/tagStyles';
 
 // 平台类型
 type Platform = 'RR' | 'SB' | 'SV' | 'Site';
@@ -204,8 +204,8 @@ function BookCard({ book }: { book: Book }) {
         {/* 封面 */}
         <div className="flex-shrink-0 w-[80px] sm:w-[96px]">
           {book.coverImage ? (
-            <img 
-              src={book.coverImage} 
+            <img
+              src={book.coverImage}
               alt={book.title}
               className="book-cover w-full h-auto"
             />
@@ -222,7 +222,7 @@ function BookCard({ book }: { book: Book }) {
             <h3 className="text-lg sm:text-xl font-bold text-deep-900">{book.title}</h3>
             <button className="heart-btn flex-shrink-0 cursor-pointer" onClick={(e) => e.stopPropagation()}>
               <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </button>
           </div>
@@ -233,14 +233,15 @@ function BookCard({ book }: { book: Book }) {
           </p>
 
           <div className="flex flex-wrap gap-2">
-            {book.themes.slice(0, 3).map((theme, index) => {
-              const style = getTagStyle(theme);
-              return (
-                <span key={index} className={`tag ${style.bg} ${style.text} ${style.border}`}>
-                  {formatTagLabel(theme)}
-                </span>
-              );
-            })}
+            {book.themes.slice(0, 3).map((theme, index) => (
+              <span
+                key={index}
+                className="tag"
+                style={{ background: '#f9fafb', color: '#4b5563', borderColor: '#e5e7eb' }}
+              >
+                {formatTagLabel(theme)}
+              </span>
+            ))}
           </div>
         </div>
       </div>
@@ -305,14 +306,15 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
             <div className="flex-1 text-center md:text-left">
               {/* 标签 */}
               <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
-                {mvpStack.themes.slice(0, 3).map((theme, index) => {
-                  const style = getTagStyle(theme);
-                  return (
-                    <span key={index} className={`tag ${style.bg} ${style.text} ${style.border}`}>
-                      {formatTagLabel(theme)}
-                    </span>
-                  );
-                })}
+                {mvpStack.themes.slice(0, 3).map((theme, index) => (
+                  <span
+                    key={index}
+                    className="tag"
+                    style={{ background: '#f9fafb', color: '#4b5563', borderColor: '#e5e7eb' }}
+                  >
+                    {formatTagLabel(theme)}
+                  </span>
+                ))}
               </div>
 
               {/* 标题 */}
@@ -381,14 +383,15 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                 className="card card-lift p-5 cursor-pointer group"
               >
                 <div className="flex flex-nowrap gap-2 overflow-hidden mb-4">
-                  {stack.themes.slice(0, 2).map((theme, index) => {
-                    const style = getTagStyle(theme);
-                    return (
-                      <span key={index} className={`tag ${style.bg} ${style.text} ${style.border} flex-shrink-0`}>
-                        {formatTagLabel(theme)}
-                      </span>
-                    );
-                  })}
+                  {stack.themes.slice(0, 2).map((theme, index) => (
+                    <span
+                      key={index}
+                      className="tag flex-shrink-0"
+                      style={{ background: '#f9fafb', color: '#4b5563', borderColor: '#e5e7eb' }}
+                    >
+                      {formatTagLabel(theme)}
+                    </span>
+                  ))}
                 </div>
                 <div className="flex justify-center mb-4">
                   <div className="relative w-28 h-20">
@@ -428,46 +431,47 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
               }}
             >
               {relatedStacks.map((stack) => (
-              <Link
-                key={stack.id}
-                href={`/stack/${stack.id}`}
-                className="card card-lift p-5 cursor-pointer group flex-shrink-0 w-[280px]"
-              >
-                <div className="flex flex-nowrap gap-2 overflow-hidden mb-4">
-                  {stack.themes.slice(0, 2).map((theme, index) => {
-                    const style = getTagStyle(theme);
-                    return (
-                      <span key={index} className={`tag ${style.bg} ${style.text} ${style.border} flex-shrink-0`}>
+                <Link
+                  key={stack.id}
+                  href={`/stack/${stack.id}`}
+                  className="card card-lift p-5 cursor-pointer group flex-shrink-0 w-[280px]"
+                >
+                  <div className="flex flex-nowrap gap-2 overflow-hidden mb-4">
+                    {stack.themes.slice(0, 2).map((theme, index) => (
+                      <span
+                        key={index}
+                        className="tag flex-shrink-0"
+                        style={{ background: '#f9fafb', color: '#4b5563', borderColor: '#e5e7eb' }}
+                      >
                         {formatTagLabel(theme)}
                       </span>
-                    );
-                  })}
-                </div>
-                <div className="flex justify-center mb-4">
-                  <div className="relative w-28 h-20">
-                    <div className={`absolute left-0 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient1} shadow-md transform -rotate-6 flex items-center justify-center text-xl`}>
-                      {stack.covers.icon1}
-                    </div>
-                    <div className={`absolute left-8 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient2} shadow-md flex items-center justify-center text-xl`}>
-                      {stack.covers.icon2}
-                    </div>
-                    <div className={`absolute left-16 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient3} shadow-md transform rotate-6 flex items-center justify-center text-xl`}>
-                      {stack.covers.icon3}
+                    ))}
+                  </div>
+                  <div className="flex justify-center mb-4">
+                    <div className="relative w-28 h-20">
+                      <div className={`absolute left-0 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient1} shadow-md transform -rotate-6 flex items-center justify-center text-xl`}>
+                        {stack.covers.icon1}
+                      </div>
+                      <div className={`absolute left-8 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient2} shadow-md flex items-center justify-center text-xl`}>
+                        {stack.covers.icon2}
+                      </div>
+                      <div className={`absolute left-16 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient3} shadow-md transform rotate-6 flex items-center justify-center text-xl`}>
+                        {stack.covers.icon3}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <p className="text-sm text-neutral-500 italic text-center mb-3">"{stack.tagline}"</p>
-                <h3 className="font-bold text-deep-900 mb-1 line-clamp-1">{stack.title}</h3>
-                <p className="text-sm text-neutral-500 mb-3 line-clamp-1">{stack.description}</p>
-                <div className="flex items-center justify-between pt-3 border-t border-deep-100">
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-pink-500"></div>
-                    <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
+                  <p className="text-sm text-neutral-500 italic text-center mb-3">"{stack.tagline}"</p>
+                  <h3 className="font-bold text-deep-900 mb-1 line-clamp-1">{stack.title}</h3>
+                  <p className="text-sm text-neutral-500 mb-3 line-clamp-1">{stack.description}</p>
+                  <div className="flex items-center justify-between pt-3 border-t border-deep-100">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-pink-500"></div>
+                      <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
+                    </div>
+                    <span className="text-sm text-neutral-400">{stack.picks} books</span>
                   </div>
-                  <span className="text-sm text-neutral-400">{stack.picks} books</span>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
             </div>
           </div>
         </section>

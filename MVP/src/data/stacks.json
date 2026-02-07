@@ -31,10 +31,54 @@
           "curatorNote": "Not a time loop, but scratches the same itch: a rational protagonist dissecting a fantasy world's rules. More meta and introspective.",
           "addedAt": "2024-01-16",
           "order": 4
+        },
+        {
+          "novelId": "the-years-of-apocalypse",
+          "curatorNote": "The true spiritual successor to Mother of Learning. Magic academy, time loops, gradual mastery—but with a fresh voice and a female protagonist who earns every ounce of power. Currently the best ongoing time loop story.",
+          "addedAt": "2024-03-25",
+          "order": 5
+        },
+        {
+          "novelId": "the-menocht-loop",
+          "curatorNote": "What happens AFTER the loop? Most time loop stories end when the protagonist escapes. This one asks: what does a god-tier looper do with all that power in the real world? Six books, ongoing on Royal Road.",
+          "addedAt": "2024-03-25",
+          "order": 6
+        },
+        {
+          "novelId": "dear-spellbook",
+          "curatorNote": "The journal format works brilliantly here—you ARE the spellbook. Cozy mystery meets time loop, with a magic system that rewards curiosity. Travis Baldree narrates the audiobook.",
+          "addedAt": "2024-03-25",
+          "order": 7
+        },
+        {
+          "novelId": "re-monarch",
+          "curatorNote": "Time loop meets political intrigue. The twist? Your killer loops with you. Cairn's growth from drunken wastrel to competent ruler feels earned. Luke Daniels narrates the audiobook.",
+          "addedAt": "2024-03-25",
+          "order": 8
+        },
+        {
+          "novelId": "blessed-time",
+          "curatorNote": "CoCop delivers again. The cost of each loop—losing everything you've built—creates real stakes. Micah's reluctance to use his power makes him more human than most time loop protagonists. Complete series.",
+          "addedAt": "2024-03-25",
+          "order": 9
+        },
+        {
+          "novelId": "stubborn-skill-grinder",
+          "curatorNote": "Brain off, skill grind on. Orodan is gloriously simple: see wall, headbutt wall, gain skill levels. The comedy comes from applying this philosophy to increasingly cosmic problems. 750K+ words of pure power fantasy comfort food.",
+          "addedAt": "2024-03-25",
+          "order": 10
         }
       ],
-      "themes": ["time-loop", "progression", "rational"],
-      "platforms": ["royal-road", "spacebattles", "sufficient-velocity"],
+      "themes": [
+        "time-loop",
+        "progression",
+        "rational"
+      ],
+      "platforms": [
+        "royal-road",
+        "spacebattles",
+        "sufficient-velocity"
+      ],
       "coverGradient": "from-blue-50/80 via-blue-50/40 to-slate-50",
       "createdAt": "2024-01-15",
       "updatedAt": "2024-01-20",
@@ -64,8 +108,15 @@
           "order": 2
         }
       ],
-      "themes": ["rational", "sci-fi", "progression"],
-      "platforms": ["spacebattles", "personal-site"],
+      "themes": [
+        "rational",
+        "sci-fi",
+        "progression"
+      ],
+      "platforms": [
+        "spacebattles",
+        "personal-site"
+      ],
       "coverGradient": "from-purple-50/80 via-purple-50/40 to-slate-50",
       "createdAt": "2024-02-01",
       "updatedAt": "2024-02-15",
@@ -119,8 +170,15 @@
           "order": 6
         }
       ],
-      "themes": ["completed", "progression"],
-      "platforms": ["royal-road", "spacebattles", "personal-site"],
+      "themes": [
+        "completed",
+        "progression"
+      ],
+      "platforms": [
+        "royal-road",
+        "spacebattles",
+        "personal-site"
+      ],
       "coverGradient": "from-emerald-50/80 via-emerald-50/40 to-slate-50",
       "createdAt": "2024-03-01",
       "updatedAt": "2024-03-10",
@@ -150,8 +208,15 @@
           "order": 2
         }
       ],
-      "themes": ["base-building", "kingdom-building", "slice-of-life"],
-      "platforms": ["royal-road", "personal-site"],
+      "themes": [
+        "base-building",
+        "kingdom-building",
+        "slice-of-life"
+      ],
+      "platforms": [
+        "royal-road",
+        "personal-site"
+      ],
       "coverGradient": "from-amber-50/80 via-amber-50/40 to-slate-50",
       "createdAt": "2024-03-15",
       "updatedAt": "2024-03-20",

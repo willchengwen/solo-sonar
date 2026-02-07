@@ -67,18 +67,17 @@ export default function Header() {
     <>
       {/* Fixed Top Navigation Bar (Full Width) */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out bg-white/95 backdrop-blur-sm border-b border-deep-200/50 ${
-          isVisible ? 'translate-y-0' : '-translate-y-[150%]'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out bg-white/95 backdrop-blur-sm border-b border-deep-200/50 ${isVisible ? 'translate-y-0' : '-translate-y-[150%]'
+          }`}
       >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-sonar-600 rounded-full flex items-center justify-center shadow-sm">
+            <div className="w-8 h-8 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: '#0891B2' }}>
               <svg className="w-4 h-4" viewBox="0 0 32 32" fill="none">
-                <circle cx="16" cy="16" r="12" stroke="white" strokeWidth="2" opacity="0.5"/>
-                <circle cx="16" cy="16" r="7" stroke="white" strokeWidth="2.5" opacity="0.9"/>
-                <circle cx="16" cy="16" r="3" fill="white"/>
+                <circle cx="16" cy="16" r="12" stroke="white" strokeWidth="2" opacity="0.5" />
+                <circle cx="16" cy="16" r="7" stroke="white" strokeWidth="2.5" opacity="0.9" />
+                <circle cx="16" cy="16" r="3" fill="white" />
               </svg>
             </div>
             <Link href="/" className="font-semibold text-lg text-deep-900">

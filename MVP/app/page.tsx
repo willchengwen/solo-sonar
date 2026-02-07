@@ -25,7 +25,7 @@ const FEATURED_THEMES = [
   { id: 'time-loop' as Theme, name: 'Time Loop', icon: 'TL', color: 'bg-deep-100 text-deep-700', hoverBorder: 'hover:border-slate-400' },
   { id: 'isekai' as Theme, name: 'Isekai & Portal', icon: 'IS', color: 'bg-purple-50 text-purple-600', hoverBorder: 'hover:border-purple-300' },
   { id: 'hard-sci-fi' as Theme, name: 'Hard Sci-Fi', icon: 'SF', color: 'bg-amber-50 text-amber-600', hoverBorder: 'hover:border-amber-300' },
-  { id: 'dungeon' as Theme, name: 'Dungeon Crawler', icon: 'DC', color: 'bg-sonar-50 text-sonar-600', hoverBorder: 'hover:border-sonar-300' },
+  { id: 'dungeon' as Theme, name: 'Dungeon Crawler', icon: 'DC', color: 'bg-sonar-50 text-sonar-500', hoverBorder: 'hover:border-sonar-300' },
   { id: 'cozy' as Theme, name: 'Cozy Fantasy', icon: 'CZ', color: 'bg-emerald-50 text-emerald-600', hoverBorder: 'hover:border-emerald-300' },
 ];
 
@@ -94,145 +94,132 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-deep-50 text-deep-900 font-sans antialiased scroll-smooth">
       <main className="pt-20 pb-32">
-        {/* Hero Section */}
-        <section className="relative px-5 sm:px-6 max-w-6xl mx-auto mb-24 sm:mb-30 overflow-hidden">
-          {/* Background Sonar Animation */}
-          <div className="absolute inset-0 items-center justify-center pointer-events-none opacity-20 -z-10 hidden lg:flex" style={{ left: '55%' }}>
-            <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-sonar-400/60 animate-sonar-ring"></div>
-            <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-sonar-300/50 animate-sonar-ring-delay-1"></div>
-            <div className="absolute w-[300px] h-[300px] rounded-full border-2 border-cyan-200/40 animate-sonar-ring-delay-2"></div>
-          </div>
+        {/* Hero Section - V3 Design */}
+        <section className="relative px-5 sm:px-6 max-w-6xl mx-auto pt-14 sm:pt-20 mb-36 sm:mb-44">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[550px] lg:min-h-[620px]">
-            {/* Left Column - Text Content */}
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left z-10">
-              {/* Stats Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sonar-50 border border-cyan-200 text-cyan-700 text-sm font-medium mb-5 sm:mb-6">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-amber-400"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
-                </span>
-                Hundreds of books and counting
+            {/* Left: Task-oriented copy (3 cols) */}
+            <div className="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left">
+
+              {/* Live badge */}
+              <div className="opacity-0 animate-fade-up inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-deep-200 shadow-sm mb-6">
+                <div className="flex items-center gap-1.5">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-emerald-400"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                  </span>
+                  <span className="text-xs font-semibold text-emerald-600">Live</span>
+                </div>
+                <div className="w-px h-4 bg-deep-200"></div>
+                <span className="text-xs text-deep-600">Curating across <strong className="text-deep-800">multiple</strong> platforms</span>
               </div>
 
-              {/* Main Heading */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-deep-900 leading-[1.1] mb-5 sm:mb-6">
-                Find the signal
-                <br />
-                <span className="text-cyan-600">in the noise</span>
+              {/* Heading */}
+              <h1 className="opacity-0 animate-fade-up-1 text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold tracking-tight text-deep-900 leading-[1.15] mb-4 sm:mb-5">
+                Stop digging through<br />
+                <span className="font-serif italic" style={{ color: '#0891B2' }}>10,000 bad novels.</span>
               </h1>
 
-              {/* Subheading */}
-              <p className="text-base sm:text-lg lg:text-xl text-neutral-500 max-w-md lg:max-w-xl leading-relaxed mb-8 sm:mb-10">
-                Find quality stories across Royal Road, SpaceBattles, and more+
+              {/* Sub */}
+              <p className="opacity-0 animate-fade-up-2 text-base sm:text-lg text-deep-500 max-w-lg leading-relaxed mb-6 sm:mb-8">
+                Find quality stories across Royal Road, SpaceBattles, and more. <strong className="text-deep-700">Curated by readers, for readers.</strong>
               </p>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-row gap-3 sm:gap-4">
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('editors-picks');
-                    element?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="px-6 sm:px-8 py-3 sm:py-3.5 bg-deep-900 text-white rounded-xl font-medium shadow-lg text-sm sm:text-base"
-                >
-                  Browse Stacks
-                </button>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('browse-themes');
-                    element?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="px-5 sm:px-6 py-3 sm:py-3.5 bg-white/80 backdrop-blur text-deep-700 border border-deep-200 rounded-xl font-medium text-sm sm:text-base"
-                >
-                  Explore
-                </button>
+              {/* Theme chips */}
+              <div className="opacity-0 animate-fade-up-3 w-full mb-8">
+                <p className="text-xs font-semibold uppercase tracking-wider text-deep-400 mb-3">I&apos;m looking for...</p>
+                <div className="flex flex-wrap justify-center lg:justify-start gap-2">
+                  <Link href="/theme/time-loop" className="theme-chip px-4 py-2 rounded-full bg-white border border-deep-200 text-sm font-medium text-deep-700 hover:border-sonar-400 hover:text-sonar-700 hover:bg-sonar-50">🔁 Time Loop</Link>
+                  <Link href="/theme/litrpg" className="theme-chip px-4 py-2 rounded-full bg-white border border-deep-200 text-sm font-medium text-deep-700 hover:border-sonar-400 hover:text-sonar-700 hover:bg-sonar-50">⚔️ LitRPG</Link>
+                  <Link href="/theme/dark-fantasy" className="theme-chip px-4 py-2 rounded-full bg-white border border-deep-200 text-sm font-medium text-deep-700 hover:border-sonar-400 hover:text-sonar-700 hover:bg-sonar-50">🌑 Dark Fantasy</Link>
+                  <Link href="/theme/completed" className="theme-chip px-4 py-2 rounded-full bg-white border border-deep-200 text-sm font-medium text-deep-700 hover:border-sonar-400 hover:text-sonar-700 hover:bg-sonar-50">✅ Completed</Link>
+                  <Link href="/theme/hidden-gems" className="theme-chip px-4 py-2 rounded-full bg-white border border-deep-200 text-sm font-medium text-deep-700 hover:border-sonar-400 hover:text-sonar-700 hover:bg-sonar-50">💎 Hidden Gems</Link>
+                  <Link href="/theme/cultivation" className="theme-chip px-4 py-2 rounded-full bg-white border border-deep-200 text-sm font-medium text-deep-700 hover:border-sonar-400 hover:text-sonar-700 hover:bg-sonar-50">🐉 Cultivation</Link>
+                  <Link href="#browse-themes" className="theme-chip px-4 py-2 rounded-full bg-deep-100 border border-deep-200 text-sm font-medium text-deep-500 hover:border-deep-300">All themes →</Link>
+                </div>
+              </div>
+
+              {/* Trust line */}
+              <div className="opacity-0 animate-fade-up-3 flex items-center gap-3 text-xs text-deep-400">
+                <svg className="w-4 h-4 text-sonar-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Hand-picked by real readers, not algorithms</span>
               </div>
             </div>
 
-            {/* Right Column - Desktop Book Stack */}
-            <div className="relative h-[400px] lg:h-[500px] hidden lg:flex items-center justify-center z-10">
-              {/* Sonar Ring Animation */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-                <div className="absolute w-[220px] h-[220px] rounded-full border-2 border-sonar-400/60 animate-sonar-ring"></div>
-                <div className="absolute w-[220px] h-[220px] rounded-full border-2 border-sonar-300/50 animate-sonar-ring-delay-1"></div>
-                <div className="absolute w-[220px] h-[220px] rounded-full border-2 border-cyan-200/40 animate-sonar-ring-delay-2"></div>
-                <div className="absolute w-[280px] h-[280px] rounded-full border border-deep-200/30"></div>
-              </div>
-
-              {/* Floating Dots */}
-              <div className="absolute top-16 right-20 w-2 h-2 rounded-full bg-cyan-300 animate-float"></div>
-              <div className="absolute top-24 right-12 w-1.5 h-1.5 rounded-full bg-neutral-300 animate-float" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute bottom-32 left-16 w-2 h-2 rounded-full bg-rose-300 animate-float" style={{ animationDelay: '2s' }}></div>
-
-              {/* Book Stack */}
-              <div className="stack-container relative w-[300px] h-[240px] flex items-center justify-center cursor-pointer animate-float z-10" style={{ animationDelay: '0.5s', animationDuration: '6s' }}>
-                {/* Book 1 */}
-                <div className="stack-book book-1 bg-gradient-to-br from-blue-500 to-indigo-600">
-                  <div className="mt-auto">
-                    <div className="flex gap-1 mb-1.5">
-                      <span className="px-2 py-0.5 bg-white/20 text-white text-[10px] font-medium rounded-full">Time Loop</span>
-                    </div>
-                    <p className="text-white text-xs font-semibold leading-tight">Like Mother of Learning</p>
-                    <p className="text-white/70 text-[10px] mt-1">12 books</p>
+            {/* Right: Featured Stack card (2 cols, desktop only) */}
+            <div className="lg:col-span-2 hidden lg:block">
+              <div className="opacity-0 animate-slide-in sticky top-24">
+                <div className="bg-white rounded-2xl border border-deep-200 shadow-sm overflow-hidden featured-card">
+                  <div className="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 px-6 py-5">
+                    <span className="inline-block px-2.5 py-1 bg-white/20 backdrop-blur text-white text-[11px] font-semibold rounded-full mb-3">🔥 Featured Stack</span>
+                    <h3 className="text-white font-bold text-lg leading-snug">Time Loop Essentials</h3>
+                    <p className="text-white/80 text-sm mt-1">8 books · Updated Jan 2026</p>
                   </div>
-                </div>
-
-                {/* Book 2 */}
-                <div className="stack-book book-2 bg-gradient-to-br from-purple-500 to-pink-600" style={{ width: '160px', height: '200px' }}>
-                  <div className="mt-auto">
-                    <div className="flex gap-1 mb-1.5">
-                      <span className="px-2 py-0.5 bg-white/20 text-white text-[10px] font-medium rounded-full">🔥 Trending</span>
-                    </div>
-                    <p className="text-white text-sm font-bold leading-tight">Like He Who Fights With Monsters</p>
-                    <p className="text-white/70 text-[11px] mt-1">8 books · LitRPG</p>
+                  <div className="divide-y divide-deep-100">
+                    <Link href="#" className="flex items-start gap-3 px-5 py-4 hover:bg-deep-50 transition-colors group">
+                      <div className="w-9 h-12 rounded bg-gradient-to-br from-indigo-400 to-indigo-600 flex-shrink-0 flex items-center justify-center text-white text-xs font-bold shadow-sm">01</div>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-semibold text-sm text-deep-900 truncate group-hover:text-sonar-700 transition-colors">Purple Days</p>
+                        <p className="text-xs text-deep-400 mt-0.5">baurus · SpaceBattles</p>
+                        <p className="text-xs text-deep-500 mt-1 line-clamp-1 italic">&quot;The redemption arc that GRRM never wrote.&quot;</p>
+                      </div>
+                      <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex-shrink-0 mt-0.5">COMPLETED</span>
+                    </Link>
+                    <Link href="#" className="flex items-start gap-3 px-5 py-4 hover:bg-deep-50 transition-colors group">
+                      <div className="w-9 h-12 rounded bg-gradient-to-br from-purple-400 to-purple-600 flex-shrink-0 flex items-center justify-center text-white text-xs font-bold shadow-sm">02</div>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-semibold text-sm text-deep-900 truncate group-hover:text-sonar-700 transition-colors">The Perfect Run</p>
+                        <p className="text-xs text-deep-400 mt-0.5">Void Herald · Royal Road</p>
+                        <p className="text-xs text-deep-500 mt-1 line-clamp-1 italic">&quot;Deadpool meets Groundhog Day.&quot;</p>
+                      </div>
+                      <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex-shrink-0 mt-0.5">COMPLETED</span>
+                    </Link>
+                    <Link href="#" className="flex items-start gap-3 px-5 py-4 hover:bg-deep-50 transition-colors group">
+                      <div className="w-9 h-12 rounded bg-gradient-to-br from-amber-400 to-orange-500 flex-shrink-0 flex items-center justify-center text-white text-xs font-bold shadow-sm">03</div>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-semibold text-sm text-deep-900 truncate group-hover:text-sonar-700 transition-colors">The Years of Apocalypse</p>
+                        <p className="text-xs text-deep-400 mt-0.5">UraniumPhoenix · Royal Road</p>
+                        <p className="text-xs text-deep-500 mt-1 line-clamp-1 italic">&quot;The true successor to Mother of Learning.&quot;</p>
+                      </div>
+                      <span className="text-[10px] font-medium text-sonar-500 bg-sonar-50 px-2 py-0.5 rounded-full flex-shrink-0 mt-0.5">ONGOING</span>
+                    </Link>
                   </div>
-                </div>
-
-                {/* Book 3 */}
-                <div className="stack-book book-3 bg-gradient-to-br from-emerald-500 to-teal-600">
-                  <div className="mt-auto">
-                    <div className="flex gap-1 mb-1.5">
-                      <span className="px-2 py-0.5 bg-white/20 text-white text-[10px] font-medium rounded-full">💎 Gems</span>
-                    </div>
-                    <p className="text-white text-xs font-semibold leading-tight">Hidden Forum Gems</p>
-                    <p className="text-white/70 text-[10px] mt-1">15 books</p>
+                  <div className="px-5 py-3.5 bg-deep-50 border-t border-deep-100">
+                    <Link href="#" className="flex items-center justify-between group">
+                      <div className="flex items-center gap-2">
+                        <div className="w-5 h-5 rounded-full bg-gradient-to-br from-orange-400 to-pink-500"></div>
+                        <span className="text-xs font-medium text-deep-500">Curated by <strong className="text-deep-700">Sarah Chen</strong></span>
+                      </div>
+                      <span className="text-xs font-semibold text-sonar-500 group-hover:underline">See all 8 →</span>
+                    </Link>
                   </div>
-                </div>
-              </div>
-
-              {/* Human Curated Badge */}
-              <div className="absolute -top-2 right-0 z-30 animate-float-delayed">
-                <div className="bg-white rounded-xl px-3 py-2 shadow-sm border border-deep-100/80 flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-sonar-50 flex items-center justify-center">
-                    <svg className="w-3.5 h-3.5 text-sonar-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-[9px] uppercase tracking-wider text-neutral-400 font-medium">Quality</p>
-                    <p className="text-xs font-bold text-deep-900">Human Curated</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Ping Badge */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
-                <div className="bg-white/90 backdrop-blur rounded-full px-4 py-2 shadow-sm border border-white/60 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                  <span className="text-[11px] text-sonar-600 font-medium">Ping received...</span>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Mobile Book Fan */}
-            <div className="flex lg:hidden justify-center -mt-4 mb-6">
-              <div className="mobile-fan-container relative w-[280px] h-[180px] flex items-center justify-center">
-                <div className="m-book m-book-left bg-gradient-to-br from-blue-500 to-indigo-600">📘</div>
-                <div className="m-book m-book-center bg-gradient-to-br from-purple-500 to-pink-600">⚔️</div>
-                <div className="m-book m-book-right bg-gradient-to-br from-emerald-500 to-teal-600">💎</div>
+          {/* Mobile: Compact featured stack */}
+          <div className="lg:hidden mt-6">
+            <Link href="#" className="block bg-white rounded-2xl border border-deep-200 shadow-sm overflow-hidden">
+              <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-5 py-4 flex items-center justify-between">
+                <div>
+                  <span className="inline-block px-2 py-0.5 bg-white/20 backdrop-blur text-white text-[10px] font-semibold rounded-full mb-1.5">🔥 Featured</span>
+                  <h3 className="text-white font-bold text-base">Time Loop Essentials</h3>
+                  <p className="text-white/70 text-xs mt-0.5">8 books · by Sarah Chen</p>
+                </div>
+                <ChevronRight className="w-5 h-5 text-white/80 flex-shrink-0" />
               </div>
-            </div>
+              <div className="px-5 py-3 flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-10 rounded bg-gradient-to-br from-indigo-400 to-indigo-600 border-2 border-white shadow-sm"></div>
+                  <div className="w-8 h-10 rounded bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white shadow-sm"></div>
+                  <div className="w-8 h-10 rounded bg-gradient-to-br from-amber-400 to-orange-500 border-2 border-white shadow-sm"></div>
+                </div>
+                <p className="text-xs text-deep-500 italic line-clamp-1">Purple Days · The Perfect Run · Years of Apocalypse…</p>
+              </div>
+            </Link>
           </div>
         </section>
 
@@ -263,8 +250,8 @@ export default function HomePage() {
 
           {/* Cards Container */}
           <div className="max-w-6xl mx-auto px-6 overflow-visible">
-            <div className="editors-picks-container flex gap-5 -mx-6 sm:mx-0 pl-6 sm:pl-0 pr-6 sm:pr-0 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8" style={{ scrollPaddingLeft: '24px' }}>
-                {Array.from({ length: 6 }).map((_, index) => {
+            <div className="editors-picks-container flex gap-5 -mx-6 sm:mx-0 pl-6 sm:pl-0 pr-6 sm:pr-0 overflow-x-auto overflow-y-visible hide-scrollbar snap-x snap-mandatory pt-4 pb-8" style={{ scrollPaddingLeft: '24px' }}>
+              {Array.from({ length: 6 }).map((_, index) => {
                 // Use modulo to cycle through available stacks if less than 6
                 const list = stacks[index % stacks.length];
                 // Card configurations
@@ -390,7 +377,7 @@ export default function HomePage() {
             </div>
             <Link
               href="#"
-              className="text-sm font-medium text-sonar-600 hover:text-cyan-700 flex items-center gap-1"
+              className="text-sm font-medium text-sonar-500 hover:text-cyan-700 flex items-center gap-1"
             >
               View all tags <ArrowRight className="w-4 h-4" />
             </Link>
@@ -433,8 +420,8 @@ export default function HomePage() {
         <section className="px-6 max-w-6xl mx-auto mb-36 sm:mb-44">
           <div className="mb-8 sm:mb-10">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-sonar-600 animate-pulse"></div>
-              <span className="text-xs font-semibold text-sonar-600 uppercase tracking-wider">Platform Spotlight</span>
+              <div className="w-1.5 h-1.5 rounded-full bg-sonar-500 animate-pulse"></div>
+              <span className="text-xs font-semibold text-sonar-500 uppercase tracking-wider">Platform Spotlight</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-deep-900 mb-2">Content from Multiple Sources</h2>
             <p className="text-neutral-500 text-base">Aggregated from Royal Road, SpaceBattles, and beyond</p>
@@ -458,7 +445,7 @@ export default function HomePage() {
                 <p className="text-sm text-neutral-500 mb-4 leading-relaxed">{platform.description}</p>
                 <div className="flex items-center justify-between pt-4 border-t border-deep-100">
                   <span className="text-xs font-medium text-neutral-400">{platform.count} books indexed</span>
-                  <span className="text-xs font-medium text-sonar-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-xs font-medium text-sonar-500 opacity-0 group-hover:opacity-100 transition-opacity">
                     Explore →
                   </span>
                 </div>
@@ -470,7 +457,7 @@ export default function HomePage() {
         {/* Module 4: Newsletter */}
         <section className="px-6 max-w-xl mx-auto text-center mb-2 sm:mb-4">
           <div className="w-12 h-12 rounded-2xl bg-sonar-100 flex items-center justify-center mx-auto mb-4">
-            <Mail className="w-6 h-6 text-sonar-600" />
+            <Mail className="w-6 h-6 text-sonar-500" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-deep-900 mb-2">Sonar Signals</h2>
           <p className="text-neutral-500 mb-6 text-base">

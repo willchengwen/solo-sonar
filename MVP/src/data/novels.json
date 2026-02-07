@@ -5,7 +5,11 @@
       "title": "Mother of Learning",
       "author": "nobody103",
       "synopsis": "Zorian is a teenage mage of humble birth and modest skill, attending his third year of education at Cyoria's magical academy. A month before the end of year exams, he finds himself trapped in a time loop, repeating the same month over and over again.",
-      "themes": ["time-loop", "progression", "rational"],
+      "themes": [
+        "time-loop",
+        "progression",
+        "rational"
+      ],
       "links": [
         {
           "platform": "royal-road",
@@ -27,7 +31,10 @@
       "title": "Worm",
       "author": "Wildbow",
       "synopsis": "An introverted teenage girl with an unconventional superpower, Taylor goes out in costume to find escape from a deeply unhappy and frustrated civilian life. Her first attempt at taking down a supervillain sees her mistaken for one, thrusting her into the midst of the local 'cape' scene's politics, unwritten rules, and ambiguous morals.",
-      "themes": ["rational", "progression"],
+      "themes": [
+        "rational",
+        "progression"
+      ],
       "links": [
         {
           "platform": "personal-site",
@@ -53,7 +60,11 @@
       "title": "The Wandering Inn",
       "author": "pirateaba",
       "synopsis": "An inn is a place to rest, a ## place to talk and share stories, or a place to find adventures, bting., bting., bting., bting. welcome to the Wandering Inn.",
-      "themes": ["slice-of-life", "litrpg", "base-building"],
+      "themes": [
+        "slice-of-life",
+        "litrpg",
+        "base-building"
+      ],
       "links": [
         {
           "platform": "personal-site",
@@ -77,7 +88,12 @@
       "title": "Worth the Candle",
       "author": "Alexander Wales",
       "synopsis": "Juniper Smith is a teenage dungeon master who finds himself transported into a world that is an amalgamation of every fictional world he ever created. Now he must survive and find meaning in a place built from his own imagination.",
-      "themes": ["rational", "litrpg", "isekai", "progression"],
+      "themes": [
+        "rational",
+        "litrpg",
+        "isekai",
+        "progression"
+      ],
       "links": [
         {
           "platform": "royal-road",
@@ -103,7 +119,10 @@
       "title": "Purple Days",
       "author": "baurus",
       "synopsis": "Joffrey Baratheon wakes up after his death, finding himself back at the beginning. Again. And again. A Song of Ice and Fire time loop fanfiction that transforms one of fiction's most hated characters.",
-      "themes": ["time-loop", "progression"],
+      "themes": [
+        "time-loop",
+        "progression"
+      ],
       "links": [
         {
           "platform": "spacebattles",
@@ -128,7 +147,12 @@
       "title": "Tree of Aeons",
       "author": "spaizzzer",
       "synopsis": "Matt died. But he didn't stay dead. Instead, he woke up as a tree in a fantasy world. A tree with a System. Now he must grow, evolve, and build a forest kingdom while navigating the politics of gods and mortals alike.",
-      "themes": ["base-building", "kingdom-building", "progression", "litrpg"],
+      "themes": [
+        "base-building",
+        "kingdom-building",
+        "progression",
+        "litrpg"
+      ],
       "links": [
         {
           "platform": "royal-road",
@@ -147,7 +171,11 @@
       "title": "Azarinth Healer",
       "author": "Rhaegar",
       "synopsis": "A new world with near limitless possibilities. A healing class capable of dealing damage. A character who enjoys the simple pleasures of punching monsters in the face.",
-      "themes": ["progression", "litrpg", "isekai"],
+      "themes": [
+        "progression",
+        "litrpg",
+        "isekai"
+      ],
       "links": [
         {
           "platform": "royal-road",
@@ -168,7 +196,11 @@
       "title": "The Perfect Run",
       "author": "Maxime J. Durand",
       "synopsis": "Ryan 'Quicksave' Romano is the only one who can save the world. Too bad he's a smartass who would rather crack jokes than take things seriously. A superhero time loop story with heart and humor.",
-      "themes": ["time-loop", "progression", "sci-fi"],
+      "themes": [
+        "time-loop",
+        "progression",
+        "sci-fi"
+      ],
       "links": [
         {
           "platform": "royal-road",
@@ -183,6 +215,180 @@
       "coverGradient": "from-cyan-500 to-blue-700",
       "stackCount": 11,
       "savedCount": 892
+    },
+    {
+      "id": "the-menocht-loop",
+      "title": "The Menocht Loop",
+      "author": "Lorne Ryburn (caerulex)",
+      "synopsis": "Ian Dunai is trapped in the only maze an arch-decemancer can't escape: Time. Only 1% of the population is blessed with magic affinity at birth. Ian's decemancy eclipses all, granting him ultimate control over Death. He conquers cities with a thought—but overwhelming power isn't enough to escape the time loop.",
+      "themes": [
+        "time-loop",
+        "progression",
+        "op-protagonist",
+        "magic-system",
+        "dark"
+      ],
+      "links": [
+        {
+          "platform": "royal-road",
+          "url": "https://www.royalroad.com/fiction/31514/the-menocht-loop",
+          "isCanonical": true
+        },
+        {
+          "platform": "amazon",
+          "url": "https://www.amazon.com/dp/B09M6L22P4",
+          "isCanonical": false
+        }
+      ],
+      "status": "ongoing",
+      "coverUrl": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-menocht-loop.jpg",
+      "coverGradient": "from-slate-700 to-slate-900",
+      "stackCount": 1,
+      "savedCount": 0
+    },
+    {
+      "id": "the-years-of-apocalypse",
+      "title": "The Years of Apocalypse",
+      "author": "UraniumPhoenix",
+      "synopsis": "Mirian Castrella, a student in her final year of a magical academy, unexpectedly finds herself caught in a time loop and haunted by strange dreams of the Elder Gods. Her plan had been to become an artificer to support her struggling family, but when the Akana Praediar army betrays her country in a surprise attack, everything changes.",
+      "themes": [
+        "time-loop",
+        "progression",
+        "magic-academy",
+        "female-lead",
+        "mystery"
+      ],
+      "links": [
+        {
+          "platform": "royal-road",
+          "url": "https://www.royalroad.com/fiction/81002/the-years-of-apocalypse-a-time-loop-progression",
+          "isCanonical": true
+        }
+      ],
+      "status": "ongoing",
+      "coverUrl": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-years-of-apocalypse.jpg",
+      "coverGradient": "from-indigo-600 to-purple-900",
+      "stackCount": 1,
+      "savedCount": 0
+    },
+    {
+      "id": "dear-spellbook",
+      "title": "Dear Spellbook",
+      "author": "Peter J. Lee",
+      "synopsis": "Tal is a sorcerer masquerading as a wizard, searching for answers about his parents' mysterious deaths. When the same day starts repeating, he's the only one aware—and his previously useless Spellbook is starting to exhibit strange abilities that could be his key to escaping this temporal prison.",
+      "themes": [
+        "time-loop",
+        "fantasy",
+        "magic-system",
+        "mystery",
+        "cozy"
+      ],
+      "links": [
+        {
+          "platform": "royal-road",
+          "url": "https://www.royalroad.com/fiction/49881/dear-spellbook-a-fantasy-time-loop-rewrite",
+          "isCanonical": true
+        },
+        {
+          "platform": "amazon",
+          "url": "https://www.amazon.com/dp/B0BYH5DBJM",
+          "isCanonical": false
+        }
+      ],
+      "status": "completed",
+      "wordCount": 350000,
+      "coverUrl": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/dear-spellbook.jpg",
+      "coverGradient": "from-amber-500 to-orange-700",
+      "stackCount": 1,
+      "savedCount": 0
+    },
+    {
+      "id": "re-monarch",
+      "title": "Re: Monarch",
+      "author": "Eligos",
+      "synopsis": "Cairn is a prince already tired of ruling. Faced with an imminent coronation and an overbearing father, he wants nothing more than to drown his responsibilities in cheap liquor. But an invasion, conspiracy, and rise of a terrifying villain result in his untimely death. Then, Cairn reawakens—a decade in the past, in his childhood body.",
+      "themes": [
+        "time-loop",
+        "fantasy",
+        "politics",
+        "progression"
+      ],
+      "links": [
+        {
+          "platform": "royal-road",
+          "url": "https://www.royalroad.com/fiction/37951/re-monarch",
+          "isCanonical": true
+        },
+        {
+          "platform": "amazon",
+          "url": "https://www.amazon.com/dp/B09PQGG7VV",
+          "isCanonical": false
+        }
+      ],
+      "status": "ongoing",
+      "coverUrl": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/re-monarch.jpg",
+      "coverGradient": "from-violet-600 to-purple-900",
+      "stackCount": 1,
+      "savedCount": 0
+    },
+    {
+      "id": "blessed-time",
+      "title": "Blessed Time",
+      "author": "Cale Plamann (CoCop)",
+      "synopsis": "On Karell, you are either blessed by the gods or forgotten. Micah Silver was chosen for greatness—his primary blessing allows him to travel five years into the past by sacrificing his class, wealth, and levels. A psychological burden he's reluctant to shoulder. But fate has a way of forcing you to face your destiny.",
+      "themes": [
+        "time-loop",
+        "litrpg",
+        "progression",
+        "summoner"
+      ],
+      "links": [
+        {
+          "platform": "royal-road",
+          "url": "https://www.royalroad.com/fiction/33020/blessed-time",
+          "isCanonical": true
+        },
+        {
+          "platform": "amazon",
+          "url": "https://www.amazon.com/dp/B097J8M7DS",
+          "isCanonical": false
+        }
+      ],
+      "status": "completed",
+      "wordCount": 300000,
+      "coverUrl": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/blessed-time.jpg",
+      "coverGradient": "from-blue-600 to-indigo-800",
+      "stackCount": 1,
+      "savedCount": 0
+    },
+    {
+      "id": "stubborn-skill-grinder",
+      "title": "Stubborn Skill Grinder in a Time Loop",
+      "author": "X-RHODEN-X",
+      "synopsis": "Orodan was an orphaned street rat who clawed his way to the county militia. When calamitous events unfold, his battle-loving disposition leads to a warrior's death—only to wake up again. A smart time-looper would scheme and plan. But not Orodan. He'll batter walls with his head thousands of times till either the wall breaks or he does.",
+      "themes": [
+        "time-loop",
+        "litrpg",
+        "op-protagonist",
+        "action"
+      ],
+      "links": [
+        {
+          "platform": "royal-road",
+          "url": "https://www.royalroad.com/fiction/83294/the-stubborn-skill-grinder-in-a-time-loop",
+          "isCanonical": true
+        },
+        {
+          "platform": "amazon",
+          "url": "https://www.amazon.com/dp/B0DLX36KYL",
+          "isCanonical": false
+        }
+      ],
+      "status": "ongoing",
+      "coverUrl": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/stubborn-skill-grinder.jpg",
+      "coverGradient": "from-red-600 to-orange-700",
+      "stackCount": 1,
+      "savedCount": 0
     }
   ]
 }
