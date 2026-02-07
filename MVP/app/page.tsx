@@ -3,12 +3,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
-import { Stack, PLATFORM_INFO, THEME_INFO, Theme } from '@/types/types';
+import { Novel, Stack, PLATFORM_INFO, THEME_INFO, Theme } from '@/types/types';
 import stacksData from '@/src/data/stacks.json';
+import novelsData from '@/data/books.json';
 import Footer from './components/Footer';
 
 // 从 JSON 导入数据
 const stacks = stacksData.stacks.filter((s) => s.isEditorPick);
+const novelsById = new Map((novelsData as Novel[]).map((n) => [n.id, n]));
 
 // 主题标签列表
 const themes = (Object.entries(THEME_INFO || {}) as [Theme, { name: string; icon: string }][]).map(
@@ -325,6 +327,43 @@ export default function HomePage() {
                 ];
 
                 const config = cardConfigs[index] || cardConfigs[0];
+                const pickNovels = [...list.entries]
+                  .sort((a, b) => a.order - b.order)
+                  .map((entry) => novelsById.get(entry.novelId))
+                  .filter((novel): novel is Novel => Boolean(novel))
+                  .slice(0, 3);
+
+                const renderBook = (novel: Novel | undefined, fallbackIndex: number) => {
+                  const fallbackColor = config.bookColors[fallbackIndex];
+                  const fallbackEmoji = config.bookEmoji[fallbackIndex];
+                  if (!novel) {
+                    return (
+                      <div key={`fallback-${fallbackIndex}`} className={`book bg-gradient-to-br ${fallbackColor}`}>
+                        {fallbackEmoji}
+                      </div>
+                    );
+                  }
+
+                  const hasImage = Boolean(novel.coverImage);
+                  const gradient = novel.coverGradient || fallbackColor;
+                  return (
+                    <div
+                      key={novel.id}
+                      className={`book ${!hasImage ? `bg-gradient-to-br ${gradient}` : ''}`}
+                      style={
+                        hasImage
+                          ? {
+                              backgroundImage: `url(${novel.coverImage})`,
+                              backgroundSize: 'cover',
+                              backgroundPosition: 'center',
+                            }
+                          : undefined
+                      }
+                    >
+                      {!hasImage ? fallbackEmoji : null}
+                    </div>
+                  );
+                };
 
                 return (
                   <article key={list.id} className="group card card-hover card-lift flex-none w-[290px] sm:w-[310px] snap-start overflow-visible">
@@ -340,9 +379,9 @@ export default function HomePage() {
                         {/* Book Stack */}
                         <div className={`px-5 py-8 bg-gradient-to-br ${config.bgGradient}`}>
                           <div className="book-stack mb-4">
-                            <div className={`book bg-gradient-to-br ${config.bookColors[0]}`}>{config.bookEmoji[0]}</div>
-                            <div className={`book bg-gradient-to-br ${config.bookColors[1]}`}>{config.bookEmoji[1]}</div>
-                            <div className={`book bg-gradient-to-br ${config.bookColors[2]}`}>{config.bookEmoji[2]}</div>
+                            {renderBook(pickNovels[0], 0)}
+                            {renderBook(pickNovels[1], 1)}
+                            {renderBook(pickNovels[2], 2)}
                           </div>
                           <p className="text-center text-deep-600 text-sm italic font-medium min-h-[40px] flex items-center justify-center">{config.quote}</p>
                         </div>

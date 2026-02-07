@@ -1,6 +1,6 @@
 'use client';
 
-import { use } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 import { Bookmark } from 'lucide-react';
 import Link from 'next/link';
 import stacksData from '@/src/data/stacks.json';
@@ -195,7 +195,13 @@ function getBookCoverConfig(bookId: string, gradient: string) {
 
 // 书籍卡片组件
 function BookCard({ book }: { book: Book }) {
+  const [coverFailed, setCoverFailed] = useState(false);
   const coverConfig = getBookCoverConfig(book.id, book.gradient);
+  const statusLabel = book.status.toUpperCase();
+  const statusPillClass =
+    book.status === 'Completed'
+      ? 'text-emerald-600 bg-emerald-50 border-emerald-100'
+      : 'text-blue-600 bg-blue-50 border-blue-100';
 
   return (
     <div
@@ -205,11 +211,12 @@ function BookCard({ book }: { book: Book }) {
       <div className="flex flex-row gap-4 sm:gap-5">
         {/* 封面 */}
         <div className="flex-shrink-0 w-[80px] sm:w-[96px]">
-          {book.coverImage ? (
+          {book.coverImage && !coverFailed ? (
             <img
               src={book.coverImage}
               alt={book.title}
               className="book-cover w-full h-auto"
+              onError={() => setCoverFailed(true)}
             />
           ) : (
             <div className={`book-cover w-full h-[107px] sm:h-[128px] bg-gradient-to-br ${coverConfig.gradient} flex items-center justify-center text-3xl sm:text-4xl`}>
@@ -220,25 +227,25 @@ function BookCard({ book }: { book: Book }) {
 
         {/* 信息 */}
         <div className="flex-1 min-w-0" onClick={(e) => e.stopPropagation()} style={{ cursor: 'text' }}>
-          <div className="flex items-start justify-between gap-3 mb-1">
-            <h3 className="text-lg sm:text-xl font-bold text-deep-900">{book.title}</h3>
-            <button className="heart-btn flex-shrink-0 cursor-pointer" onClick={(e) => e.stopPropagation()}>
-              <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </button>
+          <div className="mb-1">
+            <h3 className="text-lg sm:text-xl font-bold text-deep-900 sm:hover:underline cursor-pointer">{book.title}</h3>
           </div>
-          <p className="text-sm text-neutral-400 mb-3">by {book.author} / {book.platform}</p>
+          <div className="flex items-center gap-2 mb-3">
+            <p className="text-sm text-neutral-400 truncate min-w-0 flex-1">by {book.author}</p>
+            <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border flex-shrink-0 ${statusPillClass}`}>
+              {statusLabel}
+            </span>
+          </div>
 
           <p className="text-neutral-600 italic mb-4 line-clamp-2 text-sm sm:text-base">
             "{book.curatorNote}"
           </p>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-nowrap sm:flex-wrap gap-2 overflow-x-auto hide-scrollbar">
             {book.themes.slice(0, 3).map((theme, index) => (
               <span
                 key={index}
-                className="tag"
+                className="tag whitespace-nowrap"
                 style={{ background: '#f9fafb', color: '#4b5563', borderColor: '#e5e7eb' }}
               >
                 {formatTagLabel(theme)}
@@ -253,6 +260,9 @@ function BookCard({ book }: { book: Book }) {
 
 export default function StackDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
+  const [isNoteExpanded, setIsNoteExpanded] = useState(false);
+  const [showNoteToggle, setShowNoteToggle] = useState(true);
+  const noteRef = useRef<HTMLParagraphElement | null>(null);
 
   // 根据 ID 从 MVP 数据中查找书单
   const mvpStack = (stacksData.stacks as MVPStack[]).find(stack => stack.id === id);
@@ -283,25 +293,45 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
     })
     .filter((book): book is Book => book !== null);
 
+  const coverBooks = books.slice(0, 3);
   const relatedStacks = getRelatedStacks(id);
+
+  useEffect(() => {
+    const el = noteRef.current;
+    if (!el) return;
+    const isClamped = el.scrollHeight > el.clientHeight;
+    setShowNoteToggle(isClamped);
+  }, [mvpStack.curatorNote]);
 
   return (
     <div className="min-h-screen bg-deep-50 text-deep-900 antialiased">
       <main className="pt-20 pb-20">
         {/* Header 区 */}
         <section className="px-5 sm:px-6 max-w-4xl mx-auto mb-12">
-          <div className="flex flex-col md:flex-row gap-8 items-start">
+          <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
             {/* 封面堆叠 */}
-            <div className="cover-stack flex-shrink-0 mx-auto md:mx-0">
-              <div className="cover bg-gradient-to-br from-blue-500 to-indigo-600">
-                📘
-              </div>
-              <div className="cover bg-gradient-to-br from-purple-500 to-pink-600">
-                📕
-              </div>
-              <div className="cover bg-gradient-to-br from-emerald-500 to-teal-600">
-                📗
-              </div>
+            <div className="cover-stack flex-shrink-0 mx-auto md:mx-0 hidden md:block">
+              {coverBooks.map((book) => {
+                const coverConfig = getBookCoverConfig(book.id, book.gradient);
+                const hasImage = Boolean(book.coverImage);
+                return (
+                  <div
+                    key={book.id}
+                    className={`cover ${!hasImage ? `bg-gradient-to-br ${coverConfig.gradient}` : ''}`}
+                    style={
+                      hasImage
+                        ? {
+                            backgroundImage: `url(${book.coverImage})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                          }
+                        : undefined
+                    }
+                  >
+                    {!hasImage ? coverConfig.icon : null}
+                  </div>
+                );
+              })}
             </div>
 
             {/* 书单信息 */}
@@ -334,8 +364,8 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white font-semibold">
                   {mvpStack.curatorId.charAt(0).toUpperCase()}
                 </div>
-                <div>
-                  <p className="font-medium text-deep-900">{mvpStack.curatorId.charAt(0).toUpperCase() + mvpStack.curatorId.slice(1)}</p>
+                <div className="text-left">
+                  <p className="font-medium text-deep-900">{mvpStack.curatorId}</p>
                   <p className="text-sm text-neutral-500">Curated {formatDate(mvpStack.createdAt)}</p>
                 </div>
               </div>
@@ -353,9 +383,22 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
         <section className="px-5 sm:px-6 max-w-4xl mx-auto mb-16">
           <div className="card-static p-6 sm:p-8">
             <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-3">Editor's Note</h2>
-            <p className="text-neutral-600 leading-relaxed text-base sm:text-lg">
-              {mvpStack.curatorNote}
-            </p>
+            <div>
+              <p
+                ref={noteRef}
+                className={`text-neutral-600 leading-relaxed text-base sm:text-lg ${isNoteExpanded ? '' : 'line-clamp-3'}`}
+              >
+                {mvpStack.curatorNote}
+              </p>
+              {showNoteToggle && (
+                <button
+                  className="mt-2 text-sm font-medium text-sonar-500 hover:underline cursor-pointer"
+                  onClick={() => setIsNoteExpanded((prev) => !prev)}
+                >
+                  {isNoteExpanded ? 'Show less' : 'Read more'}
+                </button>
+              )}
+            </div>
           </div>
         </section>
 
@@ -414,7 +457,7 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                 <div className="flex items-center justify-between pt-3 border-t border-deep-100">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-pink-500"></div>
-                    <span className="text-sm text-neutral-600">{mvpStack.curatorId.charAt(0).toUpperCase() + mvpStack.curatorId.slice(1)}</span>
+                      <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
                   </div>
                   <span className="text-sm text-neutral-400">{stack.picks} books</span>
                 </div>
@@ -468,7 +511,7 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                   <div className="flex items-center justify-between pt-3 border-t border-deep-100">
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-pink-500"></div>
-                      <span className="text-sm text-neutral-600">{mvpStack.curatorId.charAt(0).toUpperCase() + mvpStack.curatorId.slice(1)}</span>
+                      <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
                     </div>
                     <span className="text-sm text-neutral-400">{stack.picks} books</span>
                   </div>
