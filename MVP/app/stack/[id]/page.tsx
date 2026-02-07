@@ -228,7 +228,9 @@ function BookCard({ book }: { book: Book }) {
         {/* 信息 */}
         <div className="flex-1 min-w-0" onClick={(e) => e.stopPropagation()} style={{ cursor: 'text' }}>
           <div className="mb-1">
-            <h3 className="text-lg sm:text-xl font-bold text-deep-900 sm:hover:underline cursor-pointer">{book.title}</h3>
+            <Link href={`/novel/${book.id}`} className="text-lg sm:text-xl font-bold text-deep-900 hover:underline cursor-pointer">
+              {book.title}
+            </Link>
           </div>
           <div className="flex items-center gap-2 mb-3">
             <p className="text-sm text-neutral-400 truncate min-w-0 flex-1">by {book.author}</p>
@@ -321,10 +323,10 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                     style={
                       hasImage
                         ? {
-                            backgroundImage: `url(${book.coverImage})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                          }
+                          backgroundImage: `url(${book.coverImage})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                        }
                         : undefined
                     }
                   >
@@ -457,7 +459,7 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                 <div className="flex items-center justify-between pt-3 border-t border-deep-100">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-pink-500"></div>
-                      <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
+                    <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
                   </div>
                   <span className="text-sm text-neutral-400">{stack.picks} books</span>
                 </div>

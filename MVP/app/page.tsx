@@ -160,8 +160,8 @@ export default function HomePage() {
                     <p className="text-white/80 text-sm mt-1">8 books · Updated Jan 2026</p>
                   </div>
                   <div className="divide-y divide-deep-100">
-                    <Link href="#" className="flex items-start gap-3 px-5 py-4 hover:bg-deep-50 transition-colors group">
-                      <div className="w-9 h-12 rounded bg-gradient-to-br from-indigo-400 to-indigo-600 flex-shrink-0 flex items-center justify-center text-white text-xs font-bold shadow-sm">01</div>
+                    <Link href="/novel/purple-days" className="flex items-start gap-3 px-5 py-4 hover:bg-deep-50 transition-colors group">
+                      <div className="w-9 h-12 rounded flex-shrink-0 shadow-sm overflow-hidden" style={{ backgroundImage: 'url(https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/purple-days.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                       <div className="min-w-0 flex-1">
                         <p className="font-semibold text-sm text-deep-900 truncate group-hover:text-sonar-700 transition-colors">Purple Days</p>
                         <p className="text-xs text-deep-400 mt-0.5">baurus · SpaceBattles</p>
@@ -169,8 +169,8 @@ export default function HomePage() {
                       </div>
                       <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex-shrink-0 mt-0.5">COMPLETED</span>
                     </Link>
-                    <Link href="#" className="flex items-start gap-3 px-5 py-4 hover:bg-deep-50 transition-colors group">
-                      <div className="w-9 h-12 rounded bg-gradient-to-br from-purple-400 to-purple-600 flex-shrink-0 flex items-center justify-center text-white text-xs font-bold shadow-sm">02</div>
+                    <Link href="/novel/the-perfect-run" className="flex items-start gap-3 px-5 py-4 hover:bg-deep-50 transition-colors group">
+                      <div className="w-9 h-12 rounded flex-shrink-0 shadow-sm overflow-hidden" style={{ backgroundImage: 'url(https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-perfect-run.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                       <div className="min-w-0 flex-1">
                         <p className="font-semibold text-sm text-deep-900 truncate group-hover:text-sonar-700 transition-colors">The Perfect Run</p>
                         <p className="text-xs text-deep-400 mt-0.5">Void Herald · Royal Road</p>
@@ -178,8 +178,8 @@ export default function HomePage() {
                       </div>
                       <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex-shrink-0 mt-0.5">COMPLETED</span>
                     </Link>
-                    <Link href="#" className="flex items-start gap-3 px-5 py-4 hover:bg-deep-50 transition-colors group">
-                      <div className="w-9 h-12 rounded bg-gradient-to-br from-amber-400 to-orange-500 flex-shrink-0 flex items-center justify-center text-white text-xs font-bold shadow-sm">03</div>
+                    <Link href="/novel/the-years-of-apocalypse" className="flex items-start gap-3 px-5 py-4 hover:bg-deep-50 transition-colors group">
+                      <div className="w-9 h-12 rounded flex-shrink-0 shadow-sm overflow-hidden" style={{ backgroundImage: 'url(https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-years-of-apocalypse.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                       <div className="min-w-0 flex-1">
                         <p className="font-semibold text-sm text-deep-900 truncate group-hover:text-sonar-700 transition-colors">The Years of Apocalypse</p>
                         <p className="text-xs text-deep-400 mt-0.5">UraniumPhoenix · Royal Road</p>
@@ -189,10 +189,10 @@ export default function HomePage() {
                     </Link>
                   </div>
                   <div className="px-5 py-3.5 bg-deep-50 border-t border-deep-100">
-                    <Link href="#" className="flex items-center justify-between group">
+                    <Link href="/stack/mother-of-learning-similar" className="flex items-center justify-between group">
                       <div className="flex items-center gap-2">
                         <div className="w-5 h-5 rounded-full bg-gradient-to-br from-orange-400 to-pink-500"></div>
-                        <span className="text-xs font-medium text-deep-500">Curated by <strong className="text-deep-700">Sarah Chen</strong></span>
+                        <span className="text-xs font-medium text-deep-500">Curated by <strong className="text-deep-700">Zorian</strong></span>
                       </div>
                       <span className="text-xs font-semibold text-sonar-500 group-hover:underline">See all 8 →</span>
                     </Link>
@@ -204,20 +204,20 @@ export default function HomePage() {
 
           {/* Mobile: Compact featured stack */}
           <div className="lg:hidden mt-6">
-            <Link href="#" className="block bg-white rounded-2xl border border-deep-200 shadow-sm overflow-hidden">
+            <Link href="/stack/mother-of-learning-similar" className="block bg-white rounded-2xl border border-deep-200 shadow-sm overflow-hidden">
               <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-5 py-4 flex items-center justify-between">
                 <div>
                   <span className="inline-block px-2 py-0.5 bg-white/20 backdrop-blur text-white text-[10px] font-semibold rounded-full mb-1.5">🔥 Featured</span>
                   <h3 className="text-white font-bold text-base">Time Loop Essentials</h3>
-                  <p className="text-white/70 text-xs mt-0.5">8 books · by Sarah Chen</p>
+                  <p className="text-white/70 text-xs mt-0.5">8 books · by Zorian</p>
                 </div>
                 <ChevronRight className="w-5 h-5 text-white/80 flex-shrink-0" />
               </div>
               <div className="px-5 py-3 flex items-center gap-3">
                 <div className="flex -space-x-2">
-                  <div className="w-8 h-10 rounded bg-gradient-to-br from-indigo-400 to-indigo-600 border-2 border-white shadow-sm"></div>
-                  <div className="w-8 h-10 rounded bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white shadow-sm"></div>
-                  <div className="w-8 h-10 rounded bg-gradient-to-br from-amber-400 to-orange-500 border-2 border-white shadow-sm"></div>
+                  <div className="w-8 h-10 rounded border-2 border-white shadow-sm overflow-hidden" style={{ backgroundImage: 'url(https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/purple-days.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                  <div className="w-8 h-10 rounded border-2 border-white shadow-sm overflow-hidden" style={{ backgroundImage: 'url(https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-perfect-run.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                  <div className="w-8 h-10 rounded border-2 border-white shadow-sm overflow-hidden" style={{ backgroundImage: 'url(https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-years-of-apocalypse.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                 </div>
                 <p className="text-xs text-deep-500 italic line-clamp-1">Purple Days · The Perfect Run · Years of Apocalypse…</p>
               </div>
@@ -353,10 +353,10 @@ export default function HomePage() {
                       style={
                         hasImage
                           ? {
-                              backgroundImage: `url(${novel.coverImage})`,
-                              backgroundSize: 'cover',
-                              backgroundPosition: 'center',
-                            }
+                            backgroundImage: `url(${novel.coverImage})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                          }
                           : undefined
                       }
                     >
@@ -393,7 +393,7 @@ export default function HomePage() {
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
                               <div className="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-pink-500"></div>
-                              <span className="text-sm font-medium text-deep-700">Sarah Chen</span>
+                              <span className="text-sm font-medium text-deep-700">Zorian</span>
                             </div>
                             <span className="text-sm text-deep-400">{list.entries.length} books</span>
                           </div>
