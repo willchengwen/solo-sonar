@@ -335,7 +335,7 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                   {mvpStack.curatorId.charAt(0).toUpperCase()}
                 </div>
                 <div>
-                  <p className="font-medium text-deep-900">{mvpStack.curatorId}</p>
+                  <p className="font-medium text-deep-900">{mvpStack.curatorId.charAt(0).toUpperCase() + mvpStack.curatorId.slice(1)}</p>
                   <p className="text-sm text-neutral-500">Curated {formatDate(mvpStack.createdAt)}</p>
                 </div>
               </div>
@@ -414,7 +414,7 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                 <div className="flex items-center justify-between pt-3 border-t border-deep-100">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-pink-500"></div>
-                    <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
+                    <span className="text-sm text-neutral-600">{mvpStack.curatorId.charAt(0).toUpperCase() + mvpStack.curatorId.slice(1)}</span>
                   </div>
                   <span className="text-sm text-neutral-400">{stack.picks} books</span>
                 </div>
@@ -468,7 +468,7 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                   <div className="flex items-center justify-between pt-3 border-t border-deep-100">
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-pink-500"></div>
-                      <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
+                      <span className="text-sm text-neutral-600">{mvpStack.curatorId.charAt(0).toUpperCase() + mvpStack.curatorId.slice(1)}</span>
                     </div>
                     <span className="text-sm text-neutral-400">{stack.picks} books</span>
                   </div>
