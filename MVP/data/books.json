@@ -1,1387 +1,43 @@
 [
   {
-    "id": "worm",
-    "title": "Worm",
-    "author": "Wildbow",
-    "synopsis": "An introverted teenage girl with an unconventional superpower to control insects, Taylor Hebert goes out in costume to find escape from a deeply unhappy civilian life. Her first attempt at taking down a supervillain sees her mistaken for one, thrusting her into the local cape scene's politics, unwritten rules, and ambiguous morals. As she risks life and limb, Taylor faces the dilemma of having to do the wrong things for the right reasons.",
-    "themes": [
-      "super-heroes",
-      "dark",
-      "female-lead",
-      "escalation"
-    ],
-    "links": [
-      {
-        "platform": "personal-site",
-        "url": "https://parahumans.wordpress.com/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-1-worm.jpg",
-    "curatorNote": "People who finish this fall into two camps: those who won't shut up about it, and those writing fanfic. Taylor goes from a bullied girl shoved into a locker to something that makes gods despair. 1.68 million words sounds scary, but once you hit the Leviathan fight, sleep becomes optional. Here, doing the right thing often costs everything—and this book will ruin other superhero stories for you.",
-    "words": "1680k"
-  },
-  {
-    "id": "pact",
-    "title": "Pact",
-    "author": "Wildbow",
-    "synopsis": "Blake Thorburn was driven away from home and family by a vicious fight over inheritance, returning only for a deathbed visit with the grandmother who set it in motion. Blake soon finds himself next in line to inherit the property, a trove of dark supernatural knowledge, and the many enemies his grandmother left behind her in the small town of Jacob's Bell.",
-    "themes": [
-      "urban-fantasy",
-      "dark",
-      "horror",
-      "male-lead"
-    ],
-    "links": [
-      {
-        "platform": "personal-site",
-        "url": "https://pactwebserial.wordpress.com/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-2-pact.jpg",
-    "curatorNote": "You're drowning from chapter one. Wildbow gives you no room to breathe. Blake inherits a diabolist family's legacy, and then the entire world wants him dead. Not metaphorically—literally. You'll stare at the ceiling for a while after finishing. Don't read when you're already down, but if you want to feel hunted, this beats any horror movie.",
-    "words": "950k"
-  },
-  {
-    "id": "twig",
-    "title": "Twig",
-    "author": "Wildbow",
-    "synopsis": "The year is 1921, and a little over a century has passed since a great mind unraveled the underpinnings of life itself. In this biopunk alternate history, a group of children with extraordinary abilities from the Lambsbridge Orphanage—lab-made experiments deployed as trouble-shooters—navigate a world where the dead walk again, immortality is within reach, and bio-engineered monsters roam the streets.",
-    "themes": [
-      "biopunk",
-      "dark",
-      "ensemble-cast",
-      "psychological"
-    ],
-    "links": [
-      {
-        "platform": "personal-site",
-        "url": "https://twigserial.wordpress.com/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-3-twig.jpg",
-    "curatorNote": "Wildbow's most underrated work. 1920s biopunk—a group of lab-made Frankenstein children deployed as disposable spies. Dark as hell, but the bonds between these kids are the gentlest thing Wildbow's ever written. Sylvester will move into your heart, and then Wildbow will use him to hurt you. Keep tissues handy.",
-    "words": "960k"
-  },
-  {
-    "id": "ward",
-    "title": "Ward",
-    "author": "Wildbow",
-    "synopsis": "Two years after the events of Gold Morning, Victoria Dallon—formerly Glory Girl—seeks to rebuild her life and return to heroism. Having been restored to her original physical form following horrific transformation, she struggles with trauma, broken relationships, and a shattered world while leading a team of troubled young heroes in a city built from the ashes of catastrophe.",
-    "themes": [
-      "super-heroes",
-      "psychological",
-      "female-lead",
-      "trauma-recovery"
-    ],
-    "links": [
-      {
-        "platform": "personal-site",
-        "url": "https://www.parahumans.net/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-4-ward.jpg",
-    "curatorNote": "This isn't Worm 2—don't come expecting that. Victoria crawls out of the wreckage, trying to rebuild her life. A book about trauma—real trauma that takes time to heal. Slower paced than Worm, which loses some readers. But if you finished Worm wondering 'what next?' and want to see broken people keep living, Ward delivers.",
-    "words": "1900k"
-  },
-  {
-    "id": "pale",
-    "title": "Pale",
-    "author": "Wildbow",
-    "synopsis": "Three teenagers—Verona, Lucy, and Avery—are awakened as practitioners of magic by a council of supernatural beings in the small Canadian town of Kennet. In exchange for power and knowledge, they are asked to investigate a murder that has shaken the foundations of the local Other community. A modern supernatural mystery where nothing comes for free.",
-    "themes": [
-      "urban-fantasy",
-      "mystery",
-      "female-lead",
-      "ensemble-cast"
-    ],
-    "links": [
-      {
-        "platform": "personal-site",
-        "url": "https://palewebserial.wordpress.com/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-5-pale.jpg",
-    "curatorNote": "Three high school girls investigating a supernatural murder. Sounds cute, right? It is. It's also terrifying. Wildbow finally learned to let readers breathe—there's warmth, friendship, belonging. But it's still Wildbow, so there's stuff that'll keep you up at night. 1.4 million words, completed. Best entry point into Wildbow.",
-    "words": "1400k"
-  },
-  {
-    "id": "the-last-angel",
-    "title": "The Last Angel",
-    "author": "Proximal Flame",
-    "synopsis": "Two thousand years ago, humanity built the dreadnought Nemesis and its AI, Red One, in a final stand against the alien Compact. Red One destroyed an invincible enemy warship but failed to save Earth from annihilation. Now, damaged but enduring, Red One wages a lonely war of vengeance across the galaxy—until she discovers that humanity survived.",
-    "themes": [
-      "space-opera",
-      "sci-fi",
-      "ai-protagonist",
-      "military",
-      "revenge"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/the-last-angel.244209/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-last-angel-1.jpg",
-    "curatorNote": "The ceiling of space opera. An AI warship, alone against the empire that exterminated humanity. Two thousand years. Red One hides in deep space, methodically taking revenge, until she discovers humans survived. Revenge or rebuild? This choice will tear you apart. Essential reading if you like Halo or Mass Effect.",
-    "words": "700k+"
-  },
-  {
-    "id": "the-last-angel-ascension",
-    "title": "The Last Angel: Ascension",
-    "author": "Proximal Flame",
-    "synopsis": "The sequel to The Last Angel. Red One's vengeance is no longer personal—she ignites rebellion across the sector. The scope expands as more factions emerge and galactic politics come into play, setting the stage for a war that could reshape the galaxy.",
-    "themes": [
-      "space-opera",
-      "sci-fi",
-      "ai-protagonist",
-      "military",
-      "politics"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/the-last-angel-ascension.346640/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-last-angel-2-ascension.jpg",
-    "curatorNote": "The spark becomes wildfire. Red One's vengeance is no longer personal—she's igniting rebellion across the sector. Bigger scope, more factions, galactic politics emerging. Fans of the first won't be disappointed.",
-    "words": "500k"
-  },
-  {
-    "id": "the-last-angel-the-hungry-stars",
-    "title": "The Last Angel: The Hungry Stars",
-    "author": "Proximal Flame",
-    "synopsis": "The third entry in The Last Angel series. The war has truly begun, and the threats facing both Red One and the surviving humans have escalated beyond the scale of the Compact itself. Ongoing.",
-    "themes": [
-      "space-opera",
-      "sci-fi",
-      "ai-protagonist",
-      "military"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/the-last-angel-the-hungry-stars.868549/",
-        "isCanonical": true
-      }
-    ],
-    "status": "ongoing",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-last-angel-3-the-hungry-stars.jpg",
-    "curatorNote": "The war has just begun. Third in the series, ongoing. The threat now exceeds the Alliance itself. If you've read this far, you don't need anyone's recommendation.",
-    "words": "400k+"
-  },
-  {
-    "id": "trailblazer",
-    "title": "Trailblazer",
-    "author": "3ndless",
-    "synopsis": "A Worm/Gundam fusion fic where Taylor, disillusioned with established heroes, becomes an independent hero armed with Gundam-inspired power armor and an AI named Veda. In an alternate Earth Bet where Scion died over a decade ago, she sets out to fix her city and maybe the world—or die trying. 1.6 million words, completed.",
-    "themes": [
-      "worm-fanfic",
-      "crossover",
-      "gundam",
-      "alt-power",
-      "mecha",
-      "tech-uplift"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/trailblazer-worm-gundam-au-complete.680881/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-trailblazer.jpg",
-    "curatorNote": "The ultimate fusion of mechs and superpowers. Taylor triggers with the ability to build Gundams. Real Gundams. 1.6 million words of epic, grafting Gundam's tech tree perfectly onto Worm's wasteland. Completed, with an ending worthy of the length. The ceiling of Worm crossover fic, bar none.",
-    "words": "1600k"
-  },
-  {
-    "id": "burn-up",
-    "title": "Burn Up",
-    "author": "JinglyJangles",
-    "synopsis": "A short, intense Worm fanfic where Taylor triggers with volatile heat-based powers. Her personality ignites along with her abilities in this stream-of-consciousness exploration of power and identity. No complex plots—just pure emotional combustion. 40,000 words, complete.",
-    "themes": [
-      "worm-fanfic",
-      "alt-power",
-      "female-lead",
-      "short",
-      "literary"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/burn-up-worm-complete.395526/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-burn-up.jpg",
-    "curatorNote": "40k words. The peak of Worm fanfic prose. Taylor gets volatile heat powers, and her personality ignites with them. No complex plots—just pure emotional combustion. Reads like a bullet heating up—stream-of-consciousness, manic, beautiful. Short, complete, highly recommended.",
-    "words": "40k"
-  },
-  {
-    "id": "a-wand-for-skitter",
-    "title": "A Wand for Skitter",
-    "author": "ShayneT",
-    "synopsis": "Post-Gold Morning Taylor wakes up in the Harry Potter world with her powers intact. Watch as she solves magical Britain's problems with Worm-level ruthlessness and tactical thinking. A decisive, fast-paced crossover that delivers pure satisfaction.",
-    "themes": [
-      "worm-fanfic",
-      "crossover",
-      "harry-potter",
-      "alt-power",
-      "culture-clash"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/a-wand-for-skitter.730018/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-a-wand-for-skitter.jpg",
-    "curatorNote": "Bug girl hits Hogwarts, and magical Britain trembles. Post-GM Taylor wakes up in the Harry Potter world, powers intact. Solving HP problems with Worm logic—decisive, fast-paced. ShayneT's signature work. Pure satisfaction.",
-    "words": "450k"
-  },
-  {
-    "id": "ring-maker",
-    "title": "Ring-Maker",
-    "author": "LithosMaitreya",
-    "synopsis": "A Worm/Lord of the Rings crossover where Taylor can forge Rings of Power. This story honors Tolkien while seamlessly fusing Middle-earth's mythology with Worm's setting. Taylor becomes a figure of redemption in a world that desperately needs hope. Completed.",
-    "themes": [
-      "worm-fanfic",
-      "crossover",
-      "tolkien",
-      "alt-power"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/ring-maker-worm-lord-of-the-rings-alt-power.517894/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-ring-maker.jpg",
-    "curatorNote": "Sauron's craft, Myrddin's redemption. Taylor can forge Rings of Power. This isn't consuming Tolkien—it's honoring him. The author truly understands Middle-earth and truly understands Worm. Two systems fused seamlessly. Completed, epic as hell.",
-    "words": "400k"
-  },
-  {
-    "id": "constellations",
-    "title": "Constellations",
-    "author": "UnwelcomeStorm",
-    "synopsis": "Taylor meets a dog that might be a Shinto goddess, or might just be a very good dog. They open a tea shop. A healing fic for those wrecked by Worm's darkness—no gore, no despair, just warmth and found family. Hiatus, but spiritually complete.",
-    "themes": [
-      "worm-fanfic",
-      "alt-power",
-      "slice-of-life",
-      "comedy",
-      "fluff"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/constellations-worm-okami.414320/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-constellations.jpg",
-    "curatorNote": "The healing fic. Got wrecked by Worm? Come here to recover. Taylor meets a dog. Might be a Shinto goddess, might just be a very good dog. They open a tea shop. No gore, no despair, just warmth. Abandoned but doesn't matter—what exists is spiritually complete."
-  },
-  {
-    "id": "cenotaph",
-    "title": "Cenotaph",
-    "author": "notes",
-    "synopsis": "After her father dies, Taylor rejects the hero system entirely. No Wards, no trusting anyone—she wages a solitary war as a vigilante in Brockton Bay's shadows. Colder and harder than canon, this begins a landmark trilogy in Worm fanfic.",
-    "themes": [
-      "worm-fanfic",
-      "canon-divergence",
-      "dark",
-      "anti-hero",
-      "vigilante"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/cenotaph-worm.273255/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-cenotaph.jpg",
-    "curatorNote": "The lone vigilante trilogy begins. After her father dies, Taylor says no to the hero system. No Wards, no trusting anyone, waging war alone in Brockton Bay's shadows. Colder, harder, more hopeless than canon. A landmark in Worm fanfic.",
-    "words": "350k"
-  },
-  {
-    "id": "wake",
-    "title": "Wake",
-    "author": "notes",
-    "synopsis": "Sequel to Cenotaph. Taylor is no longer alone, which means she now has weaknesses. The vigilante war escalates as the stakes and costs mount ever higher.",
-    "themes": [
-      "worm-fanfic",
-      "canon-divergence",
-      "dark",
-      "vigilante"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/wake-worm.305014/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-wake.jpg",
-    "curatorNote": "Cenotaph's sequel. Taylor's no longer alone—which means she has weaknesses now. The war escalates, shadows deepen, costs mount. If you liked the first one's hardboiled style, this won't disappoint.",
-    "words": "150k"
-  },
-  {
-    "id": "legacy",
-    "title": "Legacy",
-    "author": "notes",
-    "synopsis": "The conclusion to the Cenotaph trilogy. A dark parallel universe reaches its end.",
-    "themes": [
-      "worm-fanfic",
-      "canon-divergence",
-      "dark"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/legacy-worm.345448/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-legacy.jpg",
-    "curatorNote": "The trilogy ends. Closing out this dark parallel universe. If you've read this far, you don't need a pitch.",
-    "words": "200k+"
-  },
-  {
-    "id": "copacetic",
-    "title": "Copacetic",
-    "author": "Materia-Blade",
-    "synopsis": "After Gold Morning, Taylor wants a normal life. She lost her powers, changed her identity, and is trying to start over. But the world remembers what she did, and so does she. A meditation on what happens after the hero retires. Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "post-canon",
-      "slice-of-life",
-      "unpowered"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/copacetic-worm.283578/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-copacetic.jpg",
-    "curatorNote": "After Golden Morning, Taylor wants a normal life. She lost her powers, changed her identity, trying to start over. But the world remembers what she did, and so does she. A meditation on 'what happens after the hero retires.' Abandoned, but what exists is beautiful."
-  },
-  {
-    "id": "tabloid",
-    "title": "Tabloid",
-    "author": "babylonsheep",
-    "synopsis": "A unique angle on the Worm universe: Paul is a paparazzi in a superhero world. He works PRT PR by day and uses his Stranger power to photograph capes for tabloids by night. A gray-zone survivor balancing two lives. Completed, with beautiful illustrations.",
-    "themes": [
-      "worm-fanfic",
-      "oc",
-      "male-lead",
-      "slice-of-life",
-      "world-building"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/tabloid-worm-artfic.455278/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-tabloid.jpg",
-    "curatorNote": "The most unique angle: paparazzi in a superhero world. Paul works PRT PR by day, uses his Stranger power to photograph capes for tabloids by night. A gray-zone survivor, balancing two lives. Completed, beautifully illustrated, criminally underrated.",
-    "words": "100k"
-  },
-  {
-    "id": "camera-shy",
-    "title": "Camera Shy",
-    "author": "TheGreatGimmick",
-    "synopsis": "Taylor triggers with the ability to turn invisible—but only when no one is looking. A creative exploration of a seemingly weak power used intelligently. Ongoing.",
-    "themes": [
-      "worm-fanfic",
-      "alt-power",
-      "female-lead",
-      "stranger"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/camera-shy-worm-au.685357/",
-        "isCanonical": true
-      }
-    ],
-    "status": "ongoing",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-camera-shy.jpg",
-    "curatorNote": "Taylor can turn invisible—but only when no one's looking. Sounds weak, right? But smart powers plus smart application equals endless possibilities. Creative premise, solid execution. Ongoing, worth following.",
-    "words": "200k"
-  },
-  {
-    "id": "dire-worm",
-    "title": "Dire Worm",
-    "author": "Lost Demiurge",
-    "synopsis": "Doctor Dire arrives in Brockton Bay! A high-IQ supervillain from another universe stirs everything up with maximum theatrical flair. The character proved so compelling the author wrote original novels about her. Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "crossover",
-      "villain-lead",
-      "comedy",
-      "ham"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/dire-worm-worm-au-oc.300816/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-dire-worm.jpg",
-    "curatorNote": "Doctor Dire has arrived! Supervillain, genius, drama queen—all in one. A high-IQ villain from another universe crashes into Brockton Bay, stirring everything with maximum theatrics. Character so compelling the author wrote original novels about her. Abandoned but spectacular."
-  },
-  {
-    "id": "skein",
-    "title": "Skein",
-    "author": "TheGreatGimmick",
-    "synopsis": "Taylor triggers with language and thought manipulation powers, navigating the cape scene through prediction and psychological control. Not a punching story—an outwitting story with complex, sophisticated prose. Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "alt-power",
-      "psychological",
-      "rational",
-      "thinker"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/skein-worm-altpower-au.437953/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-skein.jpg",
-    "curatorNote": "Brain-twister. Taylor gets language and thought manipulation powers, navigating the cape scene through prediction and control. Not a punching story—an outwitting story. Complex, sophisticated prose. Readers who like thinking will be satisfied."
-  },
-  {
-    "id": "weaver-nine",
-    "title": "Weaver Nine",
-    "author": "Thinker6",
-    "synopsis": "What if Taylor was a serial killer? What if Jack Slash was a hero? Identities swapped, but humanity's core unchanged. A chilling dark AU with brilliant mind games. Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "au",
-      "dark",
-      "role-swap",
-      "villain-lead"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/weaver-nine-worm-au.289395/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-weaver-nine.jpg",
-    "curatorNote": "What if Taylor was a serial killer? What if Jack Slash was a hero? Identities swapped, but humanity's core unchanged. That's what makes it truly chilling. Peak dark AU, brilliant mindgames. Abandoned but worth reading."
-  },
-  {
-    "id": "a-bad-name",
-    "title": "A Bad Name",
-    "author": "Ziel",
-    "synopsis": "An atypical Gamer fic where the protagonist isn't Taylor—it's a homeless addict. After getting the System, the focus isn't grinding levels—it's getting clean, self-redemption, and finding reasons to live. Ongoing.",
-    "themes": [
-      "worm-fanfic",
-      "litrpg",
-      "oc",
-      "male-lead"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/a-bad-name-worm-oc-the-gamer.500626/",
-        "isCanonical": true
-      }
-    ],
-    "status": "ongoing",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-a-bad-name.jpg",
-    "curatorNote": "An atypical Gamer fic. Protagonist isn't Taylor—it's a homeless addict. After getting the System, the focus isn't grinding levels—it's getting clean, self-redemption, finding reasons to live. Unexpectedly moving. Ongoing.",
-    "words": "250k"
-  },
-  {
-    "id": "security",
-    "title": "Security!",
-    "author": "Ack",
-    "synopsis": "An ordinary security guard transmigrates to Worm with plot knowledge. No cheats, no power fantasy—just a middle-aged man trying to do the right thing with foreknowledge. Completed.",
-    "themes": [
-      "worm-fanfic",
-      "oc",
-      "self-insert",
-      "male-lead",
-      "fix-it"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/security-a-worm-si-story.300658/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-security.jpg",
-    "curatorNote": "An ordinary security guard transmigrates to Worm with plot knowledge. Sounds formulaic, right? But this one actually sells 'normal person in a superpowered world.' No cheats, no flexing—just a middle-aged guy trying to do the right thing. Completed, surprisingly heartfelt.",
-    "words": "250k"
-  },
-  {
-    "id": "manager",
-    "title": "Manager",
-    "author": "Seraviel",
-    "synopsis": "Taylor can seize, merge, and redistribute superpowers. She turns heroism into resource management, playing Brockton Bay with multiple identities. Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "alt-power",
-      "power-theft",
-      "female-lead"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/manager-worm.280060/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-manager.jpg",
-    "curatorNote": "Power management master. Taylor can seize, merge, and redistribute superpowers. She turns heroism into resource management, playing Brockton Bay with multiple identities. Fun premise, abandoned but worth checking out."
-  },
-  {
-    "id": "intrepid",
-    "title": "Intrepid",
-    "author": "Cerulean",
-    "synopsis": "After the locker, Taylor falls into a coma. Madison, Emma, and Sophia each trigger and join different factions, their paths destined to converge. A massive multi-POV ensemble drama. Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "au",
-      "ensemble-cast",
-      "multi-pov",
-      "female-lead"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/intrepid-worm-au.337516/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-intrepid.jpg",
-    "curatorNote": "Four girls, four fate lines, destined to converge. After the locker, Taylor falls into a coma. Madison, Emma, Sophia each trigger, joining different factions. They don't know about each other, but readers know they'll reunite. Multi-POV ensemble drama, massive scope, abandoned but content-rich."
-  },
-  {
-    "id": "el-ahrairah",
-    "title": "El-Ahrairah",
-    "author": "Anderein",
-    "synopsis": "Taylor gets a Thinker power inspired by the rabbit god from Watership Down. She wins through wisdom and strategy rather than combat. Slower-paced but deep. Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "alt-power",
-      "thinker",
-      "rational"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/el-ahrairah-worm.372987/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-el-ahrairah.jpg",
-    "curatorNote": "The Prince with a Thousand Enemies. Taylor gets a Thinker power inspired by Watership Down's rabbit god. Wins through wisdom and strategy, not combat. Slower paced but deep. Don't miss if you like mindgame stories."
-  },
-  {
-    "id": "queen-of-blood",
-    "title": "Queen of Blood",
-    "author": "SirWill",
-    "synopsis": "A Worm/Castlevania crossover. Taylor inherits Dracula's power, bringing gothic horror to Brockton Bay. Gorgeous aesthetic and satisfying combat. Completed.",
-    "themes": [
-      "worm-fanfic",
-      "crossover",
-      "castlevania",
-      "alt-power",
-      "dark"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/queen-of-blood-worm-castlevania.363842/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-queen-of-blood.jpg",
-    "curatorNote": "Vampire queen descends on Brockton Bay. Worm x Castlevania crossover. Taylor inherits Dracula's power—gothic horror meets superheroes. Gorgeous aesthetic, satisfying fights.",
-    "words": "500k"
-  },
-  {
-    "id": "worm-more-than-meets-the-eye",
-    "title": "Worm: More Than Meets the Eye",
-    "author": "Metallix666",
-    "synopsis": "Taylor builds Transformers. Giant robots, faction drama, and philosophical questions about personhood and consciousness. Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "crossover",
-      "transformers",
-      "alt-power"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/worm-more-than-meets-the-eye-worm-transformers.317017/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-more-than-meets-the-eye.jpg",
-    "curatorNote": "Taylor builds Transformers. Giant robots, faction drama, philosophical questions about personhood. Better crossover fusion than expected, abandoned but fun."
-  },
-  {
-    "id": "kill-them-all",
-    "title": "Kill Them All",
-    "author": "ShayneT",
-    "synopsis": "Taylor gets Gamer powers and goes on a multiverse rampage against everyone who hurt her. Violent, cathartic, unapologetic power fantasy. Completed.",
-    "themes": [
-      "worm-fanfic",
-      "litrpg",
-      "alt-power",
-      "murderhobo",
-      "progression"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/kill-them-all-worm-gamer.830187/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-kill-them-all.jpg",
-    "curatorNote": "ShayneT product, murder-leveling flow. Taylor gets Gamer powers, slaughtering everyone who hurt her across the multiverse. Violent, cathartic, unapologetic. Come here for power fantasy.",
-    "words": "400k"
-  },
-  {
-    "id": "mixed-feelings",
-    "title": "Mixed Feelings",
-    "author": "Kittius",
-    "synopsis": "The most nuanced trauma psychology in Worm fic. Astrid triggers under her racist father's abuse and is forced into the Wards. A slow-burn story about unlearning hate and learning to trust. Ongoing.",
-    "themes": [
-      "worm-fanfic",
-      "oc",
-      "female-lead",
-      "psychological",
-      "character-driven"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/mixed-feelings-worm-oc.375923/",
-        "isCanonical": true
-      }
-    ],
-    "status": "ongoing",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-mixed-feelings.jpg",
-    "curatorNote": "The most nuanced trauma psychology in Worm fic. Astrid triggers under her racist father's abuse, forced into the Wards. This isn't about fights—it's about a girl raised on hate learning to shed those chains, trust again, redefine herself. Slow burn, 700k words of gradual healing, but the characters feel painfully real.",
-    "words": "200k"
-  },
-  {
-    "id": "atonement",
-    "title": "Atonement",
-    "author": "Cerulean",
-    "synopsis": "What if Taylor died in the locker? Madison, crushed by guilt, triggers powers and becomes a hero not for glory, but to fill the void she created. Called 'the best Spider-Man story, just set in Worm.' Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "au",
-      "oc",
-      "female-lead",
-      "character-driven"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/atonement-worm-au.312449/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-atonement.jpg",
-    "curatorNote": "What if Taylor died in the locker? In this timeline, Taylor had a heart attack, didn't survive. Madison is crushed by guilt, triggers powers. She puts on a costume not to be a hero, but to fill the hole she dug herself. Called 'the best Spider-Man story, just set in Worm.'"
-  },
-  {
-    "id": "memories-of-iron",
-    "title": "Memories of Iron",
-    "author": "becuzitswrong",
-    "synopsis": "Taylor receives Tony Stark's memories and technology. Iron Man meets Worm in this tech-stomp satisfaction piece. The author passed away, leaving it incomplete—a legacy worth remembering.",
-    "themes": [
-      "worm-fanfic",
-      "crossover",
-      "marvel",
-      "alt-power",
-      "tinker"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/memories-of-iron-worm-iron-man-cross.301279/",
-        "isCanonical": true
-      }
-    ],
-    "status": "dead",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-memories-of-iron.jpg",
-    "curatorNote": "Taylor gets Tony Stark's memories and tech. Iron Man x Worm. Tech-stomp satisfaction, well-written. Sadly, the author passed away—it'll never be finished. As a legacy, worth reading and remembering."
-  },
-  {
-    "id": "i-woke-up-as-a-dungeon-now-what",
-    "title": "I Woke Up As a Dungeon, Now What?",
-    "author": "Aku-dono",
-    "synopsis": "Taylor becomes a dungeon core in an isekai world. Farming, trap-building, and monster management with a creative premise and fun execution. Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "isekai",
-      "dungeon",
-      "non-human-lead"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/i-woke-up-as-a-dungeon-now-what-dungeon-worm.620521/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-i-woke-up-as-a-dungeon-now-what.jpg",
-    "curatorNote": "Taylor becomes a dungeon core. Farming, trap-building, monster management in an isekai. Creative premise, fun execution. Abandoned but charming."
-  },
-  {
-    "id": "acceleration",
-    "title": "Acceleration",
-    "author": "chibipoe",
-    "synopsis": "Taylor gets Accelerator's power from A Certain Magical Index—the strongest ability in physics. An invincible power fantasy watching her crush everything. Completed.",
-    "themes": [
-      "worm-fanfic",
-      "crossover",
-      "raildex",
-      "alt-power",
-      "op"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/acceleration-worm-au.284714/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-acceleration.jpg",
-    "curatorNote": "Taylor gets Accelerator's power. Strongest in physics. Invincible power fantasy, watching her crush everything. Completed, though the ending's a bit rushed.",
-    "words": "150k"
-  },
-  {
-    "id": "hunter",
-    "title": "Hunter",
-    "author": "UnwelcomeStorm",
-    "synopsis": "Bloodborne meets Worm. Taylor inherits the Hunter's Dream, bringing gothic horror and cosmic dread to Brockton Bay. Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "crossover",
-      "bloodborne",
-      "alt-power",
-      "horror",
-      "dark"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/hunter-worm-bloodborne.363802/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-hunter.jpg",
-    "curatorNote": "Bloodborne x Worm. Taylor inherits the Hunter's Dream. Gothic horror, cosmic dread, oversized weapons. If you've played Bloodborne, you'll love this."
-  },
-  {
-    "id": "amelia",
-    "title": "Amelia",
-    "author": "TanaNari",
-    "synopsis": "When two biokinetics team up, power creep never stops. Taylor and Amy's partnership derails the timeline completely as they escalate without limits. Completed.",
-    "themes": [
-      "worm-fanfic",
-      "canon-divergence",
-      "progression",
-      "romance",
-      "power-creep"
-    ],
-    "links": [
-      {
-        "platform": "sufficient-velocity",
-        "url": "https://forums.sufficientvelocity.com/threads/amelia-worm-au.13577/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-amelia.jpg",
-    "curatorNote": "When two biokinetics team up, power creep never stops. Taylor and Amy's partnership goes from cooperation to codependence, derailing the timeline completely. Completed, content-rich, but be warned—the escalation has no brakes.",
-    "words": "600k"
-  },
-  {
-    "id": "deputy",
-    "title": "Deputy",
-    "author": "Reyemile",
-    "synopsis": "Taylor joins the PRT as civilian staff—not a Ward, but a deputy. She works within the system, solving problems through proper channels. A surprisingly compelling bureaucracy fic. Completed.",
-    "themes": [
-      "worm-fanfic",
-      "unpowered",
-      "female-lead",
-      "bureaucracy",
-      "fix-it"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/deputy-internship-worm-au-au.483163/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-deputy.jpg",
-    "curatorNote": "Taylor joins the PRT as civilian staff. Not a Ward—a deputy. Working within the system, solving problems through proper channels, showing heroes 'how it's done.' Bureaucracy fic, surprisingly compelling.",
-    "words": "200k"
-  },
-  {
-    "id": "heromakers-legacy",
-    "title": "Heromaker's Legacy",
-    "author": "TheGrum",
-    "synopsis": "Infrastructure fic taken to extremes. Taylor discovers alien technology and proceeds to manufacture, test, and upgrade endlessly. For those who love watching power stats explode. Ongoing.",
-    "themes": [
-      "worm-fanfic",
-      "alt-power",
-      "tinker",
-      "progression",
-      "tech-uplift"
-    ],
-    "links": [
-      {
-        "platform": "sufficient-velocity",
-        "url": "https://forums.sufficientvelocity.com/threads/heromakers-legacy-worm-au-original.7589/",
-        "isCanonical": true
-      }
-    ],
-    "status": "ongoing",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-heromakers-legacy.jpg",
-    "curatorNote": "Infrastructure fic taken to extremes. Taylor triggers bug control, then discovers alien tech infrastructure. Manufacturing, testing, upgrading—numbers going up constantly. If you like watching power stats explode, this is for you.",
-    "words": "150k"
-  },
-  {
-    "id": "a-cloudy-path",
-    "title": "A Cloudy Path",
-    "author": "LacksCreativity",
-    "synopsis": "Supreme Commander meets Worm. Taylor gets sci-fi RTS manufacturing abilities, embodying the escalation fic as she builds an army. Hiatus.",
-    "themes": [
-      "worm-fanfic",
-      "crossover",
-      "supreme-commander",
-      "alt-power",
-      "tinker",
-      "tech-uplift"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/a-cloudy-path-worm-supreme-commander.301286/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-a-cloudy-path.jpg",
-    "curatorNote": "Supreme Commander x Worm. Taylor gets sci-fi RTS manufacturing abilities. The embodiment of escalation fic, farming to the sky. Abandoned, but the journey is the destination."
-  },
-  {
     "id": "purple-days",
     "title": "Purple Days",
-    "author": "Baurus",
-    "synopsis": "Joffrey Baratheon dies at the Purple Wedding and wakes up three days after Jon Arryn's death—again and again. Through countless deaths and rebirths, the most hated character in Westeros is forged into something changed. A redemption epic exploring the entire ASOIAF world. Completed, Turtledove 2017 winner.",
-    "themes": [
-      "asoiaf-fanfic",
-      "time-loop",
-      "male-lead",
-      "redemption",
-      "character-driven"
-    ],
+    "author": "baurus",
+    "synopsis": "King Joffrey Baratheon dies to the Strangler on his wedding day. In his final moments, he falls into endless agony as his vision melts into purple waves. He wakes up back at his apartments in the Red Keep, three days after the death of Jon Arryn. This is the story of how he became a scholar, a sea-captain, a general, a lover—through a cycle of endless death and rebirth.",
+    "curatorNote": "The redemption arc that GRRM never wrote. Joffrey dies a thousand deaths and emerges... someone worth rooting for? One of the greatest character transformations in fanfiction. The Yi-Ti arc alone is worth the read.",
+    "curatorNoteCN": "乔弗里·拜拉席恩，全网最招人恨的角色，在这里被写成了你会真心支持的英雄。80万字的轮回，从王城到夷地，从恶棍到圣王。2017年海龟奖得主，同人文的天花板。",
+    "words": "823670",
+    "status": "completed",
     "links": [
       {
         "platform": "spacebattles",
         "url": "https://forums.spacebattles.com/threads/purple-days-asoiaf-joffrey-timeloop-au.450894/",
         "isCanonical": true
+      },
+      {
+        "platform": "personal-site",
+        "url": "https://www.alternatehistory.com/forum/threads/purple-days-asoiaf-si.391394/",
+        "isCanonical": false
       }
     ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/purple-days.jpg",
-    "curatorNote": "Joffrey's time loop. Yes, that Joffrey. He dies at the Purple Wedding, wakes up to start over. Once, twice, hundreds of times. Pain grinds down edges and forges new souls. 2017 Turtledove winner, proving any character can be redeemed through enough suffering.",
-    "words": "820k"
-  },
-  {
-    "id": "the-games-we-play",
-    "title": "The Games We Play",
-    "author": "Ryuugi",
-    "synopsis": "The ceiling of RWBY Gamer fic. Jaune Arc gets the power to live life as an RPG and levels up to fighting gods. 700,000 words, completed.",
     "themes": [
-      "rwby-fanfic",
-      "litrpg",
-      "male-lead",
-      "progression",
-      "op"
+      "Time Loop",
+      "Fantasy",
+      "Character-Driven"
     ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/the-games-we-play-rwby-the-gamer-au.306381/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
     "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-games-we-play.jpg",
-    "curatorNote": "The ceiling of RWBY Gamer fic. Jaune Arc gets the power to live life as an RPG, then levels up to fighting gods. Million words, completed. If you like watching numbers go up, this will satisfy.",
-    "words": "700k"
-  },
-  {
-    "id": "seventh-horcrux",
-    "title": "Seventh Horcrux",
-    "author": "Emerald Ashes",
-    "synopsis": "The funniest Harry Potter fic ever written. Harry is actually Voldemort's seventh Horcrux—and the soul fragment took over. Now 'Harry' must pretend to be a normal student while being deeply confused by everyone around him. Completed.",
-    "themes": [
-      "harry-potter-fanfic",
-      "comedy",
-      "male-lead",
-      "crack"
-    ],
-    "links": [
-      {
-        "platform": "spacebattles",
-        "url": "https://forums.spacebattles.com/threads/seventh-horcrux-hp-au.298748/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/seventh-horcrux.jpg",
-    "curatorNote": "The funniest Harry Potter fic ever written. Harry is actually Voldemort's seventh Horcrux—and the soul fragment took over. Now 'Harry' must pretend to be a normal student while being deeply confused by everyone around him. Non-stop gold, laugh-until-it-hurts funny.",
-    "words": "100k"
-  },
-  {
-    "id": "a-practical-guide-to-evil",
-    "title": "A Practical Guide to Evil",
-    "author": "ErraticErrata",
-    "synopsis": "Catherine Foundling joins the Legions of Terror to save her conquered homeland from within. In a world where narrative tropes have literal power, she'll do wrong things for right reasons—or is she just rationalizing? A completed 1.3 million word epic about fate, politics, and punching the rules. Published on Amazon.",
-    "themes": [
-      "fantasy",
-      "dark",
-      "villain-protagonist",
-      "meta-narrative",
-      "politics",
-      "military"
-    ],
-    "links": [
-      {
-        "platform": "personal-site",
-        "url": "https://practicalguidetoevil.wordpress.com/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/a-practical-guide-to-evil.jpg",
-    "curatorNote": "A villain's practical guide. Catherine Foundling joins the legions of evil, because sometimes the only way to save your country is to conquer it. 2 million word epic about fate, narrative tropes, and punching the rules. Recently published on Amazon.",
-    "words": "1300k"
-  },
-  {
-    "id": "forge-of-destiny",
-    "title": "Forge of Destiny",
-    "author": "Yrsillar",
-    "synopsis": "Cultivation done right. Ling Qi, a street urchin, enters a cultivation sect. No face-slapping, no broken engagements—just politics, friendship, and very good music. A Quest-turned-novel balancing progression with character growth. Published on Amazon.",
-    "themes": [
-      "cultivation",
-      "fantasy",
-      "female-lead",
-      "character-driven",
-      "slow-burn"
-    ],
-    "links": [
-      {
-        "platform": "sufficient-velocity",
-        "url": "https://forums.sufficientvelocity.com/threads/forge-of-destiny-xianxia-quest.35583/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/forge-of-destiny.jpg",
-    "curatorNote": "Cultivation done right. Ling Qi, a street urchin, enters a cultivation sect. No face-slapping, no broken engagements—just politics, friendship, and very good music. Quest-to-novel transition that balances progression with character growth. Published on Amazon.",
-    "words": "1200k+"
-  },
-  {
-    "id": "harry-potter-and-the-methods-of-rationality",
-    "title": "Harry Potter and the Methods of Rationality",
-    "author": "Eliezer Yudkowsky",
-    "synopsis": "What if Harry was raised by a scientist? Petunia married an Oxford professor, and Harry grew up on the scientific method. Now Rationalist!Harry enters the wizarding world armed with Enlightenment ideals and the experimental spirit. The foundational rationalist fic—smart, arrogant, utterly unique. Completed.",
-    "themes": [
-      "harry-potter-fanfic",
-      "rational",
-      "male-lead",
-      "science"
-    ],
-    "links": [
-      {
-        "platform": "ffn",
-        "url": "https://www.fanfiction.net/s/5782108/1/Harry-Potter-and-the-Methods-of-Rationality",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/harry-potter-and-the-methods-of-rationality.jpg",
-    "curatorNote": "What if Harry was a scientist? Petunia married a professor, Harry grew up on the scientific method, now he wants to figure out magic's underlying logic. The foundational rationalist fic—smart, arrogant, utterly unique. Loved or hated, never forgotten.",
-    "words": "660k"
-  },
-  {
-    "id": "marked-for-death",
-    "title": "Marked for Death",
-    "author": "EagleJarl & Velorien",
-    "synopsis": "A squad of Mist genin, sent on suicide missions as cannon fodder, choose to run instead. Now they're missing-nin, hunted by Bloody Mist. Not shonen—this is child soldiers, political sacrifice, and survival simulation. The longest-running Quest on SV, peak rationalist Naruto. Ongoing.",
-    "themes": [
-      "naruto-fanfic",
-      "rational",
-      "dark",
-      "quest",
-      "oc"
-    ],
-    "links": [
-      {
-        "platform": "sufficient-velocity",
-        "url": "https://forums.sufficientvelocity.com/threads/marked-for-death-a-rational-naruto-quest.24481/",
-        "isCanonical": true
-      }
-    ],
-    "status": "ongoing",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/marked-for-death.jpg",
-    "curatorNote": "Children abandoned by their village. A squad of Mist genin sent on suicide missions as cannon fodder choose to run instead. Now they're missing-nin, hunted by Bloody Mist. Not shonen—this is child soldiers, political sacrifice, and survival simulation. SV's longest-running Quest, peak rationalist Naruto.",
-    "words": "2000k+"
-  },
-  {
-    "id": "dungeon-keeper-ami",
-    "title": "Dungeon Keeper Ami",
-    "author": "Pusakuronu",
-    "synopsis": "Sailor Mercury's Ami is forced to run an evil dungeon. She wants to be good, but her job description says demon lord. Moral dilemmas and rational decisions in a dark system. Mega-length, ongoing.",
-    "themes": [
-      "crossover",
-      "sailor-moon",
-      "dungeon-keeper",
-      "female-lead",
-      "comedy"
-    ],
-    "links": [
-      {
-        "platform": "sufficient-velocity",
-        "url": "https://forums.sufficientvelocity.com/threads/dungeon-keeper-ami-sailor-moon-dungeon-keeper.31639/",
-        "isCanonical": true
-      }
-    ],
-    "status": "hiatus",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/dungeon-keeper-ami.jpg",
-    "curatorNote": "Sailor Mercury's Ami, forced to run an evil dungeon. She wants to be good, but her job description says demon lord. Moral dilemmas, rational decisions, holding the line in a dark system. Mega-length, still ongoing."
-  },
-  {
-    "id": "the-wandering-inn",
-    "title": "The Wandering Inn",
-    "author": "pirateaba",
-    "synopsis": "Erin Solstice opens an inn in another world. In a dangerous LitRPG setting where magic is real and people level up, she is no warrior, no mage—she's an [Innkeeper]. At 12+ million words, it's the longest English web novel, exploring community and belonging. Published on Amazon.",
-    "themes": [
-      "fantasy",
-      "isekai",
-      "slice-of-life",
-      "female-lead",
-      "ensemble-cast",
-      "slow-burn"
-    ],
-    "links": [
-      {
-        "platform": "personal-site",
-        "url": "https://wanderinginn.com/",
-        "isCanonical": true
-      }
-    ],
-    "status": "ongoing",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-wandering-inn.jpg",
-    "curatorNote": "12 million words. The longest web novel in English. Erin Solstice opens an inn in another world. That's the premise. But this inn becomes sanctuary, battlefield, home. Cozy, vast, about community and belonging. 18 volumes on Amazon. If you want to completely immerse in a world, this is your door.",
-    "words": "12000k+"
-  },
-  {
-    "id": "the-world-as-it-appears-to-be",
-    "title": "The World As It Appears To Be",
-    "author": "Benedict_SC",
-    "synopsis": "Rationalist Overwatch. Mercy can backup and restore teammates' complete consciousness. When the secret gets out, everyone faces the question: if you copy someone's memories, are they still alive? Hardcore sci-fi ensemble. Completed.",
-    "themes": [
-      "overwatch-fanfic",
-      "sci-fi",
-      "rational",
-      "ensemble-cast"
-    ],
-    "links": [
-      {
-        "platform": "ao3",
-        "url": "https://archiveofourown.org/works/9402014",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-world-as-it-appears-to-be.jpg",
-    "curatorNote": "Rationalist Overwatch. Mercy's tech is more advanced than anyone realizes—she can backup and restore teammates' complete consciousness. When the secret gets out, everyone faces the question: if you copy someone's memories, are they still alive? Hardcore sci-fi ensemble.",
-    "words": "80k"
-  },
-  {
-    "id": "cordyceps-too-clever-for-their-own-good",
-    "title": "CORDYCEPS: Too clever for their own good",
-    "author": "Benedict_SC",
-    "synopsis": "Psychological horror. You wake up in a facility with no memory. Something's wrong. Don't look anything up—just read. Every twist is earned. Best experienced blind. Completed.",
-    "themes": [
-      "horror",
-      "psychological",
-      "mystery",
-      "short",
-      "twist"
-    ],
-    "links": [
-      {
-        "platform": "ao3",
-        "url": "https://archiveofourown.org/works/6178036/chapters/14154868",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/cordyceps.jpg",
-    "curatorNote": "Psychological horror. Short, sharp, dirty. You wake up in a facility with no memory. Something's wrong. Don't look anything up—just read. Every twist is earned. Best experienced blind.",
-    "words": "30k"
-  },
-  {
-    "id": "pokemon-the-origin-of-species",
-    "title": "Pokemon: The Origin of Species",
-    "author": "DaystarEld",
-    "synopsis": "Pokemon world taken seriously. Red, Blue, and Leaf's journey, but Pokemon are scientifically studied and trainers face real moral dilemmas. Rationalist, ongoing.",
-    "themes": [
-      "pokemon-fanfic",
-      "rational",
-      "male-lead"
-    ],
-    "links": [
-      {
-        "platform": "personal-site",
-        "url": "https://daystareld.com/pokemon/",
-        "isCanonical": true
-      }
-    ],
-    "status": "ongoing",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/pokemon-the-origin-of-species.jpg",
-    "curatorNote": "Pokemon world, taken seriously. Red, Blue, and Leaf's journey, but Pokemon are scientifically studied and trainers face real moral dilemmas. Rationalist, ongoing, substantial depth.",
-    "words": "500k+"
-  },
-  {
-    "id": "blood-of-the-frontier",
-    "title": "Blood of the Frontier",
-    "author": "Magoose",
-    "synopsis": "Crusader Kings politics in novel form. Medieval dynasty struggles, frontier survival, and imperial ruthlessness. A Quest for those who love grand strategy scheming and gray morality. Completed.",
-    "themes": [
-      "ck2",
-      "strategy",
-      "politics",
-      "dark"
-    ],
-    "links": [
-      {
-        "platform": "sufficient-velocity",
-        "url": "https://forums.sufficientvelocity.com/threads/blood-of-the-frontier-ck2-completed.43018/",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/blood-of-the-frontier.jpg",
-    "curatorNote": "Crusader Kings politics in novel form. Medieval dynasty struggles, frontier survival, imperial ruthlessness. If you like grand strategy games' scheming and gray morality, this hits the spot.",
-    "words": "500k"
-  },
-  {
-    "id": "contact-at-kobol",
-    "title": "Contact at Kobol",
-    "author": "wilkins75",
-    "synopsis": "The Colonial Fleet finds Earth—but it's Stargate's Earth. Battlestar Galactica meets Stargate in a military sci-fi crossover where Asgard-enhanced Earth meets desperate survivors. Completed.",
-    "themes": [
-      "crossover",
-      "bsg",
-      "stargate",
-      "sci-fi",
-      "military"
-    ],
-    "links": [
-      {
-        "platform": "ffn",
-        "url": "https://www.fanfiction.net/s/11126728/1/Contact-at-Kobol",
-        "isCanonical": true
-      }
-    ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/contact-at-kobol.jpg",
-    "curatorNote": "The Colonial Fleet finds Earth—but it's Stargate's Earth. Two sci-fi universes collide. Earth with Asgard tech is overwhelming firepower against the Colonials. Military sci-fi crossover that satisfies both fandoms.",
-    "words": "400k"
+    "savedCount": 0
   },
   {
     "id": "the-perfect-run",
     "title": "The Perfect Run",
     "author": "Maxime J. Durand (Void Herald)",
     "synopsis": "Ryan 'Quicksave' Romano is an eccentric adventurer with a strange power: he can create a save-point in time and redo his life whenever he dies. Arriving in New Rome, the glitzy capital of sin of a rebuilding Europe, he finds the city torn between mega-corporations, sponsored heroes, superpowered criminals, and true monsters.",
-    "themes": [
-      "time-loop",
-      "superhero",
-      "comedy",
-      "post-apocalyptic",
-      "progression"
-    ],
+    "curatorNote": "Deadpool meets Groundhog Day in post-apocalyptic Europe. Ryan's humor hides centuries of trauma, and watching him finally find people worth saving hits different. The trilogy sticks the landing perfectly.",
+    "curatorNoteCN": "死侍式话痨主角+时间循环+末世超能，Ryan的贱嘴底下藏着几百年的孤独。三部曲结局完美，看到最后你会理解为什么他需要一个Perfect Run。封面画师Vitaly S. Alexius。",
+    "words": "450000",
+    "status": "completed",
     "links": [
       {
         "platform": "royal-road",
@@ -1391,28 +47,27 @@
       {
         "platform": "amazon",
         "url": "https://www.amazon.com/dp/B08WL8CS8B",
-        "isCanonical": true
+        "isCanonical": false
       }
     ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-perfect-run.jpg",
-    "curatorNote": "Deadpool meets Groundhog Day in post-apocalyptic Europe. Ryan's humor hides centuries of trauma, and watching him finally find people worth saving hits different. The trilogy sticks the landing perfectly.",
-    "words": "450k"
+    "themes": [
+      "Time Loop",
+      "Superhero",
+      "Comedy"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
   },
   {
     "id": "the-menocht-loop",
     "title": "The Menocht Loop",
     "author": "Lorne Ryburn (caerulex)",
     "synopsis": "Ian Dunai is trapped in the only maze an arch-decemancer can't escape: Time. Only 1% of the population is blessed with magic affinity at birth. Ian's decemancy eclipses all, granting him ultimate control over Death. He conquers cities with a thought—but overwhelming power isn't enough to escape the time loop.",
-    "themes": [
-      "time-loop",
-      "progression-fantasy",
-      "op-protagonist",
-      "magic-system",
-      "dark"
-    ],
+    "curatorNote": "What happens AFTER the loop? Most time loop stories end when the protagonist escapes. This one asks: what does a god-tier looper do with all that power in the real world? Six books, ongoing on Royal Road.",
+    "curatorNoteCN": "跳出循环之后呢？大多数时间循环故事在主角逃出时结束，这本问的是：一个在循环里练成死神的人，在真实世界能做什么？六本书，第七本连载中。作者是AI/ML工程师。",
+    "words": "600,000",
+    "status": "ongoing",
     "links": [
       {
         "platform": "royal-road",
@@ -1422,28 +77,27 @@
       {
         "platform": "amazon",
         "url": "https://www.amazon.com/dp/B09M6L22P4",
-        "isCanonical": true
+        "isCanonical": false
       }
     ],
-    "status": "ongoing",
-    "stackCount": 0,
-    "savedCount": 0,
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-menocht-loop.jpg",
-    "curatorNote": "What happens AFTER the loop? Most time loop stories end when the protagonist escapes. This one asks: what does a god-tier looper do with all that power in the real world? Six books, ongoing on Royal Road.",
-    "words": ""
+    "themes": [
+      "Time Loop",
+      "Progression Fantasy",
+      "Dark"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
   },
   {
     "id": "the-years-of-apocalypse",
     "title": "The Years of Apocalypse",
     "author": "UraniumPhoenix",
     "synopsis": "Mirian Castrella, a student in her final year of a magical academy, unexpectedly finds herself caught in a time loop and haunted by strange dreams of the Elder Gods. Her plan had been to become an artificer to support her struggling family, but when the Akana Praediar army betrays her country in a surprise attack, everything changes.",
-    "themes": [
-      "time-loop",
-      "progression-fantasy",
-      "magic-academy",
-      "female-lead",
-      "mystery"
-    ],
+    "curatorNote": "The true spiritual successor to Mother of Learning. Magic academy, time loops, gradual mastery—but with a fresh voice and a female protagonist who earns every ounce of power. Currently the best ongoing time loop story.",
+    "curatorNoteCN": "Mother of Learning的真正精神续作。魔法学院、时间循环、渐进式成长——但视角更新鲜，女主角Mirian每一分力量都是自己挣来的。目前连载中最好的时间循环作品，没有之一。",
+    "words": "500,000",
+    "status": "ongoing",
     "links": [
       {
         "platform": "royal-road",
@@ -1451,25 +105,24 @@
         "isCanonical": true
       }
     ],
-    "status": "ongoing",
-    "stackCount": 0,
-    "savedCount": 0,
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-years-of-apocalypse.jpg",
-    "curatorNote": "The true spiritual successor to Mother of Learning. Magic academy, time loops, gradual mastery—but with a fresh voice and a female protagonist who earns every ounce of power. Currently the best ongoing time loop story.",
-    "words": ""
+    "themes": [
+      "Time Loop",
+      "Progression Fantasy",
+      "Character-Driven"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
   },
   {
     "id": "dear-spellbook",
     "title": "Dear Spellbook",
     "author": "Peter J. Lee",
     "synopsis": "Tal is a sorcerer masquerading as a wizard, searching for answers about his parents' mysterious deaths. When the same day starts repeating, he's the only one aware—and his previously useless Spellbook is starting to exhibit strange abilities that could be his key to escaping this temporal prison.",
-    "themes": [
-      "time-loop",
-      "fantasy",
-      "magic-system",
-      "mystery",
-      "cozy"
-    ],
+    "curatorNote": "The journal format works brilliantly here—you ARE the spellbook. Cozy mystery meets time loop, with a magic system that rewards curiosity. Travis Baldree narrates the audiobook.",
+    "curatorNoteCN": "日记体叙事的天花板——你就是那本魔法书。温馨悬疑+时间循环，魔法系统设计精妙。有声书由Travis Baldree演绎。三部曲已完结，作者正在写衍生作品。",
+    "words": "350000",
+    "status": "completed",
     "links": [
       {
         "platform": "royal-road",
@@ -1479,28 +132,28 @@
       {
         "platform": "amazon",
         "url": "https://www.amazon.com/dp/B0BYH5DBJM",
-        "isCanonical": true
+        "isCanonical": false
       }
     ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/dear-spellbook.jpg",
-    "curatorNote": "The journal format works brilliantly here—you ARE the spellbook. Cozy mystery meets time loop, with a magic system that rewards curiosity. Travis Baldree narrates the audiobook.",
-    "words": "350k"
+    "themes": [
+      "Time Loop",
+      "Fantasy",
+      "Mystery",
+      "Cozy"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
   },
   {
     "id": "re-monarch",
     "title": "Re: Monarch",
     "author": "Eligos",
     "synopsis": "Cairn is a prince already tired of ruling. Faced with an imminent coronation and an overbearing father, he wants nothing more than to drown his responsibilities in cheap liquor. But an invasion, conspiracy, and rise of a terrifying villain result in his untimely death. Then, Cairn reawakens—a decade in the past, in his childhood body.",
-    "themes": [
-      "time-loop",
-      "fantasy",
-      "politics",
-      "prince",
-      "progression"
-    ],
+    "curatorNote": "Time loop meets political intrigue. The twist? Your killer loops with you. Cairn's growth from drunken wastrel to competent ruler feels earned. Luke Daniels narrates the audiobook.",
+    "curatorNoteCN": "时间循环+宫廷权谋。最狠的设定：杀你的人跟你一起循环。看着Cairn从醉鬼王子成长为合格君主，每一步都不是白给的。Luke Daniels有声演绎，Amazon已出三本。",
+    "words": "400,000",
+    "status": "ongoing",
     "links": [
       {
         "platform": "royal-road",
@@ -1510,28 +163,27 @@
       {
         "platform": "amazon",
         "url": "https://www.amazon.com/dp/B09PQGG7VV",
-        "isCanonical": true
+        "isCanonical": false
       }
     ],
-    "status": "ongoing",
-    "stackCount": 0,
-    "savedCount": 0,
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/re-monarch.jpg",
-    "curatorNote": "Time loop meets political intrigue. The twist? Your killer loops with you. Cairn's growth from drunken wastrel to competent ruler feels earned. Luke Daniels narrates the audiobook.",
-    "words": ""
+    "themes": [
+      "Time Loop",
+      "Fantasy",
+      "Politics"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
   },
   {
     "id": "blessed-time",
     "title": "Blessed Time",
     "author": "Cale Plamann (CoCop)",
     "synopsis": "On Karell, you are either blessed by the gods or forgotten. Micah Silver was chosen for greatness—his primary blessing allows him to travel five years into the past by sacrificing his class, wealth, and levels. A psychological burden he's reluctant to shoulder. But fate has a way of forcing you to face your destiny.",
-    "themes": [
-      "time-loop",
-      "litrpg",
-      "progression-fantasy",
-      "summoner",
-      "enchanting"
-    ],
+    "curatorNote": "CoCop delivers again. The cost of each loop—losing everything you've built—creates real stakes. Micah's reluctance to use his power makes him more human than most time loop protagonists. Complete series.",
+    "curatorNoteCN": "CoCop出品必属精品。每次循环的代价是失去一切——等级、财富、职业。这让Micah的每一次回溯都有真正的重量。系列已完结，Neil Hellegers有声演绎。",
+    "words": "300000",
+    "status": "completed",
     "links": [
       {
         "platform": "royal-road",
@@ -1541,28 +193,27 @@
       {
         "platform": "amazon",
         "url": "https://www.amazon.com/dp/B097J8M7DS",
-        "isCanonical": true
+        "isCanonical": false
       }
     ],
-    "status": "completed",
-    "stackCount": 0,
-    "savedCount": 0,
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/blessed-time.jpg",
-    "curatorNote": "CoCop delivers again. The cost of each loop—losing everything you've built—creates real stakes. Micah's reluctance to use his power makes him more human than most time loop protagonists. Complete series.",
-    "words": "300k"
+    "themes": [
+      "Time Loop",
+      "LitRPG",
+      "Progression Fantasy"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
   },
   {
     "id": "stubborn-skill-grinder",
     "title": "Stubborn Skill Grinder in a Time Loop",
     "author": "X-RHODEN-X",
     "synopsis": "Orodan was an orphaned street rat who clawed his way to the county militia. When calamitous events unfold, his battle-loving disposition leads to a warrior's death—only to wake up again. A smart time-looper would scheme and plan. But not Orodan. He'll batter walls with his head thousands of times till either the wall breaks or he does.",
-    "themes": [
-      "time-loop",
-      "litrpg",
-      "op-protagonist",
-      "action",
-      "skill-system"
-    ],
+    "curatorNote": "Brain off, skill grind on. Orodan is gloriously simple: see wall, headbutt wall, gain skill levels. The comedy comes from applying this philosophy to increasingly cosmic problems. 750K+ words of pure power fantasy comfort food.",
+    "curatorNoteCN": "关掉脑子，开始肝技能。Orodan的哲学简单粗暴：墙在前面？用头撞，撞到墙碎或者头碎。笑点在于他把这套逻辑用在了越来越宇宙级的问题上。75万字爽文，Daniel Wisniewski有声演绎。",
+    "words": "750,000",
+    "status": "ongoing",
     "links": [
       {
         "platform": "royal-road",
@@ -1572,14 +223,1393 @@
       {
         "platform": "amazon",
         "url": "https://www.amazon.com/dp/B0DLX36KYL",
+        "isCanonical": false
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/stubborn-skill-grinder.jpg",
+    "themes": [
+      "Time Loop",
+      "LitRPG",
+      "OP Protagonist"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "trailblazer",
+    "title": "Trailblazer",
+    "author": "3ndless",
+    "synopsis": "A Worm/Gundam fusion fic where Taylor, disillusioned with established heroes, becomes an independent hero armed with Gundam-inspired power armor and an AI named Veda. In an alternate Earth Bet where Scion died over a decade ago, she sets out to fix her city and maybe the world—or die trying. 1.6 million words, completed.",
+    "curatorNote": "The ultimate fusion of mechs and superpowers. Taylor triggers with the ability to build Gundams. Real Gundams. 1.6 million words of epic, grafting Gundam's tech tree perfectly onto Worm's wasteland. Completed, with an ending worthy of the length. The ceiling of Worm crossover fic, bar none.",
+    "curatorNoteCN": "机甲与超能力的终极融合。Taylor 触发后能造高达。不是比喻，是真的高达。160万字的史诗，把高达的科技树完美嫁接到 Worm 的废土上。完结了，而且结局配得上这个篇幅。Worm 跨界同人的天花板，没有之一。",
+    "words": "1,600,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/trailblazer-worm-gundam-au-complete.680881/",
         "isCanonical": true
       }
     ],
-    "status": "ongoing",
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-trailblazer.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Worm Fanfic",
+      "Alt-Power"
+    ],
     "stackCount": 0,
-    "savedCount": 0,
-    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/stubborn-skill-grinder.jpg",
-    "curatorNote": "Brain off, skill grind on. Orodan is gloriously simple: see wall, headbutt wall, gain skill levels. The comedy comes from applying this philosophy to increasingly cosmic problems. 750K+ words of pure power fantasy comfort food.",
-    "words": ""
+    "savedCount": 0
+  },
+  {
+    "id": "burn-up",
+    "title": "Burn Up",
+    "author": "JinglyJangles",
+    "synopsis": "A short, intense Worm fanfic where Taylor triggers with volatile heat-based powers. Her personality ignites along with her abilities in this stream-of-consciousness exploration of power and identity. No complex plots—just pure emotional combustion. 40,000 words, complete.",
+    "curatorNote": "40k words. The peak of Worm fanfic prose. Taylor gets volatile heat powers, and her personality ignites with them. No complex plots—just pure emotional combustion. Reads like a bullet heating up—stream-of-consciousness, manic, beautiful. Short, complete, highly recommended.",
+    "curatorNoteCN": "四万字，Worm 同人的文笔巅峰。Taylor 获得了暴烈的热能力，性格也跟着一起烧起来了。没有复杂阴谋，只有纯粹的情绪燃烧。读起来像一颗不断升温的子弹——意识流、狂躁、美丽。短小精悍，完结，强烈推荐。",
+    "words": "40,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/burn-up-worm-complete.395526/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-burn-up.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Character-Driven",
+      "Worm Fanfic",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "ring-maker",
+    "title": "Ring-Maker",
+    "author": "LithosMaitreya",
+    "synopsis": "A Worm/Lord of the Rings crossover where Taylor can forge Rings of Power. This story honors Tolkien while seamlessly fusing Middle-earth's mythology with Worm's setting. Taylor becomes a figure of redemption in a world that desperately needs hope. Completed.",
+    "curatorNote": "Sauron's craft, Myrddin's redemption. Taylor can forge Rings of Power. This isn't consuming Tolkien—it's honoring him. The author truly understands Middle-earth and truly understands Worm. Two systems fused seamlessly. Completed, epic as hell.",
+    "curatorNoteCN": "索伦的技艺，迈伦的救赎。Taylor 能锻造力量之戒。这不是消费托尔金，是致敬——作者真的懂中土世界，也真的懂 Worm。两个体系融合得浑然天成。完结，史诗感拉满。",
+    "words": "400,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/ring-maker-worm-lord-of-the-rings-alt-power.517894/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-ring-maker.jpg",
+    "themes": [
+      "Superhero",
+      "Fantasy",
+      "Worm Fanfic",
+      "Crossover",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "constellations",
+    "title": "Constellations",
+    "author": "UnwelcomeStorm",
+    "synopsis": "Taylor meets a dog that might be a Shinto goddess, or might just be a very good dog. They open a tea shop. A healing fic for those wrecked by Worm's darkness—no gore, no despair, just warmth and found family. Hiatus, but spiritually complete.",
+    "curatorNote": "The healing fic. Got wrecked by Worm? Come here to recover. Taylor meets a dog. Might be a Shinto goddess, might just be a very good dog. They open a tea shop. No gore, no despair, just warmth. Abandoned but doesn't matter—what exists is spiritually complete.",
+    "curatorNoteCN": "治愈系神作。读完 Worm 被虐惨了？来这里疗伤。Taylor 遇到一只狗。可能是神道女神，也可能只是一只很好很好的狗。然后她们开了家茶馆。没有血腥，没有绝望，只有温暖。太监了但不影响，现有内容在精神上是完整的。",
+    "words": "400,000",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/constellations-worm-okami.414320/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-constellations.jpg",
+    "themes": [
+      "Superhero",
+      "Cozy",
+      "Comedy",
+      "Worm Fanfic",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "cenotaph",
+    "title": "Cenotaph",
+    "author": "notes",
+    "synopsis": "After her father dies, Taylor rejects the hero system entirely. No Wards, no trusting anyone—she wages a solitary war as a vigilante in Brockton Bay's shadows. Colder and harder than canon, this begins a landmark trilogy in Worm fanfic.",
+    "curatorNote": "The lone vigilante trilogy begins. After her father dies, Taylor says no to the hero system. No Wards, no trusting anyone, waging war alone in Brockton Bay's shadows. Colder, harder, more hopeless than canon. A landmark in Worm fanfic.",
+    "curatorNoteCN": "独狼义警三部曲的开篇。父亲死后，Taylor 对英雄体系说不。不加入 Wards，不相信任何人，独自在 Brockton Bay 的阴影中发动战争。比原作更冷、更硬、更绝望。Worm 同人的标杆之作。",
+    "words": "350,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/cenotaph-worm.273255/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-cenotaph.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Worm Fanfic",
+      "Canon Divergence"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "wake",
+    "title": "Wake",
+    "author": "notes",
+    "synopsis": "Sequel to Cenotaph. Taylor is no longer alone, which means she now has weaknesses. The vigilante war escalates as the stakes and costs mount ever higher.",
+    "curatorNote": "Cenotaph's sequel. Taylor's no longer alone—which means she has weaknesses now. The war escalates, shadows deepen, costs mount. If you liked the first one's hardboiled style, this won't disappoint.",
+    "curatorNoteCN": "Cenotaph 续作。Taylor 不再是独狼了——但这意味着她有了软肋。战争升级，阴影更深，代价更重。如果喜欢第一部的冷硬派风格，这部不会让你失望。",
+    "words": "150,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/wake-worm.305014/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-wake.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Worm Fanfic",
+      "Canon Divergence"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "copacetic",
+    "title": "Copacetic",
+    "author": "Materia-Blade",
+    "synopsis": "After Gold Morning, Taylor wants a normal life. She lost her powers, changed her identity, and is trying to start over. But the world remembers what she did, and so does she. A meditation on what happens after the hero retires. Hiatus.",
+    "curatorNote": "After Golden Morning, Taylor wants a normal life. She lost her powers, changed her identity, trying to start over. But the world remembers what she did, and so does she. A meditation on 'what happens after the hero retires.' Abandoned, but what exists is beautiful.",
+    "curatorNoteCN": "黄金黎明之后，Taylor 想过普通人的生活。她失去了能力，换了身份，试图重新开始。但世界记得她做过什么，她自己也记得。这是一本关于\"英雄退休后怎么办\"的沉思录。太监了，但现有部分很美。",
+    "words": "300,000",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/copacetic-worm.283578/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-copacetic.jpg",
+    "themes": [
+      "Superhero",
+      "Slice of Life",
+      "Worm Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "tabloid",
+    "title": "Tabloid",
+    "author": "babylonsheep",
+    "synopsis": "A unique angle on the Worm universe: Paul is a paparazzi in a superhero world. He works PRT PR by day and uses his Stranger power to photograph capes for tabloids by night. A gray-zone survivor balancing two lives. Completed, with beautiful illustrations.",
+    "curatorNote": "The most unique angle: paparazzi in a superhero world. Paul works PRT PR by day, uses his Stranger power to photograph capes for tabloids by night. A gray-zone survivor, balancing two lives. Completed, beautifully illustrated, criminally underrated.",
+    "curatorNoteCN": "最独特的切入点：超能力世界的狗仔记者。Paul 白天在 PRT 当形象顾问，晚上用 Stranger 能力偷拍超能力者卖给小报。灰色地带的生存者，两面人生的平衡术。完结，配图精美，被严重低估。",
+    "words": "100,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/tabloid-worm-artfic.455278/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-tabloid.jpg",
+    "themes": [
+      "Superhero",
+      "Slice of Life",
+      "Character-Driven",
+      "Worm Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "camera-shy",
+    "title": "Camera Shy",
+    "author": "TheGreatGimmick",
+    "synopsis": "Taylor triggers with the ability to turn invisible—but only when no one is looking. A creative exploration of a seemingly weak power used intelligently. Ongoing.",
+    "curatorNote": "Taylor can turn invisible—but only when no one's looking. Sounds weak, right? But smart powers plus smart application equals endless possibilities. Creative premise, solid execution. Ongoing, worth following.",
+    "curatorNoteCN": "Taylor 能隐形——但只有没人看她的时候。听起来很弱对吧？但聪明的能力配上聪明的运用，能玩出很多花样。设定创意，执行也到位。连载中，值得追。",
+    "words": "200,000",
+    "status": "ongoing",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/camera-shy-worm-au.685357/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-camera-shy.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Psychological",
+      "Worm Fanfic",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "skein",
+    "title": "Skein",
+    "author": "TheGreatGimmick",
+    "synopsis": "Taylor triggers with language and thought manipulation powers, navigating the cape scene through prediction and psychological control. Not a punching story—an outwitting story with complex, sophisticated prose. Hiatus.",
+    "curatorNote": "Brain-twister. Taylor gets language and thought manipulation powers, navigating the cape scene through prediction and control. Not a punching story—an outwitting story. Complex, sophisticated prose. Readers who like thinking will be satisfied.",
+    "curatorNoteCN": "烧脑神作。Taylor 获得了基于语言和思维干涉的能力，靠预测和操控在超能力圈子里游走。不是打架流，是智斗流。文笔复杂精妙，喜欢动脑子的读者会很满足。",
+    "words": "150,000",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/skein-worm-altpower-au.437953/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-skein.jpg",
+    "themes": [
+      "Superhero",
+      "Rational",
+      "Psychological",
+      "Worm Fanfic",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "weaver-nine",
+    "title": "Weaver Nine",
+    "author": "Thinker6",
+    "synopsis": "What if Taylor was a serial killer? What if Jack Slash was a hero? Identities swapped, but humanity's core unchanged. A chilling dark AU with brilliant mind games. Hiatus.",
+    "curatorNote": "What if Taylor was a serial killer? What if Jack Slash was a hero? Identities swapped, but humanity's core unchanged. That's what makes it truly chilling. Peak dark AU, brilliant mindgames. Abandoned but worth reading.",
+    "curatorNoteCN": "如果 Taylor 是连环杀手？如果 Jack Slash 是英雄？身份对调，但人性的内核从未改变。这才是最让人不寒而栗的地方。黑暗AU的巅峰，智斗极其精彩。太监但值得一读。",
+    "words": "200,000",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/weaver-nine-worm-au.289395/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-weaver-nine.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Villain Protagonist",
+      "Worm Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "a-bad-name",
+    "title": "A Bad Name",
+    "author": "Ziel",
+    "synopsis": "An atypical Gamer fic where the protagonist isn't Taylor—it's a homeless addict. After getting the System, the focus isn't grinding levels—it's getting clean, self-redemption, and finding reasons to live. Ongoing.",
+    "curatorNote": "An atypical Gamer fic. Protagonist isn't Taylor—it's a homeless addict. After getting the System, the focus isn't grinding levels—it's getting clean, self-redemption, finding reasons to live. Unexpectedly moving. Ongoing.",
+    "curatorNoteCN": "非典型 Gamer 文。主角不是 Taylor，是个流浪汉毒瘾者。获得系统后，重点不是升级打怪，而是戒毒、自我救赎、找到活下去的理由。意外地感人。连载中。",
+    "words": "250,000",
+    "status": "ongoing",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/a-bad-name-worm-oc-the-gamer.500626/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-a-bad-name.jpg",
+    "themes": [
+      "Superhero",
+      "LitRPG",
+      "Worm Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "a-wand-for-skitter",
+    "title": "A Wand for Skitter",
+    "author": "ShayneT",
+    "synopsis": "Post-Gold Morning Taylor wakes up in the Harry Potter world with her powers intact. Watch as she solves magical Britain's problems with Worm-level ruthlessness and tactical thinking. A decisive, fast-paced crossover that delivers pure satisfaction.",
+    "curatorNote": "Bug girl hits Hogwarts, and magical Britain trembles. Post-GM Taylor wakes up in the Harry Potter world, powers intact. Solving HP problems with Worm logic—decisive, fast-paced. ShayneT's signature work. Pure satisfaction.",
+    "curatorNoteCN": "虫女闯霍格沃茨，魔法英国瑟瑟发抖。黄金黎明后的 Taylor 穿越到哈利波特世界，能力还在。用 Worm 的思维方式解决 HP 的问题，杀伐果断，节奏飞快。ShayneT 的代表作，爽就完事了。",
+    "words": "450,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/a-wand-for-skitter.730018/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-a-wand-for-skitter.jpg",
+    "themes": [
+      "Superhero",
+      "Fantasy",
+      "Worm Fanfic",
+      "Crossover",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "legacy",
+    "title": "Legacy",
+    "author": "notes",
+    "synopsis": "The conclusion to the Cenotaph trilogy. A dark parallel universe reaches its end.",
+    "curatorNote": "The trilogy ends. Closing out this dark parallel universe. If you've read this far, you don't need a pitch.",
+    "curatorNoteCN": "三部曲终章。为这个黑暗的平行宇宙画上句号。读到这里的人不需要推荐语了。",
+    "words": "200,000+",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/legacy-worm.345448/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-legacy.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Worm Fanfic",
+      "Canon Divergence"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "dire-worm",
+    "title": "Dire Worm",
+    "author": "Lost Demiurge",
+    "synopsis": "Doctor Dire arrives in Brockton Bay! A high-IQ supervillain from another universe stirs everything up with maximum theatrical flair. The character proved so compelling the author wrote original novels about her. Hiatus.",
+    "curatorNote": "Doctor Dire has arrived! Supervillain, genius, drama queen—all in one. A high-IQ villain from another universe crashes into Brockton Bay, stirring everything with maximum theatrics. Character so compelling the author wrote original novels about her. Abandoned but spectacular.",
+    "curatorNoteCN": "Doctor Dire 驾到！超级反派、天才、戏精，三位一体。一个来自另一个宇宙的高智商反派闯入 Brockton Bay，用最大的戏剧性搅动一切。角色魅力大到作者后来专门为她写了原创小说。太监但精彩绝伦。",
+    "words": "200,000",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/dire-worm-worm-au-oc.300816/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-dire-worm.jpg",
+    "themes": [
+      "Superhero",
+      "Comedy",
+      "Villain Protagonist",
+      "Worm Fanfic",
+      "Crossover"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "security",
+    "title": "Security!",
+    "author": "Ack",
+    "synopsis": "An ordinary security guard transmigrates to Worm with plot knowledge. No cheats, no power fantasy—just a middle-aged man trying to do the right thing with foreknowledge. Completed.",
+    "curatorNote": "An ordinary security guard transmigrates to Worm with plot knowledge. Sounds formulaic, right? But this one actually sells 'normal person in a superpowered world.' No cheats, no flexing—just a middle-aged guy trying to do the right thing. Completed, surprisingly heartfelt.",
+    "curatorNoteCN": "普通保安穿越到 Worm 世界，带着对剧情的记忆。听起来很套路对吧？但这篇真的把\"普通人在超能力世界\"写得很有说服力。不开挂，不装逼，只是一个中年人尽力做正确的事。完结，意外地走心。",
+    "words": "250,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/security-a-worm-si-story.300658/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-security.jpg",
+    "themes": [
+      "Superhero",
+      "Cozy",
+      "Worm Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "manager",
+    "title": "Manager",
+    "author": "Seraviel",
+    "synopsis": "Taylor can seize, merge, and redistribute superpowers. She turns heroism into resource management, playing Brockton Bay with multiple identities. Hiatus.",
+    "curatorNote": "Power management master. Taylor can seize, merge, and redistribute superpowers. She turns heroism into resource management, playing Brockton Bay with multiple identities. Fun premise, abandoned but worth checking out.",
+    "curatorNoteCN": "能力管理大师。Taylor 能夺取、融合、重新分配超能力。她把英雄主义变成了资源管理游戏，用各种马甲在 Brockton Bay 纵横捭阖。设定有趣，太监但值得一看。",
+    "words": "200,000",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/manager-worm.280060/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-manager.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Worm Fanfic",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "intrepid",
+    "title": "Intrepid",
+    "author": "Cerulean",
+    "synopsis": "After the locker, Taylor falls into a coma. Madison, Emma, and Sophia each trigger and join different factions, their paths destined to converge. A massive multi-POV ensemble drama. Hiatus.",
+    "curatorNote": "Four girls, four fate lines, destined to converge. After the locker, Taylor falls into a coma. Madison, Emma, Sophia each trigger, joining different factions. They don't know about each other, but readers know they'll reunite. Multi-POV ensemble drama, massive scope, abandoned but content-rich.",
+    "curatorNoteCN": "四个女孩，四条命运线，终将交汇。储物柜事件后，Taylor 陷入植物人。Madison、Emma、Sophia 各自触发，分别加入不同阵营。她们互不知情，但读者知道她们终将重逢。多视角群像剧，规模宏大，太监但内容海量。",
+    "words": "900,000+",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/intrepid-worm-au.337516/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-intrepid.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Character-Driven",
+      "Worm Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "el-ahrairah",
+    "title": "El-Ahrairah",
+    "author": "Anderein",
+    "synopsis": "Taylor gets a Thinker power inspired by the rabbit god from Watership Down. She wins through wisdom and strategy rather than combat. Slower-paced but deep. Hiatus.",
+    "curatorNote": "The Prince with a Thousand Enemies. Taylor gets a Thinker power inspired by Watership Down's rabbit god. Wins through wisdom and strategy, not combat. Slower paced but deep. Don't miss if you like mindgame stories.",
+    "curatorNoteCN": "千敌之王。Taylor 获得了受《海底沉舟》兔神启发的思考者能力。不靠打架，靠智慧和谋略。节奏较慢但很有深度，喜欢智斗流的别错过。",
+    "words": "200,000",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/el-ahrairah-worm.372987/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-el-ahrairah.jpg",
+    "themes": [
+      "Superhero",
+      "Rational",
+      "Worm Fanfic",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "queen-of-blood",
+    "title": "Queen of Blood",
+    "author": "SirWill",
+    "synopsis": "A Worm/Castlevania crossover. Taylor inherits Dracula's power, bringing gothic horror to Brockton Bay. Gorgeous aesthetic and satisfying combat. Completed.",
+    "curatorNote": "Vampire queen descends on Brockton Bay. Worm x Castlevania crossover. Taylor inherits Dracula's power—gothic horror meets superheroes. Gorgeous aesthetic, satisfying fights.",
+    "curatorNoteCN": "吸血鬼女王降临 Brockton Bay。Worm x 恶魔城跨界。Taylor 继承了德古拉的力量，哥特恐怖遇上超级英雄。画风华丽，战斗爽快。",
+    "words": "500,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/queen-of-blood-worm-castlevania.363842/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-queen-of-blood.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Worm Fanfic",
+      "Crossover",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "worm-more-than-meets-the-eye",
+    "title": "Worm: More Than Meets the Eye",
+    "author": "Metallix666",
+    "synopsis": "Taylor builds Transformers. Giant robots, faction drama, and philosophical questions about personhood and consciousness. Hiatus.",
+    "curatorNote": "Taylor builds Transformers. Giant robots, faction drama, philosophical questions about personhood. Better crossover fusion than expected, abandoned but fun.",
+    "curatorNoteCN": "Taylor 造变形金刚。巨型机器人、阵营戏剧、\"什么才算一个人\"的哲学问题。跨界融合得比预期好，太监但有趣。",
+    "words": "200,000",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/worm-more-than-meets-the-eye-worm-transformers.317017/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-more-than-meets-the-eye.jpg",
+    "themes": [
+      "Superhero",
+      "Comedy",
+      "Worm Fanfic",
+      "Crossover",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "kill-them-all",
+    "title": "Kill Them All",
+    "author": "ShayneT",
+    "synopsis": "Taylor gets Gamer powers and goes on a multiverse rampage against everyone who hurt her. Violent, cathartic, unapologetic power fantasy. Completed.",
+    "curatorNote": "ShayneT product, murder-leveling flow. Taylor gets Gamer powers, slaughtering everyone who hurt her across the multiverse. Violent, cathartic, unapologetic. Come here for power fantasy.",
+    "curatorNoteCN": "ShayneT 出品，杀戮升级流。Taylor 获得 Gamer 能力，在多元宇宙一路屠杀所有伤害过她的人。暴力、宣泄、毫无歉意。想看爽文就来这里。",
+    "words": "400,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/kill-them-all-worm-gamer.830187/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-kill-them-all.jpg",
+    "themes": [
+      "Superhero",
+      "LitRPG",
+      "OP Protagonist",
+      "Worm Fanfic",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "mixed-feelings",
+    "title": "Mixed Feelings",
+    "author": "Kittius",
+    "synopsis": "The most nuanced trauma psychology in Worm fic. Astrid triggers under her racist father's abuse and is forced into the Wards. A slow-burn story about unlearning hate and learning to trust. Ongoing.",
+    "curatorNote": "The most nuanced trauma psychology in Worm fic. Astrid triggers under her racist father's abuse, forced into the Wards. This isn't about fights—it's about a girl raised on hate learning to shed those chains, trust again, redefine herself. Slow burn, 700k words of gradual healing, but the characters feel painfully real.",
+    "curatorNoteCN": "最细腻的创伤心理侧写。Astrid 在种族主义父亲的长期虐待下触发，被迫加入 Wards。这本写的不是战斗，是一个从小被灌输仇恨的女孩如何卸下枷锁、学会信任、重新定义自己。节奏慢热，70万字的漫长疗愈，但人物真实得让人心疼。",
+    "words": "200,000",
+    "status": "ongoing",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/mixed-feelings-worm-oc.375923/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-mixed-feelings.jpg",
+    "themes": [
+      "Superhero",
+      "Psychological",
+      "Character-Driven",
+      "Worm Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "atonement",
+    "title": "Atonement",
+    "author": "Cerulean",
+    "synopsis": "What if Taylor died in the locker? Madison, crushed by guilt, triggers powers and becomes a hero not for glory, but to fill the void she created. Called 'the best Spider-Man story, just set in Worm.' Hiatus.",
+    "curatorNote": "What if Taylor died in the locker? In this timeline, Taylor had a heart attack, didn't survive. Madison is crushed by guilt, triggers powers. She puts on a costume not to be a hero, but to fill the hole she dug herself. Called 'the best Spider-Man story, just set in Worm.'",
+    "curatorNoteCN": "如果 Taylor 死在储物柜里。在那条时间线，Taylor 心脏病发，没能活着出来。Madison 被愧疚压垮，触发了能力。她穿上战衣不是为了当英雄，而是为了填补她亲手挖出的那个空洞。被称为\"最好的蜘蛛侠故事，只是发生在 Worm 宇宙\"。",
+    "words": "600,000+",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/atonement-worm-au.312449/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-atonement.jpg",
+    "themes": [
+      "Superhero",
+      "Character-Driven",
+      "Worm Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "memories-of-iron",
+    "title": "Memories of Iron",
+    "author": "becuzitswrong",
+    "synopsis": "Taylor receives Tony Stark's memories and technology. Iron Man meets Worm in this tech-stomp satisfaction piece. The author passed away, leaving it incomplete—a legacy worth remembering.",
+    "curatorNote": "Taylor gets Tony Stark's memories and tech. Iron Man x Worm. Tech-stomp satisfaction, well-written. Sadly, the author passed away—it'll never be finished. As a legacy, worth reading and remembering.",
+    "curatorNoteCN": "Taylor 获得 Tony Stark 的记忆和技术。钢铁侠 x Worm。科技碾压流，写得很爽。可惜作者已经去世，永远不会完结了。作为遗作，值得一读，也值得被记住。",
+    "words": "200,000",
+    "status": "dead",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/memories-of-iron-worm-iron-man-cross.301279/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-memories-of-iron.jpg",
+    "themes": [
+      "Superhero",
+      "Worm Fanfic",
+      "Crossover",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "i-woke-up-as-a-dungeon-now-what",
+    "title": "I Woke Up As a Dungeon, Now What?",
+    "author": "Aku-dono",
+    "synopsis": "Taylor becomes a dungeon core in an isekai world. Farming, trap-building, and monster management with a creative premise and fun execution. Hiatus.",
+    "curatorNote": "Taylor becomes a dungeon core. Farming, trap-building, monster management in an isekai. Creative premise, fun execution. Abandoned but charming.",
+    "curatorNoteCN": "Taylor 变成了一个地下城核心。在异世界种田、造陷阱、管理怪物。设定很有创意，执行也有趣。太监但有魅力。",
+    "words": "300,000+",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/i-woke-up-as-a-dungeon-now-what-dungeon-worm.620521/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-i-woke-up-as-a-dungeon-now-what.jpg",
+    "themes": [
+      "Superhero",
+      "Isekai",
+      "Non-Human Protagonist",
+      "Worm Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "acceleration",
+    "title": "Acceleration",
+    "author": "chibipoe",
+    "synopsis": "Taylor gets Accelerator's power from A Certain Magical Index—the strongest ability in physics. An invincible power fantasy watching her crush everything. Completed.",
+    "curatorNote": "Taylor gets Accelerator's power. Strongest in physics. Invincible power fantasy, watching her crush everything. Completed, though the ending's a bit rushed.",
+    "curatorNoteCN": "Taylor 获得一方通行的能力。物理系最强。无敌流爽文，看她碾压一切。完结了，虽然结局有点仓促。",
+    "words": "150,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/acceleration-worm-au.284714/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-acceleration.jpg",
+    "themes": [
+      "Superhero",
+      "OP Protagonist",
+      "Worm Fanfic",
+      "Crossover",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "hunter",
+    "title": "Hunter",
+    "author": "UnwelcomeStorm",
+    "synopsis": "Bloodborne meets Worm. Taylor inherits the Hunter's Dream, bringing gothic horror and cosmic dread to Brockton Bay. Hiatus.",
+    "curatorNote": "Bloodborne x Worm. Taylor inherits the Hunter's Dream. Gothic horror, cosmic dread, oversized weapons. If you've played Bloodborne, you'll love this.",
+    "curatorNoteCN": "血源诅咒 x Worm。Taylor 继承了猎人之梦。哥特恐怖、宇宙恐惧、超大武器。如果玩过血源，你会爱死这本。",
+    "words": "150,000",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/hunter-worm-bloodborne.363802/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-hunter.jpg",
+    "themes": [
+      "Superhero",
+      "Horror",
+      "Dark",
+      "Worm Fanfic",
+      "Crossover",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "amelia",
+    "title": "Amelia",
+    "author": "TanaNari",
+    "synopsis": "When two biokinetics team up, power creep never stops. Taylor and Amy's partnership derails the timeline completely as they escalate without limits. Completed.",
+    "curatorNote": "When two biokinetics team up, power creep never stops. Taylor and Amy's partnership goes from cooperation to codependence, derailing the timeline completely. Completed, content-rich, but be warned—the escalation has no brakes.",
+    "curatorNoteCN": "当两个生物系能力者联手，战力膨胀就停不下来了。Taylor 和 Amy 的组合，从合作变成相互依赖，世界线彻底偏离。完结，内容丰富，但要有心理准备——这本的升级是真的没刹车。",
+    "words": "600,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "sufficient-velocity",
+        "url": "https://forums.sufficientvelocity.com/threads/amelia-worm-au.13577/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-amelia.jpg",
+    "themes": [
+      "Superhero",
+      "Romance",
+      "Progression Fantasy",
+      "Worm Fanfic",
+      "Canon Divergence"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "deputy",
+    "title": "Deputy",
+    "author": "Reyemile",
+    "synopsis": "Taylor joins the PRT as civilian staff—not a Ward, but a deputy. She works within the system, solving problems through proper channels. A surprisingly compelling bureaucracy fic. Completed.",
+    "curatorNote": "Taylor joins the PRT as civilian staff. Not a Ward—a deputy. Working within the system, solving problems through proper channels, showing heroes 'how it's done.' Bureaucracy fic, surprisingly compelling.",
+    "curatorNoteCN": "Taylor 作为文职人员加入 PRT。不是 Ward，是副手。在体制内工作，用正规手段解决问题，向那些英雄们展示\"该怎么做\"。官僚系统流，意外地有看头。",
+    "words": "200,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/deputy-internship-worm-au-au.483163/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-deputy.jpg",
+    "themes": [
+      "Superhero",
+      "Slice of Life",
+      "Character-Driven",
+      "Worm Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "heromakers-legacy",
+    "title": "Heromaker's Legacy",
+    "author": "TheGrum",
+    "synopsis": "Infrastructure fic taken to extremes. Taylor discovers alien technology and proceeds to manufacture, test, and upgrade endlessly. For those who love watching power stats explode. Ongoing.",
+    "curatorNote": "Classic OP Taylor rabbit hole. Infrastructure fic taken to extremes—Taylor triggers with bug control, then discovers alien tech and proceeds to manufacture, test, and upgrade endlessly. Numbers go up, conflict stays low. Often mistaken for an Ack fic due to similar vibes. You have been warned.",
+    "curatorNoteCN": "经典无敌流兔子洞。基建流的极致——Taylor触发虫控后发现外星科技基础设施，从此一路制造、测试、升级，数据疯狂上涨，冲突极少。因风格酷似Ack作品而常被张冠李戴。慎入。",
+    "words": "150,000",
+    "status": "ongoing",
+    "links": [
+      {
+        "platform": "sufficient-velocity",
+        "url": "https://forums.sufficientvelocity.com/threads/heromakers-legacy-worm-au-original.7589/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-heromakers-legacy.jpg",
+    "themes": [
+      "Superhero",
+      "Progression Fantasy",
+      "Worm Fanfic",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "a-cloudy-path",
+    "title": "A Cloudy Path",
+    "author": "LacksCreativity",
+    "synopsis": "Supreme Commander meets Worm. Taylor gets sci-fi RTS manufacturing abilities, embodying the escalation fic as she builds an army. Hiatus.",
+    "curatorNote": "Supreme Commander x Worm. Taylor gets sci-fi RTS manufacturing abilities. The embodiment of escalation fic, farming to the sky. Abandoned, but the journey is the destination.",
+    "curatorNoteCN": "最高指挥官 x Worm。Taylor 获得科幻 RTS 的制造能力。升级流的化身，种田种到飞起。太监了，但旅程本身就是目的。",
+    "words": "500,000",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/a-cloudy-path-worm-supreme-commander.301286/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-a-cloudy-path.jpg",
+    "themes": [
+      "Superhero",
+      "Progression Fantasy",
+      "Worm Fanfic",
+      "Crossover",
+      "Alt-Power"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "worm",
+    "title": "Worm",
+    "author": "Wildbow",
+    "synopsis": "An introverted teenage girl with an unconventional superpower to control insects, Taylor Hebert goes out in costume to find escape from a deeply unhappy civilian life. Her first attempt at taking down a supervillain sees her mistaken for one, thrusting her into the local cape scene's politics, unwritten rules, and ambiguous morals. As she risks life and limb, Taylor faces the dilemma of having to do the wrong things for the right reasons.",
+    "curatorNote": "People who finish this fall into two camps: those who won't shut up about it, and those writing fanfic. Taylor goes from a bullied girl shoved into a locker to something that makes gods despair. 1.68 million words sounds scary, but once you hit the Leviathan fight, sleep becomes optional. Here, doing the right thing often costs everything—and this book will ruin other superhero stories for you.",
+    "curatorNoteCN": "读完的人分两种：一种到处安利，一种在写同人。Taylor 从一个被塞进储物柜的高中生，变成让神明绝望的存在。168万字听起来吓人，但过了 Leviathan 战就会忘记睡觉这回事。在这里，做正确的事往往需要付出可怕的代价——这本书会毁掉你对其他超级英雄故事的胃口。",
+    "words": "1680000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "personal-site",
+        "url": "https://parahumans.wordpress.com/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-1-worm.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Character-Driven"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "pact",
+    "title": "Pact",
+    "author": "Wildbow",
+    "synopsis": "Blake Thorburn was driven away from home and family by a vicious fight over inheritance, returning only for a deathbed visit with the grandmother who set it in motion. Blake soon finds himself next in line to inherit the property, a trove of dark supernatural knowledge, and the many enemies his grandmother left behind her in the small town of Jacob's Bell.",
+    "curatorNote": "You're drowning from chapter one. Wildbow gives you no room to breathe. Blake inherits a diabolist family's legacy, and then the entire world wants him dead. Not metaphorically—literally. You'll stare at the ceiling for a while after finishing. Don't read when you're already down, but if you want to feel hunted, this beats any horror movie.",
+    "curatorNoteCN": "从第一章起就在窒息，Wildbow 不给你喘气的机会。Blake 继承了恶魔学家族的遗产，然后整个世界都想弄死他。不是比喻，是字面意思。读完会盯着天花板躺很久。不适合情绪低落时阅读，但如果想体验\"被追杀\"的感觉，这本书比任何恐怖片都到位。",
+    "words": "~950,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "personal-site",
+        "url": "https://pactwebserial.wordpress.com/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-2-pact.jpg",
+    "themes": [
+      "Fantasy",
+      "Horror",
+      "Dark"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "twig",
+    "title": "Twig",
+    "author": "Wildbow",
+    "synopsis": "The year is 1921, and a little over a century has passed since a great mind unraveled the underpinnings of life itself. In this biopunk alternate history, a group of children with extraordinary abilities from the Lambsbridge Orphanage—lab-made experiments deployed as trouble-shooters—navigate a world where the dead walk again, immortality is within reach, and bio-engineered monsters roam the streets.",
+    "curatorNote": "Wildbow's most underrated work. 1920s biopunk—a group of lab-made Frankenstein children deployed as disposable spies. Dark as hell, but the bonds between these kids are the gentlest thing Wildbow's ever written. Sylvester will move into your heart, and then Wildbow will use him to hurt you. Keep tissues handy.",
+    "curatorNoteCN": "Wildbow 最被低估的作品。1920年代，生物朋克，一群实验室制作的\"弗兰肯斯坦\"小孩被当作消耗品间谍投入世界。很黑暗，但这群孩子之间的羁绊是 Wildbow 写过最温柔的东西。Sylvester 这个角色会住进你心里，然后 Wildbow 会用他来伤害你。准备好纸巾。",
+    "words": "~960,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "personal-site",
+        "url": "https://twigserial.wordpress.com/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-3-twig.jpg",
+    "themes": [
+      "Sci-Fi",
+      "Dark",
+      "Psychological",
+      "Character-Driven"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "ward",
+    "title": "Ward",
+    "author": "Wildbow",
+    "synopsis": "Two years after the events of Gold Morning, Victoria Dallon—formerly Glory Girl—seeks to rebuild her life and return to heroism. Having been restored to her original physical form following horrific transformation, she struggles with trauma, broken relationships, and a shattered world while leading a team of troubled young heroes in a city built from the ashes of catastrophe.",
+    "curatorNote": "This isn't Worm 2—don't come expecting that. Victoria crawls out of the wreckage, trying to rebuild her life. A book about trauma—real trauma that takes time to heal. Slower paced than Worm, which loses some readers. But if you finished Worm wondering 'what next?' and want to see broken people keep living, Ward delivers.",
+    "curatorNoteCN": "不是 Worm 2，别带着这个期待来。Victoria 从废墟中爬出来，试图重建生活。这是一本关于创伤的书——真正的、需要慢慢康复的那种。节奏比 Worm 慢，有人因此弃了。但如果读完 Worm 后想知道\"然后呢\"，想看这些破碎的人怎么继续活，Ward 会给你答案。",
+    "words": "~1,900,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "personal-site",
+        "url": "https://www.parahumans.net/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-4-ward.jpg",
+    "themes": [
+      "Superhero",
+      "Dark",
+      "Psychological",
+      "Character-Driven"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "pale",
+    "title": "Pale",
+    "author": "Wildbow",
+    "synopsis": "Three teenagers—Verona, Lucy, and Avery—are awakened as practitioners of magic by a council of supernatural beings in the small Canadian town of Kennet. In exchange for power and knowledge, they are asked to investigate a murder that has shaken the foundations of the local Other community. A modern supernatural mystery where nothing comes for free.",
+    "curatorNote": "Three high school girls investigating a supernatural murder. Sounds cute, right? It is. It's also terrifying. Wildbow finally learned to let readers breathe—there's warmth, friendship, belonging. But it's still Wildbow, so there's stuff that'll keep you up at night. 1.4 million words, completed. Best entry point into Wildbow.",
+    "curatorNoteCN": "三个高中女生调查超自然谋杀案。听起来很可爱对吧？可爱是真的。可怕也是真的。Wildbow 终于学会让读者喘口气——有温暖、有友情、有归属感。但这依然是 Wildbow，所以也有让人夜里睡不着的东西。140万字完结，入坑 Wildbow 的最佳起点。",
+    "words": "~1,400,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "personal-site",
+        "url": "https://palewebserial.wordpress.com/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-5-pale.jpg",
+    "themes": [
+      "Fantasy",
+      "Mystery",
+      "Character-Driven"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "the-last-angel",
+    "title": "The Last Angel",
+    "author": "Proximal Flame",
+    "synopsis": "Two thousand years ago, humanity built the dreadnought Nemesis and its AI, Red One, in a final stand against the alien Compact. Red One destroyed an invincible enemy warship but failed to save Earth from annihilation. Now, damaged but enduring, Red One wages a lonely war of vengeance across the galaxy—until she discovers that humanity survived.",
+    "curatorNote": "The ceiling of space opera. An AI warship, alone against the empire that exterminated humanity. Two thousand years. Red One hides in deep space, methodically taking revenge, until she discovers humans survived. Revenge or rebuild? This choice will tear you apart. Essential reading if you like Halo or Mass Effect.",
+    "curatorNoteCN": "太空歌剧的天花板。一艘AI战舰，独自对抗灭绝人类的帝国。两千年。Red One 藏在星际深处，有条不紊地复仇，直到她发现人类竟然还有幸存者。复仇还是重建？这个选择会撕裂你。如果喜欢《光环》或《质量效应》，这本必读。",
+    "words": "~700,000+",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/the-last-angel.244209/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-last-angel-1.jpg",
+    "themes": [
+      "Sci-Fi",
+      "Military",
+      "Dark",
+      "Non-Human Protagonist"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "the-last-angel-ascension",
+    "title": "The Last Angel: Ascension",
+    "author": "Proximal Flame",
+    "synopsis": "The sequel to The Last Angel. Red One's vengeance is no longer personal—she ignites rebellion across the sector. The scope expands as more factions emerge and galactic politics come into play, setting the stage for a war that could reshape the galaxy.",
+    "curatorNote": "The spark becomes wildfire. Red One's vengeance is no longer personal—she's igniting rebellion across the sector. Bigger scope, more factions, galactic politics emerging. Fans of the first won't be disappointed.",
+    "curatorNoteCN": "星火燎原。Red One 的复仇不再是私怨，她点燃了整个星区的反叛之火。格局更大，势力更多，银河政治开始浮出水面。前作的粉丝不会失望。",
+    "words": "~500,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/the-last-angel-ascension.346640/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-last-angel-2-ascension.jpg",
+    "themes": [
+      "Sci-Fi",
+      "Military",
+      "Politics",
+      "Non-Human Protagonist"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "the-last-angel-the-hungry-stars",
+    "title": "The Last Angel: The Hungry Stars",
+    "author": "Proximal Flame",
+    "synopsis": "The third entry in The Last Angel series. The war has truly begun, and the threats facing both Red One and the surviving humans have escalated beyond the scale of the Compact itself. Ongoing.",
+    "curatorNote": "The war has just begun. Third in the series, ongoing. The threat now exceeds the Alliance itself. If you've read this far, you don't need anyone's recommendation.",
+    "curatorNoteCN": "战争才刚刚开始。系列第三部，连载中。威胁的规模已经超出了联盟本身。如果追到这里，你已经不需要别人推荐了。",
+    "words": "~400,000+",
+    "status": "ongoing",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/the-last-angel-the-hungry-stars.868549/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-last-angel-3-the-hungry-stars.jpg",
+    "themes": [
+      "Sci-Fi",
+      "Military",
+      "Dark",
+      "Non-Human Protagonist"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "the-games-we-play",
+    "title": "The Games We Play",
+    "author": "Ryuugi",
+    "synopsis": "The ceiling of RWBY Gamer fic. Jaune Arc gets the power to live life as an RPG and levels up to fighting gods. 700,000 words, completed.",
+    "curatorNote": "The ceiling of RWBY Gamer fic. Jaune Arc gets the power to live life as an RPG, then levels up to fighting gods. Million words, completed. If you like watching numbers go up, this will satisfy.",
+    "curatorNoteCN": "RWBY 世界的 Gamer 文天花板。Jaune Arc 获得把生活当 RPG 的能力，然后一路升级到和神打架。百万字，完结，如果喜欢看数字往上涨，这本会让你很满足。",
+    "words": "~700,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/the-games-we-play-rwby-the-gamer-au.306381/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-games-we-play.jpg",
+    "themes": [
+      "LitRPG",
+      "Progression Fantasy",
+      "OP Protagonist"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "seventh-horcrux",
+    "title": "Seventh Horcrux",
+    "author": "Emerald Ashes",
+    "synopsis": "The funniest Harry Potter fic ever written. Harry is actually Voldemort's seventh Horcrux—and the soul fragment took over. Now 'Harry' must pretend to be a normal student while being deeply confused by everyone around him. Completed.",
+    "curatorNote": "The funniest Harry Potter fic ever written. Harry is actually Voldemort's seventh Horcrux—and the soul fragment took over. Now 'Harry' must pretend to be a normal student while being deeply confused by everyone around him. Non-stop gold, laugh-until-it-hurts funny.",
+    "curatorNoteCN": "有史以来最搞笑的哈利波特同人。Harry 其实是伏地魔的第七个魂器——而且灵魂碎片占据了主导权。现在\"Harry\"必须假装自己是个正常学生，同时对周围所有人感到深深困惑。全程高能，笑到肚子疼。",
+    "words": "~100,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "spacebattles",
+        "url": "https://forums.spacebattles.com/threads/seventh-horcrux-hp-au.298748/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/seventh-horcrux.jpg",
+    "themes": [
+      "Fantasy",
+      "Comedy",
+      "Harry Potter Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "a-practical-guide-to-evil",
+    "title": "A Practical Guide to Evil",
+    "author": "ErraticErrata",
+    "synopsis": "Catherine Foundling joins the Legions of Terror to save her conquered homeland from within. In a world where narrative tropes have literal power, she'll do wrong things for right reasons—or is she just rationalizing? A completed 1.3 million word epic about fate, politics, and punching the rules. Published on Amazon.",
+    "curatorNote": "A villain's practical guide. Catherine Foundling joins the legions of evil, because sometimes the only way to save your country is to conquer it. 2 million word epic about fate, narrative tropes, and punching the rules. Recently published on Amazon.",
+    "curatorNoteCN": "反派的实用指南。Catherine Foundling 加入恶魔军团，因为有时候拯救国家的唯一方法就是征服它。200万字的史诗，关于命运、叙事套路、以及向规则挥拳。最近在亚马逊出版了。",
+    "words": "~1,300,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "personal-site",
+        "url": "https://practicalguidetoevil.wordpress.com/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/a-practical-guide-to-evil.jpg",
+    "themes": [
+      "Fantasy",
+      "Dark",
+      "Politics",
+      "Character-Driven"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "forge-of-destiny",
+    "title": "Forge of Destiny",
+    "author": "Yrsillar",
+    "synopsis": "Cultivation done right. Ling Qi, a street urchin, enters a cultivation sect. No face-slapping, no broken engagements—just politics, friendship, and very good music. A Quest-turned-novel balancing progression with character growth. Published on Amazon.",
+    "curatorNote": "Cultivation done right. Ling Qi, a street urchin, enters a cultivation sect. No face-slapping, no broken engagements—just politics, friendship, and very good music. Quest-to-novel transition that balances progression with character growth. Published on Amazon.",
+    "curatorNoteCN": "修仙文该有的样子。Ling Qi，一个街头小混混，进入仙门修行。没有退婚流，没有装逼打脸，有的是政治、友谊、和非常非常好听的音乐。从 Quest 投票互动变成正式小说，平衡了升级和人物成长。亚马逊已出版。",
+    "words": "~1,200,000+",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "sufficient-velocity",
+        "url": "https://forums.sufficientvelocity.com/threads/forge-of-destiny-xianxia-quest.35583/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/forge-of-destiny.jpg",
+    "themes": [
+      "Cultivation",
+      "Character-Driven",
+      "Slow Burn"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "harry-potter-and-the-methods-of-rationality",
+    "title": "Harry Potter and the Methods of Rationality",
+    "author": "Eliezer Yudkowsky",
+    "synopsis": "What if Harry was raised by a scientist? Petunia married an Oxford professor, and Harry grew up on the scientific method. Now Rationalist!Harry enters the wizarding world armed with Enlightenment ideals and the experimental spirit. The foundational rationalist fic—smart, arrogant, utterly unique. Completed.",
+    "curatorNote": "What if Harry was a scientist? Petunia married a professor, Harry grew up on the scientific method, now he wants to figure out magic's underlying logic. The foundational rationalist fic—smart, arrogant, utterly unique. Loved or hated, never forgotten.",
+    "curatorNoteCN": "如果 Harry 是个科学家？Petunia 嫁给了教授，Harry 在科学方法中长大，现在他要搞清楚魔法的底层逻辑。理性主义小说的奠基之作——聪明、傲慢、完全独特。爱它的人奉为圣经，恨它的人觉得主角欠揍。但你不会忘记它。",
+    "words": "~660,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "ffn",
+        "url": "https://www.fanfiction.net/s/5782108/1/Harry-Potter-and-the-Methods-of-Rationality",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/harry-potter-and-the-methods-of-rationality.jpg",
+    "themes": [
+      "Fantasy",
+      "Rational",
+      "Harry Potter Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "marked-for-death",
+    "title": "Marked for Death",
+    "author": "EagleJarl & Velorien",
+    "synopsis": "A squad of Mist genin, sent on suicide missions as cannon fodder, choose to run instead. Now they're missing-nin, hunted by Bloody Mist. Not shonen—this is child soldiers, political sacrifice, and survival simulation. The longest-running Quest on SV, peak rationalist Naruto. Ongoing.",
+    "curatorNote": "Children abandoned by their village. A squad of Mist genin sent on suicide missions as cannon fodder choose to run instead. Now they're missing-nin, hunted by Bloody Mist. Not shonen—this is child soldiers, political sacrifice, and survival simulation. SV's longest-running Quest, peak rationalist Naruto.",
+    "curatorNoteCN": "被村子抛弃的孩子们。一群雾隐下忍被派去自杀任务当炮灰，他们选择了逃跑。从此成为叛忍，在血雾之里的追杀下求生。这不是热血少年漫，是童兵、政治牺牲、以及如何在必死局中活下去的生存模拟。SV 上运行时间最长的 Quest，理性流火影的巅峰。",
+    "words": "~2,000,000+",
+    "status": "ongoing",
+    "links": [
+      {
+        "platform": "sufficient-velocity",
+        "url": "https://forums.sufficientvelocity.com/threads/marked-for-death-a-rational-naruto-quest.24481/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/marked-for-death.jpg",
+    "themes": [
+      "Fantasy",
+      "Rational",
+      "Dark",
+      "Anime/Manga Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "dungeon-keeper-ami",
+    "title": "Dungeon Keeper Ami",
+    "author": "Pusakuronu",
+    "synopsis": "Sailor Mercury's Ami is forced to run an evil dungeon. She wants to be good, but her job description says demon lord. Moral dilemmas and rational decisions in a dark system. Mega-length, ongoing.",
+    "curatorNote": "Sailor Mercury's Ami, forced to run an evil dungeon. She wants to be good, but her job description says demon lord. Moral dilemmas, rational decisions, holding the line in a dark system. Mega-length, still ongoing.",
+    "curatorNoteCN": "美少女战士的水野亚美，被迫经营邪恶地下城。她想当好人，但她的职业要求她当恶魔领主。道德困境、理性决策、在黑暗体系中坚持底线。超长篇，仍在连载。",
+    "words": "~1,000,000+",
+    "status": "hiatus",
+    "links": [
+      {
+        "platform": "sufficient-velocity",
+        "url": "https://forums.sufficientvelocity.com/threads/dungeon-keeper-ami-sailor-moon-dungeon-keeper.31639/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/dungeon-keeper-ami.jpg",
+    "themes": [
+      "Fantasy",
+      "Comedy",
+      "Isekai",
+      "Crossover"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "the-wandering-inn",
+    "title": "The Wandering Inn",
+    "author": "pirateaba",
+    "synopsis": "Erin Solstice opens an inn in another world. In a dangerous LitRPG setting where magic is real and people level up, she is no warrior, no mage—she's an [Innkeeper]. At 12+ million words, it's the longest English web novel, exploring community and belonging. Published on Amazon.",
+    "curatorNote": "12 million words. The longest web novel in English. Erin Solstice opens an inn in another world. That's the premise. But this inn becomes sanctuary, battlefield, home. Cozy, vast, about community and belonging. 18 volumes on Amazon. If you want to completely immerse in a world, this is your door.",
+    "curatorNoteCN": "1200万字。有史以来最长的英语网络小说。Erin Solstice 在异世界开了家旅店。就这个设定。但这家旅店会变成避风港、变成战场、变成家。温馨、庞大、关于社区和归属感。亚马逊已出版18卷。如果你想彻底沉浸在一个世界里，这里就是入口。",
+    "words": "~12,000,000+",
+    "status": "ongoing",
+    "links": [
+      {
+        "platform": "personal-site",
+        "url": "https://wanderinginn.com/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-wandering-inn.jpg",
+    "themes": [
+      "Fantasy",
+      "Isekai",
+      "Slice of Life",
+      "Character-Driven"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "the-world-as-it-appears-to-be",
+    "title": "The World As It Appears To Be",
+    "author": "Benedict_SC",
+    "synopsis": "Rationalist Overwatch. Mercy can backup and restore teammates' complete consciousness. When the secret gets out, everyone faces the question: if you copy someone's memories, are they still alive? Hardcore sci-fi ensemble. Completed.",
+    "curatorNote": "Rationalist Overwatch. Mercy's tech is more advanced than anyone realizes—she can backup and restore teammates' complete consciousness. When the secret gets out, everyone faces the question: if you copy someone's memories, are they still alive? Hardcore sci-fi ensemble.",
+    "curatorNoteCN": "守望先锋理性流。Mercy 的技术比任何人想象的都超前——她能备份并恢复队友的完整意识。当这个秘密曝光，所有人都要面对一个问题：复制一个人的记忆，算不算那个人还活着？硬核科幻群像剧。",
+    "words": "~80,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "ao3",
+        "url": "https://archiveofourown.org/works/9402014",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-world-as-it-appears-to-be.jpg",
+    "themes": [
+      "Sci-Fi",
+      "Rational",
+      "Games Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "cordyceps-too-clever-for-their-own-good",
+    "title": "CORDYCEPS: Too clever for their own good",
+    "author": "Benedict_SC",
+    "synopsis": "Psychological horror. You wake up in a facility with no memory. Something's wrong. Don't look anything up—just read. Every twist is earned. Best experienced blind. Completed.",
+    "curatorNote": "Psychological horror. Short, sharp, dirty. You wake up in a facility with no memory. Something's wrong. Don't look anything up—just read. Every twist is earned. Best experienced blind.",
+    "curatorNoteCN": "心理恐怖。短，利，脏。你在一个设施里醒来，没有记忆。有什么东西不对劲。不要查任何信息，直接读，每一个转折都值得。最好的体验是盲入。",
+    "words": "~30,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "ao3",
+        "url": "https://archiveofourown.org/works/6178036/chapters/14154868",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/cordyceps.jpg",
+    "themes": [
+      "Horror",
+      "Psychological",
+      "Mystery"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "pokemon-the-origin-of-species",
+    "title": "Pokemon: The Origin of Species",
+    "author": "DaystarEld",
+    "synopsis": "Pokemon world taken seriously. Red, Blue, and Leaf's journey, but Pokemon are scientifically studied and trainers face real moral dilemmas. Rationalist, ongoing.",
+    "curatorNote": "Pokemon world, taken seriously. Red, Blue, and Leaf's journey, but Pokemon are scientifically studied and trainers face real moral dilemmas. Rationalist, ongoing, substantial depth.",
+    "curatorNoteCN": "宝可梦世界，如果认真对待设定的话。Red、Blue、Leaf 的冒险，但宝可梦被科学研究，训练师需要面对真正的道德困境。理性流，连载中，有深度。",
+    "words": "~500,000+",
+    "status": "ongoing",
+    "links": [
+      {
+        "platform": "personal-site",
+        "url": "https://daystareld.com/pokemon/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/pokemon-the-origin-of-species.jpg",
+    "themes": [
+      "Fantasy",
+      "Rational",
+      "Pokémon Fanfic"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "blood-of-the-frontier",
+    "title": "Blood of the Frontier",
+    "author": "Magoose",
+    "synopsis": "Crusader Kings politics in novel form. Medieval dynasty struggles, frontier survival, and imperial ruthlessness. A Quest for those who love grand strategy scheming and gray morality. Completed.",
+    "curatorNote": "Crusader Kings politics in novel form. Medieval dynasty struggles, frontier survival, imperial ruthlessness. If you like grand strategy games' scheming and gray morality, this hits the spot.",
+    "curatorNoteCN": "十字军之王的政治，小说的形式。中世纪王朝斗争、边境生存、帝国的残酷算计。如果喜欢大战略游戏里的权谋和灰色道德，这本会对你的胃口。",
+    "words": "~500,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "sufficient-velocity",
+        "url": "https://forums.sufficientvelocity.com/threads/blood-of-the-frontier-ck2-completed.43018/",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/blood-of-the-frontier.jpg",
+    "themes": [
+      "Fantasy",
+      "Dark",
+      "Politics"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
+  },
+  {
+    "id": "contact-at-kobol",
+    "title": "Contact at Kobol",
+    "author": "wilkins75",
+    "synopsis": "The Colonial Fleet finds Earth—but it's Stargate's Earth. Battlestar Galactica meets Stargate in a military sci-fi crossover where Asgard-enhanced Earth meets desperate survivors. Completed.",
+    "curatorNote": "The Colonial Fleet finds Earth—but it's Stargate's Earth. Two sci-fi universes collide. Earth with Asgard tech is overwhelming firepower against the Colonials. Military sci-fi crossover that satisfies both fandoms.",
+    "curatorNoteCN": "殖民舰队找到了地球——但那是星际之门的地球。两个科幻宇宙碰撞。拥有阿斯加德技术的地球对殖民舰队来说是降维打击。军事科幻跨界，双方粉丝都会满足。",
+    "words": "~400,000",
+    "status": "completed",
+    "links": [
+      {
+        "platform": "ffn",
+        "url": "https://www.fanfiction.net/s/11126728/1/Contact-at-Kobol",
+        "isCanonical": true
+      }
+    ],
+    "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/contact-at-kobol.jpg",
+    "themes": [
+      "Sci-Fi",
+      "Military",
+      "Crossover"
+    ],
+    "stackCount": 0,
+    "savedCount": 0
   }
 ]
