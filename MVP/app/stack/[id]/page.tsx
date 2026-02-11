@@ -1,525 +1,424 @@
 'use client';
 
 import { use, useEffect, useRef, useState } from 'react';
-import { Bookmark } from 'lucide-react';
 import Link from 'next/link';
 import stacksData from '@/src/data/stacks.json';
 import novelsData from '@/data/books.json';
+import curatorsData from '@/src/data/curators.json';
 import Footer from '../../components/Footer';
 import { formatTagLabel } from '../../lib/tagStyles';
 
-// 平台类型
-type Platform = 'RR' | 'SB' | 'SV' | 'AMZ' | 'Site';
+interface StackEntry {
+  novelId: string;
+  curatorNote: string;
+  order: number;
+}
 
-// MVP Stack 接口
-interface MVPStack {
+interface StackItem {
   id: string;
   title: string;
   description: string;
   curatorId: string;
   curatorNote: string;
-  entries: Array<{
-    novelId: string;
-    curatorNote: string;
-    addedAt: string;
-    order: number;
-  }>;
+  entries: StackEntry[];
   themes: string[];
-  platforms: string[];
-  coverGradient: string;
   createdAt: string;
-  updatedAt: string;
-  savedCount: number;
-  viewCount: number;
-  isEditorPick: boolean;
-  isFeatured: boolean;
 }
 
-// MVP Novel 接口
-interface MVPNovel {
+interface NovelItem {
   id: string;
   title: string;
   author: string;
-  synopsis: string;
-  themes: string[];
-  links: Array<{
-    platform: string;
-    url: string;
-    isCanonical: boolean;
-  }>;
   status: 'ongoing' | 'completed' | 'hiatus' | 'dropped';
-  wordCount?: number;
-  chapterCount?: number;
-  startedAt?: string;
-  completedAt?: string;
-  coverGradient?: string;
+  themes: string[];
   coverImage?: string;
-  stackCount: number;
-  savedCount: number;
-  editorNote?: string;
+  curatorNote?: string;
+  links?: Array<{
+    platform: string;
+    isCanonical?: boolean;
+  }>;
 }
 
-// 书籍接口（用于显示）
-interface Book {
-  id: string;
-  title: string;
-  author: string;
-  platform: string; // 改为字符串类型，可以包含多个平台
+interface StackBookResolved {
+  entry: StackEntry;
+  novel: NovelItem | null;
   curatorNote: string;
-  status: 'Completed' | 'Ongoing';
-  stackCount: number;
-  gradient: string;
-  coverImage?: string | null;
-  themes: string[];
 }
 
-// 平台映射函数
-function mapPlatform(platform: string): Platform {
-  const platformMap: Record<string, Platform> = {
-    'royal-road': 'RR',
-    'spacebattles': 'SB',
-    'sufficient-velocity': 'SV',
-    'personal-site': 'Site',
-    'scribble-hub': 'RR',
-    'ao3': 'Site',
-    'amazon': 'AMZ'
-  };
-  return platformMap[platform] || 'Site';
-}
-
-// 将 MVP 数据转换为页面格式
-function convertMVPToBook(mvpNovel: MVPNovel, curatorNote: string): Book {
-  // 获取所有平台并连接成字符串
-  const allPlatforms = mvpNovel.links.map(link => mapPlatform(link.platform)).join(' · ');
-
-  return {
-    id: mvpNovel.id,
-    title: mvpNovel.title,
-    author: mvpNovel.author,
-    platform: allPlatforms,
-    curatorNote: curatorNote,
-    status: mvpNovel.status === 'completed' ? 'Completed' : 'Ongoing',
-    stackCount: mvpNovel.stackCount,
-    gradient: mvpNovel.coverGradient || 'from-gray-200 to-gray-100',
-    coverImage: mvpNovel.coverImage || null,
-    themes: mvpNovel.themes
-  };
-}
-
-// 格式化日期
-function formatDate(dateString: string) {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
-}
-
-// 相关书单卡片
-interface RelatedStack {
-  id: string;
-  title: string;
-  description: string;
-  picks: number;
-  gradient: string;
-  themes: string[];
-  tagline: string;
-  covers: {
-    gradient1: string;
-    gradient2: string;
-    gradient3: string;
-    icon1: string;
-    icon2: string;
-    icon3: string;
-  };
-}
-
-// Related Stacks 封面配置
-const COVER_CONFIGS = [
-  {
-    gradient1: 'from-indigo-500 to-purple-600',
-    gradient2: 'from-pink-500 to-rose-600',
-    gradient3: 'from-cyan-500 to-blue-600',
-    icon1: '🎮',
-    icon2: '⚔️',
-    icon3: '🏰'
-  },
-  {
-    gradient1: 'from-emerald-500 to-teal-600',
-    gradient2: 'from-amber-500 to-orange-600',
-    gradient3: 'from-sky-500 to-blue-600',
-    icon1: '💎',
-    icon2: '🏆',
-    icon3: '⭐'
-  },
-  {
-    gradient1: 'from-slate-600 to-slate-800',
-    gradient2: 'from-blue-600 to-indigo-800',
-    gradient3: 'from-purple-600 to-violet-800',
-    icon1: '🚀',
-    icon2: '🌌',
-    icon3: '🔬'
-  }
+const SPINE_COLORS = [
+  'linear-gradient(135deg,#5B6CF7,#3A47C9)',
+  'linear-gradient(135deg,#9B5CE5,#6B2FB8)',
+  'linear-gradient(135deg,#E6A33E,#C4862B)',
+  'linear-gradient(135deg,#E05B5B,#B83A3A)',
+  'linear-gradient(135deg,#4ECDC4,#2EA89F)',
+  'linear-gradient(135deg,#D4738C,#B05570)',
+  'linear-gradient(135deg,#8B7DD8,#6B5FB8)',
+  'linear-gradient(135deg,#C9A050,#A88540)',
+  'linear-gradient(135deg,#4DA88E,#358070)',
 ];
 
-const getRelatedStacks = (currentStackId: string): RelatedStack[] => {
-  const allStacks = stacksData.stacks as MVPStack[];
-  return allStacks
-    .filter(stack => stack.id !== currentStackId)
-    .slice(0, 3)
-    .map((stack, index) => {
-      const config = COVER_CONFIGS[index % COVER_CONFIGS.length];
-      return {
-        id: stack.id,
-        title: stack.title,
-        description: stack.description,
-        picks: stack.entries.length,
-        gradient: stack.coverGradient,
-        themes: stack.themes,
-        tagline: stack.description,
-        covers: config
-      };
-    });
-};
+const RELATED_SPINE_SETS = [
+  {
+    gradients: ['linear-gradient(135deg,#6a7fc4,#4e5ea0)', 'linear-gradient(135deg,#8a6a6a,#6e4e4e)', 'linear-gradient(135deg,#6a9a8a,#4e7e6e)'],
+    heights: [36, 42, 38],
+  },
+  {
+    gradients: ['linear-gradient(135deg,#5aae5a,#3e923e)', 'linear-gradient(135deg,#ae8a5a,#926e3e)', 'linear-gradient(135deg,#c46a8a,#a04e6e)'],
+    heights: [40, 34, 44],
+  },
+  {
+    gradients: ['linear-gradient(135deg,#5a7aae,#3e5e92)', 'linear-gradient(135deg,#7a5aae,#5e3e92)', 'linear-gradient(135deg,#ae5a5a,#923e3e)'],
+    heights: [38, 42, 36],
+  },
+];
 
-// 书籍封面图标配置（按书籍ID）
-const BOOK_COVER_CONFIGS: Record<string, { gradient: string; icon: string }> = {
-  'mother-of-learning': { gradient: 'from-blue-500 to-indigo-600', icon: '📘' },
-  'purple-days': { gradient: 'from-purple-500 to-indigo-600', icon: '👑' },
-  'the-perfect-run': { gradient: 'from-red-500 to-orange-500', icon: '⚡' },
-  'worth-the-candle': { gradient: 'from-emerald-500 to-teal-600', icon: '🔮' },
-  're-monarch': { gradient: 'from-violet-500 to-purple-600', icon: '🌀' },
-};
+const RELATED_AVATAR_GRADIENTS = [
+  'linear-gradient(135deg,#c49a6a,#a07a4e)',
+  'linear-gradient(135deg,#6ac49a,#4ea07a)',
+  'linear-gradient(135deg,#6a6ac4,#4e4ea0)',
+];
 
-// 获取书籍封面配置
-function getBookCoverConfig(bookId: string, gradient: string) {
-  return BOOK_COVER_CONFIGS[bookId] || { gradient, icon: '📖' };
+function toStatus(status: NovelItem['status']) {
+  if (status === 'completed') return { label: 'Done', cls: 'st-d' };
+  if (status === 'ongoing') return { label: 'Live', cls: 'st-l' };
+  return { label: 'Hiatus', cls: 'st-h' };
 }
 
-// 书籍卡片组件
-function BookCard({ book }: { book: Book }) {
-  const [coverFailed, setCoverFailed] = useState(false);
-  const coverConfig = getBookCoverConfig(book.id, book.gradient);
-  const statusLabel = book.status.toUpperCase();
-  const statusPillClass =
-    book.status === 'Completed'
-      ? 'text-emerald-600 bg-emerald-50 border-emerald-100'
-      : 'text-blue-600 bg-blue-50 border-blue-100';
+function getCuratorName(curatorId: string) {
+  const curator = curatorsData.curators.find((c) => c.id === curatorId);
+  return curator?.name ?? curatorId;
+}
+
+function spineGradient(seed: string) {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i += 1) hash = (hash << 5) - hash + seed.charCodeAt(i);
+  return SPINE_COLORS[Math.abs(hash) % SPINE_COLORS.length];
+}
+
+function pickRelatedLetters(title: string) {
+  const letters = title
+    .split(/\s+/)
+    .map((part) => part.replace(/[^A-Za-z]/g, ''))
+    .filter(Boolean)
+    .slice(0, 3)
+    .map((part) => part.charAt(0).toUpperCase());
+  while (letters.length < 3) letters.push('S');
+  return letters;
+}
+
+function BookCover({ seed, title, coverImage }: { seed: string; title: string; coverImage?: string }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const showImage = Boolean(coverImage) && !imageFailed;
 
   return (
-    <div
-      className="card card-hover p-5 sm:p-6 cursor-pointer"
-      onClick={() => window.location.href = `/novel/${book.id}`}
-    >
-      <div className="flex flex-row gap-4 sm:gap-5">
-        {/* 封面 */}
-        <div className="flex-shrink-0 w-[80px] sm:w-[96px]">
-          {book.coverImage && !coverFailed ? (
-            <img
-              src={book.coverImage}
-              alt={book.title}
-              className="book-cover w-full h-auto"
-              onError={() => setCoverFailed(true)}
-            />
-          ) : (
-            <div className={`book-cover w-full h-[107px] sm:h-[128px] bg-gradient-to-br ${coverConfig.gradient} flex items-center justify-center text-3xl sm:text-4xl`}>
-              {coverConfig.icon}
-            </div>
-          )}
-        </div>
-
-        {/* 信息 */}
-        <div className="flex-1 min-w-0" onClick={(e) => e.stopPropagation()} style={{ cursor: 'text' }}>
-          <div className="mb-1">
-            <Link href={`/novel/${book.id}`} className="text-lg sm:text-xl font-bold text-deep-900 hover:underline cursor-pointer">
-              {book.title}
-            </Link>
-          </div>
-          <div className="flex items-center gap-2 mb-3">
-            <p className="text-sm text-neutral-400 truncate min-w-0 flex-1">by {book.author}</p>
-            <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border flex-shrink-0 ${statusPillClass}`}>
-              {statusLabel}
-            </span>
-          </div>
-
-          <p className="text-neutral-600 italic mb-4 line-clamp-2 text-sm sm:text-base">
-            "{book.curatorNote}"
-          </p>
-
-          <div className="flex flex-nowrap sm:flex-wrap gap-2 overflow-x-auto hide-scrollbar">
-            {book.themes.slice(0, 3).map((theme, index) => (
-              <span
-                key={index}
-                className="tag whitespace-nowrap"
-                style={{ background: '#f9fafb', color: '#4b5563', borderColor: '#e5e7eb' }}
-              >
-                {formatTagLabel(theme)}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
+    <div className="sd-book-spine" style={{ background: spineGradient(seed) }}>
+      {showImage ? (
+        <img
+          src={coverImage}
+          alt={title}
+          className="sd-book-cover-img"
+          onError={() => setImageFailed(true)}
+        />
+      ) : (
+        title.charAt(0)
+      )}
     </div>
   );
 }
 
 export default function StackDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const [isNoteExpanded, setIsNoteExpanded] = useState(false);
-  const [showNoteToggle, setShowNoteToggle] = useState(true);
-  const noteRef = useRef<HTMLParagraphElement | null>(null);
+  const [showNoteModal, setShowNoteModal] = useState(false);
+  const [noteExpanded, setNoteExpanded] = useState(false);
+  const [noteCanExpand, setNoteCanExpand] = useState(false);
+  const [expandedBookNotes, setExpandedBookNotes] = useState<Record<string, boolean>>({});
+  const [expandableBookNotes, setExpandableBookNotes] = useState<Record<string, boolean>>({});
+  const noteTextRef = useRef<HTMLParagraphElement>(null);
+  const bookListRef = useRef<HTMLDivElement>(null);
 
-  // 根据 ID 从 MVP 数据中查找书单
-  const mvpStack = (stacksData.stacks as MVPStack[]).find(stack => stack.id === id);
+  const allStacks = stacksData.stacks as StackItem[];
+  const stack = allStacks.find((item) => item.id === id);
 
-  // 如果找不到书单，显示 404
-  if (!mvpStack) {
+  if (!stack) {
     return (
-      <div className="min-h-screen bg-deep-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-deep-900 mb-4">Stack Not Found</h1>
-          <p className="text-deep-600 mb-8">The stack you're looking for doesn't exist.</p>
-          <Link href="/" className="text-sonar-600 hover:underline">Return to Home</Link>
-        </div>
+      <div className="sd-bg">
+        <main className="sd-shell sd-not-found">
+          <h1>Stack Not Found</h1>
+          <p>The stack you&apos;re looking for doesn&apos;t exist.</p>
+          <Link href="/">Return to Home</Link>
+        </main>
       </div>
     );
   }
 
-  // 获取所有小说数据
-  const allNovels = novelsData as MVPNovel[];
-
-  // 根据书单的 entries 构建 books 数组
-  const books: Book[] = mvpStack.entries
+  const allNovels = novelsData as NovelItem[];
+  const books = [...stack.entries]
     .sort((a, b) => a.order - b.order)
-    .map(entry => {
-      const novel = allNovels.find(n => n.id === entry.novelId);
-      if (!novel) return null;
-      return convertMVPToBook(novel, entry.curatorNote);
-    })
-    .filter((book): book is Book => book !== null);
+    .map((entry) => {
+      const novel = allNovels.find((item) => item.id === entry.novelId);
+      const novelEditorNote = novel?.curatorNote?.trim();
+      const stackEntryNote = entry.curatorNote?.trim();
+      return {
+        entry,
+        novel: novel ?? null,
+        curatorNote: novelEditorNote || stackEntryNote || stack.curatorNote,
+      } satisfies StackBookResolved;
+    });
 
-  const coverBooks = books.slice(0, 3);
-  const relatedStacks = getRelatedStacks(id);
+  const curatorName = getCuratorName(stack.curatorId);
+  const relatedStacks = allStacks.filter((item) => item.id !== stack.id).slice(0, 3);
 
   useEffect(() => {
-    const el = noteRef.current;
-    if (!el) return;
-    const isClamped = el.scrollHeight > el.clientHeight;
-    setShowNoteToggle(isClamped);
-  }, [mvpStack.curatorNote]);
+    const checkNoteOverflow = () => {
+      if (noteExpanded) return;
+      const el = noteTextRef.current;
+      if (!el) return;
+      setNoteCanExpand(el.scrollHeight > el.clientHeight + 1);
+    };
 
+    checkNoteOverflow();
+    window.addEventListener('resize', checkNoteOverflow);
+    return () => window.removeEventListener('resize', checkNoteOverflow);
+  }, [stack.curatorNote, noteExpanded]);
+
+  useEffect(() => {
+    const measureBookNoteOverflow = () => {
+      const root = bookListRef.current;
+      if (!root) return;
+
+      const next: Record<string, boolean> = {};
+      const noteEls = root.querySelectorAll<HTMLParagraphElement>('[data-book-note-id]');
+
+      noteEls.forEach((el) => {
+        const noteId = el.dataset.bookNoteId;
+        if (!noteId) return;
+
+        const isExpanded = el.dataset.expanded === 'true';
+        if (isExpanded) {
+          el.classList.add('sd-book-note-clamped');
+          next[noteId] = el.scrollHeight > el.clientHeight + 1;
+          el.classList.remove('sd-book-note-clamped');
+          return;
+        }
+
+        next[noteId] = el.scrollHeight > el.clientHeight + 1;
+      });
+
+      setExpandableBookNotes(next);
+    };
+
+    measureBookNoteOverflow();
+    window.addEventListener('resize', measureBookNoteOverflow);
+    return () => window.removeEventListener('resize', measureBookNoteOverflow);
+  }, [stack.id, expandedBookNotes]);
   return (
-    <div className="min-h-screen bg-deep-50 text-deep-900 antialiased">
-      <main className="pt-20 pb-20">
-        {/* Header 区 */}
-        <section className="px-5 sm:px-6 max-w-4xl mx-auto mb-12">
-          <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
-            {/* 封面堆叠 */}
-            <div className="cover-stack flex-shrink-0 mx-auto md:mx-0 hidden md:block">
-              {coverBooks.map((book) => {
-                const coverConfig = getBookCoverConfig(book.id, book.gradient);
-                const hasImage = Boolean(book.coverImage);
-                return (
-                  <div
-                    key={book.id}
-                    className={`cover ${!hasImage ? `bg-gradient-to-br ${coverConfig.gradient}` : ''}`}
-                    style={
-                      hasImage
-                        ? {
-                          backgroundImage: `url(${book.coverImage})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                        }
-                        : undefined
-                    }
-                  >
-                    {!hasImage ? coverConfig.icon : null}
-                  </div>
-                );
-              })}
+    <div className="sd-bg">
+      <main className="sd-shell">
+        {/* ═══ HEADER ═══ */}
+        <section className="sd-hero">
+          <h1>{stack.title}</h1>
+
+          <div className="sd-meta-actions">
+            <div className="sd-meta">
+              <div className="sd-avatar">{curatorName.charAt(0).toUpperCase()}</div>
+              <div>
+                <div className="sd-curator">{curatorName}</div>
+              </div>
             </div>
 
-            {/* 书单信息 */}
-            <div className="flex-1 text-center md:text-left">
-              {/* 标签 */}
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
-                {mvpStack.themes.slice(0, 3).map((theme, index) => (
-                  <span
-                    key={index}
-                    className="tag"
-                    style={{ background: '#f9fafb', color: '#4b5563', borderColor: '#e5e7eb' }}
-                  >
-                    {formatTagLabel(theme)}
-                  </span>
-                ))}
-              </div>
-
-              {/* 标题 */}
-              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-deep-900 mb-3">
-                {mvpStack.title}
-              </h1>
-
-              {/* Tagline */}
-              <p className="text-lg text-neutral-500 italic mb-5">
-                {mvpStack.description}
-              </p>
-
-              {/* 策展人 */}
-              <div className="flex items-center gap-3 justify-center md:justify-start mb-6">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white font-semibold">
-                  {mvpStack.curatorId.charAt(0).toUpperCase()}
-                </div>
-                <div className="text-left">
-                  <p className="font-medium text-deep-900">{mvpStack.curatorId}</p>
-                  <p className="text-sm text-neutral-500">Curated {formatDate(mvpStack.createdAt)}</p>
-                </div>
-              </div>
-
-              {/* 收藏按钮 */}
-              <button className="btn-secondary">
-                <Bookmark className="w-5 h-5" />
-                Save to Collection
+            <div className="sd-actions">
+              <button type="button" className="sd-save-btn" aria-label="Save stack">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M7 4.5h10a1.5 1.5 0 0 1 1.5 1.5v13.6l-6.5-3-6.5 3V6A1.5 1.5 0 0 1 7 4.5z" />
+                </svg>
+                <span className="sd-save-label">Save</span>
+              </button>
+              <button
+                type="button"
+                className="sd-share-btn"
+                aria-label="Share stack"
+                onClick={() => {
+                  if (typeof window === 'undefined') return;
+                  void navigator.clipboard?.writeText(window.location.href);
+                }}
+              >
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M12 15V6m0 0-3 3m3-3 3 3M5 14v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3" />
+                </svg>
               </button>
             </div>
           </div>
         </section>
 
-        {/* Editor's Note */}
-        <section className="px-5 sm:px-6 max-w-4xl mx-auto mb-16">
-          <div className="card-static p-6 sm:p-8">
-            <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-3">Editor's Note</h2>
-            <div>
-              <p
-                ref={noteRef}
-                className={`text-neutral-600 leading-relaxed text-base sm:text-lg ${isNoteExpanded ? '' : 'line-clamp-3'}`}
-              >
-                {mvpStack.curatorNote}
-              </p>
-              {showNoteToggle && (
-                <button
-                  className="mt-2 text-sm font-medium text-sonar-500 hover:underline cursor-pointer"
-                  onClick={() => setIsNoteExpanded((prev) => !prev)}
-                >
-                  {isNoteExpanded ? 'Show less' : 'Read more'}
+        {/* ═══ EDITOR'S NOTE ═══ */}
+        {/* Mobile: click to open modal */}
+        <div className="sd-note-card sd-note-mobile" onClick={() => setShowNoteModal(true)}>
+          <div className="sd-note-label">Editor&apos;s Note</div>
+          <p className="sd-note-text-clamped">{stack.curatorNote}</p>
+        </div>
+
+        {/* Desktop: inline with Read more */}
+        <div className="sd-note-card sd-note-desktop">
+          <div className="sd-note-label">Editor&apos;s Note</div>
+          <p
+            ref={noteTextRef}
+            className={noteExpanded ? 'sd-note-text' : 'sd-note-text sd-note-text-clamped'}
+          >
+            {stack.curatorNote}
+          </p>
+          {noteCanExpand && (
+            <button
+              className="sd-note-toggle"
+              onClick={() => setNoteExpanded(!noteExpanded)}
+            >
+              {noteExpanded ? 'Show less' : 'Read more'}
+            </button>
+          )}
+        </div>
+
+        {/* Note Modal (Mobile) */}
+        {showNoteModal && (
+          <div className="sd-modal-overlay" onClick={() => setShowNoteModal(false)}>
+            <div className="sd-modal-content" onClick={(e) => e.stopPropagation()}>
+              <div className="sd-modal-header">
+                <span className="sd-note-label" style={{ marginBottom: 0 }}>
+                  Editor&apos;s Note
+                </span>
+                <button className="sd-modal-close" onClick={() => setShowNoteModal(false)}>
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
-              )}
+              </div>
+              <p className="sd-modal-text">{stack.curatorNote}</p>
             </div>
           </div>
-        </section>
+        )}
 
-        {/* 书籍列表 */}
-        <section className="px-5 sm:px-6 max-w-4xl mx-auto mb-16">
-          <h2 className="text-2xl font-bold text-deep-900 mb-8">
-            Books in this Stack <span className="text-neutral-400 font-normal">({books.length})</span>
-          </h2>
-
-          <div className="space-y-5">
-            {books.map((book) => (
-              <BookCard key={book.id} book={book} />
-            ))}
+        {/* ═══ BOOKS IN THIS STACK ═══ */}
+        <section className="sd-books">
+          <div className="sd-books-head">
+            <h2>Books in this Stack</h2>
+            <span>{stack.entries.length} books</span>
           </div>
-        </section>
+          <div className="sd-book-list" ref={bookListRef}>
+            {books.map((book) => {
+              const noteId = book.novel?.id ?? book.entry.novelId;
+              const isBookNoteExpanded = Boolean(expandedBookNotes[noteId]);
+              const showToggle = Boolean(expandableBookNotes[noteId]) || isBookNoteExpanded;
 
-        {/* Related Stacks */}
-        <section className="px-5 sm:px-6 max-w-4xl mx-auto mb-16">
-          <h2 className="text-2xl font-bold text-deep-900 mb-8">You Might Also Like</h2>
-
-          {/* 桌面端网格，移动端横向滚动 */}
-          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {relatedStacks.map((stack) => (
-              <Link
-                key={stack.id}
-                href={`/stack/${stack.id}`}
-                className="card card-lift p-5 cursor-pointer group"
-              >
-                <div className="flex flex-nowrap gap-2 overflow-hidden mb-4">
-                  {stack.themes.slice(0, 2).map((theme, index) => (
-                    <span
-                      key={index}
-                      className="tag flex-shrink-0"
-                      style={{ background: '#f9fafb', color: '#4b5563', borderColor: '#e5e7eb' }}
-                    >
-                      {formatTagLabel(theme)}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex justify-center mb-4">
-                  <div className="relative w-28 h-20">
-                    <div className={`absolute left-0 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient1} shadow-md transform -rotate-6 flex items-center justify-center text-xl group-hover:scale-105 transition-transform`}>
-                      {stack.covers.icon1}
-                    </div>
-                    <div className={`absolute left-8 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient2} shadow-md flex items-center justify-center text-xl group-hover:scale-105 transition-transform`}>
-                      {stack.covers.icon2}
-                    </div>
-                    <div className={`absolute left-16 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient3} shadow-md transform rotate-6 flex items-center justify-center text-xl group-hover:scale-105 transition-transform`}>
-                      {stack.covers.icon3}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm text-neutral-500 italic text-center mb-3">"{stack.tagline}"</p>
-                <h3 className="font-bold text-deep-900 mb-1 line-clamp-1">{stack.title}</h3>
-                <p className="text-sm text-neutral-500 mb-3 line-clamp-1">{stack.description}</p>
-                <div className="flex items-center justify-between pt-3 border-t border-deep-100">
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-pink-500"></div>
-                    <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
-                  </div>
-                  <span className="text-sm text-neutral-400">{stack.picks} books</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* 移动端横向滚动 */}
-          <div className="sm:hidden -mx-5 overflow-visible">
-            <div
-              className="flex gap-4 px-5 pb-4 pt-2 overflow-x-auto hide-scrollbar [&::-webkit-scrollbar]:hidden"
-              style={{
-                WebkitOverflowScrolling: 'touch',
-                msOverflowStyle: 'none',
-                scrollbarWidth: 'none'
-              }}
-            >
-              {relatedStacks.map((stack) => (
-                <Link
-                  key={stack.id}
-                  href={`/stack/${stack.id}`}
-                  className="card card-lift p-5 cursor-pointer group flex-shrink-0 w-[280px]"
-                >
-                  <div className="flex flex-nowrap gap-2 overflow-hidden mb-4">
-                    {stack.themes.slice(0, 2).map((theme, index) => (
-                      <span
-                        key={index}
-                        className="tag flex-shrink-0"
-                        style={{ background: '#f9fafb', color: '#4b5563', borderColor: '#e5e7eb' }}
+              if (!book.novel) {
+                return (
+                  <div key={book.entry.novelId} className="sd-book-item">
+                    <BookCover seed={book.entry.novelId} title={book.entry.novelId.toUpperCase()} />
+                    <div className="sd-book-body">
+                      <div className="sd-book-title-row">
+                        <h3>{formatTagLabel(book.entry.novelId)}</h3>
+                        <span className="st-h">Missing</span>
+                      </div>
+                      <div className="sd-book-author">Source unavailable</div>
+                      <p
+                        data-book-note-id={noteId}
+                        data-expanded={isBookNoteExpanded ? 'true' : 'false'}
+                        className={`sd-book-note sd-book-note-desktop ${isBookNoteExpanded ? '' : 'sd-book-note-clamped'}`}
                       >
-                        {formatTagLabel(theme)}
-                      </span>
+                        {book.curatorNote}
+                      </p>
+                      {showToggle && (
+                        <button
+                          type="button"
+                          className="sd-book-note-toggle"
+                          onClick={() => setExpandedBookNotes((prev) => ({ ...prev, [noteId]: !prev[noteId] }))}
+                        >
+                          {isBookNoteExpanded ? 'Show less' : 'Read more'}
+                        </button>
+                      )}
+                    </div>
+                    <p className="sd-book-note-mobile">{book.curatorNote}</p>
+                  </div>
+                );
+              }
+
+              const status = toStatus(book.novel.status);
+              return (
+                <Link key={book.novel.id} href={`/novel/${book.novel.id}`} className="sd-book-item">
+                  <BookCover seed={book.novel.id} title={book.novel.title} coverImage={book.novel.coverImage} />
+                  <div className="sd-book-body">
+                    <div className="sd-book-title-row">
+                      <h3>{book.novel.title}</h3>
+                      <span className={status.cls}>{status.label}</span>
+                    </div>
+                    <div className="sd-book-author">{book.novel.author}</div>
+                    <p
+                      data-book-note-id={noteId}
+                      data-expanded={isBookNoteExpanded ? 'true' : 'false'}
+                      className={`sd-book-note sd-book-note-desktop ${isBookNoteExpanded ? '' : 'sd-book-note-clamped'}`}
+                    >
+                      {book.curatorNote}
+                    </p>
+                    {showToggle && (
+                      <button
+                        type="button"
+                        className="sd-book-note-toggle"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setExpandedBookNotes((prev) => ({ ...prev, [noteId]: !prev[noteId] }));
+                        }}
+                      >
+                        {isBookNoteExpanded ? 'Show less' : 'Read more'}
+                      </button>
+                    )}
+                  </div>
+                  <p className="sd-book-note-mobile">{book.curatorNote}</p>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ═══ RELATED STACKS ═══ */}
+        <section className="sd-related">
+          <h2 className="sd-related-head">You Might Also Like</h2>
+          <div className="sd-related-grid">
+            {relatedStacks.map((item, index) => {
+              const spineSet = RELATED_SPINE_SETS[index % RELATED_SPINE_SETS.length];
+              const letters = pickRelatedLetters(item.title);
+              const name = getCuratorName(item.curatorId);
+              const avatarGradient = RELATED_AVATAR_GRADIENTS[index % RELATED_AVATAR_GRADIENTS.length];
+
+              return (
+                <Link key={item.id} href={`/stack/${item.id}`} className="sd-related-card">
+                  <div className="sd-related-spines">
+                    {letters.map((letter, i) => (
+                      <div
+                        key={`${item.id}-${i}`}
+                        className="sd-related-spine"
+                        style={{
+                          background: spineSet.gradients[i],
+                          height: `${spineSet.heights[i]}px`,
+                        }}
+                      >
+                        {letter}
+                      </div>
                     ))}
                   </div>
-                  <div className="flex justify-center mb-4">
-                    <div className="relative w-28 h-20">
-                      <div className={`absolute left-0 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient1} shadow-md transform -rotate-6 flex items-center justify-center text-xl`}>
-                        {stack.covers.icon1}
+                  <h3 className="sd-related-title">{item.title}</h3>
+                  <p className="sd-related-desc">{item.description}</p>
+                  <div className="sd-related-foot">
+                    <div className="sd-related-curator">
+                      <div className="sd-related-avatar" style={{ background: avatarGradient }}>
+                        {name.charAt(0).toUpperCase()}
                       </div>
-                      <div className={`absolute left-8 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient2} shadow-md flex items-center justify-center text-xl`}>
-                        {stack.covers.icon2}
-                      </div>
-                      <div className={`absolute left-16 w-12 h-16 rounded-lg bg-gradient-to-br ${stack.covers.gradient3} shadow-md transform rotate-6 flex items-center justify-center text-xl`}>
-                        {stack.covers.icon3}
-                      </div>
+                      <span>by {name}</span>
                     </div>
-                  </div>
-                  <p className="text-sm text-neutral-500 italic text-center mb-3">"{stack.tagline}"</p>
-                  <h3 className="font-bold text-deep-900 mb-1 line-clamp-1">{stack.title}</h3>
-                  <p className="text-sm text-neutral-500 mb-3 line-clamp-1">{stack.description}</p>
-                  <div className="flex items-center justify-between pt-3 border-t border-deep-100">
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-rose-400 to-pink-500"></div>
-                      <span className="text-sm text-neutral-600">{mvpStack.curatorId}</span>
-                    </div>
-                    <span className="text-sm text-neutral-400">{stack.picks} books</span>
+                    <span className="sd-related-count">
+                      {item.entries.length} books <span className="sd-related-arrow">→</span>
+                    </span>
                   </div>
                 </Link>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </section>
       </main>

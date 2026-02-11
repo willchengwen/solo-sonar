@@ -1,24 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const dmSerif = DM_Serif_Display({
-  weight: "400",
-  variable: "--font-dm-serif",
-  subsets: ["latin"],
-  display: "swap",
-});
+import { dmSans, playfair } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "Solo Sonar - Find the signal in the noise",
-  description: "Human-curated reading lists replace algorithmic feeds, helping you find quality stories across Royal Road, SpaceBattles, and more.",
+  title: "Solo Sonar — Find the Signal in the Noise",
+  description:
+    "Find quality stories across Royal Road, SpaceBattles, and more. Curated by readers, for readers.",
 };
 
 export default function RootLayout({
@@ -28,9 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${dmSerif.variable} font-sans antialiased`}
-      >
+      <body className={`${playfair.variable} ${dmSans.variable}`}>
         <Header />
         {children}
       </body>

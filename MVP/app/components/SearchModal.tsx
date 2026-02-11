@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Search, X, Book, Bookmark, ArrowRight } from 'lucide-react';
 import novelsData from '@/data/books.json';
 import stacksData from '@/src/data/stacks.json';
 import Link from 'next/link';
@@ -10,6 +9,7 @@ interface Novel {
   id: string;
   title: string;
   author: string;
+  coverImage?: string;
 }
 
 interface Stack {
@@ -48,249 +48,176 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     if (isOpen && searchInputRef.current) {
       searchInputRef.current.focus();
     }
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-        onClose();
-        setSearchQuery('');
-      }
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { onClose(); setSearchQuery(''); }
     };
-
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKey);
+      return () => document.removeEventListener('keydown', handleKey);
     }
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
+  const close = () => { onClose(); setSearchQuery(''); };
+
   return (
-    <div
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-start justify-center pt-20"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) {
-          onClose();
-          setSearchQuery('');
-        }
-      }}
-    >
-      <div
-        ref={modalRef}
-        className="w-full max-w-2xl mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden"
-      >
-        {/* Search Input */}
-        <div className="flex items-center gap-3 px-4 py-3 border-b border-slate-100">
-          <Search className="w-5 h-5 text-neutral-400" />
+    <div className="sm-overlay" onClick={(e) => { if (e.target === e.currentTarget) close(); }}>
+      <div ref={modalRef} className="sm-panel">
+
+        {/* ── Search Input ── */}
+        <div className="sm-input-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--g300)', flexShrink: 0 }}>
+            <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+          </svg>
           <input
             ref={searchInputRef}
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by title, author, or theme..."
-            className="flex-1 bg-transparent border-0 text-base focus:outline-none text-slate-900 placeholder-neutral-400"
+            className="sm-input"
           />
-          <button
-            onClick={() => {
-              onClose();
-              setSearchQuery('');
-            }}
-            className="text-xs text-neutral-400 bg-slate-50 px-2 py-1 rounded hover:bg-slate-100"
-          >
-            ESC
-          </button>
+          <button onClick={close} className="sm-esc">ESC</button>
         </div>
 
-        {/* Tabs */}
-        <div className="flex items-center gap-4 px-4 py-3 border-b border-slate-100 bg-slate-50">
-          <button
-            onClick={() => setActiveTab('all')}
-            className={`flex items-center gap-1.5 text-sm font-medium pb-1 border-b-2 transition-colors ${
-              activeTab === 'all'
-                ? 'text-slate-900 border-cyan-500'
-                : 'text-neutral-500 border-transparent hover:text-slate-900'
-            }`}
-          >
-            All
-          </button>
-          <button
-            onClick={() => setActiveTab('books')}
-            className={`flex items-center gap-1.5 text-sm pb-1 border-b-2 transition-colors ${
-              activeTab === 'books'
-                ? 'text-slate-900 border-cyan-500'
-                : 'text-neutral-500 border-transparent hover:text-slate-900'
-            }`}
-          >
-            <Book className="w-4 h-4" />
-            Books
-          </button>
-          <button
-            onClick={() => setActiveTab('stacks')}
-            className={`flex items-center gap-1.5 text-sm pb-1 border-b-2 transition-colors ${
-              activeTab === 'stacks'
-                ? 'text-slate-900 border-cyan-500'
-                : 'text-neutral-500 border-transparent hover:text-slate-900'
-            }`}
-          >
-            <Bookmark className="w-4 h-4" />
-            Stacks
-          </button>
+        {/* ── Tabs ── */}
+        <div className="sm-tabs">
+          {(['all', 'books', 'stacks'] as TabType[]).map(tab => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`sm-tab ${activeTab === tab ? 'sm-tab-active' : ''}`}
+            >
+              {tab === 'books' && (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" /></svg>
+              )}
+              {tab === 'stacks' && (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" /></svg>
+              )}
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </button>
+          ))}
         </div>
 
-        {/* Content */}
-        <div className="p-6 max-h-96 overflow-y-auto">
+        {/* ── Content ── */}
+        <div className="sm-content">
           {!searchQuery ? (
             <>
               {/* Recent Searches */}
-              <div className="mb-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
-                    Recent Searches
-                  </h3>
-                  <button className="text-xs text-cyan-600 hover:text-cyan-700">
-                    Clear
-                  </button>
+              <div className="sm-section">
+                <div className="sm-section-header">
+                  <span className="sm-label">Recent Searches</span>
+                  <button className="sm-clear">Clear</button>
                 </div>
-                <div className="space-y-2">
-                  <button className="flex items-center gap-3 w-full p-2 hover:bg-slate-50 rounded-lg transition-colors text-left">
-                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <span className="text-sm">⏰</span>
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-sm font-medium text-slate-900">Time loop progression fantasy</div>
-                      <div className="text-xs text-neutral-500">Theme • 45 results</div>
-                    </div>
-                  </button>
-                </div>
+                <button className="sm-result-item">
+                  <div className="sm-icon-box" style={{ background: 'var(--g75)' }}>⏰</div>
+                  <div className="sm-result-text">
+                    <div className="sm-result-title">Time loop progression fantasy</div>
+                    <div className="sm-result-sub">Theme · 45 results</div>
+                  </div>
+                </button>
               </div>
 
               {/* Quick Navigation */}
-              <div>
-                <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
-                  Quick Navigation
-                </h3>
-                <div className="grid grid-cols-2 gap-2">
-                  <Link
-                    href="/"
-                    onClick={() => {
-                      onClose();
-                      setSearchQuery('');
-                    }}
-                    className="flex items-center gap-3 p-3 bg-white border border-slate-200 hover:border-cyan-300 rounded-xl transition-all"
-                  >
-                    <div className="w-10 h-10 bg-gradient-to-br from-cyan-100 to-cyan-100 rounded-lg flex items-center justify-center">
-                      <span className="text-lg">🎯</span>
-                    </div>
+              <div className="sm-section">
+                <span className="sm-label">Quick Navigation</span>
+                <div className="sm-quick-grid">
+                  <Link href="/" onClick={close} className="sm-quick-card">
+                    <div className="sm-icon-box" style={{ background: 'var(--accent-light, #d5e6d0)' }}>🎯</div>
                     <div>
-                      <div className="text-sm font-semibold text-slate-900">Editor's Picks</div>
-                      <div className="text-xs text-neutral-500">Curated selections</div>
+                      <div className="sm-result-title">Editor&apos;s Picks</div>
+                      <div className="sm-result-sub">Curated selections</div>
                     </div>
                   </Link>
-                  <Link
-                    href="/theme/time-loop"
-                    onClick={() => {
-                      onClose();
-                      setSearchQuery('');
-                    }}
-                    className="flex items-center gap-3 p-3 bg-white border border-slate-200 hover:border-amber-300 rounded-xl transition-all"
-                  >
-                    <div className="w-10 h-10 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg flex items-center justify-center">
-                      <span className="text-lg">🔥</span>
-                    </div>
+                  <Link href="/theme/time-loop" onClick={close} className="sm-quick-card">
+                    <div className="sm-icon-box" style={{ background: 'var(--warm, #ece4d9)' }}>🔥</div>
                     <div>
-                      <div className="text-sm font-semibold text-slate-900">Time Loop</div>
-                      <div className="text-xs text-neutral-500">Popular theme</div>
+                      <div className="sm-result-title">Time Loop</div>
+                      <div className="sm-result-sub">Popular theme</div>
                     </div>
                   </Link>
                 </div>
               </div>
             </>
           ) : (
-            <div className="space-y-6">
+            <div className="sm-results">
               {/* Books Results */}
               {(activeTab === 'all' || activeTab === 'books') && filteredNovels.length > 0 && (
-                <div>
-                  <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
-                    Books
-                  </h3>
-                  <div className="space-y-2">
-                    {filteredNovels.slice(0, 5).map((novel) => (
-                      <Link
-                        key={novel.id}
-                        href={`/novel/${novel.id}`}
-                        onClick={() => {
-                          onClose();
-                          setSearchQuery('');
-                        }}
-                        className="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-xl transition-colors"
-                      >
-                        <div className="w-10 h-10 bg-gradient-to-br from-blue-50 to-slate-50 rounded-lg flex items-center justify-center">
-                          <Book className="w-5 h-5 text-blue-500" />
-                        </div>
-                        <div className="flex-1 text-left">
-                          <div className="text-sm font-medium text-slate-900">{novel.title}</div>
-                          <div className="text-xs text-neutral-500">by {novel.author}</div>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-neutral-300" />
-                      </Link>
-                    ))}
-                  </div>
+                <div className="sm-section">
+                  <span className="sm-label">Books</span>
+                  {filteredNovels.slice(0, 5).map((novel) => (
+                    <Link
+                      key={novel.id}
+                      href={`/novel/${novel.id}`}
+                      onClick={close}
+                      className="sm-result-item"
+                    >
+                      <div className="sm-icon-box" style={{ background: 'var(--g75)' }}>
+                        {novel.coverImage ? (
+                          <img src={novel.coverImage} alt="" style={{ width: 24, height: 32, borderRadius: 3, objectFit: 'cover' }} />
+                        ) : (
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" /></svg>
+                        )}
+                      </div>
+                      <div className="sm-result-text">
+                        <div className="sm-result-title">{novel.title}</div>
+                        <div className="sm-result-sub">by {novel.author}</div>
+                      </div>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--g200)" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                    </Link>
+                  ))}
                 </div>
               )}
 
               {/* Stacks Results */}
               {(activeTab === 'all' || activeTab === 'stacks') && filteredStacks.length > 0 && (
-                <div>
-                  <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
-                    Stacks
-                  </h3>
-                  <div className="space-y-2">
-                    {filteredStacks.slice(0, 5).map((stack) => (
-                      <Link
-                        key={stack.id}
-                        href={`/stack/${stack.id}`}
-                        onClick={() => {
-                          onClose();
-                          setSearchQuery('');
-                        }}
-                        className="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-xl transition-colors"
-                      >
-                        <div className="w-10 h-10 bg-gradient-to-br from-purple-50 to-slate-50 rounded-lg flex items-center justify-center">
-                          <Bookmark className="w-5 h-5 text-purple-500" />
-                        </div>
-                        <div className="flex-1 text-left">
-                          <div className="text-sm font-medium text-slate-900">{stack.title}</div>
-                          <div className="text-xs text-neutral-500">{stack.entries.length} picks</div>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-neutral-300" />
-                      </Link>
-                    ))}
-                  </div>
+                <div className="sm-section">
+                  <span className="sm-label">Stacks</span>
+                  {filteredStacks.slice(0, 5).map((stack) => (
+                    <Link
+                      key={stack.id}
+                      href={`/stack/${stack.id}`}
+                      onClick={close}
+                      className="sm-result-item"
+                    >
+                      <div className="sm-icon-box" style={{ background: 'var(--g75)' }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" /></svg>
+                      </div>
+                      <div className="sm-result-text">
+                        <div className="sm-result-title">{stack.title}</div>
+                        <div className="sm-result-sub">{stack.entries.length} picks</div>
+                      </div>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--g200)" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                    </Link>
+                  ))}
                 </div>
               )}
 
               {/* No Results */}
               {filteredNovels.length === 0 && filteredStacks.length === 0 && (
-                <div className="text-center py-8 text-neutral-500">
-                  <p>No results found for "{searchQuery}"</p>
+                <div className="sm-empty">
+                  No results found for &ldquo;{searchQuery}&rdquo;
                 </div>
               )}
             </div>
           )}
         </div>
 
-        {/* Footer */}
-        <div className="flex items-center justify-between px-4 py-2 border-t border-slate-100 bg-slate-50 text-xs text-neutral-400">
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-white border border-slate-200 rounded">↑↓</kbd>
-              to navigate
-            </span>
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-white border border-slate-200 rounded">↵</kbd>
-              to select
-            </span>
+        {/* ── Footer ── */}
+        <div className="sm-footer">
+          <div className="sm-footer-keys">
+            <span><kbd>↑↓</kbd> navigate</span>
+            <span><kbd>↵</kbd> select</span>
           </div>
           <span>Search across {novels.length + stacks.length}+ items</span>
         </div>

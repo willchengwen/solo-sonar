@@ -212,6 +212,207 @@
       "viewCount": 2103,
       "isEditorPick": true,
       "isFeatured": true
+    },
+    {
+      "id": "worm-hall-of-fame",
+      "title": "The Worm Fanfic Hall of Fame",
+      "coverTitle": "Worm\nHall of\nFame",
+      "description": "The fics that transcend their source material",
+      "curatorId": "zorian",
+      "curatorNote": "The fics that transcend their source material.",
+      "entries": [
+        {
+          "novelId": "trailblazer",
+          "curatorNote": "The ultimate fusion fic.",
+          "addedAt": "2024-04-01",
+          "order": 1
+        },
+        {
+          "novelId": "burn-up",
+          "curatorNote": "Peak Worm prose.",
+          "addedAt": "2024-04-01",
+          "order": 2
+        },
+        {
+          "novelId": "ring-maker",
+          "curatorNote": "Tolkien meets Worm.",
+          "addedAt": "2024-04-01",
+          "order": 3
+        },
+        {
+          "novelId": "cenotaph",
+          "curatorNote": "Dark vigilante trilogy.",
+          "addedAt": "2024-04-01",
+          "order": 4
+        },
+        {
+          "novelId": "a-wand-for-skitter",
+          "curatorNote": "Bug girl goes to Hogwarts.",
+          "addedAt": "2024-04-01",
+          "order": 5
+        }
+      ],
+      "themes": [
+        "worm-fanfic",
+        "progression"
+      ],
+      "platforms": [
+        "spacebattles"
+      ],
+      "coverGradient": "from-rose-50/80 via-rose-50/40 to-slate-50",
+      "createdAt": "2024-04-01",
+      "updatedAt": "2024-04-10",
+      "savedCount": 289,
+      "viewCount": 4102,
+      "isEditorPick": true,
+      "isFeatured": false,
+      "isHeroPreview": true
+    },
+    {
+      "id": "worm-essentials",
+      "title": "Essential Worm Fanfic for New Readers",
+      "coverTitle": "Worm\nFanfic",
+      "description": "The best Worm fanfiction to read after finishing the original.",
+      "curatorId": "forumdelver",
+      "curatorNote": "Worm has one of the most prolific fanfic communities in web fiction. These are the stories that even non-Worm readers enjoy—each one stands on its own merits while enriching the source material.",
+      "entries": [
+        {
+          "novelId": "trailblazer",
+          "curatorNote": "The ultimate fusion fic.",
+          "addedAt": "2024-04-01",
+          "order": 1
+        },
+        {
+          "novelId": "cenotaph",
+          "curatorNote": "Dark vigilante trilogy.",
+          "addedAt": "2024-04-01",
+          "order": 2
+        },
+        {
+          "novelId": "ring-maker",
+          "curatorNote": "Tolkien meets Worm.",
+          "addedAt": "2024-04-01",
+          "order": 3
+        },
+        {
+          "novelId": "burn-up",
+          "curatorNote": "Peak Worm prose.",
+          "addedAt": "2024-04-01",
+          "order": 4
+        },
+        {
+          "novelId": "a-wand-for-skitter",
+          "curatorNote": "Bug girl goes to Hogwarts.",
+          "addedAt": "2024-04-01",
+          "order": 5
+        }
+      ],
+      "themes": [
+        "worm-fanfic",
+        "progression"
+      ],
+      "platforms": [
+        "spacebattles"
+      ],
+      "coverGradient": "from-rose-50/80 via-rose-50/40 to-slate-50",
+      "createdAt": "2024-04-01",
+      "updatedAt": "2024-04-10",
+      "savedCount": 289,
+      "viewCount": 4102,
+      "isEditorPick": true,
+      "isFeatured": false
+    },
+    {
+      "id": "dark-and-gritty",
+      "title": "Dark Fantasy That Doesn't Pull Punches",
+      "coverTitle": "Dark\nFantasy",
+      "description": "Stories that embrace the bleaker side of fantasy.",
+      "curatorId": "zorian",
+      "curatorNote": "Not every fantasy story needs a happy ending. These are the ones that made me uncomfortable, kept me up at night, and changed how I think about the genre. Read at your own risk—and don't say I didn't warn you.",
+      "entries": [
+        {
+          "novelId": "worm",
+          "curatorNote": "The original dark superhero epic.",
+          "addedAt": "2024-04-15",
+          "order": 1
+        },
+        {
+          "novelId": "pact",
+          "curatorNote": "Urban fantasy horror.",
+          "addedAt": "2024-04-15",
+          "order": 2
+        },
+        {
+          "novelId": "twig",
+          "curatorNote": "Biopunk nightmare fuel.",
+          "addedAt": "2024-04-15",
+          "order": 3
+        },
+        {
+          "novelId": "pale",
+          "curatorNote": "Supernatural mystery.",
+          "addedAt": "2024-04-15",
+          "order": 4
+        }
+      ],
+      "themes": [
+        "dark",
+        "progression",
+        "rational"
+      ],
+      "platforms": [
+        "personal-site",
+        "spacebattles"
+      ],
+      "coverGradient": "from-gray-50/80 via-gray-50/40 to-slate-50",
+      "createdAt": "2024-04-15",
+      "updatedAt": "2024-04-20",
+      "savedCount": 198,
+      "viewCount": 3567,
+      "isEditorPick": true,
+      "isFeatured": false
+    },
+    {
+      "id": "space-opera-gems",
+      "title": "Space Opera & Sci-Fi Epics",
+      "coverTitle": "Space\nOpera",
+      "description": "Grand-scale science fiction across the stars.",
+      "curatorId": "bingewatcher",
+      "curatorNote": "If you've ever stared at the night sky and wondered what's out there, these stories will answer that question in the most spectacular ways. Galaxy-spanning conflicts, ancient alien mysteries, and AI warships with vendettas.",
+      "entries": [
+        {
+          "novelId": "the-last-angel",
+          "curatorNote": "AI vengeance across millennia.",
+          "addedAt": "2024-05-01",
+          "order": 1
+        },
+        {
+          "novelId": "the-last-angel-ascension",
+          "curatorNote": "The rebellion expands.",
+          "addedAt": "2024-05-01",
+          "order": 2
+        },
+        {
+          "novelId": "the-last-angel-the-hungry-stars",
+          "curatorNote": "The war escalates.",
+          "addedAt": "2024-05-01",
+          "order": 3
+        }
+      ],
+      "themes": [
+        "sci-fi",
+        "progression"
+      ],
+      "platforms": [
+        "spacebattles"
+      ],
+      "coverGradient": "from-indigo-50/80 via-indigo-50/40 to-slate-50",
+      "createdAt": "2024-05-01",
+      "updatedAt": "2024-05-10",
+      "savedCount": 231,
+      "viewCount": 3890,
+      "isEditorPick": true,
+      "isFeatured": false
     }
   ]
 }

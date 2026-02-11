@@ -15,7 +15,7 @@ interface Novel {
   title: string;
   author: string;
   platform: string; // 改为字符串类型，可以包含多个平台
-  status: 'Completed' | 'Ongoing';
+  status: 'Completed' | 'Ongoing' | 'Hiatus' | 'Dropped';
   chapters: number;
   words: string;
   updated: string;
@@ -61,6 +61,27 @@ interface Stack {
   gradient: string;
 }
 
+const FEATURED_SPINE_SETS = [
+  {
+    gradients: ['linear-gradient(135deg,#7b68ae,#5a4a8a)', 'linear-gradient(135deg,#5a9e8f,#3d7a6e)', 'linear-gradient(135deg,#c49a6a,#a07a4e)'],
+    heights: [30, 36, 32],
+  },
+  {
+    gradients: ['linear-gradient(135deg,#5aae5a,#3e923e)', 'linear-gradient(135deg,#ae8a5a,#926e3e)', 'linear-gradient(135deg,#c46a8a,#a04e6e)'],
+    heights: [34, 28, 36],
+  },
+  {
+    gradients: ['linear-gradient(135deg,#6a7fc4,#4e5ea0)', 'linear-gradient(135deg,#c46a6a,#a04e4e)', 'linear-gradient(135deg,#6a9a8a,#4e7e6e)'],
+    heights: [32, 36, 30],
+  },
+];
+
+const FEATURED_CURATORS = [
+  { name: 'Zorian', dot: 'linear-gradient(135deg,#5a9eae,#3e7e92)' },
+  { name: 'looplord', dot: 'linear-gradient(135deg,#ae6a8a,#924e6e)' },
+  { name: 'TimeLooper', dot: 'linear-gradient(135deg,#7a6aae,#5e4e92)' },
+];
+
 // 平台映射函数
 function mapPlatform(platform: string): Platform {
   const platformMap: Record<string, Platform> = {
@@ -97,12 +118,19 @@ function convertMVPToNovel(mvpNovel: MVPNovel): Novel {
   // 获取所有平台并连接成字符串
   const allPlatforms = mvpNovel.links.map(link => mapPlatform(link.platform)).join(' · ');
 
+  const statusMap: Record<MVPNovel['status'], Novel['status']> = {
+    completed: 'Completed',
+    ongoing: 'Ongoing',
+    hiatus: 'Hiatus',
+    dropped: 'Dropped',
+  };
+
   return {
     id: mvpNovel.id,
     title: mvpNovel.title,
     author: mvpNovel.author,
     platform: allPlatforms,
-    status: mvpNovel.status === 'completed' ? 'Completed' : 'Ongoing',
+    status: statusMap[mvpNovel.status] ?? 'Ongoing',
     chapters: mvpNovel.chapterCount || 0,
     words: wordCount,
     updated: formatDate(mvpNovel.completedAt || mvpNovel.startedAt),
@@ -141,6 +169,17 @@ const getStacksForNovel = (novelId: string): Stack[] => {
     }
   ];
 };
+
+function stackSpineLetters(title: string) {
+  const letters = title
+    .split(/\s+/)
+    .map((part) => part.replace(/[^A-Za-z]/g, ''))
+    .filter(Boolean)
+    .slice(0, 3)
+    .map((part) => part.charAt(0).toUpperCase());
+  while (letters.length < 3) letters.push('S');
+  return letters;
+}
 
 // 获取相似推荐
 const getSimilarNovels = (currentNovelId: string) => {
@@ -200,6 +239,7 @@ const PLATFORM_CONFIG: Record<Platform, { name: string; bgColor: string; iconBg:
 
 export default function NovelDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
+  const [isSaved, setIsSaved] = useState(false);
   const [showFullSynopsis, setShowFullSynopsis] = useState(false);
   const [showSynopsisButton, setShowSynopsisButton] = useState(false);
   const [showFullEditorTake, setShowFullEditorTake] = useState(false);
@@ -232,6 +272,20 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
 
   // 转换数据格式
   const novelData = convertMVPToNovel(mvpNovel);
+  const statusText = novelData.status === 'Completed'
+    ? 'DONE'
+    : novelData.status === 'Ongoing'
+      ? 'LIVE'
+      : novelData.status === 'Hiatus'
+        ? 'HIATUS'
+        : 'DROPPED';
+  const statusClass = novelData.status === 'Completed'
+    ? 'status-completed'
+    : novelData.status === 'Ongoing'
+      ? 'status-ongoing'
+      : novelData.status === 'Hiatus'
+        ? 'status-hiatus'
+        : 'status-dropped';
   const stacks = getStacksForNovel(id);
   const similarNovels = getSimilarNovels(id);
   const relatedNovels = getRelatedNovels(id, mvpNovel.author, mvpNovel.title);
@@ -280,16 +334,16 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
   }, [coverModalOpen, synopsisModalOpen, editorTakeModalOpen]);
 
   return (
-    <div className="min-h-screen bg-deep-50 text-deep-900 antialiased">
-      <main className="pt-20 pb-20 lg:pt-[110px]">
-        <div className="px-5 sm:px-6 max-w-5xl mx-auto">
+    <div className="min-h-screen bg-deep-50 text-deep-900 antialiased nd-v4b">
+      <main className="pt-20 pb-20 lg:pt-[110px] nd-main">
+        <div className="nd-shell">
           {/* Desktop: Left-Right Layout | Mobile: Top-Bottom Layout */}
-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-12">
+          <div className="flex flex-col lg:flex-row gap-4 lg:gap-12 nd-layout">
 
             {/* Left: Cover + Button (Desktop Sticky) */}
-            <div className="lg:w-[180px] sticky-sidebar">
+            <div className="lg:w-[180px] sticky-sidebar nd-sidebar">
               {/* Mobile: Horizontal Layout, Desktop: Vertical Layout */}
-              <div className="flex sm:flex-col gap-5 sm:gap-6">
+              <div className="flex sm:flex-col gap-5 sm:gap-6 nd-sidebar-top">
                 {/* Cover */}
                 {novelData.coverImage ? (
                   <img
@@ -308,16 +362,22 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                 )}
 
                 {/* Mobile: Basic Info Next to Cover */}
-                <div className="flex-1 sm:hidden flex flex-col">
+                <div className="flex-1 sm:hidden flex flex-col nd-mob-info">
                   <div className="flex-1">
-                    <h1 className="text-xl font-bold text-deep-900 mb-1">{novelData.title}</h1>
-                    <p className="text-sm text-neutral-500 mb-1">by {novelData.author} / {novelData.platform}</p>
-                    <p className="text-sm text-neutral-500 mb-2">
-                      {novelData.words} words <span className={`${novelData.status === 'Completed' ? 'status-completed' : 'status-ongoing'} px-2 py-0.5 rounded-full text-xs font-medium ml-2`}>{novelData.status}</span>
+                    <h1 className="text-xl font-bold text-deep-900 mb-1 nd-mob-title">{novelData.title}</h1>
+                    <p className="text-sm text-neutral-500 mb-1 nd-mob-meta">by {novelData.author} / {novelData.platform}</p>
+                    <p className="text-sm text-neutral-500 mb-2 nd-mob-stats">
+                      {novelData.words} words <span className={`${statusClass} px-2 py-0.5 rounded-full text-xs font-medium ml-2`}>{statusText}</span>
                     </p>
                   </div>
-                  <button className="heart-btn self-start">
-                    <svg className="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <button
+                    type="button"
+                    className={`heart-btn self-start nd-mob-save ${isSaved ? 'is-saved' : ''}`}
+                    aria-label={isSaved ? 'Unsave novel' : 'Save novel'}
+                    aria-pressed={isSaved}
+                    onClick={() => setIsSaved((prev) => !prev)}
+                  >
+                    <svg className="w-5 h-5" fill={isSaved ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                   </button>
@@ -325,10 +385,10 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
               </div>
 
               {/* Mobile: Start Reading Button */}
-              <div className="relative mt-5 sm:hidden">
+              <div className="relative mt-5 sm:hidden nd-read-mobile">
                 <button
                   id="readingBtnMobile"
-                  className="w-full bg-white border border-gray-200 rounded-2xl px-4 py-3 flex items-center justify-between"
+                  className="w-full bg-white border border-gray-200 rounded-2xl px-4 py-3 flex items-center justify-between nd-read-mobile-btn"
                   onClick={() => setPlatformDropdownOpen(!platformDropdownOpen)}
                 >
                   <div className="flex items-center gap-3">
@@ -342,7 +402,7 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                   </svg>
                 </button>
                 {/* Mobile Platform Dropdown */}
-                <div id="platformDropdownMobile" className={`platform-dropdown ${platformDropdownOpen ? 'show' : ''}`}>
+                <div id="platformDropdownMobile" className={`platform-dropdown nd-platform-dropdown ${platformDropdownOpen ? 'show' : ''}`}>
                   {novelData.links.map((link) => {
                     const platform = mapPlatform(link.platform);
                     const config = PLATFORM_CONFIG[platform];
@@ -359,10 +419,10 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
               </div>
 
               {/* Desktop: Start Reading Button */}
-              <div className="relative mt-8 hidden sm:block">
+              <div className="relative mt-8 hidden sm:block nd-read-desktop">
                 <button
                   id="readingBtn"
-                  className="btn-primary whitespace-nowrap"
+                  className="btn-primary whitespace-nowrap nd-read-desktop-btn"
                   onClick={() => setPlatformDropdownOpen(!platformDropdownOpen)}
                 >
                   <span>Start Reading</span>
@@ -372,7 +432,7 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                 </button>
 
                 {/* Platform Dropdown */}
-                <div id="platformDropdown" className={`platform-dropdown ${platformDropdownOpen ? 'show' : ''}`}>
+                <div id="platformDropdown" className={`platform-dropdown nd-platform-dropdown ${platformDropdownOpen ? 'show' : ''}`}>
                   {novelData.links.map((link) => {
                     const platform = mapPlatform(link.platform);
                     const config = PLATFORM_CONFIG[platform];
@@ -390,18 +450,24 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
             </div>
 
             {/* Right: Content Area (Scrollable) */}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 nd-content">
               {/* Desktop: Basic Info */}
-              <div className="hidden sm:block mb-8">
-                <h1 className="text-3xl sm:text-4xl font-bold text-deep-900 mb-3">{novelData.title}</h1>
-                <p className="text-lg text-neutral-500 mb-2">by {novelData.author} / {novelData.platform}</p>
-                <div className="flex items-center gap-3 mb-3">
+              <div className="hidden sm:block mb-8 nd-desk-info">
+                <h1 className="text-3xl sm:text-4xl font-bold text-deep-900 mb-3 nd-desk-title">{novelData.title}</h1>
+                <p className="text-lg text-neutral-500 mb-2 nd-desk-meta">by {novelData.author} / {novelData.platform}</p>
+                <div className="flex items-center gap-3 mb-3 nd-desk-stats">
                   <span className="text-neutral-500">{novelData.words} words</span>
-                  <span className={`${novelData.status === 'Completed' ? 'status-completed' : 'status-ongoing'} px-2.5 py-1 rounded-full text-xs font-medium`}>{novelData.status}</span>
+                  <span className={`${statusClass} px-2.5 py-1 rounded-full text-xs font-medium`}>{statusText}</span>
                 </div>
-                <div className="flex items-center gap-4">
-                  <button className="heart-btn">
-                    <svg className="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-4 nd-desk-actions">
+                  <button
+                    type="button"
+                    className={`heart-btn nd-desk-save ${isSaved ? 'is-saved' : ''}`}
+                    aria-label={isSaved ? 'Unsave novel' : 'Save novel'}
+                    aria-pressed={isSaved}
+                    onClick={() => setIsSaved((prev) => !prev)}
+                  >
+                    <svg className="w-5 h-5" fill={isSaved ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                   </button>
@@ -410,30 +476,30 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
 
               {/* Editor's Take */}
               {novelData.editorNote && (
-                <section className="mb-10 sm:mb-10">
+                <section className="mb-10 sm:mb-10 nd-sec nd-et-sec">
                   {/* Mobile: Click card to open modal */}
                   <div
-                    className="card-static p-6 relative sm:hidden cursor-pointer"
+                    className="card-static p-6 relative sm:hidden cursor-pointer nd-et-card nd-et-card-mobile"
                     onClick={() => setEditorTakeModalOpen(true)}
                   >
-                    <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5">Editor's Take:</h2>
-                    <p className="text-neutral-600 leading-relaxed text-base italic line-clamp-3">
+                    <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5 nd-sec-label nd-et-label">Editor's Take:</h2>
+                    <p className="text-neutral-600 leading-relaxed text-base italic line-clamp-3 nd-et-text">
                       "{novelData.editorNote}"
                     </p>
                   </div>
                   {/* Desktop: Read more expand */}
-                  <div className="hidden sm:block card-static p-6">
-                    <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5">Editor's Take:</h2>
+                  <div className="hidden sm:block card-static p-6 nd-et-card nd-et-card-desktop">
+                    <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5 nd-sec-label nd-et-label">Editor's Take:</h2>
                     <p
                       ref={editorTakeRef}
-                      className={`text-neutral-600 leading-relaxed text-lg italic ${!showFullEditorTake ? 'line-clamp-3' : ''}`}
+                      className={`text-neutral-600 leading-relaxed text-lg italic nd-et-text ${!showFullEditorTake ? 'line-clamp-3' : ''}`}
                     >
                       "{novelData.editorNote}"
                     </p>
                     {showEditorTakeButton && (
                       <button
                         onClick={() => setShowFullEditorTake(!showFullEditorTake)}
-                        className="text-sonar-500 font-medium text-sm mt-3 hover:text-sonar-600"
+                        className="text-sonar-500 font-medium text-sm mt-3 hover:text-sonar-600 nd-et-toggle"
                       >
                         {showFullEditorTake ? 'Show less' : 'Read more'}
                       </button>
@@ -443,32 +509,32 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
               )}
 
               {/* Synopsis */}
-              <section className="mb-10 sm:mb-10">
-                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5">Synopsis</h2>
+              <section className="mb-10 sm:mb-10 nd-sec nd-syn-sec">
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5 nd-sec-label">Synopsis</h2>
                 {/* Mobile: 2 lines + arrow, click to open modal */}
                 <div
-                  className="sm:hidden flex items-start gap-2 cursor-pointer"
+                  className="sm:hidden flex items-start gap-2 cursor-pointer nd-syn-mobile"
                   onClick={() => setSynopsisModalOpen(true)}
                 >
-                  <p className="text-neutral-600 leading-relaxed line-clamp-2 flex-1">
+                  <p className="text-neutral-600 leading-relaxed line-clamp-2 flex-1 nd-syn-text">
                     {novelData.synopsis}
                   </p>
-                  <svg className="w-5 h-5 text-neutral-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-neutral-300 flex-shrink-0 mt-0.5 nd-syn-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
                 {/* Desktop: 2 lines + Read more */}
-                <div className="hidden sm:block">
+                <div className="hidden sm:block nd-syn-desktop">
                   <p
                     ref={synopsisRef}
-                    className={`text-neutral-600 leading-relaxed ${!showFullSynopsis ? 'line-clamp-2' : ''}`}
+                    className={`text-neutral-600 leading-relaxed nd-syn-text ${!showFullSynopsis ? 'line-clamp-2' : ''}`}
                   >
                     {novelData.synopsis}
                   </p>
                   {showSynopsisButton && (
                     <button
                       onClick={() => setShowFullSynopsis(!showFullSynopsis)}
-                      className="text-sonar-500 font-medium text-sm mt-2 hover:text-sonar-600"
+                      className="text-sonar-500 font-medium text-sm mt-2 hover:text-sonar-600 nd-syn-toggle"
                     >
                       {showFullSynopsis ? 'Show less' : 'Read more'}
                     </button>
@@ -477,19 +543,18 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
               </section>
 
               {/* Tags */}
-              <section className="mb-10 sm:mb-10">
-                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5">Tags</h2>
+              <section className="mb-10 sm:mb-10 nd-sec nd-tags-sec">
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5 nd-sec-label">Tags</h2>
                 {/* Mobile: horizontal scroll */}
-                <div className="sm:hidden -mx-5 overflow-visible">
+                <div className="sm:hidden">
                   <div
-                    className="flex gap-2 px-5 pb-0 overflow-x-auto hide-scrollbar"
+                    className="flex gap-3 px-5 pb-0 pt-0 overflow-x-auto hide-scrollbar nd-tags-scroll"
                     style={{ WebkitOverflowScrolling: 'touch' }}
                   >
                     {novelData.themes.map((theme, index) => (
                       <span
                         key={index}
-                        className="tag flex-shrink-0"
-                        style={{ background: '#f9fafb', color: '#4b5563', borderColor: '#e5e7eb' }}
+                        className="tag flex-shrink-0 whitespace-nowrap nd-tag"
                       >
                         {formatTagLabel(theme)}
                       </span>
@@ -497,12 +562,11 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                   </div>
                 </div>
                 {/* Desktop: show all */}
-                <div className="hidden sm:flex flex-wrap gap-2">
+                <div className="hidden sm:flex flex-wrap gap-2 nd-tags-wrap">
                   {novelData.themes.map((theme, index) => (
                     <span
                       key={index}
-                      className="tag"
-                      style={{ background: '#f9fafb', color: '#4b5563', borderColor: '#e5e7eb' }}
+                      className="tag nd-tag"
                     >
                       {formatTagLabel(theme)}
                     </span>
@@ -512,12 +576,12 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
 
               {/* Related Books - 只在有相关书籍时显示 */}
               {relatedNovels.length > 0 && (
-                <section className="mb-10 sm:mb-10">
-                  <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5">Related Books</h2>
+                <section className="mb-10 sm:mb-10 nd-sec nd-books-sec nd-related-sec">
+                  <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5 nd-sec-label">Related Books</h2>
                   {/* Mobile */}
-                  <div className="sm:hidden -mx-5 overflow-visible">
+                  <div className="sm:hidden">
                     <div
-                      className="flex gap-4 px-5 pb-0 pt-0 overflow-x-auto hide-scrollbar"
+                      className="flex gap-4 px-5 pb-0 pt-0 overflow-x-auto hide-scrollbar nd-books-scroll"
                       style={{ WebkitOverflowScrolling: 'touch' }}
                     >
                       {relatedNovels.map((novel, index) => {
@@ -528,24 +592,24 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                         ];
                         const style = coverStyles[index % coverStyles.length];
                         return (
-                          <Link key={novel.id} href={`/novel/${novel.id}`} className="block flex-shrink-0">
+                          <Link key={novel.id} href={`/novel/${novel.id}`} className="block flex-shrink-0 nd-book-thumb">
                             {novel.coverImage ? (
-                              <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2" />
+                              <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2 nd-book-thumb-cover" />
                             ) : (
-                              <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2`}>
+                              <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2 nd-book-thumb-cover`}>
                                 {style.icon}
                               </div>
                             )}
-                            <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px]">{novel.title}</p>
-                            <p className="text-xs text-neutral-400">{novel.author}</p>
+                            <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px] nd-book-thumb-title">{novel.title}</p>
+                            <p className="text-xs text-neutral-400 nd-book-thumb-author">{novel.author}</p>
                           </Link>
                         );
                       })}
                     </div>
                   </div>
                   {/* Desktop */}
-                  <div className="hidden sm:block scroll-wrapper">
-                    <div className="scroll-container">
+                  <div className="hidden sm:block scroll-wrapper nd-books-scroll-desktop">
+                    <div className="scroll-container nd-books-scroll">
                       {relatedNovels.map((novel, index) => {
                         const coverStyles = [
                           { gradient: 'from-indigo-500 to-purple-600', icon: '📕' },
@@ -554,16 +618,16 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                         ];
                         const style = coverStyles[index % coverStyles.length];
                         return (
-                          <Link key={novel.id} href={`/novel/${novel.id}`} className="block">
+                          <Link key={novel.id} href={`/novel/${novel.id}`} className="block nd-book-thumb">
                             {novel.coverImage ? (
-                              <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2" />
+                              <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2 nd-book-thumb-cover" />
                             ) : (
-                              <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2`}>
+                              <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2 nd-book-thumb-cover`}>
                                 {style.icon}
                               </div>
                             )}
-                            <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px]">{novel.title}</p>
-                            <p className="text-xs text-neutral-400">{novel.author}</p>
+                            <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px] nd-book-thumb-title">{novel.title}</p>
+                            <p className="text-xs text-neutral-400 nd-book-thumb-author">{novel.author}</p>
                           </Link>
                         );
                       })}
@@ -573,12 +637,12 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
               )}
 
               {/* Similar Books */}
-              <section className="mb-10 sm:mb-10">
-                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5">Similar Books</h2>
+              <section className="mb-10 sm:mb-10 nd-sec nd-books-sec nd-similar-sec">
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5 nd-sec-label">Similar Books</h2>
                 {/* Mobile */}
-                <div className="sm:hidden -mx-5 overflow-visible">
+                <div className="sm:hidden">
                   <div
-                    className="flex gap-4 px-5 pb-0 pt-0 overflow-x-auto hide-scrollbar"
+                    className="flex gap-4 px-5 pb-0 pt-0 overflow-x-auto hide-scrollbar nd-books-scroll"
                     style={{ WebkitOverflowScrolling: 'touch' }}
                   >
                     {similarNovels.map((novel, index) => {
@@ -592,24 +656,24 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                       ];
                       const style = coverStyles[index % coverStyles.length];
                       return (
-                        <Link key={novel.id} href={`/novel/${novel.id}`} className="block flex-shrink-0">
+                        <Link key={novel.id} href={`/novel/${novel.id}`} className="block flex-shrink-0 nd-book-thumb">
                           {novel.coverImage ? (
-                            <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2" />
+                            <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2 nd-book-thumb-cover" />
                           ) : (
-                            <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2`}>
+                            <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2 nd-book-thumb-cover`}>
                               {style.icon}
                             </div>
                           )}
-                          <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px]">{novel.title}</p>
-                          <p className="text-xs text-neutral-400">{novel.author}</p>
+                          <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px] nd-book-thumb-title">{novel.title}</p>
+                          <p className="text-xs text-neutral-400 nd-book-thumb-author">{novel.author}</p>
                         </Link>
                       );
                     })}
                   </div>
                 </div>
                 {/* Desktop */}
-                <div className="hidden sm:block scroll-wrapper">
-                  <div className="scroll-container">
+                <div className="hidden sm:block scroll-wrapper nd-books-scroll-desktop">
+                  <div className="scroll-container nd-books-scroll">
                     {similarNovels.map((novel, index) => {
                       const coverStyles = [
                         { gradient: 'from-red-500 to-orange-500', icon: '⚡' },
@@ -621,16 +685,16 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                       ];
                       const style = coverStyles[index % coverStyles.length];
                       return (
-                        <Link key={novel.id} href={`/novel/${novel.id}`} className="block">
+                        <Link key={novel.id} href={`/novel/${novel.id}`} className="block nd-book-thumb">
                           {novel.coverImage ? (
-                            <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2" />
+                            <img src={novel.coverImage} alt={novel.title} className="book-cover-small mb-2 nd-book-thumb-cover" />
                           ) : (
-                            <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2`}>
+                            <div className={`book-cover-small bg-gradient-to-br ${style.gradient} flex items-center justify-center text-3xl mb-2 nd-book-thumb-cover`}>
                               {style.icon}
                             </div>
                           )}
-                          <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px]">{novel.title}</p>
-                          <p className="text-xs text-neutral-400">{novel.author}</p>
+                          <p className="text-sm font-medium text-deep-900 line-clamp-1 w-[100px] nd-book-thumb-title">{novel.title}</p>
+                          <p className="text-xs text-neutral-400 nd-book-thumb-author">{novel.author}</p>
                         </Link>
                       );
                     })}
@@ -639,38 +703,42 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
               </section>
 
               {/* Featured in Stacks */}
-              <section className="mb-10 sm:mb-10">
-                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5">Featured in Stacks</h2>
+              <section className="mb-10 sm:mb-10 nd-sec nd-fis-sec">
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5 nd-sec-label">Featured in {stacks.length} Stacks</h2>
                 {/* Mobile */}
-                <div className="sm:hidden -mx-5 overflow-visible">
+                <div className="sm:hidden">
                   <div
-                    className="flex gap-4 px-5 pb-0 pt-0 overflow-x-auto hide-scrollbar"
+                    className="flex gap-4 px-5 pb-0 pt-0 overflow-x-auto hide-scrollbar nd-fis-scroll"
                     style={{ WebkitOverflowScrolling: 'touch' }}
                   >
                     {stacks.map((stack, index) => {
-                      const stackIcons = ['📚', '💎', '🔥'];
-                      const stackGradients = [
-                        'from-blue-500 to-indigo-600',
-                        'from-emerald-500 to-teal-600',
-                        'from-amber-500 to-orange-600'
-                      ];
+                      const spines = FEATURED_SPINE_SETS[index % FEATURED_SPINE_SETS.length];
+                      const letters = stackSpineLetters(stack.title);
+                      const curator = FEATURED_CURATORS[index % FEATURED_CURATORS.length];
                       return (
-                        <Link key={stack.id} href={`/stack/${stack.id}`} className="card card-hover p-4 w-[260px] flex-shrink-0">
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${stackGradients[index % stackGradients.length]} flex items-center justify-center text-lg`}>
-                              {stackIcons[index % stackIcons.length]}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <p className="font-semibold text-deep-900 line-clamp-1">{stack.title}</p>
-                            </div>
+                        <Link key={stack.id} href={`/stack/${stack.id}`} className="card card-hover p-4 w-[260px] flex-shrink-0 nd-fis-card">
+                          <div className="nd-fis-spines">
+                            {letters.map((letter, i) => (
+                              <div
+                                key={`${stack.id}-m-${i}`}
+                                className="nd-fis-spine"
+                                style={{
+                                  background: spines.gradients[i],
+                                  height: `${spines.heights[i]}px`,
+                                }}
+                              >
+                                {letter}
+                              </div>
+                            ))}
                           </div>
-                          <p className="text-sm text-neutral-500 italic mb-2 line-clamp-1">"{stack.description}"</p>
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500"></div>
-                              <span className="text-xs text-neutral-500">Editor</span>
+                          <p className="nd-fis-title">{stack.title}</p>
+                          <p className="nd-fis-meta">"{stack.description}"</p>
+                          <div className="nd-fis-foot">
+                            <div className="nd-fis-curator">
+                              <div className="nd-fis-curator-dot" style={{ background: curator.dot }} />
+                              <span>{curator.name}</span>
                             </div>
-                            <span className="text-xs text-neutral-400">{stack.picks} books</span>
+                            <span className="nd-fis-count">{stack.picks} books →</span>
                           </div>
                         </Link>
                       );
@@ -678,32 +746,36 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                   </div>
                 </div>
                 {/* Desktop */}
-                <div className="hidden sm:block scroll-wrapper">
-                  <div className="scroll-container">
+                <div className="hidden sm:block scroll-wrapper nd-fis-scroll-desktop">
+                  <div className="scroll-container nd-fis-scroll">
                     {stacks.map((stack, index) => {
-                      const stackIcons = ['📚', '💎', '🔥'];
-                      const stackGradients = [
-                        'from-blue-500 to-indigo-600',
-                        'from-emerald-500 to-teal-600',
-                        'from-amber-500 to-orange-600'
-                      ];
+                      const spines = FEATURED_SPINE_SETS[index % FEATURED_SPINE_SETS.length];
+                      const letters = stackSpineLetters(stack.title);
+                      const curator = FEATURED_CURATORS[index % FEATURED_CURATORS.length];
                       return (
-                        <Link key={stack.id} href={`/stack/${stack.id}`} className="card card-hover p-4 w-[260px]">
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${stackGradients[index % stackGradients.length]} flex items-center justify-center text-lg`}>
-                              {stackIcons[index % stackIcons.length]}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <p className="font-semibold text-deep-900 line-clamp-1">{stack.title}</p>
-                            </div>
+                        <Link key={stack.id} href={`/stack/${stack.id}`} className="card card-hover p-4 w-[260px] nd-fis-card">
+                          <div className="nd-fis-spines">
+                            {letters.map((letter, i) => (
+                              <div
+                                key={`${stack.id}-d-${i}`}
+                                className="nd-fis-spine"
+                                style={{
+                                  background: spines.gradients[i],
+                                  height: `${spines.heights[i]}px`,
+                                }}
+                              >
+                                {letter}
+                              </div>
+                            ))}
                           </div>
-                          <p className="text-sm text-neutral-500 italic mb-2 line-clamp-1">"{stack.description}"</p>
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500"></div>
-                              <span className="text-xs text-neutral-500">Editor</span>
+                          <p className="nd-fis-title">{stack.title}</p>
+                          <p className="nd-fis-meta">"{stack.description}"</p>
+                          <div className="nd-fis-foot">
+                            <div className="nd-fis-curator">
+                              <div className="nd-fis-curator-dot" style={{ background: curator.dot }} />
+                              <span>{curator.name}</span>
                             </div>
-                            <span className="text-xs text-neutral-400">{stack.picks} books</span>
+                            <span className="nd-fis-count">{stack.picks} books →</span>
                           </div>
                         </Link>
                       );
@@ -719,17 +791,17 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
       {/* Cover Modal */}
       {coverModalOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 nd-cover-modal-overlay"
           onClick={() => setCoverModalOpen(false)}
         >
           {novelData.coverImage ? (
             <img
               src={novelData.coverImage}
               alt={novelData.title}
-              className="w-[280px] sm:w-[320px] rounded-2xl shadow-2xl"
+              className="w-[280px] sm:w-[320px] shadow-2xl rounded-none"
             />
           ) : (
-            <div className="w-[280px] sm:w-[320px] aspect-[3/4] bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-8xl shadow-2xl">
+            <div className="w-[280px] sm:w-[320px] aspect-[3/4] bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-8xl shadow-2xl">
               📘
             </div>
           )}
@@ -739,26 +811,26 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
       {/* Editor's Take Modal */}
       {editorTakeModalOpen && novelData.editorNote && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 sm:bg-black/60 p-5"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 sm:bg-black/60 p-5 nd-text-modal-overlay"
           onClick={() => setEditorTakeModalOpen(false)}
         >
           <div
-            className="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] overflow-auto shadow-2xl"
+            className="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] overflow-auto shadow-2xl nd-text-modal-content"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider">Editor's Take:</h2>
+              <div className="flex items-center justify-between mb-4 nd-text-modal-header">
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider nd-sec-label">Editor's Take:</h2>
                 <button
                   onClick={() => setEditorTakeModalOpen(false)}
-                  className="text-neutral-400 hover:text-neutral-600 transition-colors"
+                  className="text-neutral-400 hover:text-neutral-600 transition-colors nd-text-modal-close"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
-              <p className="text-neutral-600 leading-relaxed text-base sm:text-lg italic">
+              <p className="text-neutral-600 leading-relaxed text-base sm:text-lg italic nd-text-modal-body">
                 "{novelData.editorNote}"
               </p>
             </div>
@@ -769,26 +841,26 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
       {/* Synopsis Modal */}
       {synopsisModalOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-5"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-5 nd-text-modal-overlay"
           onClick={() => setSynopsisModalOpen(false)}
         >
           <div
-            className="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] overflow-auto shadow-2xl"
+            className="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] overflow-auto shadow-2xl nd-text-modal-content"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider">Synopsis</h2>
+              <div className="flex items-center justify-between mb-4 nd-text-modal-header">
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider nd-sec-label">Synopsis</h2>
                 <button
                   onClick={() => setSynopsisModalOpen(false)}
-                  className="text-neutral-400 hover:text-neutral-600 transition-colors"
+                  className="text-neutral-400 hover:text-neutral-600 transition-colors nd-text-modal-close"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
-              <p className="text-neutral-600 leading-relaxed">
+              <p className="text-neutral-600 leading-relaxed nd-text-modal-body">
                 {novelData.synopsis}
               </p>
             </div>
