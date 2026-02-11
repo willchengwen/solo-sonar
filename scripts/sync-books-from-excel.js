@@ -180,6 +180,18 @@ for (let i = 2; i < data.length; i++) {
     });
   }
 
+  // 生成 platform 字符串（用于显示）
+  const platformNames = {
+    'royal-road': 'RR',
+    'spacebattles': 'SB',
+    'sufficient-velocity': 'SV',
+    'amazon': 'AMZ',
+    'personal-site': 'Site',
+    'ffn': 'FFN',
+    'ao3': 'AO3'
+  };
+  const platformDisplay = links.map(link => platformNames[link.platform] || 'Site').join(' · ');
+
   excelBooks.push({
     id,
     title,
@@ -190,6 +202,7 @@ for (let i = 2; i < data.length; i++) {
     words,
     status,
     links,
+    platform: platformDisplay, // 添加平台显示字段
     coverImage: coverUrl,
     themes, // 从 Excel 同步标签
     // 保留现有的 stackCount 和 savedCount（如果有）

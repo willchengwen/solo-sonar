@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sync-books": "node scripts/sync-books-from-excel.js"
+    "sync-books": "node scripts/sync-books-from-excel.js",
+    "sync-stacks": "node scripts/sync-stacks-from-excel.js"
   },
   "repository": {
     "type": "git",

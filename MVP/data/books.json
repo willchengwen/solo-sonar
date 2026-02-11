@@ -20,6 +20,7 @@
         "isCanonical": false
       }
     ],
+    "platform": "SB · Site",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/purple-days.jpg",
     "themes": [
       "Time Loop",
@@ -50,6 +51,7 @@
         "isCanonical": false
       }
     ],
+    "platform": "RR · AMZ",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-perfect-run.jpg",
     "themes": [
       "Time Loop",
@@ -80,6 +82,7 @@
         "isCanonical": false
       }
     ],
+    "platform": "RR · AMZ",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-menocht-loop.jpg",
     "themes": [
       "Time Loop",
@@ -105,6 +108,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "RR",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/the-years-of-apocalypse.jpg",
     "themes": [
       "Time Loop",
@@ -135,6 +139,7 @@
         "isCanonical": false
       }
     ],
+    "platform": "RR · AMZ",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/dear-spellbook.jpg",
     "themes": [
       "Time Loop",
@@ -166,6 +171,7 @@
         "isCanonical": false
       }
     ],
+    "platform": "RR · AMZ",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/re-monarch.jpg",
     "themes": [
       "Time Loop",
@@ -196,6 +202,7 @@
         "isCanonical": false
       }
     ],
+    "platform": "RR · AMZ",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/blessed-time.jpg",
     "themes": [
       "Time Loop",
@@ -226,6 +233,7 @@
         "isCanonical": false
       }
     ],
+    "platform": "RR · AMZ",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/2026/stubborn-skill-grinder.jpg",
     "themes": [
       "Time Loop",
@@ -251,6 +259,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-trailblazer.jpg",
     "themes": [
       "Superhero",
@@ -277,6 +286,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-burn-up.jpg",
     "themes": [
       "Superhero",
@@ -304,6 +314,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-ring-maker.jpg",
     "themes": [
       "Superhero",
@@ -331,6 +342,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-constellations.jpg",
     "themes": [
       "Superhero",
@@ -358,6 +370,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-cenotaph.jpg",
     "themes": [
       "Superhero",
@@ -384,6 +397,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-wake.jpg",
     "themes": [
       "Superhero",
@@ -410,6 +424,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-copacetic.jpg",
     "themes": [
       "Superhero",
@@ -435,6 +450,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-tabloid.jpg",
     "themes": [
       "Superhero",
@@ -461,6 +477,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-camera-shy.jpg",
     "themes": [
       "Superhero",
@@ -488,6 +505,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-skein.jpg",
     "themes": [
       "Superhero",
@@ -515,6 +533,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-weaver-nine.jpg",
     "themes": [
       "Superhero",
@@ -541,6 +560,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-a-bad-name.jpg",
     "themes": [
       "Superhero",
@@ -566,6 +586,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-a-wand-for-skitter.jpg",
     "themes": [
       "Superhero",
@@ -593,6 +614,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-legacy.jpg",
     "themes": [
       "Superhero",
@@ -619,6 +641,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-dire-worm.jpg",
     "themes": [
       "Superhero",
@@ -646,6 +669,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-security.jpg",
     "themes": [
       "Superhero",
@@ -671,6 +695,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-manager.jpg",
     "themes": [
       "Superhero",
@@ -697,6 +722,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-intrepid.jpg",
     "themes": [
       "Superhero",
@@ -723,6 +749,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-el-ahrairah.jpg",
     "themes": [
       "Superhero",
@@ -749,6 +776,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-queen-of-blood.jpg",
     "themes": [
       "Superhero",
@@ -776,6 +804,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-more-than-meets-the-eye.jpg",
     "themes": [
       "Superhero",
@@ -803,6 +832,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-kill-them-all.jpg",
     "themes": [
       "Superhero",
@@ -830,6 +860,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-mixed-feelings.jpg",
     "themes": [
       "Superhero",
@@ -856,6 +887,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-atonement.jpg",
     "themes": [
       "Superhero",
@@ -881,6 +913,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-memories-of-iron.jpg",
     "themes": [
       "Superhero",
@@ -907,6 +940,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-i-woke-up-as-a-dungeon-now-what.jpg",
     "themes": [
       "Superhero",
@@ -933,6 +967,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-acceleration.jpg",
     "themes": [
       "Superhero",
@@ -960,6 +995,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-hunter.jpg",
     "themes": [
       "Superhero",
@@ -988,6 +1024,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SV",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-amelia.jpg",
     "themes": [
       "Superhero",
@@ -1015,6 +1052,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-deputy.jpg",
     "themes": [
       "Superhero",
@@ -1041,6 +1079,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SV",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-heromakers-legacy.jpg",
     "themes": [
       "Superhero",
@@ -1067,6 +1106,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/worm-a-cloudy-path.jpg",
     "themes": [
       "Superhero",
@@ -1094,6 +1134,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "Site",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-1-worm.jpg",
     "themes": [
       "Superhero",
@@ -1119,6 +1160,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "Site",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-2-pact.jpg",
     "themes": [
       "Fantasy",
@@ -1144,6 +1186,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "Site",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-3-twig.jpg",
     "themes": [
       "Sci-Fi",
@@ -1170,6 +1213,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "Site",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-4-ward.jpg",
     "themes": [
       "Superhero",
@@ -1196,6 +1240,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "Site",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/wildbow-5-pale.jpg",
     "themes": [
       "Fantasy",
@@ -1221,6 +1266,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-last-angel-1.jpg",
     "themes": [
       "Sci-Fi",
@@ -1247,6 +1293,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-last-angel-2-ascension.jpg",
     "themes": [
       "Sci-Fi",
@@ -1273,6 +1320,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-last-angel-3-the-hungry-stars.jpg",
     "themes": [
       "Sci-Fi",
@@ -1299,6 +1347,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-games-we-play.jpg",
     "themes": [
       "LitRPG",
@@ -1324,6 +1373,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SB",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/seventh-horcrux.jpg",
     "themes": [
       "Fantasy",
@@ -1349,6 +1399,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "Site",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/a-practical-guide-to-evil.jpg",
     "themes": [
       "Fantasy",
@@ -1375,6 +1426,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SV",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/forge-of-destiny.jpg",
     "themes": [
       "Cultivation",
@@ -1400,6 +1452,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "FFN",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/harry-potter-and-the-methods-of-rationality.jpg",
     "themes": [
       "Fantasy",
@@ -1425,6 +1478,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SV",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/marked-for-death.jpg",
     "themes": [
       "Fantasy",
@@ -1451,6 +1505,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SV",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/dungeon-keeper-ami.jpg",
     "themes": [
       "Fantasy",
@@ -1477,6 +1532,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "Site",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-wandering-inn.jpg",
     "themes": [
       "Fantasy",
@@ -1503,6 +1559,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "AO3",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/the-world-as-it-appears-to-be.jpg",
     "themes": [
       "Sci-Fi",
@@ -1528,6 +1585,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "AO3",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/cordyceps.jpg",
     "themes": [
       "Horror",
@@ -1553,6 +1611,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "Site",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/pokemon-the-origin-of-species.jpg",
     "themes": [
       "Fantasy",
@@ -1578,6 +1637,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "SV",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/blood-of-the-frontier.jpg",
     "themes": [
       "Fantasy",
@@ -1603,6 +1663,7 @@
         "isCanonical": true
       }
     ],
+    "platform": "FFN",
     "coverImage": "https://pub-f79c700d0ef04a2a86c49479eaa7b3a1.r2.dev/book-covers/01/contact-at-kobol.jpg",
     "themes": [
       "Sci-Fi",

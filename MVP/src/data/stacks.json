@@ -3,64 +3,65 @@
     {
       "id": "mother-of-learning-similar",
       "title": "If You Loved Mother of Learning, Read These Next",
-      "coverTitle": "Mother of\nLearning",
-      "description": "Time loops, magic systems, and clever protagonists.",
+      "coverTitle": "Loved\nMother",
+      "description": "Time loops, magic academies, and protagonists who actually use their brains.",
       "curatorId": "zorian",
-      "curatorNote": "Mother of Learning set the gold standard for time loop fiction. These stories share its DNA: intelligent protagonists who learn from their mistakes, intricate magic systems worth exploring, and that satisfying sense of earned progress. Each one gave me the same feeling of 'just one more chapter' that MoL did.",
+      "curatorNote": "800,000 words of Mother of Learning, and you're still hungry. We know the feeling.\n\nThese eight stories each found their own way into the loop—and their own way to make \"one more cycle\" impossible to resist. Some honor the tradition: magic academies, gradual mastery, conspiracies that unfold across iterations. Others break the mold entirely—a Joffrey redemption epic, a post-apocalyptic comedy, a journal that remembers when the world forgets.\n\nWhat they share isn't a formula. It's the same reward loop MoL perfected: watch someone fail, learn, adapt, and return sharper. Every time.",
+      "curatorNoteCN": "读完《Mother of Learning》的80万字，你依然意犹未尽。我们懂这种感觉。\n\n这八本书各自找到了进入循环的方式——也各自找到了让你\"再来一轮\"停不下来的理由。有的走正统路线：魔法学院、渐进式成长、在轮回中层层剥开的阴谋。有的彻底打破模板——Joffrey的救赎史诗、后末世喜剧、一本替你记住被世界遗忘之事的日记。\n\n它们的共同点不是公式，而是MoL锤炼出的那种奖励回路：看一个人失败、学习、适应，然后以更犀利的姿态归来。每一次都是。",
       "entries": [
         {
-          "novelId": "purple-days",
-          "curatorNote": "What if Joffrey Baratheon got a redemption arc through a time loop? Sounds crazy, but it works brilliantly. The character development is phenomenal.",
-          "addedAt": "2024-01-15",
+          "novelId": "the-perfect-run",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
           "order": 1
         },
         {
-          "novelId": "the-perfect-run",
-          "curatorNote": "A more lighthearted take on time loops. Ryan's humor masks genuine depth, and the superhero setting is fresh.",
-          "addedAt": "2024-01-15",
+          "novelId": "purple-days",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
           "order": 2
         },
         {
-          "novelId": "the-years-of-apocalypse",
-          "curatorNote": "The true spiritual successor to Mother of Learning. Magic academy, time loops, gradual mastery—but with a fresh voice and a female protagonist who earns every ounce of power. Currently the best ongoing time loop story.",
-          "addedAt": "2024-03-25",
+          "novelId": "the-menocht-loop",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
           "order": 3
         },
         {
-          "novelId": "the-menocht-loop",
-          "curatorNote": "What happens AFTER the loop? Most time loop stories end when the protagonist escapes. This one asks: what does a god-tier looper do with all that power in the real world? Six books, ongoing on Royal Road.",
-          "addedAt": "2024-03-25",
+          "novelId": "the-years-of-apocalypse",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
           "order": 4
         },
         {
           "novelId": "dear-spellbook",
-          "curatorNote": "The journal format works brilliantly here—you ARE the spellbook. Cozy mystery meets time loop, with a magic system that rewards curiosity. Travis Baldree narrates the audiobook.",
-          "addedAt": "2024-03-25",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
           "order": 5
         },
         {
           "novelId": "re-monarch",
-          "curatorNote": "Time loop meets political intrigue. The twist? Your killer loops with you. Cairn's growth from drunken wastrel to competent ruler feels earned. Luke Daniels narrates the audiobook.",
-          "addedAt": "2024-03-25",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
           "order": 6
         },
         {
           "novelId": "blessed-time",
-          "curatorNote": "CoCop delivers again. The cost of each loop—losing everything you've built—creates real stakes. Micah's reluctance to use his power makes him more human than most time loop protagonists. Complete series.",
-          "addedAt": "2024-03-25",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
           "order": 7
         },
         {
           "novelId": "stubborn-skill-grinder",
-          "curatorNote": "Brain off, skill grind on. Orodan is gloriously simple: see wall, headbutt wall, gain skill levels. The comedy comes from applying this philosophy to increasingly cosmic problems. 750K+ words of pure power fantasy comfort food.",
-          "addedAt": "2024-03-25",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
           "order": 8
         }
       ],
       "themes": [
-        "time-loop",
-        "progression",
-        "rational"
+        "Completed Series",
+        "Smart MC",
+        "Time Loop"
       ],
       "platforms": [
         "royal-road",
@@ -69,9 +70,257 @@
       ],
       "coverGradient": "from-blue-50/80 via-blue-50/40 to-slate-50",
       "createdAt": "2024-01-15",
-      "updatedAt": "2024-01-20",
+      "updatedAt": "2026-02-11",
       "savedCount": 342,
       "viewCount": 5621,
+      "isEditorPick": true,
+      "isFeatured": true
+    },
+    {
+      "id": "worm-hall-of-fame",
+      "title": "The Worm Fanfic Hall of Fame",
+      "coverTitle": "Worm\nFanfic",
+      "description": "The fics that transcend their source material.",
+      "curatorId": "zorian",
+      "curatorNote": "These aren't just good fanfics—they're good stories. Each one stands on its own craft: precise prose, complete narrative arcs, and characters that feel alive beyond canon. Some rewrite Taylor's fate entirely. Others illuminate corners of Earth Bet Wildbow only hinted at. If you want to know what Worm fanfiction can truly become, start here.",
+      "curatorNoteCN": "这不是\"还不错的同人\"——这是真正成立的好故事。每一本都靠硬实力站稳：克制而精准的文笔、完整闭合的叙事弧、比原作更鲜活的角色生命力。有的彻底改写Taylor的命运线，有的照亮Wildbow只一笔带过的世界角落。如果你想看看Worm同人真正能走到什么高度，从这里开始。",
+      "entries": [
+        {
+          "novelId": "trailblazer",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 1
+        },
+        {
+          "novelId": "burn-up",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 2
+        },
+        {
+          "novelId": "ring-maker",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 3
+        },
+        {
+          "novelId": "constellations",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 4
+        },
+        {
+          "novelId": "cenotaph",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 5
+        },
+        {
+          "novelId": "wake",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 6
+        },
+        {
+          "novelId": "copacetic",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 7
+        },
+        {
+          "novelId": "tabloid",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 8
+        },
+        {
+          "novelId": "camera-shy",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 9
+        },
+        {
+          "novelId": "skein",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 10
+        },
+        {
+          "novelId": "weaver-nine",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 11
+        },
+        {
+          "novelId": "a-bad-name",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 12
+        }
+      ],
+      "themes": [
+        "Literary Quality",
+        "Completed Series",
+        "Deep Characters"
+      ],
+      "platforms": [
+        "royal-road",
+        "spacebattles",
+        "sufficient-velocity"
+      ],
+      "coverGradient": "from-blue-50/80 via-blue-50/40 to-slate-50",
+      "createdAt": "2024-04-01",
+      "updatedAt": "2026-02-11",
+      "savedCount": 289,
+      "viewCount": 4102,
+      "isEditorPick": true,
+      "isFeatured": true
+    },
+    {
+      "id": "worm-rabbit-hole",
+      "title": "The Worm Rabbit Hole Goes Deeper",
+      "coverTitle": "Worm\nRabbit",
+      "description": "For when 1.68 million words wasn't enough.",
+      "curatorId": "zorian",
+      "curatorNote": "Finished the Hall of Fame and still here? Good. These are the fics the community keeps arguing about—each with a hook strong enough to pull you into \"just one more chapter\" at 3 AM. Wild crossovers. Power swaps. AU premises that shouldn't work—but somehow do. Not always perfect. Always unforgettable.",
+      "curatorNoteCN": "精选看完还不肯停？很好，你已经掉进更深的一层了。这些是在SB/SV推荐帖里被反复争论的作品——每一本都有把你拖到凌晨三点的理由。疯狂的跨界、能力互换、不该成立却偏偏成立的AU设定。也许不完美，但绝不会让人忘记。",
+      "entries": [
+        {
+          "novelId": "a-wand-for-skitter",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 1
+        },
+        {
+          "novelId": "legacy",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 2
+        },
+        {
+          "novelId": "dire-worm",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 3
+        },
+        {
+          "novelId": "security",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 4
+        },
+        {
+          "novelId": "manager",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 5
+        },
+        {
+          "novelId": "intrepid",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 6
+        },
+        {
+          "novelId": "el-ahrairah",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 7
+        },
+        {
+          "novelId": "queen-of-blood",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 8
+        },
+        {
+          "novelId": "worm-more-than-meets-the-eye",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 9
+        },
+        {
+          "novelId": "kill-them-all",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 10
+        },
+        {
+          "novelId": "mixed-feelings",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 11
+        },
+        {
+          "novelId": "atonement",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 12
+        },
+        {
+          "novelId": "memories-of-iron",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 13
+        },
+        {
+          "novelId": "i-woke-up-as-a-dungeon-now-what",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 14
+        },
+        {
+          "novelId": "acceleration",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 15
+        },
+        {
+          "novelId": "hunter",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 16
+        },
+        {
+          "novelId": "amelia",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 17
+        },
+        {
+          "novelId": "deputy",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 18
+        },
+        {
+          "novelId": "heromakers-legacy",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 19
+        },
+        {
+          "novelId": "a-cloudy-path",
+          "curatorNote": "",
+          "addedAt": "2026-02-11",
+          "order": 20
+        }
+      ],
+      "themes": [
+        "Community Favorites",
+        "Wild Crossovers",
+        "Power Fantasy"
+      ],
+      "platforms": [
+        "royal-road",
+        "spacebattles",
+        "sufficient-velocity"
+      ],
+      "coverGradient": "from-blue-50/80 via-blue-50/40 to-slate-50",
+      "createdAt": "2026-02-11",
+      "updatedAt": "2026-02-11",
+      "savedCount": 0,
+      "viewCount": 0,
       "isEditorPick": true,
       "isFeatured": true
     },
@@ -212,61 +461,6 @@
       "viewCount": 2103,
       "isEditorPick": true,
       "isFeatured": true
-    },
-    {
-      "id": "worm-hall-of-fame",
-      "title": "The Worm Fanfic Hall of Fame",
-      "coverTitle": "Worm\nHall of\nFame",
-      "description": "The fics that transcend their source material",
-      "curatorId": "zorian",
-      "curatorNote": "The fics that transcend their source material.",
-      "entries": [
-        {
-          "novelId": "trailblazer",
-          "curatorNote": "The ultimate fusion fic.",
-          "addedAt": "2024-04-01",
-          "order": 1
-        },
-        {
-          "novelId": "burn-up",
-          "curatorNote": "Peak Worm prose.",
-          "addedAt": "2024-04-01",
-          "order": 2
-        },
-        {
-          "novelId": "ring-maker",
-          "curatorNote": "Tolkien meets Worm.",
-          "addedAt": "2024-04-01",
-          "order": 3
-        },
-        {
-          "novelId": "cenotaph",
-          "curatorNote": "Dark vigilante trilogy.",
-          "addedAt": "2024-04-01",
-          "order": 4
-        },
-        {
-          "novelId": "a-wand-for-skitter",
-          "curatorNote": "Bug girl goes to Hogwarts.",
-          "addedAt": "2024-04-01",
-          "order": 5
-        }
-      ],
-      "themes": [
-        "worm-fanfic",
-        "progression"
-      ],
-      "platforms": [
-        "spacebattles"
-      ],
-      "coverGradient": "from-rose-50/80 via-rose-50/40 to-slate-50",
-      "createdAt": "2024-04-01",
-      "updatedAt": "2024-04-10",
-      "savedCount": 289,
-      "viewCount": 4102,
-      "isEditorPick": true,
-      "isFeatured": false,
-      "isHeroPreview": true
     },
     {
       "id": "worm-essentials",
