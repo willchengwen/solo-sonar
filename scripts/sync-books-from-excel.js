@@ -197,8 +197,8 @@ for (let i = 2; i < data.length; i++) {
     title,
     author,
     synopsis,
-    curatorNote: editorNote,
-    curatorNoteCN: editorNoteCN, // 添加中文编者按
+    editorNote: editorNote,
+    editorNoteCN: editorNoteCN,
     words,
     status,
     links,
@@ -230,9 +230,14 @@ const mergedBooks = excelBooks.map(excelBook => {
   const existing = existingBooks.find(b => b.id === excelBook.id);
 
   if (existing) {
-    // 只保留统计数据，其他字段使用 Excel 的最新值
+    // 如果 Excel 中 editorNote 为空，但旧数据有 curatorNote，则迁移旧数据
+    const editorNote = excelBook.editorNote || existing.curatorNote || existing.editorNote || '';
+    const editorNoteCN = excelBook.editorNoteCN || existing.curatorNoteCN || existing.editorNoteCN || '';
+
     return {
       ...excelBook,
+      editorNote,
+      editorNoteCN,
       stackCount: existing.stackCount || 0,
       savedCount: existing.savedCount || 0,
     };

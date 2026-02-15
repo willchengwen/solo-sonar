@@ -32,6 +32,9 @@ interface NovelItem {
   status: 'ongoing' | 'completed' | 'hiatus' | 'dropped';
   themes: string[];
   coverImage?: string;
+  synopsis?: string;
+  editorNoteEN?: string;
+  editorNote?: string;
   curatorNote?: string;
   links?: Array<{
     platform: string;
@@ -43,6 +46,7 @@ interface StackBookResolved {
   entry: StackEntry;
   novel: NovelItem | null;
   curatorNote: string;
+  noteType: 'editor' | 'synopsis' | 'curator';
 }
 
 const SPINE_COLORS = [
@@ -156,12 +160,27 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
     .sort((a, b) => a.order - b.order)
     .map((entry) => {
       const novel = allNovels.find((item) => item.id === entry.novelId);
-      const novelEditorNote = novel?.curatorNote?.trim();
+      const novelEditorNote = novel?.editorNoteEN?.trim() || novel?.editorNote?.trim();
+      const novelSynopsis = novel?.synopsis?.trim();
       const stackEntryNote = entry.curatorNote?.trim();
+      let curatorNote = stack.curatorNote;
+      let noteType: StackBookResolved['noteType'] = 'curator';
+
+      if (novelEditorNote) {
+        curatorNote = novelEditorNote;
+        noteType = 'editor';
+      } else if (novelSynopsis) {
+        curatorNote = novelSynopsis;
+        noteType = 'synopsis';
+      } else if (stackEntryNote) {
+        curatorNote = stackEntryNote;
+      }
+
       return {
         entry,
         novel: novel ?? null,
-        curatorNote: novelEditorNote || stackEntryNote || stack.curatorNote,
+        curatorNote,
+        noteType,
       } satisfies StackBookResolved;
     });
 
@@ -253,13 +272,13 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
         {/* ═══ EDITOR'S NOTE ═══ */}
         {/* Mobile: click to open modal */}
         <div className="sd-note-card sd-note-mobile" onClick={() => setShowNoteModal(true)}>
-          <div className="sd-note-label">Editor&apos;s Note</div>
+          <div className="sd-note-label">CURATOR&apos;S NOTE</div>
           <p className="sd-note-text-clamped">{stack.curatorNote}</p>
         </div>
 
         {/* Desktop: inline with Read more */}
         <div className="sd-note-card sd-note-desktop">
-          <div className="sd-note-label">Editor&apos;s Note</div>
+          <div className="sd-note-label">CURATOR&apos;S NOTE</div>
           <p
             ref={noteTextRef}
             className={noteExpanded ? 'sd-note-text' : 'sd-note-text sd-note-text-clamped'}
@@ -282,7 +301,7 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
             <div className="sd-modal-content" onClick={(e) => e.stopPropagation()}>
               <div className="sd-modal-header">
                 <span className="sd-note-label" style={{ marginBottom: 0 }}>
-                  Editor&apos;s Note
+                  CURATOR&apos;S NOTE
                 </span>
                 <button className="sd-modal-close" onClick={() => setShowNoteModal(false)}>
                   <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
@@ -306,6 +325,7 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
               const noteId = book.novel?.id ?? book.entry.novelId;
               const isBookNoteExpanded = Boolean(expandedBookNotes[noteId]);
               const showToggle = Boolean(expandableBookNotes[noteId]) || isBookNoteExpanded;
+              const isCuratorNote = book.noteType !== 'synopsis';
 
               if (!book.novel) {
                 return (
@@ -320,7 +340,7 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                       <p
                         data-book-note-id={noteId}
                         data-expanded={isBookNoteExpanded ? 'true' : 'false'}
-                        className={`sd-book-note sd-book-note-desktop ${isBookNoteExpanded ? '' : 'sd-book-note-clamped'}`}
+                        className={`sd-book-note sd-book-note-desktop ${isCuratorNote ? 'sd-book-note-curator' : ''} ${isBookNoteExpanded ? '' : 'sd-book-note-clamped'}`}
                       >
                         {book.curatorNote}
                       </p>
@@ -334,7 +354,9 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                         </button>
                       )}
                     </div>
-                    <p className="sd-book-note-mobile">{book.curatorNote}</p>
+                    <div className={`sd-book-note-mobile-wrap ${isCuratorNote ? 'sd-book-note-curator' : ''}`}>
+                      <p className="sd-book-note-mobile">{book.curatorNote}</p>
+                    </div>
                   </div>
                 );
               }
@@ -352,7 +374,7 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                     <p
                       data-book-note-id={noteId}
                       data-expanded={isBookNoteExpanded ? 'true' : 'false'}
-                      className={`sd-book-note sd-book-note-desktop ${isBookNoteExpanded ? '' : 'sd-book-note-clamped'}`}
+                      className={`sd-book-note sd-book-note-desktop ${isCuratorNote ? 'sd-book-note-curator' : ''} ${isBookNoteExpanded ? '' : 'sd-book-note-clamped'}`}
                     >
                       {book.curatorNote}
                     </p>
@@ -370,7 +392,9 @@ export default function StackDetailPage({ params }: { params: Promise<{ id: stri
                       </button>
                     )}
                   </div>
-                  <p className="sd-book-note-mobile">{book.curatorNote}</p>
+                  <div className={`sd-book-note-mobile-wrap ${isCuratorNote ? 'sd-book-note-curator' : ''}`}>
+                    <p className="sd-book-note-mobile">{book.curatorNote}</p>
+                  </div>
                 </Link>
               );
             })}

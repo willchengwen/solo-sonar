@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { Novel, Stack, PLATFORM_INFO, THEME_INFO, Theme } from '@/types/types';
 import stacksData from '@/src/data/stacks.json';
@@ -73,10 +73,7 @@ function getCuratorName(curatorId: string) {
 // ═══════════════════════════════════════════════════════════════
 export default function HomePage() {
   const [email, setEmail] = useState('');
-  const [featuredNoteOpen, setFeaturedNoteOpen] = useState(false);
-  const [isFeaturedNoteTruncated, setIsFeaturedNoteTruncated] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const featuredNoteRef = useRef<HTMLDivElement>(null);
 
   // Featured stack data
   const featuredNovels = featuredStack.entries
@@ -102,151 +99,117 @@ export default function HomePage() {
   // Filter out featured stack from editor's picks to avoid duplication
   const pickStacks = editorPicks.filter((s) => s.id !== featuredStack.id);
 
-  useEffect(() => {
-    const checkFeaturedNoteOverflow = () => {
-      const el = featuredNoteRef.current;
-      if (!el || window.innerWidth > 768) {
-        setIsFeaturedNoteTruncated(false);
-        return;
-      }
-      setIsFeaturedNoteTruncated(el.scrollHeight > el.clientHeight + 1);
-    };
-
-    checkFeaturedNoteOverflow();
-    window.addEventListener('resize', checkFeaturedNoteOverflow);
-    return () => window.removeEventListener('resize', checkFeaturedNoteOverflow);
-  }, [featuredStack.curatorNote]);
-
-  useEffect(() => {
-    if (!featuredNoteOpen) return;
-    const onEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setFeaturedNoteOpen(false);
-    };
-    const oldOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', onEsc);
-    return () => {
-      document.body.style.overflow = oldOverflow;
-      window.removeEventListener('keydown', onEsc);
-    };
-  }, [featuredNoteOpen]);
-
   return (
     <div>
-      {/* ═══ HERO ═══ */}
-      <section className="hero">
-        <h1 className="an d1">
-          Find the <em>signal</em><br />in the noise.
-        </h1>
-        <p className="hero-sub an d2">
-          Find quality stories across Royal Road, SpaceBattles, and more. Curated by readers, for readers.
-        </p>
-        <button
-          className="btn-p an d3"
-          onClick={() => document.querySelector('.featured')?.scrollIntoView({ behavior: 'smooth' })}
-        >
-          Browse Curated Stacks
-        </button>
-        <div className="hero-proof an d3">Hand-picked by real readers, not algorithms</div>
+      {/* ═══ SPOTLIGHT ═══ */}
+      <section className="spotlight">
+        <div className="spotlight-card">
+          {/* 左侧：标题区 */}
+          <div className="spotlight-left">
+            <div className="spotlight-title-area">
+              <div className="spotlight-label">Editor's Pick</div>
+              <h1 className="spotlight-title">{featuredStack.title}</h1>
+            </div>
 
-        {/* Mini Stack Preview */}
-        <Link href={`/stack/${heroPreviewStack.id}`} className="hero-preview an d3">
-          <div className="hp-spines">
-            {heroPreviewNovels.slice(0, 5).map((novel, i) => (
-              <div
-                key={novel.id}
-                className="hp-spine"
-                style={{ background: SPINE_COLORS[i % SPINE_COLORS.length] }}
+            {/* 补充信息区 */}
+            <div className="spotlight-meta-area">
+              <p
+                className="spotlight-note"
+                style={{
+                  display: '-webkit-box',
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: 'vertical',
+                  overflow: 'hidden',
+                  whiteSpace: 'normal',
+                }}
               >
-                {novel.title.charAt(0)}
+                {featuredStack.curatorNote || featuredStack.description}
+              </p>
+              <div className="spotlight-meta">
+                <div className="curator-avatar"></div>
+                <div className="curator-info">
+                  Curated by <strong>{featuredCuratorName}</strong>
+                </div>
               </div>
-            ))}
-          </div>
-          <div className="hp-body">
-            <div className="hp-label">Featured Stack</div>
-            <div className="hp-title">{heroPreviewStack.title}</div>
-            <div className="hp-meta">
-              Curated by {heroPreviewCuratorName} · {heroPreviewStack.description}
-            </div>
-          </div>
-          <div className="hp-arrow" aria-hidden>→</div>
-        </Link>
-      </section>
-
-      {/* ═══ FEATURED STACK ═══ */}
-      <section className="featured">
-        <div className="s-label">Featured Stack</div>
-        <div className="s-head">
-          <h2>{featuredStack.title}</h2>
-          <Link href={`/stack/${featuredStack.id}`}>
-            See all {featuredStack.entries.length} books →
-          </Link>
-        </div>
-        <div className="stack-grid">
-          {/* Left: Editorial panel */}
-          <div className="stack-main">
-            <div className="shelf">
-              {featuredNovels.slice(0, 5).map((novel, i) => {
-                const heights = [48, 54, 60, 54, 48];
-                return (
-                  <div
-                    key={novel.id}
-                    className="sp"
-                    style={{
-                      background: SPINE_COLORS[i % SPINE_COLORS.length],
-                      height: `${heights[i] || 50}px`,
-                    }}
-                  >
-                    {novel.title.charAt(0)}
-                  </div>
-                );
-              })}
-            </div>
-            <div ref={featuredNoteRef} className="ed-note fs-note">{featuredStack.curatorNote}</div>
-            {isFeaturedNoteTruncated && (
-              <button
-                type="button"
-                className="fs-note-more"
-                onClick={() => setFeaturedNoteOpen(true)}
-              >
-                Read more
-              </button>
-            )}
-            <div className="stack-meta">
-              Curated by <span className="cur">{featuredCuratorName}</span> · {featuredStack.entries.length} books
             </div>
           </div>
 
-          {/* Right: Book list */}
-          <div className="stack-list">
-            {featuredNovels.slice(0, 4).map((novel, i) => {
-              const st = getStatusLabel(novel.status);
-              return (
-                <Link key={novel.id} href={`/novel/${novel.id}`} className="stack-item">
-                  <div className="spine" style={{ background: SPINE_COLORS[i % SPINE_COLORS.length] }}>
-                    {novel.coverImage ? (
-                      <img src={novel.coverImage} alt={novel.title} className="spine-cover" />
-                    ) : (
-                      novel.title.charAt(0)
-                    )}
+          {/* 右侧：书籍区 */}
+          <div className="spotlight-right">
+            {featuredNovels.length > 0 && (
+              <>
+                <div className="hero-book">
+                  <Link href={`/novel/${featuredNovels[0]?.id}`} className="hero-book-main">
+                    <div
+                      className="hero-book-cover"
+                      style={{ background: featuredNovels[0].coverImage ? 'transparent' : SPINE_COLORS[0 % SPINE_COLORS.length] }}
+                    >
+                      {featuredNovels[0].coverImage ? (
+                        <img src={featuredNovels[0].coverImage} alt={featuredNovels[0].title} className="hero-book-cover-img" />
+                      ) : (
+                        featuredNovels[0].title.charAt(0)
+                      )}
+                    </div>
+                    <div className="hero-book-info">
+                      <div className="hero-book-title">{featuredNovels[0].title}</div>
+                      <div className="hero-book-author">{featuredNovels[0].author}</div>
+                      <div
+                        className="hero-book-curator-note"
+                        style={{
+                          display: '-webkit-box',
+                          WebkitLineClamp: 3,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                        }}
+                      >
+                        {featuredNovels[0].synopsis || featuredStack.description || ''}
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+
+                <div className="spotlight-divider"></div>
+
+                <div className="compact-books-label">Also in This Stack</div>
+                <div className="compact-books">
+                  {featuredNovels.slice(1, 4).map((novel, i) => (
+                    <Link key={novel.id} href={`/novel/${novel.id}`} className="compact-book">
+                      <div
+                        className="compact-book-cover"
+                        style={{ background: novel.coverImage ? 'transparent' : SPINE_COLORS[(i + 1) % SPINE_COLORS.length] }}
+                      >
+                        {novel.coverImage ? (
+                          <img src={novel.coverImage} alt={novel.title} className="compact-book-cover-img" />
+                        ) : (
+                          novel.title.charAt(0)
+                        )}
+                      </div>
+                      <div className="compact-book-title">{novel.title}</div>
+                      <div className="compact-book-author">{novel.author}</div>
+                      <div className="compact-book-hook">{novel.synopsis}</div>
+                    </Link>
+                  ))}
+                </div>
+
+                {featuredStack.entries.length > 4 && (
+                  <div className="spotlight-more-link">
+                    <Link href={`/stack/${featuredStack.id}`}>
+                      <span>See all {featuredStack.entries.length} books</span>
+                      <span className="arr">→</span>
+                    </Link>
                   </div>
-                  <div className="si-body">
-                    <h4>{novel.title}</h4>
-                    <div className="si-plat">{novel.author}</div>
-                  </div>
-                  <span className={`status ${st.cls}`}>{st.label}</span>
-                </Link>
-              );
-            })}
-            {featuredStack.entries.length > 4 && (
-              <Link href={`/stack/${featuredStack.id}`} className="stack-more">
-                <span>+ {featuredStack.entries.length - 4} more in this stack</span>
-                <span className="arr">→</span>
-              </Link>
+                )}
+              </>
             )}
           </div>
         </div>
       </section>
+
+      {/* ═══ CONTEXT LINE ═══ */}
+      <div className="context-line">Curated web fiction across Royal Road, SpaceBattles, Sufficient Velocity &amp; more</div>
+
+
+
 
       {/* ═══ EDITOR'S PICKS ═══ */}
       <section className="more">
@@ -262,6 +225,7 @@ export default function HomePage() {
         </div>
         <div className="more-row no-sb" ref={scrollRef}>
           {pickStacks.map((stack, si) => {
+            const stackHref = `/stack/${stack.id}`;
             const stackNovels = stack.entries
               .sort((a, b) => a.order - b.order)
               .map((e) => novelsById.get(e.novelId))
@@ -270,7 +234,9 @@ export default function HomePage() {
 
             return (
               <div key={stack.id} className="mc">
-                <div className="mc-name">{stack.title}</div>
+                <Link href={stackHref} className="mc-name mc-name-link">
+                  {stack.title}
+                </Link>
                 <div className="mc-meta">{stack.entries.length} books</div>
                 <div className="mc-note">{stack.curatorNote || stack.description}</div>
                 <div className="mc-books">
@@ -305,7 +271,7 @@ export default function HomePage() {
                     />
                     by <strong>{curName}</strong>
                   </div>
-                  <Link href={`/stack/${stack.id}`} className="mc-lnk">
+                  <Link href={stackHref} className="mc-lnk">
                     All {stack.entries.length} →
                   </Link>
                 </div>
@@ -377,24 +343,6 @@ export default function HomePage() {
       {/* ═══ FOOTER ═══ */}
       <Footer />
 
-      {featuredNoteOpen && (
-        <div className="fs-note-modal-overlay" onClick={() => setFeaturedNoteOpen(false)}>
-          <div className="fs-note-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="fs-note-modal-header">
-              <span>Featured Stack</span>
-              <button
-                type="button"
-                className="fs-note-modal-close"
-                onClick={() => setFeaturedNoteOpen(false)}
-                aria-label="Close"
-              >
-                ×
-              </button>
-            </div>
-            <p className="fs-note-modal-text">{featuredStack.curatorNote}</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

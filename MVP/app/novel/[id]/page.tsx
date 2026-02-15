@@ -47,6 +47,7 @@ interface MVPNovel {
   completedAt?: string;
   coverGradient?: string;
   coverImage?: string;
+  editorNote?: string;
   curatorNote?: string;
   stackCount: number;
   savedCount: number;
@@ -136,7 +137,8 @@ function convertMVPToNovel(mvpNovel: MVPNovel): Novel {
     updated: formatDate(mvpNovel.completedAt || mvpNovel.startedAt),
     gradient: mvpNovel.coverGradient || 'from-gray-200 to-gray-100',
     synopsis: mvpNovel.synopsis,
-    editorNote: mvpNovel.curatorNote,
+    // Backward-compatible with both old `curatorNote` and newer `editorNote` fields.
+    editorNote: mvpNovel.editorNote || mvpNovel.curatorNote,
     themes: mvpNovel.themes,
     coverImage: mvpNovel.coverImage || null,
     links: mvpNovel.links
@@ -474,7 +476,7 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                 </div>
               </div>
 
-              {/* Editor's Take */}
+              {/* Editor's Note */}
               {novelData.editorNote && (
                 <section className="mb-10 sm:mb-10 nd-sec nd-et-sec">
                   {/* Mobile: Click card to open modal */}
@@ -482,17 +484,17 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                     className="card-static p-6 relative sm:hidden cursor-pointer nd-et-card nd-et-card-mobile"
                     onClick={() => setEditorTakeModalOpen(true)}
                   >
-                    <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5 nd-sec-label nd-et-label">Editor's Take:</h2>
-                    <p className="text-neutral-600 leading-relaxed text-base italic line-clamp-3 nd-et-text">
+                    <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5 nd-sec-label nd-et-label">Editor's Note:</h2>
+                    <p className="text-neutral-600 leading-relaxed text-base italic line-clamp-3 nd-et-text whitespace-pre-line">
                       "{novelData.editorNote}"
                     </p>
                   </div>
                   {/* Desktop: Read more expand */}
                   <div className="hidden sm:block card-static p-6 nd-et-card nd-et-card-desktop">
-                    <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5 nd-sec-label nd-et-label">Editor's Take:</h2>
+                    <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-5 nd-sec-label nd-et-label">Editor's Note:</h2>
                     <p
                       ref={editorTakeRef}
-                      className={`text-neutral-600 leading-relaxed text-lg italic nd-et-text ${!showFullEditorTake ? 'line-clamp-3' : ''}`}
+                      className={`text-neutral-600 leading-relaxed text-lg italic nd-et-text whitespace-pre-line ${!showFullEditorTake ? 'line-clamp-3' : ''}`}
                     >
                       "{novelData.editorNote}"
                     </p>
@@ -808,7 +810,7 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
         </div>
       )}
 
-      {/* Editor's Take Modal */}
+      {/* Editor's Note Modal */}
       {editorTakeModalOpen && novelData.editorNote && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 sm:bg-black/60 p-5 nd-text-modal-overlay"
@@ -820,7 +822,7 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
           >
             <div className="p-6">
               <div className="flex items-center justify-between mb-4 nd-text-modal-header">
-                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider nd-sec-label">Editor's Take:</h2>
+                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider nd-sec-label">Editor's Note:</h2>
                 <button
                   onClick={() => setEditorTakeModalOpen(false)}
                   className="text-neutral-400 hover:text-neutral-600 transition-colors nd-text-modal-close"
@@ -830,7 +832,7 @@ export default function NovelDetailPage({ params }: { params: Promise<{ id: stri
                   </svg>
                 </button>
               </div>
-              <p className="text-neutral-600 leading-relaxed text-base sm:text-lg italic nd-text-modal-body">
+              <p className="text-neutral-600 leading-relaxed text-base sm:text-lg italic nd-text-modal-body whitespace-pre-line">
                 "{novelData.editorNote}"
               </p>
             </div>
